@@ -11,7 +11,7 @@
                 <a class="nav-item nav-link" href="#panduan">Panduan</a>
                 <a class="nav-item nav-link" href="pages/kontak.php">Kontak</a>
             </div>
-            <a type="button" class="btn btn-primary">Masuk</a>
+            <a href="<?php echo 'http://' . $_SERVER['HTTP_HOST'] . '/pages/masuk.php'?>" type="button" class="btn btn-primary">Masuk</a>
         </div>
     </div>
 </nav>
