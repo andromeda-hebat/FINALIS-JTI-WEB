@@ -15,8 +15,4 @@ class HomeController extends Controller {
     public function contact(): void {
         $this->view("pages/contact");
     }
-
-    public function login(): void {
-        $this->view("pages/login");
-    }
 }
