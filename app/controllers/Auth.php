@@ -14,7 +14,10 @@ class Auth extends Controller {
     }
 
     public function viewLogin(): void {
+        $data['title'] = "Login";
+        $this->view("templates/header", $data);
         $this->view("pages/login");
+        $this->view("templates/footer");
     }
 
     public function loginProcess(): void {
@@ -53,6 +56,9 @@ class Auth extends Controller {
     }
 
     public function logout(): void {
+        $data['title'] = "Logout";
+        $this->view("templates/header", $data);
         $this->view("pages/logout");
+        $this->view("templates/footer");
     }
 }
