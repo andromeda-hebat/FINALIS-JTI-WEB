@@ -1,8 +1,8 @@
 <?php
 
-require __DIR__ ."/Database.php";
-require __DIR__ ."/Controller.php";
-require __DIR__ ."/Model.php";
+require_once __DIR__ ."/Database.php";
+require_once __DIR__ ."/Controller.php";
+require_once __DIR__ ."/Model.php";
 
 class Router {
 
