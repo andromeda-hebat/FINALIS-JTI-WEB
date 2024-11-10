@@ -1,7 +1,7 @@
 <?php
 
 class Controller {
-    public Model $model;
+    public ?Model $model;
 
     public function __construct(string $model) {
         // get the selected model
