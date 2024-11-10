@@ -10,6 +10,7 @@ use App\Controllers\{Home, Auth};
 
 Router::add('GET', '/', Home::class, 'index');
 Router::add('GET', '/kontak', Home::class,'contact');
-Router::add('GET','/login', Auth::class,'login');
+Router::add('GET','/login', Auth::class,'viewLogin');
+Router::add('POST', '/auth', Auth::class,'loginProcess');
 
 Router::run();
