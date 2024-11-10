@@ -1,8 +1,10 @@
 <?php
 
-require_once __DIR__ ."/Database.php";
-require_once __DIR__ ."/Controller.php";
-require_once __DIR__ ."/Model.php";
+namespace App\Core;
+
+require_once __DIR__ . '/Database.php';
+require_once __DIR__ . '/Controller.php';
+require_once __DIR__ . '/Model.php';
 
 class Router {
 

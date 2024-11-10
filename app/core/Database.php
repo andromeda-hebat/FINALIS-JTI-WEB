@@ -1,5 +1,10 @@
 <?php
 
+namespace App\Core;
+
+use PDO;
+use PDOException;
+
 class Database {
     private string $DB_SERVER = "";
     private string $DB_NAME = "";

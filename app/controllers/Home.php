@@ -1,8 +1,12 @@
 <?php
 
-require_once __DIR__ . "/../core/Controller.php";
+namespace App\Controllers;
 
-class HomeController extends Controller {
+require_once __DIR__ . '/../core/Controller.php';
+
+use App\Core\Controller;
+
+class Home extends Controller {
 
     public function __construct() {
         $this->model = null;
