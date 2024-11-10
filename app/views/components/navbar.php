@@ -7,11 +7,11 @@
         </button>
         <div class="collapse navbar-collapse navbar-nav d-flex justify-content-between" id="navbarNav">
             <div class="d-flex">
-                <a class="nav-item nav-link active" href="#tentang">Tentang</a>
-                <a class="nav-item nav-link" href="#panduan">Panduan</a>
-                <a class="nav-item nav-link" href="pages/kontak.php">Kontak</a>
+                <a class="nav-item nav-link active" href="/#tentang">Tentang</a>
+                <a class="nav-item nav-link" href="/#panduan">Panduan</a>
+                <a class="nav-item nav-link" href="/kontak">Kontak</a>
             </div>
-            <a href="<?php echo 'http://' . $_SERVER['HTTP_HOST'] . '/pages/masuk.php'?>" type="button" class="btn btn-primary">Masuk</a>
+            <a href="/login" type="button" class="btn btn-primary">Masuk</a>
         </div>
     </div>
 </nav>
