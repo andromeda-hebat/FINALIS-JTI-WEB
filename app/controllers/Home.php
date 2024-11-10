@@ -19,4 +19,20 @@ class Home extends Controller {
     public function contact(): void {
         $this->view("pages/contact");
     }
+
+    public function dashboard(): void {
+        session_start();
+        switch ($_SESSION['role']) {
+            case 'admin':
+                $this->view("pages/admin/dashboard");
+                break;
+            case 'student':
+                $this->view("pages/student/dashboard");
+                break;
+            default:
+                // WARNING: Informs the user that they are not authenticated
+                echo "USER NOT AUTHENTICATED!";
+                break;
+        }
+    }
 }

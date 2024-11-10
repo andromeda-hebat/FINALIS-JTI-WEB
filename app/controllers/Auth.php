@@ -37,10 +37,15 @@ class Auth extends Controller {
             return;
         }
 
+        session_start();
         if ($user_id == "mahasiswa" && $password == "123") {
-            $this->view("pages/student/dashboard");
+            $_SESSION['user_id'] = $user_id;
+            $_SESSION['role'] = 'student';
+            header('Location: /dashboard');
         } else if ($user_id == "admin" && $password == "admin123") {
-            $this->view("pages/admin/dashboard");
+            $_SESSION['user_id'] = $user_id;
+            $_SESSION['role'] = 'admin';
+            header('Location: /dashboard');
         } else {
             // WARNING: A warning to user if they send wrong user ID and password
             echo "WRONG USER ID AND PASSWORD";
