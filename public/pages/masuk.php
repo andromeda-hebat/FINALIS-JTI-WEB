@@ -27,6 +27,7 @@
                 <button type="submit" class="btn btn-primary">Masuk</button>
             </form>
         </div>
+        <a href="dasbor.php">Masuk ke admin</a>
     </main>
 </body>
 </html>
