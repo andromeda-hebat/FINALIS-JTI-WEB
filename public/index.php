@@ -1,62 +1,17 @@
-<!DOCTYPE html>
-<html lang="en">
+<?php
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SIBT-TA</title>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
-        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-</head>
+require_once __DIR__ . '/../app/core/Router.php';
+require_once __DIR__ . '/../app/controllers/Home.php';
+require_once __DIR__ . '/../app/controllers/Auth.php';
 
-<body>
-    <?php include __DIR__ . '/components/navbar.php'?>
-    
-    <main class="container pt-5 ">
-        <section class="d-flex flex-column justify-content-center align-items-center min-vh-100">
-            <div>
-                <h1>Sistem Informasi Bebas Tanggungan</h1>
-                <p>Jurusan Teknologi Informasi</p>
-                <p>Politeknik Negeri Malang</p>
-            </div>
-        </section>
-        <section id="tentang"
-            class="d-flex flex-column justify-content-center align-items-center text-center min-vh-100">
-            <h1>Sistem Informasi Bebas Tanggungan</h1>
-            <p class="w-75">Sistem Informasi Bebas Tanggungan Tugas Akhir adalah sistem yang dikembangkan di Jurusan
-                Teknologi Informasi Politeknik Negeri Malang, untuk menyederhanakan proses administratif untuk mahasiswa
-                tingkat akhir yang selama ini memiliki birokrasi yang rumit.</p>
-            <h3>Tujuan</h3>
-            <div class="d-flex justify-content-center">
-                <div class="mx-3">
-                    <img src="" alt="icon">
-                    <p>Efisiensi</p>
-                </div>
-                <div class="mx-3">
-                    <img src="" alt="icon">
-                    <p>Transparansi</p>
-                </div>
-                <div class="mx-3">
-                    <img src="" alt="icon">
-                    <p>Akuntanbilitas</p>
-                </div>
-                <div class="mx-3">
-                    <img src="" alt="icon">
-                    <p>Availability</p>
-                </div>
-            </div>
-        </section>
-        <section id="panduan" class="d-flex flex-column justify-content-center align-items-center text-center min-vh-100">
-            <h1>Panduan Pengguna</h1>
-            <ol class="w-50">
-                <li>Lorem ipsum dolor sit amet consectetur adipisicing elit.</li>
-                <li>Lorem ipsum dolor sit amet consectetur, adipisicing elit.</li>
-                <li>Lorem ipsum, dolor sit amet consectetur adipisicing elit.</li>
-                <li>Lorem ipsum dolor sit, amet consectetur adipisicing elit.</li>
-                <li>Lorem ipsum dolor sit amet consectetur adipisicing elit.</li>
-            </ol>
-        </section>
-    </main>
-</body>
+use App\Core\Router;
+use App\Controllers\{Home, Auth};
 
-</html>
+
+Router::add('GET', '/', Home::class, 'index');
+Router::add('GET', '/kontak', Home::class,'contact');
+Router::add('GET','/login', Auth::class,'viewLogin');
+Router::add('POST', '/auth', Auth::class,'loginProcess');
+Router::add('GET', '/dashboard', Home::class,'dashboard');
+
+Router::run();
