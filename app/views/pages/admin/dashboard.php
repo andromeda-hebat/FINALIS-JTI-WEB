@@ -1,9 +1,9 @@
 <main class="d-flex">
     <!-- Sidebar -->
-    <?php include __DIR__ . '/../../components/sidebar_admin.php' ?>
+    <?php include __DIR__ . '/../../components/admin/sidebar_admin.php' ?>
     <div class="flex-grow-1">
 
-        <?php include __DIR__ . '/../../components/top_bar.php' ?>
+        <?php include __DIR__ . '/../../components/admin/top_bar.php' ?>
 
         <div class="halaman ms-4 me-4">
 
