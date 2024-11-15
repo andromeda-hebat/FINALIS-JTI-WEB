@@ -32,4 +32,10 @@ class Students extends Controller {
         $this->view("pages/student/riwayat_pengajuan_form");
         $this->view("templates/footer");
     }
+    public function permintaanSurat(): void {
+        $data['title'] = "Permintaan Surat";
+        $this->view("templates/header", $data);
+        $this->view("pages/student/permintaan_surat");
+        $this->view("templates/footer");
+    }
 }

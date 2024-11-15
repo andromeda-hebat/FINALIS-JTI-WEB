@@ -17,5 +17,6 @@ Router::add('GET', '/dashboard', Home::class,'dashboard');
 Router::add('GET', '/final-project-form', Students::class, 'finalProject');
 Router::add('GET', '/administrasi-prodi', Students::class, 'administrasi');
 Router::add('GET', '/riwayat-pengajuan-form', Students::class, 'riwayatPengajuan');
+Router::add('GET', '/permintaan-surat', Students::class, 'permintaanSurat');
 
 Router::run();
