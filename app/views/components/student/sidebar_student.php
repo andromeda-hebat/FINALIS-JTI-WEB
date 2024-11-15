@@ -23,7 +23,7 @@
             <img src="icon-upload.png" alt="Ikon Unggah" width="20" height="20" class="me-2">
             Riawayat Pengajuan
         </a>
-        <a href="#" class="nav-link d-flex align-items-center px-3 text-dark">
+        <a href="/permintaan-surat" class="nav-link d-flex align-items-center px-3 text-dark">
             <img src="icon-upload.png" alt="Ikon Unggah" width="20" height="20" class="me-2">
             Permintaan Surat
         </a>
