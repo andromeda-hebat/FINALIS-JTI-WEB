@@ -19,4 +19,17 @@ class Students extends Controller {
         $this->view("pages/student/final_project_form");
         $this->view("templates/footer");
     }
+    
+    public function administrasi(): void {
+        $data['title'] = "Administrasi Prodi";
+        $this->view("templates/header", $data);
+        $this->view("pages/student/administrasi_prodi");
+        $this->view("templates/footer");
+    }
+    public function riwayatPengajuan(): void {
+        $data['title'] = "Riwayat Pengajuan";
+        $this->view("templates/header", $data);
+        $this->view("pages/student/riwayat_pengajuan_form");
+        $this->view("templates/footer");
+    }
 }
