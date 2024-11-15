@@ -15,11 +15,11 @@
             <img src="icon-status.png" alt="Ikon Status" width="20" height="20" class="me-2">
             Tugas Akhir
         </a>
-        <a href="#" class="nav-link d-flex align-items-center px-3 text-dark">
+        <a href="/administrasi-prodi" class="nav-link d-flex align-items-center px-3 text-dark">
             <img src="icon-upload.png" alt="Ikon Unggah" width="20" height="20" class="me-2">
             Administrasi Prodi
         </a>
-        <a href="#" class="nav-link d-flex align-items-center px-3 text-dark">
+        <a href="/riwayat-pengajuan-form" class="nav-link d-flex align-items-center px-3 text-dark">
             <img src="icon-upload.png" alt="Ikon Unggah" width="20" height="20" class="me-2">
             Riawayat Pengajuan
         </a>
