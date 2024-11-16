@@ -13,7 +13,7 @@ class Home extends Controller {
     }
 
     public function index(): void {
-        $data['title'] = "SIBT-TA";
+        $data['title'] = "FINALIS JTI";
         $this->view("templates/header", $data);
         $this->view("index");
         $this->view("templates/footer");
