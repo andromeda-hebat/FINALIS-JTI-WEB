@@ -2,7 +2,7 @@
 
 <main class="pt-5 ">
     <section class="d-flex flex-column justify-content-center min-vh-100"
-        style="background-image: url('assets/img/hero-section-home-page.png')">
+        style="background-image: url('assets/img/hero-section-home-page.png'); background-size: cover; background-repeat: no-repeat; background-position: center;">
         <div class="ps-5">
             <h1 style="color: #F7DE00; font-size: 90px;" class="fw-bold">FINALIS JTI</h1>
             <h6 style="color:white; font-size: 25px;">Menuju Penyelesaian Sempurna Tugas Akhir</h6>
@@ -10,10 +10,8 @@
         </div>
     </section>
     <section id="tentang" class="d-flex flex-column justify-content-center align-items-center text-center min-vh-100">
-        <h1 style="color: #052C65" class="fw-bold mt-4 pt-0 mb-5">Sistem Informasi <br> Bebas Tanggungan</h1>
-        <p class="w-50 mb-5">Sistem Informasi Bebas Tanggungan Tugas Akhir adalah sistem yang dikembangkan di Jurusan
-            Teknologi Informasi Politeknik Negeri Malang, untuk menyederhanakan proses administratif untuk mahasiswa
-            tingkat akhir yang selama ini memiliki birokrasi yang rumit.</p>
+        <h1 style="color: #052C65" class="fw-bold mt-4 pt-0 mb-5">Sistem Informasi <br> Bebas Tanggungan Tugas Akhir</h1>
+        <p class="w-50 mb-5">FINALIS JTI adalah sebuah sistem yang mengurusi sistem informasi bebas tanggungan tugas akhir. Sistem ini dirancang agar mampu memudahkan kebutuhan mahasiswa dalam mengurusi administrasi bebas tanggungan tugas akhir.</p>
         <h3 style="color: #052C65;" class="fw-bold mb-5">Tujuan</h3>
         <div class="d-flex justify-content-center">
             <div class="mx-3">
