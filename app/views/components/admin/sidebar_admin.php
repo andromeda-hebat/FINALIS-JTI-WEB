@@ -10,7 +10,7 @@
     <!-- Tautan Navigasi -->
     <nav class="nav w-100 d-flex justify-content-center">
         <div class="text-start">
-            <a href="#" class="nav-link text-white">
+            <a href="/dashboard" class="nav-link text-white">
                 Dashboard
             </a>
             <a href="/permintaan_verifikasi" class="nav-link text-white">
