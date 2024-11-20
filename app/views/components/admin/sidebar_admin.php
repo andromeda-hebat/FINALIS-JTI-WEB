@@ -13,7 +13,7 @@
             <a href="#" class="nav-link text-white">
                 Dashboard
             </a>
-            <a href="#" class="nav-link text-white">
+            <a href="/permintaan_verifikasi" class="nav-link text-white">
                 Permintaan Verifikasi
             </a>
         </div>
