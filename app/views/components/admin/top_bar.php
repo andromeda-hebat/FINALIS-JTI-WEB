@@ -1,7 +1,7 @@
 <nav class="navbar">
   <div class="container-fluid mx-3">
     <div class="text-center d-flex pt-3 ">
-      <img src="profile-placeholder.png" alt="Profil" class="rounded-circle"
+      <img src="foto.jpg" alt="Profil" class="rounded-circle"
         style="width: 30px; height: 30px; background-color: #ddd;">
       <div class="ms-2 flex-column text-start">
         <h5 class="mb-0">Sri Whariyanti</h5>
