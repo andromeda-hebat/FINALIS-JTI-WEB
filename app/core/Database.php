@@ -1,15 +1,18 @@
 <?php
 
+
 namespace App\Core;
+
+require_once __DIR__ . '/../config/config.php';
 
 use PDO;
 use PDOException;
 
 class Database {
-    private string $DB_SERVER = "";
-    private string $DB_NAME = "";
-    private string $DB_USER = "";
-    private string $DB_PASSWORD = "";
+    private string $DB_SERVER = DB_SERVER;
+    private string $DB_NAME = DB_NAME;
+    private string $DB_USER = DB_USER;
+    private string $DB_PASSWORD = DB_PASSWORD;
     private ?PDO $conn = null;
 
     public function __construct() {
