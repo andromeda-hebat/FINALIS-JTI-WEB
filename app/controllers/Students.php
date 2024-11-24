@@ -10,9 +10,6 @@ use App\Core\Controller;
 
 class Students extends Controller {
 
-    public function __construct() {
-        
-    }
     public function finalProject(): void {
         $data['title'] = "Tugas Akhir";
         $this->view("templates/header",$data);
