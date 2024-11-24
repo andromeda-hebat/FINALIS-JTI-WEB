@@ -8,7 +8,7 @@ require_once __DIR__ . '/../core/Controller.php';
 use App\Core\Controller;
 
 
-class Admin extends Controller {
+class AdminController extends Controller {
 
     public function __construct() {
         
