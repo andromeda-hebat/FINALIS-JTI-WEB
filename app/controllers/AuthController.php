@@ -3,14 +3,18 @@
 namespace App\Controllers;
 
 require_once __DIR__ . '/../core/Controller.php';
+require_once __DIR__ . '/../models/Admin.php';
 
 use App\Core\Controller;
+use App\Models\Admin;
 
 
-class Auth extends Controller {
+class AuthController extends Controller {
+
+    private Admin $admin;
 
     public function __construct() {
-        $this->model = null; // NOTE: change this soon!
+        $this->admin = new Admin();
     }
 
     public function viewLogin(): void {
@@ -52,6 +56,27 @@ class Auth extends Controller {
         } else {
             // WARNING: A warning to user if they send wrong user ID and password
             echo "WRONG USER ID AND PASSWORD";
+        }
+    }
+
+    public function adminLogin(): void {
+        if (isset($_POST['username']) && isset($_POST['password'])) {
+            $username = $_POST['username'];
+            $password = $_POST['password'];
+        } else {
+            http_response_code(400);
+            echo "Data formulir login tidak lengkap!";
+            return;
+        }
+
+        $result = $this->admin->checkUserIsAvailable($username, $password);
+
+        if ($result === false) {
+            http_response_code(404);
+            echo "Pengguna tidak ditemukan!";
+        } else {
+            http_response_code(200);
+            echo "Pengguna berhasil ditemukan!";
         }
     }
 
