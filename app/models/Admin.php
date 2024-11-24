@@ -13,7 +13,7 @@ class Admin extends Model {
     public function checkUserIsAvailable(string $username, string $password): bool {
         $query = "SELECT * FROM Admin WHERE name = ? AND password = ?";
 
-        $stmt = $this->db->getConnection()->prepare($query);
+        $stmt = $this->db->prepareQuery($query);
         $stmt->bindParam(1, $username);
         $stmt->bindParam(2, $password);
         $stmt->execute();
