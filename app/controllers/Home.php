@@ -8,10 +8,6 @@ use App\Core\Controller;
 
 class Home extends Controller {
 
-    public function __construct() {
-        $this->model = null;
-    }
-
     public function index(): void {
         $data['title'] = "FINALIS JTI";
         $this->view("templates/header", $data);
