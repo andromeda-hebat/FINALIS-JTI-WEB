@@ -71,12 +71,20 @@ class AuthController extends Controller {
 
         $result = $this->admin->checkUserIsAvailable($username, $password);
 
+        header("Content-Type: application/json");
         if ($result === false) {
             http_response_code(404);
-            echo "Pengguna tidak ditemukan!";
+            echo json_encode([
+                "status"=>"failed",
+                "message"=>"User not found"
+            ]);
         } else {
             http_response_code(200);
-            echo "Pengguna berhasil ditemukan!";
+            echo json_encode([
+                "status"=>"success",
+                "message"=>"User successfully found",
+                "data"=>$result
+            ]);
         }
     }
 
