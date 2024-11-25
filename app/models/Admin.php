@@ -10,7 +10,7 @@ use App\Core\Model;
 
 
 class Admin extends Model {
-    public function checkUserIsAvailable(string $username, string $password): bool {
+    public function checkUserIsAvailable(string $username, string $password): bool|array {
         $query = "SELECT * FROM Admin WHERE name = ? AND password = ?";
 
         $stmt = $this->db->prepareQuery($query);
@@ -18,6 +18,6 @@ class Admin extends Model {
         $stmt->bindParam(2, $password);
         $stmt->execute();
         $result =  $stmt->fetch(PDO::FETCH_ASSOC);
-        return ($result === false) ? false : true;
+        return ($result === false) ? false : $result;
     }
 }
