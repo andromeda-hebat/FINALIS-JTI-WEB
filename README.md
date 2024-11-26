@@ -30,7 +30,7 @@ Langkah-langkah untuk menjalankan proyek di lokal:
 
     Buka pada URL berikut:
     ```bash
-    finalis-jti.test
+    finalis-jti-web.test
     ```
 
 ---
