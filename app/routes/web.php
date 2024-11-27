@@ -17,8 +17,10 @@ Router::add('POST', '/auth', AuthController::class,'loginProcess');
 Router::add('GET', '/dashboard', Home::class,'dashboard');
 
 Router::add('GET', '/tugas-akhir', Students::class, 'tugasAkhir');
+Router::add('GET', '/ta-terkirim', Students::class, 'tugasAkhirTerkirim');
 Router::add('GET', '/administrasi-prodi', Students::class, 'administrasi');
 Router::add('GET', '/riwayat-pengajuan', Students::class, 'riwayatPengajuan');
 Router::add('GET', '/permintaan-surat', Students::class, 'permintaanSurat');
+
 
 Router::add('GET', '/permintaan_verifikasi', AdminController::class, 'requestVerifikasi');
