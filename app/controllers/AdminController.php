@@ -9,10 +9,6 @@ use App\Core\Controller;
 
 
 class AdminController extends Controller {
-
-    public function __construct() {
-        
-    }
     public function requestVerifikasi(): void {
         $data['title'] = "Permintaan Verifikasi";
         $this->view("templates/header",$data);
