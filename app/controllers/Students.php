@@ -10,10 +10,10 @@ use App\Core\Controller;
 
 class Students extends Controller {
 
-    public function finalProject(): void {
+    public function tugasAkhir(): void {
         $data['title'] = "Tugas Akhir";
         $this->view("templates/header",$data);
-        $this->view("pages/student/final_project_form");
+        $this->view("pages/student/tugas_akhir");
         $this->view("templates/footer");
     }
     
@@ -26,7 +26,7 @@ class Students extends Controller {
     public function riwayatPengajuan(): void {
         $data['title'] = "Riwayat Pengajuan";
         $this->view("templates/header", $data);
-        $this->view("pages/student/riwayat_pengajuan_form");
+        $this->view("pages/student/riwayat_pengajuan");
         $this->view("templates/footer");
     }
     public function permintaanSurat(): void {
