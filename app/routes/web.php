@@ -18,6 +18,7 @@ Router::add('GET', '/dashboard', HomeController::class,'dashboard');
 
 Router::add('GET', '/tugas-akhir', StudentsController::class, 'tugasAkhir');
 Router::add('GET', '/administrasi-prodi', StudentsController::class, 'administrasiProdi');
+Router::add('POST', '/administrasi-prodi', StudentsController::class, 'prosesAdministrasiProdi');
 Router::add('GET', '/riwayat-pengajuan', StudentsController::class, 'riwayatPengajuan');
 Router::add('GET', '/permintaan-surat', StudentsController::class, 'permintaanSurat');
 

@@ -39,4 +39,13 @@ class StudentsController extends Controller {
         $this->view("pages/student/permintaan_surat", $data);
         $this->view("templates/footer");
     }
+
+    public function prosesAdministrasiProdi(): void {
+        $report = $_POST['thesis'];
+        $internship = $_POST['internship'];
+        $compensation = $_POST['compensation'];
+        $toeic = $_POST['toeic'];
+
+        echo "Still in process";
+    }
 }
