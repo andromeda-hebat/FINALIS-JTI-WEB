@@ -1,6 +1,7 @@
-<div class="d-flex flex-column align-items-center border-end justify-content-center"
-    style="background-color: #052C65; width: 250px; height: 100vh; padding-top: 20px;">
-    <!-- Bagian Profil -->
+<div id="sidebar" 
+    class="d-flex flex-column align-items-center border-end justify-content-center vh-100 p-4"
+    style="background-color: #052C65; width: 280px; padding-top: 20px !important;">
+    <!-- Bagian Judul -->
     <div class="d-flex text-center pt-2 mb-4">
         <img src="profile-placeholder.png" alt="Logo" class="rounded-circle me-3"
             style="width: 35px; height: 35px; background-color: #ddd;">
