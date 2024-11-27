@@ -26,27 +26,39 @@ class Router
         $path = $_SERVER['PATH_INFO'] ?? '/';
         $method = $_SERVER['REQUEST_METHOD'];
 
+        $is_path_found = false;
+        $is_method_found = false;
+
         foreach (self::$routes as $route) {
             $pattern = "#^" . $route['path'] . "$#";
             if (preg_match($pattern, $path, $variables)) {
-                if ($route['method'] != $method) {
-                    http_response_code(405);
-                    echo "METHOD NOT ALLOWED!";
-                    return;
+                $is_path_found = true;
+                if ($route['method'] == $method) {
+                    $is_method_found = true;
+                    break;
                 }
-
-                $controller = new $route['controller'];
-                $function = $route['function'];
-                
-                array_shift($variables);
-                call_user_func_array([$controller, $function], $variables);
-                return;
             }
         }
 
+        if ($is_path_found && $is_method_found) {
+            $controller = new $route['controller'];
+            $function = $route['function'];
 
-        // Handle route not found
-        http_response_code(404);
-        echo "CONTROLLER NOT FOUND!";
+            array_shift($variables);
+            call_user_func_array([$controller, $function], $variables);
+            return;
+        }
+
+        if ($is_path_found && !$is_method_found) {
+            http_response_code(405);
+            echo "METHOD NOT ALLOWED!";
+            return;
+        }
+
+        if (!$is_path_found) {
+            http_response_code(404);
+            echo "CONTROLLER NOT FOUND!";
+            return;
+        }
     }
 }
