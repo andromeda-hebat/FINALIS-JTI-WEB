@@ -17,7 +17,7 @@ class Students extends Controller {
         $this->view("templates/footer");
     }
     
-    public function administrasi(): void {
+    public function administrasiProdi(): void {
         $data['title'] = "Administrasi Prodi";
         $this->view("templates/header", $data);
         $this->view("pages/student/administrasi_prodi");
