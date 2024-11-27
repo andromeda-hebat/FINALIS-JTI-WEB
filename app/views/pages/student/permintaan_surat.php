@@ -1,8 +1,8 @@
-<main>
-    <?php include __DIR__ . '/../../components/student/topbar_student.php' ?>
-    <div class="position-relative d-flex">
-        <?php include __DIR__ . '/../../components/student/sidebar_student.php' ?>
-        <div class="p-5 w-95">
+<div class="d-flex">
+    <?php include __DIR__ . '/../../components/student/sidebar_student.php' ?>
+    <div class="w-100 position-relative">
+        <?php include __DIR__ . '/../../components/student/topbar_student.php' ?>
+        <main class="container" style="margin-top: 5rem;">
             <div class="d-flex">
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
                     stroke="currentColor" class="size-6" style="width: 50px; height: 50px">
@@ -11,5 +11,6 @@
                 </svg>
                 <h2 class="mt-2">Bebas Tanggungan Jurusan</h2>
             </div>
-        </div>
-</main>
+        </main>
+    </div>
+</div>
