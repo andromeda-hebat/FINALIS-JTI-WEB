@@ -23,5 +23,4 @@ Router::add('POST', '/administrasi-prodi', StudentsController::class, 'prosesAdm
 Router::add('GET', '/riwayat-pengajuan', StudentsController::class, 'riwayatPengajuan');
 Router::add('GET', '/permintaan-surat', StudentsController::class, 'permintaanSurat');
 
-
 Router::add('GET', '/permintaan_verifikasi', AdminController::class, 'requestVerifikasi');
