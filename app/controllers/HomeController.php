@@ -11,7 +11,7 @@ class HomeController extends Controller {
     public function index(): void {
         $data['title'] = "FINALIS JTI";
         $this->view("templates/header", $data);
-        $this->view("index");
+        $this->view("pages/index");
         $this->view("templates/footer");
     }
 
