@@ -17,6 +17,13 @@ class StudentsController extends Controller {
         $this->view("pages/student/tugas_akhir", $data);
         $this->view("templates/footer");
     }
+  
+    public function tugasAkhirTerkirim(): void {
+        $data['title'] = "Tugas Akhir";
+        $this->view("templates/header",$data);
+        $this->view("pages/student/ta_terkirim");
+        $this->view("templates/footer");
+    }
     
     public function administrasiProdi(): void {
         $data['title'] = "Administrasi Prodi";

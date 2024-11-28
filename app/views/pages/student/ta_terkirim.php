@@ -25,72 +25,22 @@
                 <h2 class="mt-2 ms-1 fw-bold" style="color: #052C65;" ;">Formulir Tugas Akhir</h2>
             </div>
 
-            <div class="card mt-3">
-                <div class="card-body">
-                    <p class="mt-3">Upload berkas berikut untuk memferivikasi tugas akhir anda</p>
+            <!-- <div class="container">
+                <p class="position-absolute top-50 start-50 translate-middle m-5 p-5 shadow">Data berhasil dikirim !
+                    tunggu verifikasi
+                    dari admin, dalam 2x24 jam.</p>
+            </div> -->
 
-                    <form method="post">
+            <div class="card position-absolute top-50 start-50 translate-middle my-5 me-5 ms-0 shadow">
+                <div class="card-body" style="height: 50vh; width: 100vh;">
+                    <div class="text-center">
 
-                        <label for="laporan" class="form-label mt-4 mb-0">Laporan Tugas Akhir/Skripsi</label>
-                        <p class="mb-0" style="color:#7C7C7C ;">(Format PDF, maksimal 10 MB)</p>
-                        <input type="file" id="laporan">
-                        <br>
-                        <label for="program" class="form-label mt-5 mb-0">Program/Aplikasi Tugas Akhir</label>
-                        <p class="mb-0" style="color: #7C7C7C;">(Format ZIP/RAR, maksimal 1GB).</p>
-                        <input type="file" id="program">
-                        <br>
-                        <label for="upload" class="form-label mt-5 mb-0">Upload Bukti Publikasi</label>
-                        <p class="mb-0" style="color: #7C7C7C;">File scan PDF</p>
-                        <input type="file" id="upload" class="mb-5">
-
-                    </form>
-
+                        <p>Data berhasil dikirim !<br>
+                        tunggu verifikasi dari admin, dalam 2x24 jam.</p>
+                    </div>
                 </div>
             </div>
-            <div class="d-flex justify-content-end">
-                <input type="button" value="Kirim" id="submitBtn" class="text-white mt-3"
-                    style="background-color:#052C65 ;">
-            </div>
+
         </main>
     </div>
 </div>
-
-<div class="modal" tabindex="-1" id="statusModal">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title text-danger">Gagal</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-                <p>File gagal diupload
-                Periksa kembali data yang anda upload</p>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="text-white" style="background-color: #052C65;" data-bs-dismiss="modal">Tutup</button>
-            </div>
-        </div>
-    </div>
-</div>
-
-<script>
-  document.addEventListener("DOMContentLoaded", function () {
-    const submitBtn = document.getElementById("submitBtn");
-    const modal = new bootstrap.Modal(document.getElementById("statusModal"));
-
-    submitBtn.addEventListener("click", function () {
-      // Validasi file input
-      const laporan = document.getElementById("laporan").files.length;
-      const program = document.getElementById("program").files.length;
-      const upload = document.getElementById("upload").files.length;
-
-      if (laporan && program && upload) {
-        // Jika semua file diunggah, arahkan ke halaman berikutnya
-        window.location.href = "/ta-terkirim"; // Ganti "/nextPage" dengan URL halaman tujuan
-      } else {
-        // Jika gagal, tampilkan modal
-        modal.show();
-      }
-    });
-  });
-</script>
