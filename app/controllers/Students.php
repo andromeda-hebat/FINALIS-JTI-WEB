@@ -8,35 +8,47 @@ require_once __DIR__ . '/../core/Controller.php';
 use App\Core\Controller;
 
 
-class Students extends Controller {
+class Students extends Controller
+{
 
-    public function tugasAkhir(): void {
+    public function tugasAkhir(): void
+    {
         $data['title'] = "Tugas Akhir";
-        $this->view("templates/header",$data);
+        $this->view("templates/header", $data);
         $this->view("pages/student/tugas_akhir");
         $this->view("templates/footer");
     }
-    public function tugasAkhirTerkirim(): void {
+    public function tugasAkhirTerkirim(): void
+    {
         $data['title'] = "Tugas Akhir";
-        $this->view("templates/header",$data);
+        $this->view("templates/header", $data);
         $this->view("pages/student/ta_terkirim");
         $this->view("templates/footer");
     }
+    public function tugasAkhirTerverif(): void
+    {
+        $data['title'] = "Tugas Akhir";
+        $this->view("templates/header", $data);
+        $this->view("pages/student/ta_terverifikasi");
+        $this->view("templates/footer");
+    }
 
-    
-    public function administrasi(): void {
+    public function administrasi(): void
+    {
         $data['title'] = "Administrasi Prodi";
         $this->view("templates/header", $data);
         $this->view("pages/student/administrasi_prodi");
         $this->view("templates/footer");
     }
-    public function riwayatPengajuan(): void {
+    public function riwayatPengajuan(): void
+    {
         $data['title'] = "Riwayat Pengajuan";
         $this->view("templates/header", $data);
         $this->view("pages/student/riwayat_pengajuan");
         $this->view("templates/footer");
     }
-    public function permintaanSurat(): void {
+    public function permintaanSurat(): void
+    {
         $data['title'] = "Permintaan Surat";
         $this->view("templates/header", $data);
         $this->view("pages/student/permintaan_surat");
