@@ -5,7 +5,6 @@
         <main class="container px-4" style="margin-top: 5rem;">
             <div class="d-flex align-items-center">
                 <a href="/dashboard" style="text-decoration: none;">
-                <a href="/dashboard" style="text-decoration: none;">
                     <svg class="me-1" width="30" height="30" viewBox="0 0 30 30" fill="none"
                         xmlns="http://www.w3.org/2000/svg">
                         <g clip-path="url(#clip0_612_5138)">
@@ -47,8 +46,6 @@
                 </div>
             </div>
             <div class="d-flex justify-content-end">
-                <input type="button" value="Kirim" id="submitBtn" class="text-white mt-3"
-                    style="background-color:#052C65 ;">
                 <input type="button" value="Kirim" id="submitBtn" class="text-white mt-3"
                     style="background-color:#052C65 ;">
             </div>
