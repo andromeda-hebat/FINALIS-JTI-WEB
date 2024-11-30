@@ -1,0 +1,20 @@
+{
+    "name": "andromeda-hebat/finalis-jti-web",
+    "description": "FINALIS JTI WEB is a web based information system for tracking and managing task clearances related to final projects, tailored for Information Technology Department at Politeknik negeri Malang",
+    "authors": [
+        {
+            "name": "Farrel Augusta Dinata",
+            "email": "farrel.apeiron@gmail.com"
+        },
+        {
+            "name": "Stevan Zaky Setyanto",
+            "email": "stevanzaky87@gmail.com"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "App\\": "app/"
+        }
+    },
+    "require": {}
+}

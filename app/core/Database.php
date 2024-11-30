@@ -3,8 +3,6 @@
 
 namespace App\Core;
 
-require_once __DIR__ . '/../config/config.php';
-
 use PDO;
 use PDOException;
 use PDOStatement;
