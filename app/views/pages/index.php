@@ -1,4 +1,4 @@
-<?php include __DIR__ . '/components/navbar.php' ?>
+<?php include __DIR__ . '/../components/navbar.php' ?>
 
 <main class="pt-5 ">
     <section class="d-flex flex-column justify-content-center min-vh-100"
@@ -61,7 +61,7 @@
     <section id="panduan" class="d-flex flex-column justify-content-center align-items-center text-center min-vh-100">
         <h2 class="fw-bold mb-5" style="color: #052C65;">Panduan Pengguna</h2>
         <ol id="jacord" class="w-50 ms-0 ps-0">
-            <li class="card my-3 shadow" style="background-color: #052C65;">
+            <li class="card my-3 shadow" style="background-color: #052C65; cursor: pointer;">
                 <h3 class="card-body m-0 text-white fw-bold">
                     Ungggah Tugas Akhir
                     <svg class="position-absolute end-0 me-3 mt-2" width="20" height="20" viewBox="0 0 30 30" fill="none"
@@ -95,7 +95,7 @@
                     </ul>
                 </div>
             </li>
-            <li class="card my-3 shadow" style="background-color: #052C65;">
+            <li class="card my-3 shadow" style="background-color: #052C65; cursor: pointer;">
                 <h3 class="card-body m-0 text-white fw-bold">
                     Administrasi Prodi
                     <svg class="position-absolute end-0 me-3 mt-2" width="20" height="20" viewBox="0 0 30 30" fill="none"
@@ -130,7 +130,7 @@
                     </ul>
                 </div>
             </li>
-            <li class="card my-3 shadow" style="background-color: #052C65;">
+            <li class="card my-3 shadow" style="background-color: #052C65; cursor: pointer;">
                 <h3 class="card-body m-0 text-white fw-bold">
                     Bebas Tanggungan
                     <svg class="position-absolute end-0 me-3 mt-2" width="20" height="20" viewBox="0 0 30 30" fill="none"
@@ -161,16 +161,16 @@
     </section>
 </main>
 
-<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
-<script src="https://code.jquery.com/ui/1.14.0/jquery-ui.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.7.1/dist/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/jquery-ui@1.14.1/dist/jquery-ui.min.js"></script>
 <script>
-    $(function () {
+    $(() => {
     $("#jacord").accordion({
         collapsible: true,
         active: false,
         heightStyle: "content",
         beforeActivate: function (event, ui) {
-            var items = $(this).find('> li');
+            const items = $(this).find('> li');
 
             if (ui.newHeader.length > 0) {
                 items.each(function () {
