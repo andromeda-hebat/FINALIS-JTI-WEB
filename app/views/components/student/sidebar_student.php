@@ -1,8 +1,8 @@
 <div id="sidebar" 
-    class="d-flex flex-column align-items-center border-end justify-content-center vh-100 p-4"
-    style="background-color: #052C65; width: 280px; padding-top: 20px !important;">
+    class="d-flex flex-column align-items-center border-end justify-content-center vh-100"
+    style="background-color: #052C65; width: 300px; padding-top: 20px !important;">
     <!-- Bagian Judul -->
-    <div class="d-flex text-center pt-2 mb-4">
+    <div class="d-flex text-center py-4 mb-4">
         <img src="profile-placeholder.png" alt="Logo" class="rounded-circle me-3"
             style="width: 35px; height: 35px; background-color: #ddd;">
         <h3 class="align-items-center fw-bold" style="color: #F7DE00;">FINALIS JTI</h3>
@@ -10,20 +10,20 @@
 
     <!-- Tautan Navigasi -->
     <nav class="nav w-100 d-flex justify-content-center">
-        <div class="text-start">
-            <a href="/dashboard" class="nav-link text-white">
+        <div class="w-100">
+            <a href="/dashboard" id="nav-dashboard" class="nav-link text-white ps-4">
                 Dashboard
             </a>
-            <a href="/tugas-akhir" class="nav-link text-white">
+            <a href="/tugas-akhir" id="nav-tugas-akhir" class="nav-link text-white ps-4">
                 Tugas Akhir
             </a>
-            <a href="/administrasi-prodi" class="nav-link text-white">
+            <a href="/administrasi-prodi" id="nav-administrasi-prodi" class="nav-link text-white ps-4">
                 Administrasi Prodi
             </a>
-            <a href="/riwayat-pengajuan" class="nav-link text-white">
+            <a href="/riwayat-pengajuan" id="nav-riwayat-pengajuan" class="nav-link text-white ps-4">
                 Riwayat Pengajuan
             </a>
-            <a href="/permintaan-surat" class="nav-link text-white">
+            <a href="/permintaan-surat" id="nav-permintaan-surat" class="nav-link text-white ps-4">
                 Permintaan Surat
             </a>
         </div>
@@ -42,3 +42,25 @@
         </a>
     </div>
 </div>
+
+<script>
+    const activePage = <?= json_encode($data['active_page']) ?>;
+    const bgActiveSidebarColor = '#1E4173';
+    switch (activePage) {
+        case 'dashboard':
+            document.getElementById('nav-dashboard').style.backgroundColor = bgActiveSidebarColor;
+            break;
+        case 'tugas_akhir':
+            document.getElementById('nav-tugas-akhir').style.backgroundColor = bgActiveSidebarColor;
+            break;
+        case 'administrasi_prodi':
+            document.getElementById('nav-administrasi-prodi').style.backgroundColor = bgActiveSidebarColor;
+            break;
+        case 'riwayat_pengajuan':
+            document.getElementById('nav-riwayat-pengajuan').style.backgroundColor = bgActiveSidebarColor;
+            break;
+        case 'permintaan_surat':
+            document.getElementById('nav-permintaan-surat').style.backgroundColor = bgActiveSidebarColor;
+            break;
+    }
+</script>

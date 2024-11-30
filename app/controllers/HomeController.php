@@ -6,7 +6,7 @@ require_once __DIR__ . '/../core/Controller.php';
 
 use App\Core\Controller;
 
-class Home extends Controller {
+class HomeController extends Controller {
 
     public function index(): void {
         $data['title'] = "FINALIS JTI";
@@ -25,15 +25,16 @@ class Home extends Controller {
     public function dashboard(): void {
         session_start();
         $data['title'] = "Dashboard";
+        $data['active_page'] = "dashboard";
         switch ($_SESSION['role']) {
             case 'admin':
                 $this->view("templates/header", $data);
-                $this->view("pages/admin/dashboard");
+                $this->view("pages/admin/dashboard", $data);
                 $this->view("templates/footer");
                 break;
             case 'student':
                 $this->view("templates/header", $data);
-                $this->view("pages/student/dashboard");
+                $this->view("pages/student/dashboard", $data);
                 $this->view("templates/footer");
                 break;
             default:

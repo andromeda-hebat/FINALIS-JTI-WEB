@@ -11,21 +11,21 @@
                 </svg>
                 <h2 class="mt-2">Formulir Administrasi Prodi</h2>
             </div>
-            <form method="post" class="mt-4">
-                <label for="laporan" class="form-label">Distribusi laporan Skripsi</label>
-                <input type="file" id="laporan" class="form-control">
+            <form action="/administrasi-prodi" method="post" class="mt-4">
+                <label for="report" class="form-label">Distribusi laporan Skripsi</label>
+                <input type="file" id="thesis" name="thesis" class="form-control">
 
-                <label for="program" class="form-label mt-3">Distribusi Laporan Magang</label>
-                <input type="file" id="program" class="form-control">
+                <label for="intern" class="form-label mt-3">Distribusi Laporan Magang</label>
+                <input type="file" id="internsip-report" name="internship" class="form-control">
 
                 <label for="upload" class="form-label mt-3">Bebas Kompensasi</label>
-                <input type="file" id="upload" class="form-control">
+                <input type="file" id="free-of-compensation" name="compensation" class="form-control">
 
                 
                 <label for="sertif" class="form-label mt-3">Sertifikat TOEIC</label>
-                <input type="file" id="sertif" class="form-control">
+                <input type="file" id="toeic" name="toeic" class="form-control">
 
-                <input type="button" value="Kirim" class="btn btn-primary mt-3">
+                <input type="submit" value="Kirim" class="btn btn-primary mt-3">
             </form>
         </main>
     </div>
