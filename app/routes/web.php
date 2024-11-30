@@ -9,8 +9,9 @@ use App\Controllers\{HomeController, AuthController, StudentsController, AdminPr
 Router::add('GET', '/', HomeController::class, 'index');
 Router::add('GET', '/kontak', HomeController::class,'contact');
 Router::add('GET','/login', AuthController::class,'viewLogin');
-Router::add('POST', '/auth', AuthController::class,'loginProcess');
 Router::add('GET', '/dashboard', HomeController::class,'dashboard');
+
+Router::add('POST', '/auth', AuthController::class,'login');
 
 Router::add('GET', '/tugas-akhir', StudentsController::class, 'tugasAkhir');
 Router::add('GET', '/ta-terkirim', StudentsController::class, 'tugasAkhirTerkirim');
