@@ -2,8 +2,6 @@
 
 namespace App\Controllers;
 
-require_once __DIR__ . '/../core/Controller.php';
-
 use App\Core\Controller;
 
 class HomeController extends Controller {
@@ -27,12 +25,22 @@ class HomeController extends Controller {
         $data['title'] = "Dashboard";
         $data['active_page'] = "dashboard";
         switch ($_SESSION['role']) {
-            case 'admin':
+            case 'Admin Prodi':
                 $this->view("templates/header", $data);
                 $this->view("pages/admin_prodi/dashboard", $data);
                 $this->view("templates/footer");
                 break;
-            case 'student':
+            case 'Admin TA':
+                $this->view("templates/header", $data);
+                $this->view("pages/admin_ta/dashboard", $data);
+                $this->view("templates/footer");
+                break;
+            case 'Admin Jurusan':
+                $this->view("templates/header", $data);
+                $this->view("pages/admin_jurusan/dashboard", $data);
+                $this->view("templates/footer");
+                break;
+            case 'mahasiswa':
                 $this->view("templates/header", $data);
                 $this->view("pages/student/dashboard", $data);
                 $this->view("templates/footer");
