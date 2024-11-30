@@ -73,6 +73,9 @@ class AuthController extends Controller
         $user = $this->user->getUserDataByUserIDAndPassword($_POST['user_id'], $_POST['password']);
 
         if ($user != false) {
+            $_SESSION['user_id'] = $user['user_id'];
+            $_SESSION['full_name'] = $user['nama_lengkap'];
+            $_SESSION['role'] = $user['role'];
             header('Location: /dashboard');
         } else {
             $data['message'] = "User fail to authenticate! Wrong user id or password";

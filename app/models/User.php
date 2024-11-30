@@ -11,11 +11,11 @@ class User extends Model
     public function getUserDataByUserIDAndPassword(string $user_id, string $password): bool|array
     {
         $query = <<<SQL
-            SELECT nim, nama_lengkap, password, 'mahasiswa' AS role
+            SELECT nim AS user_id, nama_lengkap, password, 'mahasiswa' AS role
             FROM USERS.Mahasiswa
             WHERE nim = ? AND password = ?
             UNION 
-            SELECT  id_admin, nama_lengkap, password, jabatan AS role
+            SELECT  id_admin AS user_id, nama_lengkap, password, jabatan AS role
             FROM USERS.Admin
             WHERE id_admin = ? AND password = ?;
         SQL;
