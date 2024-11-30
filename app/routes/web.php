@@ -25,3 +25,4 @@ Router::add('GET', '/riwayat-pengajuan', StudentsController::class, 'riwayatPeng
 Router::add('GET', '/permintaan-surat', StudentsController::class, 'permintaanSurat');
 
 Router::add('GET', '/permintaan-verifikasi', AdminProdiController::class, 'requestVerifikasi');
+Router::add('GET', '/detail-permintaan', AdminProdiController::class, 'detailsRequest');
