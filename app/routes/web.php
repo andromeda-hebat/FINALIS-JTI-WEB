@@ -12,6 +12,7 @@ Router::add('GET', '/dashboard', HomeController::class,'dashboard');
 
 Router::add('GET','/login', AuthController::class,'viewLogin');
 Router::add('POST', '/login', AuthController::class,'login');
+Router::add('POST', '/logout', AuthController::class,'logout');
 
 Router::add('GET', '/tugas-akhir', StudentsController::class, 'tugasAkhir');
 Router::add('GET', '/ta-terkirim', StudentsController::class, 'tugasAkhirTerkirim');

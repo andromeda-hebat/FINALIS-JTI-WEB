@@ -73,25 +73,7 @@ class AuthController extends Controller
         $user = $this->user->getUserDataByUserIDAndPassword($_POST['user_id'], $_POST['password']);
 
         if ($user != false) {
-            $data['title'] = "Dashboard";
-            $this->view("templates/header", $data);
-
-            switch ($user['role']) {
-                case 'mahasiswa':
-                    $this->view("pages/student/dashboard");
-                    break;
-                case 'Admin TA':
-                    $this->view("pages/admin_ta/dashboard");
-                    break;
-                case 'Admin Prodi':
-                    $this->view("pages/admin_prodi/dashboard");
-                    break;
-                case 'Admin Jurusan':
-                    $this->view("pages/admin_jurusan/dashboard");
-                    break;
-            }
-
-            $this->view("templates/footer");
+            header('Location: /dashboard');
         } else {
             $data['message'] = "User fail to authenticate! Wrong user id or password";
             $this->view("pages/user_fail_authenticate", $data);
@@ -101,9 +83,9 @@ class AuthController extends Controller
 
     public function logout(): void
     {
-        $data['title'] = "Logout";
-        $this->view("templates/header", $data);
-        $this->view("pages/logout");
-        $this->view("templates/footer");
+        session_start();
+        session_unset();
+        session_destroy();
+        header('Location: /');
     }
 }
