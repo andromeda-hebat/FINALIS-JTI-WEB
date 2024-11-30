@@ -29,7 +29,7 @@ class HomeController extends Controller {
         switch ($_SESSION['role']) {
             case 'admin':
                 $this->view("templates/header", $data);
-                $this->view("pages/admin/dashboard", $data);
+                $this->view("pages/admin_prodi/dashboard", $data);
                 $this->view("templates/footer");
                 break;
             case 'student':
