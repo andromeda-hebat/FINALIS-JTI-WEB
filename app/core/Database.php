@@ -27,13 +27,8 @@ class Database
         }
     }
 
-    public function query(string $query): \PDOStatement
+    public function getConnection(): \PDO
     {
-        return $this->conn->query($query);
-    }
-
-    public function prepareQuery(string $query): \PDOStatement
-    {
-        return $this->conn->prepare($query);
+        return $this->conn;
     }
 }
