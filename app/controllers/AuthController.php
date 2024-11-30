@@ -21,6 +21,13 @@ class AuthController extends Controller
         $this->student = new Students();
     }
 
+    public function viewLogin(): void {
+        $data['title'] = "Login";
+        $this->view("templates/header", $data);
+        $this->view("pages/login");
+        $this->view("templates/footer");
+    }
+
     public function adminLogin(): void
     {
         if (isset($_POST['username']) && isset($_POST['password'])) {
