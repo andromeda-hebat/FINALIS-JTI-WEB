@@ -3,7 +3,7 @@
 require_once __DIR__ . '/../../vendor/autoload.php';
 
 use App\Core\Router;
-use App\Controllers\{HomeController, AuthController, MahasiswaController, AdminProdiController};
+use App\Controllers\{HomeController, AuthController, MahasiswaController, AdminProdiController, NotificationController};
 
 
 // General
@@ -31,3 +31,6 @@ Router::add('GET', '/permintaan-surat', MahasiswaController::class, 'permintaanS
 // User: Admin Prodi
 Router::add('GET', '/permintaan-verifikasi', AdminProdiController::class, 'requestVerifikasi');
 Router::add('GET', '/detail-permintaan', AdminProdiController::class, 'detailsRequest');
+
+//Notif
+Router::add('GET', '/notifikasi', NotificationController::class, 'notif');
