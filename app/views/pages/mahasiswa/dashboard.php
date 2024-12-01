@@ -2,7 +2,7 @@
     <?php include __DIR__ . '/../../components/mahasiswa/sidebar.php' ?>
     <div class="w-100 position-relative">
         <?php include __DIR__ . '/../../components/mahasiswa/topbar.php' ?>
-        <main class="container px-4" style="margin-top: 5rem;">
+        <main class="container px-5" style="margin-top: 5rem;">
             <!-- Status Formulir -->
             <div class="d-flex align-items-center mb-3">
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
@@ -12,7 +12,7 @@
                 </svg>
 
 
-                <h5 class="m-0">Status Formulir</h5>
+                <h3 class="m-0 fw-bold" style="color: #052C65;">Status Formulir</h3>
             </div>
             <div class="card shadow mb-4">
                 <div class="card-body mx-3">
@@ -56,36 +56,39 @@
                             fill="black" />
                     </svg>
 
-                    <h5 class="m-0">Template Surat</h5>
+                    <h3 class="m-0 fw-bold" style="color: #052C65;">Template Surat</h3>
                 </div>
-                <div class="mt-2 mx-4 ps-2">
-                    <div class="d-flex justify-content-between align-items-center py-2">
-                        <div>Surat Pernyataan Publikasi</div>
-                        <div>
-                            <button class="me-3 btn btn-outline-dark btn-sm rounded-pill">Preview</button>
-                            <button class="btn btn-outline-dark btn-sm rounded-pill">Download</button>
+                <div class="card mt-2 ps-2">
+                    <div class="card-body">
+                        <div class="d-flex justify-content-between align-items-center py-2">
+                            <div>Surat Pernyataan Publikasi</div>
+                            <div>
+                                <button class="me-3 btn btn-outline-dark btn-sm rounded-pill">Preview</button>
+                                <button class="btn btn-outline-dark btn-sm rounded-pill">Download</button>
+                            </div>
                         </div>
-                    </div>
-                    <div class="d-flex justify-content-between align-items-center py-2">
-                        <div>Tanda Terima Laporan PKL/Magang</div>
-                        <div>
-                            <button class="me-3 btn btn-outline-dark btn-sm rounded-pill">Preview</button>
-                            <button class="btn btn-outline-dark btn-sm rounded-pill">Download</button>
+                        <div class="d-flex justify-content-between align-items-center py-2">
+                            <div>Tanda Terima Laporan PKL/Magang</div>
+                            <div>
+                                <button class="me-3 btn btn-outline-dark btn-sm rounded-pill">Preview</button>
+                                <button class="btn btn-outline-dark btn-sm rounded-pill">Download</button>
+                            </div>
                         </div>
-                    </div>
-                    <div class="d-flex justify-content-between align-items-center py-2">
-                        <div>Tanda Terima Laporan TA/Skripsi</div>
-                        <div>
-                            <button class="me-3 btn btn-outline-dark btn-sm rounded-pill">Preview</button>
-                            <button class="btn btn-outline-dark btn-sm rounded-pill">Download</button>
+                        <div class="d-flex justify-content-between align-items-center py-2">
+                            <div>Tanda Terima Laporan TA/Skripsi</div>
+                            <div>
+                                <button class="me-3 btn btn-outline-dark btn-sm rounded-pill">Preview</button>
+                                <button class="btn btn-outline-dark btn-sm rounded-pill">Download</button>
+                            </div>
                         </div>
-                    </div>
-                    <div class="d-flex justify-content-between align-items-center py-2">
-                        <div>Surat Bebas Kompen</div>
-                        <div>
-                            <button class="me-3 btn btn-outline-dark btn-sm rounded-pill">Preview</button>
-                            <button class="btn btn-outline-dark btn-sm rounded-pill">Download</button>
+                        <div class="d-flex justify-content-between align-items-center py-2">
+                            <div>Surat Bebas Kompen</div>
+                            <div>
+                                <button class="me-3 btn btn-outline-dark btn-sm rounded-pill">Preview</button>
+                                <button class="btn btn-outline-dark btn-sm rounded-pill">Download</button>
+                            </div>
                         </div>
+    
                     </div>
 
                 </div>
