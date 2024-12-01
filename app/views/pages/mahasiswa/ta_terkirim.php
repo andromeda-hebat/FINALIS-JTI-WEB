@@ -25,16 +25,9 @@
                 <h2 class="mt-2 ms-1 fw-bold" style="color: #052C65;" ;">Formulir Tugas Akhir</h2>
             </div>
 
-            <!-- <div class="container">
-                <p class="position-absolute top-50 start-50 translate-middle m-5 p-5 shadow">Data berhasil dikirim !
-                    tunggu verifikasi
-                    dari admin, dalam 2x24 jam.</p>
-            </div> -->
-
             <div class="card position-absolute top-50 start-50 translate-middle my-5 me-5 ms-0 shadow">
                 <div class="card-body" style="height: 50vh; width: 100vh;">
                     <div class="mt-5 text-center fs-5">
-
                         <p>Data berhasil dikirim !<br>
                         tunggu verifikasi dari admin, dalam 2x24 jam.</p>
                     </div>
@@ -44,9 +37,6 @@
             <div>
                 <a href="/ta-terverif">Cek Notif</a>
             </div>
-
-
-
         </main>
     </div>
 </div>
