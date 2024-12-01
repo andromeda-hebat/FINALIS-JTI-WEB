@@ -20,6 +20,7 @@ Router::add('POST', '/logout', AuthController::class,'logout');
 
 // User: Mahasiswa
 Router::add('GET', '/tugas-akhir', MahasiswaController::class, 'tugasAkhir');
+Router::add('POST', '/tugas-akhir', MahasiswaController::class, 'processTugasAkhir');
 Router::add('GET', '/ta-terkirim', MahasiswaController::class, 'tugasAkhirTerkirim');
 Router::add('GET', '/ta-terverif', MahasiswaController::class, 'tugasAkhirTerverif');
 Router::add('GET', '/administrasi-prodi', MahasiswaController::class, 'administrasiProdi');
