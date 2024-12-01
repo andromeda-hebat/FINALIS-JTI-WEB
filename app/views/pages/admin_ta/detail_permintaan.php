@@ -1,9 +1,9 @@
 <div class="d-flex">
     <!-- Sidebar -->
-    <?php include __DIR__ . '/../../components/admin_prodi/sidebar.php' ?>
+    <?php include __DIR__ . '/../../components/admin_ta/sidebar.php' ?>
     <div class="flex-grow-1">
 
-        <?php include __DIR__ . '/../../components/admin_prodi/topbar.php' ?>
+        <?php include __DIR__ . '/../../components/admin_ta/topbar.php' ?>
 
         <main class="halaman mx-5 px-5">
             <section class="mt-2">
@@ -141,17 +141,14 @@
                                     </svg>
                             </div>
 
-                            <p class="mt-3 mb-0">Distribusi Laporan Skripsi</p>
+                            <p class="mt-2 mb-0">Laporan TA/Skripsi</p>
                             <a href="#" class="text-dark">distribusilaporanskripsi.pdf</a>
 
-                            <p class="mt-3 mb-0">Distribusi Laporan Magang</p>
+                            <p class="mt-5 mb-0">Program/Aplikasi TA/Skripsi</p>
                             <a href="#" class="text-dark">distribusilaporanmagang.pdf</a>
 
-                            <p class="mt-3 mb-0">Distribusi Laporan Kompensasi</p>
-                            <a href="#" class=" text-dark">distribusilaporankompensasi.pdf</a>
-
-                            <p class="mt-3 mb-0">Sertifikat TOEIC</p>
-                            <a href="#" class=" text-dark">sertifikattoeic.pdf</a>
+                            <p class="mt-5 mb-0">Program/Aplikasi TA/Skripsi</p>
+                            <a href="#" class=" text-dark">distribusilaporanmagang.pdf</a>
 
                         </div>
 
