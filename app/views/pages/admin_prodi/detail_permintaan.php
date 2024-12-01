@@ -3,7 +3,7 @@
     <?php include __DIR__ . '/../../components/admin_prodi/sidebar.php' ?>
     <div class="flex-grow-1">
 
-        <?php include __DIR__ . '/../../components/admin_prodi/top_bar.php' ?>
+        <?php include __DIR__ . '/../../components/admin_prodi/topbar.php' ?>
 
         <main class="halaman mx-5 px-5">
             <section class="mt-2">

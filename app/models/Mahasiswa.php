@@ -5,6 +5,6 @@ namespace App\Models;
 use App\Core\Model;
 
 
-class Students extends Model {
+class Mahasiswa extends Model {
 
 }
