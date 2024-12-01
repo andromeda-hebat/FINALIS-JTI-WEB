@@ -1,7 +1,7 @@
 <?php include __DIR__ . '/../components/navbar.php' ?>
 
 <main class="pt-5 ">
-    <section class="d-flex flex-column justify-content-center min-vh-100"
+    <section id="hero" class="d-flex flex-column justify-content-center min-vh-100"
         style="background-image: url('assets/img/hero-section-home-page.png'); background-size: cover; background-repeat: no-repeat; background-position: center;">
         <div class="ps-5">
             <h1 style="color: #F7DE00; font-size: 90px;" class="fw-bold">FINALIS JTI</h1>
@@ -64,8 +64,8 @@
             <li class="card my-3 shadow" style="background-color: #052C65; cursor: pointer;">
                 <h3 class="card-body m-0 text-white fw-bold">
                     Ungggah Tugas Akhir
-                    <svg class="position-absolute end-0 me-3 mt-2" width="20" height="20" viewBox="0 0 30 30" fill="none"
-                        xmlns="http://www.w3.org/2000/svg">
+                    <svg class="position-absolute end-0 me-3 mt-2" width="20" height="20" viewBox="0 0 30 30"
+                        fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path fill-rule="evenodd" clip-rule="evenodd"
                             d="M8.71109 3.08609C8.62379 3.17318 8.55452 3.27663 8.50726 3.39053C8.46 3.50443 8.43567 3.62653 8.43567 3.74984C8.43567 3.87316 8.46 3.99526 8.50726 4.10916C8.55452 4.22306 8.62379 4.32651 8.71109 4.4136L19.2992 14.9998L8.71109 25.5861C8.62393 25.6733 8.55479 25.7767 8.50761 25.8906C8.46044 26.0045 8.43616 26.1266 8.43616 26.2498C8.43616 26.3731 8.46044 26.4952 8.50761 26.6091C8.55479 26.7229 8.62393 26.8264 8.71109 26.9136C8.79826 27.0008 8.90174 27.0699 9.01563 27.1171C9.12951 27.1642 9.25157 27.1885 9.37484 27.1885C9.49811 27.1885 9.62018 27.1642 9.73406 27.1171C9.84795 27.0699 9.95143 27.0008 10.0386 26.9136L21.2886 15.6636C21.3759 15.5765 21.4452 15.4731 21.4924 15.3592C21.5397 15.2453 21.564 15.1232 21.564 14.9998C21.564 14.8765 21.5397 14.7544 21.4924 14.6405C21.4452 14.5266 21.3759 14.4232 21.2886 14.3361L10.0386 3.08609C9.95151 2.99879 9.84805 2.92952 9.73416 2.88226C9.62026 2.835 9.49816 2.81067 9.37484 2.81067C9.25153 2.81067 9.12943 2.835 9.01553 2.88226C8.90163 2.92952 8.79818 2.99879 8.71109 3.08609Z"
                             fill="white" />
@@ -98,8 +98,8 @@
             <li class="card my-3 shadow" style="background-color: #052C65; cursor: pointer;">
                 <h3 class="card-body m-0 text-white fw-bold">
                     Administrasi Prodi
-                    <svg class="position-absolute end-0 me-3 mt-2" width="20" height="20" viewBox="0 0 30 30" fill="none"
-                        xmlns="http://www.w3.org/2000/svg">
+                    <svg class="position-absolute end-0 me-3 mt-2" width="20" height="20" viewBox="0 0 30 30"
+                        fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path fill-rule="evenodd" clip-rule="evenodd"
                             d="M8.71109 3.08609C8.62379 3.17318 8.55452 3.27663 8.50726 3.39053C8.46 3.50443 8.43567 3.62653 8.43567 3.74984C8.43567 3.87316 8.46 3.99526 8.50726 4.10916C8.55452 4.22306 8.62379 4.32651 8.71109 4.4136L19.2992 14.9998L8.71109 25.5861C8.62393 25.6733 8.55479 25.7767 8.50761 25.8906C8.46044 26.0045 8.43616 26.1266 8.43616 26.2498C8.43616 26.3731 8.46044 26.4952 8.50761 26.6091C8.55479 26.7229 8.62393 26.8264 8.71109 26.9136C8.79826 27.0008 8.90174 27.0699 9.01563 27.1171C9.12951 27.1642 9.25157 27.1885 9.37484 27.1885C9.49811 27.1885 9.62018 27.1642 9.73406 27.1171C9.84795 27.0699 9.95143 27.0008 10.0386 26.9136L21.2886 15.6636C21.3759 15.5765 21.4452 15.4731 21.4924 15.3592C21.5397 15.2453 21.564 15.1232 21.564 14.9998C21.564 14.8765 21.5397 14.7544 21.4924 14.6405C21.4452 14.5266 21.3759 14.4232 21.2886 14.3361L10.0386 3.08609C9.95151 2.99879 9.84805 2.92952 9.73416 2.88226C9.62026 2.835 9.49816 2.81067 9.37484 2.81067C9.25153 2.81067 9.12943 2.835 9.01553 2.88226C8.90163 2.92952 8.79818 2.99879 8.71109 3.08609Z"
                             fill="white" />
@@ -133,8 +133,8 @@
             <li class="card my-3 shadow" style="background-color: #052C65; cursor: pointer;">
                 <h3 class="card-body m-0 text-white fw-bold">
                     Bebas Tanggungan
-                    <svg class="position-absolute end-0 me-3 mt-2" width="20" height="20" viewBox="0 0 30 30" fill="none"
-                        xmlns="http://www.w3.org/2000/svg">
+                    <svg class="position-absolute end-0 me-3 mt-2" width="20" height="20" viewBox="0 0 30 30"
+                        fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path fill-rule="evenodd" clip-rule="evenodd"
                             d="M8.71109 3.08609C8.62379 3.17318 8.55452 3.27663 8.50726 3.39053C8.46 3.50443 8.43567 3.62653 8.43567 3.74984C8.43567 3.87316 8.46 3.99526 8.50726 4.10916C8.55452 4.22306 8.62379 4.32651 8.71109 4.4136L19.2992 14.9998L8.71109 25.5861C8.62393 25.6733 8.55479 25.7767 8.50761 25.8906C8.46044 26.0045 8.43616 26.1266 8.43616 26.2498C8.43616 26.3731 8.46044 26.4952 8.50761 26.6091C8.55479 26.7229 8.62393 26.8264 8.71109 26.9136C8.79826 27.0008 8.90174 27.0699 9.01563 27.1171C9.12951 27.1642 9.25157 27.1885 9.37484 27.1885C9.49811 27.1885 9.62018 27.1642 9.73406 27.1171C9.84795 27.0699 9.95143 27.0008 10.0386 26.9136L21.2886 15.6636C21.3759 15.5765 21.4452 15.4731 21.4924 15.3592C21.5397 15.2453 21.564 15.1232 21.564 14.9998C21.564 14.8765 21.5397 14.7544 21.4924 14.6405C21.4452 14.5266 21.3759 14.4232 21.2886 14.3361L10.0386 3.08609C9.95151 2.99879 9.84805 2.92952 9.73416 2.88226C9.62026 2.835 9.49816 2.81067 9.37484 2.81067C9.25153 2.81067 9.12943 2.835 9.01553 2.88226C8.90163 2.92952 8.79818 2.99879 8.71109 3.08609Z"
                             fill="white" />
@@ -158,6 +158,40 @@
             </li>
         </ol>
 
+    </section>
+    <section class="mt-5 d-flex justify-content-center" style=" background-color:#052C65 ;">
+        <footer class="mt-5 d-flex flex-column">
+            <div class="d-flex">
+                <div class="text-white me-5">
+                    <h3 style="color: #F7DE00;">Finalis JTI</h3>
+                    <p>
+                    Sistem Informasi Bebas Tanggunngan<br>
+                    Jurusan Teknologi Informasi<br>
+                    Politeknik Negeri Malang
+                    </p>
+                    <p>JL. Soekarno-Hatta No. 9 Malang 65141<br>Po.Box 04 Malang</p>
+                    <p>Telepon: +62(0341) 404424-404425</p>
+                    <p>Faks: +62(0341)404420</p>
+                </div>
+                <div class="d-flex flex-column mx-5">
+                    <h3 style="color: #F7DE00;">Navigasi</h3>
+                    <a href="#hero" class="text-decoration-none text-white mb-1">Beranda</a>
+                    <a href="#tentang" class="text-decoration-none text-white mb-1">Tentang</a>
+                    <a href="#panduan" class="text-decoration-none text-white mb-1">Panduan</a>
+                    <a href="/kontak" class="text-decoration-none text-white mb-1">Kontak</a>
+                </div>
+                <div class="text-white ms-5">
+                    <h3 style="color: #F7DE00;">Layanan</h3>
+    
+                    <p>Template Surat</p>
+                    <p>Verifikasi Tugas Akhir</p>
+                    <p>Verifikasi Administrasi Prodi</p>
+                    <p>Pengajuan Bebas Tanggungan Prodi</p>
+                </div>
+            </div>
+                <h6 class="mt-5 mb-2 text-center text-white">© Copyright FinalisJTI 2024<br>
+                All Rights Reserved</h6>
+        </footer>
     </section>
 </main>
 
