@@ -1,7 +1,7 @@
 <div class="d-flex">
-    <?php include __DIR__ . '/../../components/student/sidebar_student.php' ?>
+    <?php include __DIR__ . '/../../components/mahasiswa/sidebar.php' ?>
     <div class="w-100 position-relative">
-        <?php include __DIR__ . '/../../components/student/topbar_student.php' ?>
+        <?php include __DIR__ . '/../../components/mahasiswa/topbar.php' ?>
         <main class="container px-4" style="margin-top: 5rem;">
             <!-- Status Formulir -->
             <div class="d-flex align-items-center mb-3">

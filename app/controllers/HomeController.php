@@ -43,7 +43,7 @@ class HomeController extends Controller {
                 break;
             case 'mahasiswa':
                 $this->view("templates/header", $data);
-                $this->view("pages/student/dashboard", $data);
+                $this->view("pages/mahasiswa/dashboard", $data);
                 $this->view("templates/footer");
                 break;
             default:

@@ -3,24 +3,31 @@
 require_once __DIR__ . '/../../vendor/autoload.php';
 
 use App\Core\Router;
-use App\Controllers\{HomeController, AuthController, StudentsController, AdminProdiController};
+use App\Controllers\{HomeController, AuthController, MahasiswaController, AdminProdiController};
 
 
+// General
 Router::add('GET', '/', HomeController::class, 'index');
 Router::add('GET', '/kontak', HomeController::class,'contact');
 Router::add('GET', '/dashboard', HomeController::class,'dashboard');
 
+
+// Auth
 Router::add('GET','/login', AuthController::class,'viewLogin');
 Router::add('POST', '/login', AuthController::class,'login');
 Router::add('POST', '/logout', AuthController::class,'logout');
 
-Router::add('GET', '/tugas-akhir', StudentsController::class, 'tugasAkhir');
-Router::add('GET', '/ta-terkirim', StudentsController::class, 'tugasAkhirTerkirim');
-Router::add('GET', '/ta-terverif', StudentsController::class, 'tugasAkhirTerverif');
-Router::add('GET', '/administrasi-prodi', StudentsController::class, 'administrasiProdi');
-Router::add('POST', '/administrasi-prodi', StudentsController::class, 'prosesAdministrasiProdi');
-Router::add('GET', '/riwayat-pengajuan', StudentsController::class, 'riwayatPengajuan');
-Router::add('GET', '/permintaan-surat', StudentsController::class, 'permintaanSurat');
 
+// User: Mahasiswa
+Router::add('GET', '/tugas-akhir', MahasiswaController::class, 'tugasAkhir');
+Router::add('GET', '/ta-terkirim', MahasiswaController::class, 'tugasAkhirTerkirim');
+Router::add('GET', '/ta-terverif', MahasiswaController::class, 'tugasAkhirTerverif');
+Router::add('GET', '/administrasi-prodi', MahasiswaController::class, 'administrasiProdi');
+Router::add('POST', '/administrasi-prodi', MahasiswaController::class, 'prosesAdministrasiProdi');
+Router::add('GET', '/riwayat-pengajuan', MahasiswaController::class, 'riwayatPengajuan');
+Router::add('GET', '/permintaan-surat', MahasiswaController::class, 'permintaanSurat');
+
+
+// User: Admin Prodi
 Router::add('GET', '/permintaan-verifikasi', AdminProdiController::class, 'requestVerifikasi');
 Router::add('GET', '/detail-permintaan', AdminProdiController::class, 'detailsRequest');

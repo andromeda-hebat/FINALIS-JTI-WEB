@@ -47,10 +47,10 @@ Langkah-langkah untuk menjalankan proyek di lokal:
 │   └───views
 │       ├───components
 │       │   ├───admin
-│       │   └───student
+│       │   └───mahasiswa
 │       ├───pages
 │       │   ├───admin
-│       │   └───student
+│       │   └───mahasiswa
 │       └───templates
 ├───docs
 │   ├───diagram
