@@ -9,6 +9,7 @@
 			</div>
 		</div>
 		<div>
+			<a href="/notifikasi">
 			<svg width="30" height="30" viewBox="0 0 50 50" fill="none" xmlns="http://www.w3.org/2000/svg">
 				<circle cx="25" cy="25" r="25" fill="white" />
 				<g clip-path="url(#clip0_530_8699)">
@@ -22,6 +23,7 @@
 					</clipPath>
 				</defs>
 			</svg>
+		</a>
 		</div>
 	</div>
 </nav>
