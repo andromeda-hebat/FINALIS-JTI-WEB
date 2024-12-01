@@ -5,14 +5,14 @@ namespace App\Controllers;
 use App\Core\Controller;
 
 
-class StudentsController extends Controller {
+class MahasiswaController extends Controller {
 
     public function tugasAkhir(): void {
         $data['title'] = "Tugas Akhir";
         $data['active_page'] = "tugas_akhir";
         $data['css'] = ["assets/css/sidebar"];
         $this->view("templates/header",$data);
-        $this->view("pages/student/tugas_akhir", $data);
+        $this->view("pages/mahasiswa/tugas_akhir", $data);
         $this->view("templates/footer");
     }
 
@@ -20,7 +20,7 @@ class StudentsController extends Controller {
         $data['title'] = "Tugas Akhir";
         $data['css'] = ["assets/css/sidebar"];
         $this->view("templates/header",$data);
-        $this->view("pages/student/ta_terkirim");
+        $this->view("pages/mahasiswa/ta_terkirim");
         $this->view("templates/footer");
     }
 
@@ -28,7 +28,7 @@ class StudentsController extends Controller {
         $data["title"] = "Tugas Akhir";
         $data['css'] = ["assets/css/sidebar"];
         $this->view("templates/header",$data);
-        $this->view("pages/student/ta_terverifikasi");
+        $this->view("pages/mahasiswa/ta_terverifikasi");
         $this->view("templates/footer");
     }
     
@@ -37,7 +37,7 @@ class StudentsController extends Controller {
         $data['active_page'] = "administrasi_prodi";
         $data['css'] = ["assets/css/sidebar"];
         $this->view("templates/header", $data);
-        $this->view("pages/student/administrasi_prodi", $data);
+        $this->view("pages/mahasiswa/administrasi_prodi", $data);
         $this->view("templates/footer");
     }
 
@@ -46,7 +46,7 @@ class StudentsController extends Controller {
         $data['active_page'] = "riwayat_pengajuan";
         $data['css'] = ["assets/css/sidebar"];
         $this->view("templates/header", $data);
-        $this->view("pages/student/riwayat_pengajuan", $data);
+        $this->view("pages/mahasiswa/riwayat_pengajuan", $data);
         $this->view("templates/footer");
     }
 
@@ -55,7 +55,7 @@ class StudentsController extends Controller {
         $data['active_page'] = "permintaan_surat";
         $data['css'] = ["assets/css/sidebar"];
         $this->view("templates/header", $data);
-        $this->view("pages/student/permintaan_surat", $data);
+        $this->view("pages/mahasiswa/permintaan_surat", $data);
         $this->view("templates/footer");
     }
 

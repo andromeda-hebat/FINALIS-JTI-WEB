@@ -1,7 +1,7 @@
 <div class="d-flex">
-    <?php include __DIR__ . '/../../components/student/sidebar_student.php' ?>
+    <?php include __DIR__ . '/../../components/mahasiswa/sidebar.php' ?>
     <div class="w-100 position-relative">
-        <?php include __DIR__ . '/../../components/student/topbar_student.php' ?>
+        <?php include __DIR__ . '/../../components/mahasiswa/topbar.php' ?>
         <main class="container" style="margin-top: 5rem;">
             <div class="d-flex">
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"

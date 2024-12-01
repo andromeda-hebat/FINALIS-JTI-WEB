@@ -3,7 +3,7 @@
 namespace App\Controllers;
 
 use App\Core\Controller;
-use App\Models\{User, Admin, Students};
+use App\Models\{User, Admin, Mahasiswa};
 
 
 class AuthController extends Controller
@@ -11,14 +11,14 @@ class AuthController extends Controller
 
     private User $user;
     private Admin $admin;
-    private Students $student;
+    private Mahasiswa $mahasiswa;
 
 
     public function __construct()
     {
         $this->user = new User();
         $this->admin = new Admin();
-        $this->student = new Students();
+        $this->mahasiswa = new Mahasiswa();
     }
 
     public function viewLogin(): void {
