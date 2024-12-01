@@ -198,7 +198,7 @@
 <script src="https://cdn.jsdelivr.net/npm/jquery@3.7.1/dist/jquery.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/jquery-ui@1.14.1/dist/jquery-ui.min.js"></script>
 <script>
-    $(() => {
+    $(document).ready(() => {
     $("#jacord").accordion({
         collapsible: true,
         active: false,
