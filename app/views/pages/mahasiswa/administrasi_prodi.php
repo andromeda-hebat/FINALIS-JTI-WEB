@@ -2,31 +2,80 @@
     <?php include __DIR__ . '/../../components/mahasiswa/sidebar.php' ?>
     <div class="w-100 position-relative">
         <?php include __DIR__ . '/../../components/mahasiswa/topbar.php' ?>
-        <main class="container" style="margin-top: 5rem;">
-            <div class="d-flex">
-                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
-                    stroke="currentColor" class="size-6" style="width: 50px; height: 50px">
-                    <path stroke-linecap="round" stroke-linejoin="round"
-                        d="m16.862 4.487 1.687-1.688a1.875 1.875 0 1 1 2.652 2.652L10.582 16.07a4.5 4.5 0 0 1-1.897 1.13L6 18l.8-2.685a4.5 4.5 0 0 1 1.13-1.897l8.932-8.931Zm0 0L19.5 7.125M18 14v4.75A2.25 2.25 0 0 1 15.75 21H5.25A2.25 2.25 0 0 1 3 18.75V8.25A2.25 2.25 0 0 1 5.25 6H10" />
-                </svg>
-                <h2 class="mt-2">Formulir Administrasi Prodi</h2>
-            </div>
-            <form action="/administrasi-prodi" method="post" class="mt-4">
-                <label for="report" class="form-label">Distribusi laporan Skripsi</label>
-                <input type="file" id="thesis" name="thesis" class="form-control">
-
-                <label for="intern" class="form-label mt-3">Distribusi Laporan Magang</label>
-                <input type="file" id="internsip-report" name="internship" class="form-control">
-
-                <label for="upload" class="form-label mt-3">Bebas Kompensasi</label>
-                <input type="file" id="free-of-compensation" name="compensation" class="form-control">
-
+        <main class="container px-4" style="margin-top: 5rem;">
                 
-                <label for="sertif" class="form-label mt-3">Sertifikat TOEIC</label>
-                <input type="file" id="toeic" name="toeic" class="form-control">
+                <h2 class="mt-2 ms-1 fw-bold" style="color: #052C65;">Formulir Administrasi Prodi</h2>
 
-                <input type="submit" value="Kirim" class="btn btn-primary mt-3">
-            </form>
+            <div class="card mt-4 px-4">
+                <div class="card-body">
+                    <p class="mt-3">Upload berkas berikut untuk memverifikasi tanggungan prodi anda</p>
+
+                    <form action="/laporan-skripsi" method="post">
+                        <label for="skripsi" class="form-label mb-0">Distribusi Laporan Skripsi</label>
+                        <p class="mb-0" style="color:#7C7C7C ;">(File scan PDF)</p>
+                        <input type="file" id="skripsi" class="form-control w-50">
+                        <br>
+                        <label for="magang" class="form-label mb-0">Distribusi Laporan Magang</label>
+                        <p class="mb-0" style="color: #7C7C7C;">(File scan PDF).</p>
+                        <input type="file" id="magang" class="form-control w-50">
+                        <br>
+                        <label for="kompen" class="form-label mb-0">Surat Bebas Kompen</label>
+                        <p class="mb-0" style="color: #7C7C7C;">(File scan PDF)</p>
+                        <input type="file" id="kompen" class="form-control w-50">
+                        <br>
+                        <label for="toeic" class="form-label mb-0">Sertifikat TOEIC</label>
+                        <p class="mb-0" style="color: #7C7C7C;">(File scan PDF)</p>
+                        <input type="file" id="toeic" class="mb-2 form-control w-50">
+
+                    </form>
+
+                </div>
+            </div>
+            <div class="d-flex justify-content-end">
+                <input type="button" value="Kirim" id="submitBtn" class="text-white mt-3 px-3"
+                    style="background-color:#052C65 ;">
+            </div>
         </main>
     </div>
 </div>
+
+<div class="modal" tabindex="-1" id="statusModal">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title text-danger">Gagal</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <p>File gagal diupload
+                    Periksa kembali data yang anda upload</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="text-white" style="background-color: #052C65;"
+                    data-bs-dismiss="modal">Tutup</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        const submitBtn = document.getElementById("submitBtn");
+        const modal = new bootstrap.Modal(document.getElementById("statusModal"));
+
+        submitBtn.addEventListener("click", function () {
+            // Validasi file input
+            const laporan = document.getElementById("laporan").files.length;
+            const program = document.getElementById("program").files.length;
+            const upload = document.getElementById("upload").files.length;
+
+            if (laporan && program && upload) {
+                // Jika semua file diunggah, arahkan ke halaman berikutnya
+                window.location.href = "/ta-terkirim"; // Ganti "/nextPage" dengan URL halaman tujuan
+            } else {
+                // Jika gagal, tampilkan modal
+                modal.show();
+            }
+        });
+    });
+</script>
