@@ -60,7 +60,6 @@ class AuthController extends Controller
 
     public function login(): void
     {
-        session_start();
         if (!isset($_POST["user_id"]) || !isset($_POST['password'])) {
             $data['title'] = "Login";
             $data['message'] = "User fail to authenticate!";
@@ -86,7 +85,6 @@ class AuthController extends Controller
 
     public function logout(): void
     {
-        session_start();
         session_unset();
         session_destroy();
         header('Location: /');

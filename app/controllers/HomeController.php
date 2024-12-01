@@ -21,7 +21,6 @@ class HomeController extends Controller {
     }
 
     public function dashboard(): void {
-        session_start();
         $data['title'] = "Dashboard";
         $data['active_page'] = "dashboard";
         $data['css'] = ["assets/css/sidebar"];
