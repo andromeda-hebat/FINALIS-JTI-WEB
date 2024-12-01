@@ -24,6 +24,7 @@ class HomeController extends Controller {
         session_start();
         $data['title'] = "Dashboard";
         $data['active_page'] = "dashboard";
+        $data['css'] = ["assets/css/sidebar"];
         switch ($_SESSION['role']) {
             case 'Admin Prodi':
                 $this->view("templates/header", $data);
