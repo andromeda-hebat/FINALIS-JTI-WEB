@@ -2,9 +2,9 @@
     <?php include __DIR__ . '/../../components/mahasiswa/sidebar.php' ?>
     <div class="w-100 position-relative">
         <?php include __DIR__ . '/../../components/mahasiswa/topbar.php' ?>
-        <main class="container px-4" style="margin-top: 5rem;">
+        <main class="container px-5" style="margin-top: 5rem;">
                 
-                <h2 class="mt-2 ms-1 fw-bold" style="color: #052C65;">Formulir Administrasi Prodi</h2>
+                <h3 class="mt-2 ms-1 fw-bold" style="color: #052C65;">Formulir Administrasi Prodi</h3>
 
             <div class="card mt-4 px-4">
                 <div class="card-body">

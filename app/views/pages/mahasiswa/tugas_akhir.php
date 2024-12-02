@@ -2,13 +2,13 @@
     <?php include __DIR__ . '/../../components/mahasiswa/sidebar.php' ?>
     <div class="w-100 position-relative">
         <?php include __DIR__ . '/../../components/mahasiswa/topbar.php' ?>
-        <main class="container px-4" style="margin-top: 5rem;">
-            <h2 class="mt-2 ms-1 fw-bold" style="color: #052C65;">Formulir Tugas Akhir</h2>
+        <main class="container px-5" style="margin-top: 5rem;">
+            <h3 class="mt-2 ms-1 fw-bold" style="color: #052C65;">Formulir Tugas Akhir</h2>
 
             <?php if (strcasecmp($data['req_status'], "kosong") == 0): ?>
                 <div id="body-content" class="mt-4">
                     <form id="tugas-akhir-form" action="/tugas-akhir" method="post" enctype="multipart/form-data">
-                        <div class="card card-body" style="box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);">
+                        <div class="card card-body px-4" style="box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);">
                             <p class="mt-4">Upload berkas berikut untuk memverifikasi tugas akhir anda</p>
                             <label for="laporan" class="form-label mt-2 mb-0">Laporan Tugas Akhir/Skripsi</label>
                             <p class="mb-0" style="color:#7C7C7C ;">(Format PDF, maksimal 10 MB)</p>
