@@ -22,7 +22,7 @@ Router::add('POST', '/logout', AuthController::class,'logout');
 Router::add('GET', '/tugas-akhir', MahasiswaController::class, 'tugasAkhir');
 Router::add('POST', '/tugas-akhir', MahasiswaController::class, 'processTugasAkhir');
 Router::add('GET', '/administrasi-prodi', MahasiswaController::class, 'administrasiProdi');
-Router::add('POST', '/administrasi-prodi', MahasiswaController::class, 'prosesAdministrasiProdi');
+Router::add('POST', '/administrasi-prodi', MahasiswaController::class, 'processAdministrasiProdi');
 Router::add('GET', '/riwayat-pengajuan', MahasiswaController::class, 'riwayatPengajuan');
 Router::add('GET', '/permintaan-surat', MahasiswaController::class, 'permintaanSurat');
 

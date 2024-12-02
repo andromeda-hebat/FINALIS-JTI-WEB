@@ -6,25 +6,25 @@
             <h2 class="mt-2 ms-1 fw-bold" style="color: #052C65;">Formulir Administrasi Prodi</h2>
 
             <?php if (strcasecmp($data['req_status'], "kosong") == 0): ?>
-                <div id="body-content" class="card mt-4 px-4">
+                <div id="body-content" class="mt-4">
                     <form id="administrasi-prodi-form" action="/administrasi-prodi" method="post" enctype="multipart/form-data">
-                        <div class="card-body">
+                        <div class="card card-body" style="box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);">
                             <p class="mt-3">Upload berkas berikut untuk memverifikasi tanggungan prodi anda</p>
                             <label for="skripsi" class="form-label mb-0">Distribusi Laporan Skripsi</label>
                             <p class="mb-0" style="color:#7C7C7C ;">(File scan PDF)</p>
-                            <input type="file" id="skripsi" class="form-control w-50">
+                            <input type="file" name="distribusi_tugas_akhir" accept=".pdf" id="input-laporan-ta" class="form-control w-50">
                             <br>
                             <label for="magang" class="form-label mb-0">Distribusi Laporan Magang</label>
                             <p class="mb-0" style="color: #7C7C7C;">(File scan PDF).</p>
-                            <input type="file" id="magang" class="form-control w-50">
+                            <input type="file" name="distribusi_magang" accept=".pdf" id="input-laporan-magang" class="form-control w-50">
                             <br>
                             <label for="kompen" class="form-label mb-0">Surat Bebas Kompen</label>
                             <p class="mb-0" style="color: #7C7C7C;">(File scan PDF)</p>
-                            <input type="file" id="kompen" class="form-control w-50">
+                            <input type="file" name="bebas_kompen" accept=".pdf" id="input-bebas-kompen" class="form-control w-50">
                             <br>
                             <label for="toeic" class="form-label mb-0">Sertifikat TOEIC</label>
                             <p class="mb-0" style="color: #7C7C7C;">(File scan PDF)</p>
-                            <input type="file" id="toeic" class="mb-2 form-control w-50">
+                            <input type="file" name="toeic" accept=".pdf" id="input-toeic" class="mb-2 form-control w-50">
                         </div>
                         <div class="d-flex justify-content-end">
                             <input type="submit" value="Kirim" id="submitBtn" class="text-white mt-3 px-3"
@@ -104,7 +104,7 @@
 <script src="https://cdn.jsdelivr.net/npm/jquery@3.7.1/dist/jquery.min.js"></script>
 <script>
     $(document).ready(() => {
-        $('#tugas-akhir-form').on('submit', function (e) {
+        $('#administrasi-prodi-form').on('submit', function (e) {
             e.preventDefault();
 
             const data = new FormData($(this)[0]);

@@ -51,4 +51,28 @@ class Berkas extends Model
             return $result['status_verifikasi'];
         }
     }
+
+    public function addNewBerkasProdi(string $nim, string $toeic, string $skripsi, string $magang, string $kompen): void
+    {
+        try {
+            $query = <<<SQL
+                EXEC sp_InsertBerkasProdi 
+                    @nim = :nim,
+                    @toeic = :toeic,
+                    @distribusi_skripsi = :skripsi,
+                    @distribusi_magang = :magang,
+                    @surat_bebas_kompen = :kompen
+            SQL;
+
+            $stmt = $this->db->getConnection()->prepare($query);
+            $stmt->bindValue(':nim', $nim, PDO::PARAM_STR);
+            $stmt->bindValue(':toeic', $toeic, PDO::PARAM_STR);
+            $stmt->bindValue(':skripsi', $skripsi, PDO::PARAM_STR);
+            $stmt->bindValue(':magang', $magang, PDO::PARAM_STR);
+            $stmt->bindValue(':kompen', $kompen, PDO::PARAM_STR);
+            $stmt->execute();
+        } catch (\PDOException $e) {
+            throw new \PDOException($e->getMessage());
+        }
+    }
 }
