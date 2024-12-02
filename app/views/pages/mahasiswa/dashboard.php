@@ -20,7 +20,7 @@
                                 <label for="tugasAkhir" class="form-check-label">Tugas Akhir</label>
                                 <div>
                                     <input type="radio" name="statusFormulir" id="tugasAkhir"
-                                        class="form-check-input me-2 border-dark" disabled="">
+                                        class="form-check-input me-2 border-dark" disabled <?= (strcasecmp($_SESSION['status']['tugas_akhir'], "diajukan") == 0) ? "checked" : ""?>>
                                     <button class="btn btn-outline-dark btn-sm rounded-pill">Detail</button>
                                 </div>
                             </div>
@@ -29,7 +29,7 @@
                                 <label for="adminProdi" class="form-check-label">Administrasi Prodi</label>
                                 <div>
                                     <input type="radio" name="statusFormulir" id="adminProdi"
-                                        class="form-check-input me-2 border-black" disabled="">
+                                        class="form-check-input me-2 border-black" disabled <?= (strcasecmp($_SESSION['status']['administrasi_prodi'],"disetujui") == 0) ? "checked" : ""?>>
                                     <button class="btn btn-outline-dark btn-sm rounded-pill">Detail</button>
                                 </div>
                             </div>
