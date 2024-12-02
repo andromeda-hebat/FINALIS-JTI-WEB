@@ -24,14 +24,13 @@ class MahasiswaController extends Controller
         ]);
         $this->view("pages/mahasiswa/tugas_akhir", [
             'active_page'=>"tugas_akhir",
-            'req_status'=>$this->berkas->checkUserBerkasProdiStatus($_SESSION['user_id'])
+            'req_status'=>$this->berkas->checkUserBerkasTAStatus($_SESSION['user_id'])
         ]);
         $this->view("templates/footer");
     }
 
     public function processTugasAkhir(): void
     {
-        var_dump($_FILES);
         if (isset($_FILES['tugas_akhir']) && isset($_FILES['program_aplikasi']) && isset($_FILES['publikasi_jurnal'])) {
             $upload_dir = [
                 "tugas_akhir" => __DIR__ . "/../../storage/tugas_akhir/",
@@ -72,8 +71,53 @@ class MahasiswaController extends Controller
         ]);
         $this->view("pages/mahasiswa/administrasi_prodi", [
             'active_page'=>"administrasi_prodi",
+            'req_status'=>$this->berkas->checkUserBerkasProdiStatus($_SESSION['user_id'])
         ]);
         $this->view("templates/footer");
+    }
+
+    public function processAdministrasiProdi(): void {
+        if (isset($_FILES['distribusi_tugas_akhir']) && isset($_FILES['distribusi_magang']) && isset($_FILES['bebas_kompen']) && isset($_FILES['toeic'])) {
+            $upload_dir = [
+                "distribusi_tugas_akhir" => __DIR__ . "/../../storage/administrasi_prodi/distribusi_tugas_akhir/",
+                "distribusi_magang" => __DIR__ . "/../../storage/administrasi_prodi/distribusi_magang/",
+                "bebas_kompen" => __DIR__ . "/../../storage/administrasi_prodi/bebas_kompen/",
+                "toeic"=> __DIR__ . "/../../storage/administrasi_prodi/toeic/"
+            ];
+
+            foreach ($upload_dir as $key => $path) {
+                if (!is_dir($path)) {
+                    mkdir($path, 0755, true);
+                }
+            }
+
+            $is_move_uploaded_file_success = true;
+            foreach ($_FILES as $key => &$value) {
+                $value['new_name'] = uniqid() . '--' . basename($value['name']);
+                $file_path = $upload_dir[$key] . $value['new_name'];
+
+                if (!move_uploaded_file($value['tmp_name'], $file_path)) {
+                    $is_move_uploaded_file_success = false;
+                }
+            }
+
+            if ($is_move_uploaded_file_success) {
+                try {
+                    $this->berkas->addNewBerkasProdi($_SESSION['user_id'], $_FILES['distribusi_tugas_akhir']['new_name'], $_FILES['distribusi_magang']['new_name'], $_FILES['bebas_kompen']['new_name'], $_FILES['toeic']['new_name']);
+                    http_response_code(200);
+                    echo "Sukses mengirimkan formulir!";
+                } catch (\Exception $e) {
+                    http_response_code(500);
+                    echo "Server error! Gagal menambahkan data ke database!";
+                }
+            } else {
+                http_response_code(500);
+                echo "Gagal memasukkan file ke server";
+            }
+        } else {
+            http_response_code(400);
+            echo "Data tidak lengkap!";
+        }
     }
 
     public function riwayatPengajuan(): void
@@ -98,15 +142,5 @@ class MahasiswaController extends Controller
             'active_page'=>"permintaan_surat",
         ]);
         $this->view("templates/footer");
-    }
-
-    public function prosesAdministrasiProdi(): void
-    {
-        $report = $_POST['thesis'];
-        $internship = $_POST['internship'];
-        $compensation = $_POST['compensation'];
-        $toeic = $_POST['toeic'];
-
-        echo "Still in process";
     }
 }
