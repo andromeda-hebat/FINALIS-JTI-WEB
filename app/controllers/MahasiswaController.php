@@ -62,24 +62,6 @@ class MahasiswaController extends Controller
         }
     }
 
-    public function tugasAkhirTerkirim(): void
-    {
-        $data['title'] = "Tugas Akhir";
-        $data['css'] = ["assets/css/sidebar"];
-        $this->view("templates/header", $data);
-        $this->view("pages/mahasiswa/ta_terkirim");
-        $this->view("templates/footer");
-    }
-
-    public function tugasAkhirTerverif(): void
-    {
-        $data["title"] = "Tugas Akhir";
-        $data['css'] = ["assets/css/sidebar"];
-        $this->view("templates/header", $data);
-        $this->view("pages/mahasiswa/ta_terverifikasi");
-        $this->view("templates/footer");
-    }
-
     public function administrasiProdi(): void
     {
         $data['title'] = "Administrasi Prodi";
