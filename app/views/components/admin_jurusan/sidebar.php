@@ -21,12 +21,12 @@
             <a href="/kelola-mahasiswa" class="sidebar-nav nav-link text-white w-100 ps-5">
                 Mahasiswa
             </a>
-            <a href="#" class="sidebar-nav nav-link text-white w-100 ps-5">
+            <a href="/kelola-surat" class="sidebar-nav nav-link text-white w-100 ps-5">
                 Template Surat
             </a>
         </div>
 
-        <a href="#" class="sidebar-nav nav-link text-white w-100 ps-5 fw-bold">
+        <a href="log-aktivity" class="sidebar-nav nav-link text-white w-100 ps-5 fw-bold">
             Log Aktivitas
         </a>
     </nav>
