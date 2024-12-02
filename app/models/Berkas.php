@@ -52,6 +52,28 @@ class Berkas extends Model
         }
     }
 
+    public function addNewBerkasTA(string $nim, string $laporan_ta, string $aplikasi, string $bukti_publikasi): void
+    {
+        try {
+            $query = <<<SQL
+                EXEC sp_InsertBerkasTA 
+                    @nim = :nim,
+                    @laporan_TA = :laporan_ta,
+                    @aplikasi = :aplikasi,
+                    @bukti_publikasi = :bukti_publikasi;
+            SQL;
+
+            $stmt = $this->db->getConnection()->prepare($query);
+            $stmt->bindValue(':nim', $nim, PDO::PARAM_STR);
+            $stmt->bindValue(':laporan_ta', $laporan_ta, PDO::PARAM_STR);
+            $stmt->bindValue(':aplikasi', $aplikasi, PDO::PARAM_STR);
+            $stmt->bindValue(':bukti_publikasi', $bukti_publikasi, PDO::PARAM_STR);
+            $stmt->execute();
+        } catch (\PDOException $e) {
+            throw new \PDOException($e->getMessage());
+        }
+    }
+
     public function addNewBerkasProdi(string $nim, string $toeic, string $skripsi, string $magang, string $kompen): void
     {
         try {
