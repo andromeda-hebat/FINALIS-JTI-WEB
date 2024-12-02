@@ -9,8 +9,10 @@ Aplikasi ini dapat diinstal pada server lokal maupun server remote.
 | Jenis | Nama | Versi |
 | -- | -- | -- |
 | Bahasa pemrograman | PHP | 8.3 atau lebih tinggi |
+| Web Server | Apache HTTPD | 2.4.54 |
 | Framework | Bootstrap | 5.3.3 |
 | Basis data | Microsoft SQL Server | 2022 |
+>  ⚠️ Pastikan PHP anda telah terpasang driver untuk Microsoft SQL Server! Driver Microsoft SQL Server bisa didapatkan pada website official Microsoft berikut 👉🏻 https://learn.microsoft.com/en-us/sql/connect/php/download-drivers-php-sql-server?view=sql-server-ver16
 
 ### Langkah Instalasi
 
@@ -30,7 +32,7 @@ Langkah-langkah untuk menjalankan proyek di lokal:
 
     Buka pada URL berikut:
     ```bash
-    finalis-jti-web.test
+    http://finalis-jti-web.test
     ```
 
 ---
@@ -38,42 +40,36 @@ Langkah-langkah untuk menjalankan proyek di lokal:
 ## Struktur Proyek
 
 ```bash
-(root)
+FINALIS-JTI-WEB
 ├───app
-│   ├───config
-│   ├───controllers
-│   ├───core
-│   ├───models
-│   └───views
-│       ├───components
+│   ├───controllers     # Perantara antara interaksi dengan data dan tampilan pengguna
+│   ├───core            # Basis class utama aplikasi
+│   ├───models          # Struktur data dan Business logic aplikasi
+│   ├───routes          # Untuk manajemen rute internal website dan suplai eksternal API
+│   └───views           # Menampilkan halaman web ke pengguna
+│       ├───components  # Bagian kecil dari sebuah halaman yang sering digunakan berulang kali
 │       │   ├───admin
 │       │   └───mahasiswa
 │       ├───pages
 │       │   ├───admin
 │       │   └───mahasiswa
 │       └───templates
-├───docs
+├───docs                # Dokumentasi proyek
 │   ├───diagram
 │   └───guides
-├───public
+├───public              # Akses point pertama oleh web server
 │   └───assets
 │       ├───img
 │       └───js
+├───storage             # Sentral penyimpanan file di server
+│   ├───administrasi_prodi
+│   └───tugas_akhir
+├────.env               # Konfigurasi environment
 ├────.gitignore
+├────composer.json      # Manajemen dependensi
+├────composer.lock
 └────README.md
 ```
-
----
-
-## Teknologi yang Digunakan
-
-Berikut adalah beberapa teknologi yang digunakan selama proses pengembangan proyek:
-| Bagian pengembangan | Teknologi yang digunakan |
-|--|--|
-| UI/UX | Figma |
-| Database | Microsoft SQL Server |
-| Frontend | HTML, CSS, JavaScript, jQuery, Bootstrap |
-| Backend | PHP |
 
 ---
 
