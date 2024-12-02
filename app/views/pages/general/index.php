@@ -1,4 +1,4 @@
-<?php include __DIR__ . '/../components/general/navbar.php' ?>
+<?php include __DIR__ . '/../../components/general/navbar.php' ?>
 
 <main class="pt-5 ">
     <section id="hero" class="d-flex flex-column justify-content-center min-vh-100"
@@ -146,13 +146,9 @@
                         menyelesaikan semua
                         persyaratan berikut:</p>
                     <ul class="mb-0" style="list-style: disc;">
-                        <li>Mengunggah Tugas Akhir: Semua berkas tugas akhir, termasuk laporan, program/aplikasi, surat
-                            pernyataan, dan dokumen pendukung lainnya, telah diunggah secara lengkap dan benar melalui
-                            sistem.</li>
-                        <li>Verifikasi Tugas Akhir: Tugas akhir Anda telah diverifikasi oleh dosen pembimbing dan pihak
-                            prodi.</li>
-                        <li>Menyelesaikan Administrasi Prodi: Seluruh administrasi di prodi, seperti pengembalian buku
-                            perpustakaan, pengembalian inventaris, dan urusan lainnya, telah diselesaikan.</li>
+                        <li>Mengunggah Tugas Akhir: Semua berkas tugas akhir, termasuk laporan, program/aplikasi, surat pernyataan, dan dokumen pendukung lainnya, telah diunggah secara lengkap dan benar melalui sistem.</li>
+                        <li>Verifikasi Tugas Akhir: Tugas akhir Anda telah diverifikasi oleh dosen pembimbing dan pihak prodi.</li>
+                        <li>Menyelesaikan Administrasi Prodi: Seluruh administrasi di prodi, seperti pengembalian buku perpustakaan, pengembalian inventaris, dan urusan lainnya, telah diselesaikan.</li>
                     </ul>
                 </div>
             </li>
@@ -165,9 +161,9 @@
                 <div class="text-white me-5">
                     <h3 style="color: #F7DE00;">Finalis JTI</h3>
                     <p>
-                    Sistem Informasi Bebas Tanggunngan<br>
-                    Jurusan Teknologi Informasi<br>
-                    Politeknik Negeri Malang
+                        Sistem Informasi Bebas Tanggunngan<br>
+                        Jurusan Teknologi Informasi<br>
+                        Politeknik Negeri Malang
                     </p>
                     <p>JL. Soekarno-Hatta No. 9 Malang 65141<br>Po.Box 04 Malang</p>
                     <p>Telepon: +62(0341) 404424-404425</p>
