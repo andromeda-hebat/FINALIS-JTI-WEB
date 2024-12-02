@@ -46,3 +46,7 @@ Router::add('GET', '/edit-admin', AdminJurusanController::class, 'editAdmin');
 Router::add('GET', '/kelola-mahasiswa', AdminJurusanController::class, 'kelolaMhs');
 Router::add('GET', '/tambah-mahasiswa', AdminJurusanController::class, 'tambahMhs');
 Router::add('GET', '/edit-mahasiswa', AdminJurusanController::class, 'editMhs');
+
+Router::add('GET', '/kelola-surat', AdminJurusanController::class, 'kelolaTemplateSurat');
+Router::add('GET', '/tambah-surat', AdminJurusanController::class, 'tambahTemplateSurat');
+Router::add('GET', '/log-aktivity', AdminJurusanController::class, 'catatanAktivitas');

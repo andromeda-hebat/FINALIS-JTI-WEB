@@ -54,4 +54,27 @@ class AdminJurusanController extends Controller {
         $this->view("pages/admin_jurusan/edit_mahasiswa");
         $this->view("templates/footer");
     }
+
+    public function kelolaTemplateSurat(): void {
+        $data['title'] = "Kelola Template Surat";
+        $data['css'] = ["assets/css/sidebar"];
+        $this->view("templates/header",$data);
+        $this->view("pages/admin_jurusan/kelola_surat");
+        $this->view("templates/footer");
+    }
+
+    public function tambahTemplateSurat(): void {
+        $data['title'] = "Tambah Template Surat";
+        $data['css'] = ["assets/css/sidebar"];
+        $this->view("templates/header",$data);
+        $this->view("pages/admin_jurusan/tambah_surat");
+        $this->view("templates/footer");
+    }
+    public function catatanAktivitas(): void {
+        $data['title'] = "Log Aktivity";
+        $data['css'] = ["assets/css/sidebar"];
+        $this->view("templates/header",$data);
+        $this->view("pages/admin_jurusan/catatan_aktivitas");
+        $this->view("templates/footer");
+    }
 }
