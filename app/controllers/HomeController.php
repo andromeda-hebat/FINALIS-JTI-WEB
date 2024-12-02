@@ -10,7 +10,7 @@ class HomeController extends Controller {
         $this->view("templates/header", [
             'title'=>"FINALIS JTI"
         ]);
-        $this->view("pages/index");
+        $this->view("pages/general/index");
         $this->view("templates/footer");
     }
 
@@ -18,7 +18,7 @@ class HomeController extends Controller {
         $this->view("templates/header", [
             'title'=>"Kontak"
         ]);
-        $this->view("pages/contact");
+        $this->view("pages/general/contact");
         $this->view("templates/footer");
     }
 
