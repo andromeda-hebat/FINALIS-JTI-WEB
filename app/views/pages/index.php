@@ -1,4 +1,4 @@
-<?php include __DIR__ . '/../components/navbar.php' ?>
+<?php include __DIR__ . '/../components/general/navbar.php' ?>
 
 <main class="pt-5 ">
     <section id="hero" class="d-flex flex-column justify-content-center min-vh-100"

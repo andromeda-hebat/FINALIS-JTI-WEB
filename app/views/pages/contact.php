@@ -1,4 +1,4 @@
-<?php include __DIR__ . '/../components/navbar.php' ?>
+<?php include __DIR__ . '/../components/general/navbar.php' ?>
 <main class="d-flex flex-column justify-content-center align-items-center min-vh-100"
     style="background-color: rgba(196, 217, 255, 0.18);">
     <h2 class="text-center mt-5 mb-5 fw-bold" style="color: #052C65;">Hubungi kami melalui formulir berikut</h2>
