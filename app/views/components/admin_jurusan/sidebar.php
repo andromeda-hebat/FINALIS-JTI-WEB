@@ -18,7 +18,7 @@
             <a href="/kelola-admin" class="sidebar-nav nav-link text-white w-100 ps-5">
                 Admin
             </a>
-            <a href="#" class="sidebar-nav nav-link text-white w-100 ps-5">
+            <a href="/kelola-mahasiswa" class="sidebar-nav nav-link text-white w-100 ps-5">
                 Mahasiswa
             </a>
             <a href="#" class="sidebar-nav nav-link text-white w-100 ps-5">
