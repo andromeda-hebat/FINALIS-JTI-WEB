@@ -5,7 +5,7 @@
         <main class="container px-5" style="margin-top: 5rem;">
             <h3 class="mt-2 ms-1 fw-bold" style="color: #052C65;">Formulir Tugas Akhir</h2>
 
-            <?php if ($data['req_status'] == "kosong"): ?>
+            <?php if (strcasecmp($data['req_status'], "kosong") == 0): ?>
                 <div id="body-content" class="mt-4">
                     <form id="tugas-akhir-form" action="/tugas-akhir" method="post" enctype="multipart/form-data">
                         <div class="card card-body px-4" style="box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);">
@@ -30,18 +30,18 @@
                         </div>
                     </form>
                 </div>
-            <?php elseif ($data['req_status'] == "diajukan"): ?>
+            <?php elseif (strcasecmp($data['req_status'], "diajukan") == 0): ?>
                 <div id="body-content"
                     class="mt-4 card card-body d-flex flex-column justify-content-center align-items-center"
-                    style="box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);">
+                    style="box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25); min-height: 75vh; max-height: 75vh;">
                     <p>Data berhasil dikirim !</p>
-                    <p>Mohon tunggu verifikasi dari admin, dalam 2x24 jam di hari kerja.</p>
+                    <p>Mohon tunggu verifikasi dari admin dalam 2x24 jam di hari kerja.</p>
                 </div>
-            <?php elseif ($data['req_status'] == "diverifikasi"): ?>
+            <?php elseif (strcasecmp($data['req_status'], "disetujui") == 0): ?>
                 <div id="body-content"
                     class="mt-4 card card-body d-flex flex-column justify-content-center align-items-center"
-                    style="box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);">
-                    <p>Selamat data anda lolos verifikasi tugas akhir!
+                    style="box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25); min-height: 75vh; max-height: 75vh;">
+                    <p class="text-center">Selamat data anda lolos verifikasi tugas akhir! <br>
                         Selanjutnya selesaikan administrasi prodi untuk dapat mengajukan permintaan surat bebas tanggungan
                         jurusan!</p>
                     <svg width="100" height="100" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -57,14 +57,17 @@
                         </defs>
                     </svg>
                 </div>
-            <?php elseif ($data['req_status'] == "ditolak"): ?>
+            <?php elseif (strcasecmp($data['req_status'], "ditolak") == 0): ?>
                 <div id="body-content"
                     class="mt-4 card card-body d-flex flex-column justify-content-center align-items-center"
-                    style="box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);">
+                    style="box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25); min-height: 75vh; max-height: 75vh;">
                     <p>Formulir yang anda ajukan belum dapat diverifikasi periksa kembali berkas yang anda upload, baca keterangan dari admin!</p>
                     <p class="fw-bold">Keterangan:</p>
-                    <textarea name="description" id="keterangan" cols="50" rows="30">
+                    <textarea name="description" id="keterangan" cols="50" rows="10" style="resize: none;">
                     </textarea>
+                    <div class="w-100">
+                        <button>Ajukan Formulir Ulang</button>
+                    </div>
                 </div>
             <?php endif; ?>
         </main>
