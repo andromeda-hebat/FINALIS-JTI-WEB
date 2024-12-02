@@ -24,7 +24,7 @@ class MahasiswaController extends Controller
         ]);
         $this->view("pages/mahasiswa/tugas_akhir", [
             'active_page'=>"tugas_akhir",
-            'req_status'=>$this->berkas->checkUserBerkasProdiStatus($_SESSION['user_id'])
+            'req_status'=>$this->berkas->checkUserBerkasTAStatus($_SESSION['user_id'])
         ]);
         $this->view("templates/footer");
     }
