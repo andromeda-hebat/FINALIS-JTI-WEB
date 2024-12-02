@@ -3,7 +3,7 @@
 namespace App\Controllers;
 
 use App\Core\Controller;
-use App\Models\{User, Admin, Mahasiswa};
+use App\Models\{User, Admin, Mahasiswa, Berkas};
 
 
 class AuthController extends Controller
@@ -12,6 +12,7 @@ class AuthController extends Controller
     private User $user;
     private Admin $admin;
     private Mahasiswa $mahasiswa;
+    private Berkas $berkas;
 
 
     public function __construct()
@@ -19,9 +20,11 @@ class AuthController extends Controller
         $this->user = new User();
         $this->admin = new Admin();
         $this->mahasiswa = new Mahasiswa();
+        $this->berkas = new Berkas();
     }
 
-    public function viewLogin(): void {
+    public function viewLogin(): void
+    {
         $data['title'] = "Login";
         $this->view("templates/header", $data);
         $this->view("pages/general/login");
@@ -76,10 +79,19 @@ class AuthController extends Controller
             $_SESSION['full_name'] = $user['nama_lengkap'];
             $_SESSION['role'] = $user['role'];
             $_SESSION['user_photo'] = '';
-            header('Location: /dashboard');
+
+            if ($_SESSION['role'] == "mahasiswa") {
+                $_SESSION['status']['tugas_akhir'] = $this->berkas->checkUserBerkasTAStatus($_SESSION['user_id']);
+                $_SESSION['status']['administrasi_prodi'] = $this->berkas->checkUserBerkasProdiStatus($_SESSION['user_id']);
+            }
+            header('Content-Type: application/json');
+            echo json_encode(['redirect' => '/dashboard']);
         } else {
-            $data['message'] = "User fail to authenticate! Wrong user id or password";
-            $this->view("pages/user_fail_authenticate", $data);
+            http_response_code(401);
+            echo json_encode([
+                "status" => "error",
+                "message" => "Authentication failed. Please check your credentials.",
+            ]);
         }
 
     }

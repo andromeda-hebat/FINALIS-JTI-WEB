@@ -3,7 +3,6 @@
 
 namespace App\Models;
 
-use PDO;
 use App\Core\Model;
 
 
@@ -22,7 +21,7 @@ class Berkas extends Model
         $stmt = $this->db->getConnection()->prepare($query);
         $stmt->bindParam(1, $user_id);
         $stmt->execute();
-        $result = $stmt->fetch(PDO::FETCH_ASSOC);
+        $result = $stmt->fetch(\PDO::FETCH_ASSOC);
 
         if ($result == false) {
             return "kosong";
@@ -43,7 +42,7 @@ class Berkas extends Model
         $stmt = $this->db->getConnection()->prepare($query);
         $stmt->bindParam(1, $user_id);
         $stmt->execute();
-        $result = $stmt->fetch(PDO::FETCH_ASSOC);
+        $result = $stmt->fetch(\PDO::FETCH_ASSOC);
 
         if ($result == false) {
             return "kosong";
@@ -64,10 +63,10 @@ class Berkas extends Model
             SQL;
 
             $stmt = $this->db->getConnection()->prepare($query);
-            $stmt->bindValue(':nim', $nim, PDO::PARAM_STR);
-            $stmt->bindValue(':laporan_ta', $laporan_ta, PDO::PARAM_STR);
-            $stmt->bindValue(':aplikasi', $aplikasi, PDO::PARAM_STR);
-            $stmt->bindValue(':bukti_publikasi', $bukti_publikasi, PDO::PARAM_STR);
+            $stmt->bindValue(':nim', $nim, \PDO::PARAM_STR);
+            $stmt->bindValue(':laporan_ta', $laporan_ta, \PDO::PARAM_STR);
+            $stmt->bindValue(':aplikasi', $aplikasi, \PDO::PARAM_STR);
+            $stmt->bindValue(':bukti_publikasi', $bukti_publikasi, \PDO::PARAM_STR);
             $stmt->execute();
         } catch (\PDOException $e) {
             throw new \PDOException($e->getMessage());
@@ -87,11 +86,11 @@ class Berkas extends Model
             SQL;
 
             $stmt = $this->db->getConnection()->prepare($query);
-            $stmt->bindValue(':nim', $nim, PDO::PARAM_STR);
-            $stmt->bindValue(':toeic', $toeic, PDO::PARAM_STR);
-            $stmt->bindValue(':skripsi', $skripsi, PDO::PARAM_STR);
-            $stmt->bindValue(':magang', $magang, PDO::PARAM_STR);
-            $stmt->bindValue(':kompen', $kompen, PDO::PARAM_STR);
+            $stmt->bindValue(':nim', $nim, \PDO::PARAM_STR);
+            $stmt->bindValue(':toeic', $toeic, \PDO::PARAM_STR);
+            $stmt->bindValue(':skripsi', $skripsi, \PDO::PARAM_STR);
+            $stmt->bindValue(':magang', $magang, \PDO::PARAM_STR);
+            $stmt->bindValue(':kompen', $kompen, \PDO::PARAM_STR);
             $stmt->execute();
         } catch (\PDOException $e) {
             throw new \PDOException($e->getMessage());
