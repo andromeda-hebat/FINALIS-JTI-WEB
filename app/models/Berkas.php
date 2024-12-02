@@ -25,12 +25,8 @@ class Berkas extends Model
 
         if ($result == false) {
             return "kosong";
-        } elseif ($result['status_verifikasi'] == "Diajukan") {
-            return "diajukan";
-        } elseif ($result['status_verifikasi'] == "Diverifikasi") {
-            return "diverifikasi";
         } else {
-            return "kosong";
+            return $result['status_verifikasi'];
         }
     }
 }

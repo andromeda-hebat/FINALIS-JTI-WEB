@@ -75,6 +75,7 @@ class AuthController extends Controller
             $_SESSION['user_id'] = $user['user_id'];
             $_SESSION['full_name'] = $user['nama_lengkap'];
             $_SESSION['role'] = $user['role'];
+            $_SESSION['user_photo'] = '';
             header('Location: /dashboard');
         } else {
             $data['message'] = "User fail to authenticate! Wrong user id or password";
