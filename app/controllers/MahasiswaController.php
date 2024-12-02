@@ -18,12 +18,14 @@ class MahasiswaController extends Controller
 
     public function tugasAkhir(): void
     {
-        $data['title'] = "Tugas Akhir";
-        $data['active_page'] = "tugas_akhir";
-        $data['css'] = ["assets/css/sidebar"];
-        $data['req_status'] = $this->berkas->checkUserBerkasProdiStatus($_SESSION['user_id']);
-        $this->view("templates/header", $data);
-        $this->view("pages/mahasiswa/tugas_akhir", $data);
+        $this->view("templates/header", [
+            'title'=>"Tugas Akhir",
+            'css'=>["assets/css/sidebar"]
+        ]);
+        $this->view("pages/mahasiswa/tugas_akhir", [
+            'active_page'=>"tugas_akhir",
+            'req_status'=>$this->berkas->checkUserBerkasProdiStatus($_SESSION['user_id'])
+        ]);
         $this->view("templates/footer");
     }
 
@@ -64,31 +66,37 @@ class MahasiswaController extends Controller
 
     public function administrasiProdi(): void
     {
-        $data['title'] = "Administrasi Prodi";
-        $data['active_page'] = "administrasi_prodi";
-        $data['css'] = ["assets/css/sidebar"];
-        $this->view("templates/header", $data);
-        $this->view("pages/mahasiswa/administrasi_prodi", $data);
+        $this->view("templates/header", [
+            'title'=>"Administrasi Prodi",
+            'css'=>["assets/css/sidebar"]
+        ]);
+        $this->view("pages/mahasiswa/administrasi_prodi", [
+            'active_page'=>"administrasi_prodi",
+        ]);
         $this->view("templates/footer");
     }
 
     public function riwayatPengajuan(): void
     {
-        $data['title'] = "Riwayat Pengajuan";
-        $data['active_page'] = "riwayat_pengajuan";
-        $data['css'] = ["assets/css/sidebar"];
-        $this->view("templates/header", $data);
-        $this->view("pages/mahasiswa/riwayat_pengajuan", $data);
+        $this->view("templates/header", [
+            'title'=>"Riwayat Pengajuan",
+            'css'=>["assets/css/sidebar"]
+        ]);
+        $this->view("pages/mahasiswa/riwayat_pengajuan", [
+            'active_page'=>"riwayat_pengajuan"
+        ]);
         $this->view("templates/footer");
     }
 
     public function permintaanSurat(): void
     {
-        $data['title'] = "Permintaan Surat";
-        $data['active_page'] = "permintaan_surat";
-        $data['css'] = ["assets/css/sidebar"];
-        $this->view("templates/header", $data);
-        $this->view("pages/mahasiswa/permintaan_surat", $data);
+        $this->view("templates/header", [
+            'title'=>"Permintaan Surat",
+            'css'=>["assets/css/sidebar"]
+        ]);
+        $this->view("pages/mahasiswa/permintaan_surat", [
+            'active_page'=>"permintaan_surat",
+        ]);
         $this->view("templates/footer");
     }
 

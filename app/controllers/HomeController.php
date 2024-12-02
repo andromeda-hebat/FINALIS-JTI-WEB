@@ -7,15 +7,17 @@ use App\Core\Controller;
 class HomeController extends Controller {
 
     public function index(): void {
-        $data['title'] = "FINALIS JTI";
-        $this->view("templates/header", $data);
+        $this->view("templates/header", [
+            'title'=>"FINALIS JTI"
+        ]);
         $this->view("pages/index");
         $this->view("templates/footer");
     }
 
     public function contact(): void {
-        $data['title'] = "Kontak";
-        $this->view("templates/header", $data);
+        $this->view("templates/header", [
+            'title'=>"Kontak"
+        ]);
         $this->view("pages/contact");
         $this->view("templates/footer");
     }
