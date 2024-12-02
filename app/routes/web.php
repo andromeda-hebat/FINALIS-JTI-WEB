@@ -6,6 +6,7 @@ use App\Core\Router;
 use App\Controllers\{HomeController, AuthController, MahasiswaController, AdminProdiController, AdminTAController, AdminJurusanController ,NotificationController};
 
 
+
 // General
 Router::add('GET', '/', HomeController::class, 'index');
 Router::add('GET', '/kontak', HomeController::class,'contact');
@@ -21,8 +22,6 @@ Router::add('POST', '/logout', AuthController::class,'logout');
 // User: Mahasiswa
 Router::add('GET', '/tugas-akhir', MahasiswaController::class, 'tugasAkhir');
 Router::add('POST', '/tugas-akhir', MahasiswaController::class, 'processTugasAkhir');
-Router::add('GET', '/ta-terkirim', MahasiswaController::class, 'tugasAkhirTerkirim');
-Router::add('GET', '/ta-terverif', MahasiswaController::class, 'tugasAkhirTerverif');
 Router::add('GET', '/administrasi-prodi', MahasiswaController::class, 'administrasiProdi');
 Router::add('POST', '/administrasi-prodi', MahasiswaController::class, 'prosesAdministrasiProdi');
 Router::add('GET', '/riwayat-pengajuan', MahasiswaController::class, 'riwayatPengajuan');
@@ -44,6 +43,3 @@ Router::add('GET', '/detail-permintaan-ta', AdminTAController::class, 'detailsRe
 Router::add('GET', '/kelola-admin', AdminJurusanController::class, 'kelolaAdmin');
 Router::add('GET', '/tambah-admin', AdminJurusanController::class, 'tambahAdmin');
 Router::add('GET', '/edit-admin', AdminJurusanController::class, 'editAdmin');
-
-
-
