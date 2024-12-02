@@ -5,7 +5,7 @@
         <main class="container px-5" style="margin-top: 5rem;">
             <h3 class="mt-2 ms-1 fw-bold" style="color: #052C65;">Formulir Tugas Akhir</h2>
 
-            <?php if (strcasecmp($data['req_status'], "kosong") == 0): ?>
+            <?php if (strcasecmp($_SESSION['status']['tugas_akhir'], "kosong") == 0): ?>
                 <div id="body-content" class="mt-4">
                     <form id="tugas-akhir-form" action="/tugas-akhir" method="post" enctype="multipart/form-data">
                         <div class="card card-body px-4" style="box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);">
@@ -30,14 +30,14 @@
                         </div>
                     </form>
                 </div>
-            <?php elseif (strcasecmp($data['req_status'], "diajukan") == 0): ?>
+            <?php elseif (strcasecmp($_SESSION['status']['tugas_akhir'], "diajukan") == 0): ?>
                 <div id="body-content"
                     class="mt-4 card card-body d-flex flex-column justify-content-center align-items-center"
                     style="box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25); min-height: 75vh; max-height: 75vh;">
                     <p>Data berhasil dikirim !</p>
                     <p>Mohon tunggu verifikasi dari admin dalam 2x24 jam di hari kerja.</p>
                 </div>
-            <?php elseif (strcasecmp($data['req_status'], "disetujui") == 0): ?>
+            <?php elseif (strcasecmp($_SESSION['status']['tugas_akhir'], "disetujui") == 0): ?>
                 <div id="body-content"
                     class="mt-4 card card-body d-flex flex-column justify-content-center align-items-center"
                     style="box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25); min-height: 75vh; max-height: 75vh;">
@@ -57,7 +57,7 @@
                         </defs>
                     </svg>
                 </div>
-            <?php elseif (strcasecmp($data['req_status'], "ditolak") == 0): ?>
+            <?php elseif (strcasecmp($_SESSION['status']['tugas_akhir'], "ditolak") == 0): ?>
                 <div id="body-content"
                     class="mt-4 card card-body d-flex flex-column justify-content-center align-items-center"
                     style="box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25); min-height: 75vh; max-height: 75vh;">

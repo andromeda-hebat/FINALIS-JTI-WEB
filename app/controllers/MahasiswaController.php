@@ -23,8 +23,7 @@ class MahasiswaController extends Controller
             'css'=>["assets/css/sidebar"]
         ]);
         $this->view("pages/mahasiswa/tugas_akhir", [
-            'active_page'=>"tugas_akhir",
-            'req_status'=>$this->berkas->checkUserBerkasTAStatus($_SESSION['user_id'])
+            'active_page'=>"tugas_akhir"
         ]);
         $this->view("templates/footer");
     }
@@ -82,8 +81,7 @@ class MahasiswaController extends Controller
             'css'=>["assets/css/sidebar"]
         ]);
         $this->view("pages/mahasiswa/administrasi_prodi", [
-            'active_page'=>"administrasi_prodi",
-            'req_status'=>$this->berkas->checkUserBerkasProdiStatus($_SESSION['user_id'])
+            'active_page'=>"administrasi_prodi"
         ]);
         $this->view("templates/footer");
     }
