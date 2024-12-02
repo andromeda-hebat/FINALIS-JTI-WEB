@@ -24,7 +24,7 @@ class AuthController extends Controller
     public function viewLogin(): void {
         $data['title'] = "Login";
         $this->view("templates/header", $data);
-        $this->view("pages/login");
+        $this->view("pages/general/login");
         $this->view("templates/footer");
     }
 

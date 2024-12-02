@@ -13,7 +13,7 @@ class NotificationController extends Controller {
         $data['title'] = "Notifikasi";
         $data['css'] = ["assets/css/sidebar"];
         $this->view("templates/header",$data);
-        $this->view("pages/notification");
+        $this->view("pages/general/notification");
         $this->view("templates/footer");
     }
 
