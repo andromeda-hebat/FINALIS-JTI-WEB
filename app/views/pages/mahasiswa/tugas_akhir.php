@@ -5,7 +5,7 @@
         <main class="container px-4" style="margin-top: 5rem;">
             <h2 class="mt-2 ms-1 fw-bold" style="color: #052C65;">Formulir Tugas Akhir</h2>
 
-            <?php if ($data['req_status'] == "kosong"): ?>
+            <?php if (strcasecmp($data['req_status'], "kosong") == 0): ?>
                 <div id="body-content" class="mt-4">
                     <form id="tugas-akhir-form" action="/tugas-akhir" method="post" enctype="multipart/form-data">
                         <div class="card card-body" style="box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);">
@@ -30,14 +30,14 @@
                         </div>
                     </form>
                 </div>
-            <?php elseif ($data['req_status'] == "diajukan"): ?>
+            <?php elseif (strcasecmp($data['req_status'], "diajukan") == 0): ?>
                 <div id="body-content"
                     class="mt-4 card card-body d-flex flex-column justify-content-center align-items-center"
                     style="box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);">
                     <p>Data berhasil dikirim !</p>
                     <p>Mohon tunggu verifikasi dari admin, dalam 2x24 jam di hari kerja.</p>
                 </div>
-            <?php elseif ($data['req_status'] == "diverifikasi"): ?>
+            <?php elseif (strcasecmp($data['req_status'], "disetujui") == 0): ?>
                 <div id="body-content"
                     class="mt-4 card card-body d-flex flex-column justify-content-center align-items-center"
                     style="box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);">
@@ -57,7 +57,7 @@
                         </defs>
                     </svg>
                 </div>
-            <?php elseif ($data['req_status'] == "ditolak"): ?>
+            <?php elseif (strcasecmp($data['req_status'], "ditolak") == 0): ?>
                 <div id="body-content"
                     class="mt-4 card card-body d-flex flex-column justify-content-center align-items-center"
                     style="box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);">
