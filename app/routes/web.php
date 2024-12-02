@@ -43,3 +43,6 @@ Router::add('GET', '/detail-permintaan-ta', AdminTAController::class, 'detailsRe
 Router::add('GET', '/kelola-admin', AdminJurusanController::class, 'kelolaAdmin');
 Router::add('GET', '/tambah-admin', AdminJurusanController::class, 'tambahAdmin');
 Router::add('GET', '/edit-admin', AdminJurusanController::class, 'editAdmin');
+Router::add('GET', '/kelola-mahasiswa', AdminJurusanController::class, 'kelolaMhs');
+Router::add('GET', '/tambah-mahasiswa', AdminJurusanController::class, 'tambahMhs');
+Router::add('GET', '/edit-mahasiswa', AdminJurusanController::class, 'editMhs');
