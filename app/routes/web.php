@@ -3,7 +3,8 @@
 require_once __DIR__ . '/../../vendor/autoload.php';
 
 use App\Core\Router;
-use App\Controllers\{HomeController, AuthController, MahasiswaController, AdminProdiController, AdminTAController ,NotificationController};
+use App\Controllers\{HomeController, AuthController, MahasiswaController, AdminProdiController, AdminTAController, AdminJurusanController ,NotificationController};
+
 
 
 // General
@@ -34,5 +35,18 @@ Router::add('GET', '/detail-permintaan', AdminProdiController::class, 'detailsRe
 //Notif
 Router::add('GET', '/notifikasi', NotificationController::class, 'notif');
 
+//Admin TA
 Router::add('GET', '/permintaan-verif-ta', AdminTAController::class, 'requestVerifikasi');
 Router::add('GET', '/detail-permintaan-ta', AdminTAController::class, 'detailsRequest');
+
+//Admin Jurusan
+Router::add('GET', '/kelola-admin', AdminJurusanController::class, 'kelolaAdmin');
+Router::add('GET', '/tambah-admin', AdminJurusanController::class, 'tambahAdmin');
+Router::add('GET', '/edit-admin', AdminJurusanController::class, 'editAdmin');
+Router::add('GET', '/kelola-mahasiswa', AdminJurusanController::class, 'kelolaMhs');
+Router::add('GET', '/tambah-mahasiswa', AdminJurusanController::class, 'tambahMhs');
+Router::add('GET', '/edit-mahasiswa', AdminJurusanController::class, 'editMhs');
+
+Router::add('GET', '/kelola-surat', AdminJurusanController::class, 'kelolaTemplateSurat');
+Router::add('GET', '/tambah-surat', AdminJurusanController::class, 'tambahTemplateSurat');
+Router::add('GET', '/log-aktivity', AdminJurusanController::class, 'catatanAktivitas');
