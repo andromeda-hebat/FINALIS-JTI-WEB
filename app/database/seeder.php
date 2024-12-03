@@ -19,25 +19,27 @@ define('COLOR_RESET', "\033[0m");
 echo COLOR_BLUE . "=======================================" . COLOR_RESET . PHP_EOL;
 echo "--    FINALIS JTI DATABASE SEEDER    --" . PHP_EOL;
 echo "--    Please wait a minute...        --" . PHP_EOL;
+echo PHP_EOL;
 
 
 // ======================================
 // PHP Database seeder logic start here
 // ======================================
 
-$query = <<<SQL
-    INSERT INTO USERS.Mahasiswa
-        (nim, nama_lengkap, password, email, jurusan, prodi, foto_profil, tahun_masuk)
-    VALUES
-    ('121212', 'Budi Setiawan', '121212', 'abc@gmail.com', 'Teknologi Informasi', 'D4 Teknik Informatika', 'abc.png', '2020');
-SQL;
+$sql_file = __DIR__ . '/seeder.sql';
+
+if (!file_exists($sql_file)) {
+    die(COLOR_RED . "[!]  Error: The SQL file does not exist." . COLOR_RESET);
+}
+
+$query_script = file_get_contents($sql_file);
 
 
 try {
     $db = new Database();
-    $stmt = $db->getConnection()->query($query);
+    $db->getConnection()->exec($query_script);
     echo COLOR_GREEN . "[!]    Database seeder sucessfully to be inserted!" . COLOR_RESET . PHP_EOL;
-} catch (\PDOException $e) {
+} catch (\Exception | \PDOException $e) {
     echo COLOR_RED . "[!]    There is something error happen: " . $e->getMessage() . COLOR_RESET . PHP_EOL;
 }
 
