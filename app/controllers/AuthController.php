@@ -3,27 +3,18 @@
 namespace App\Controllers;
 
 use App\Core\Controller;
-use App\Models\{User, Admin, Mahasiswa, Berkas};
 use App\Repository\BerkasRepository;
 use App\Repository\UserRepository;
 
 
 class AuthController extends Controller
 {
-
-    private User $user;
-    private Admin $admin;
-    private Mahasiswa $mahasiswa;
-    private Berkas $berkas;
     private UserRepository $user_repository;
     private BerkasRepository $berkas_repository;
 
 
     public function __construct()
     {
-        $this->user = new User();
-        $this->admin = new Admin();
-        $this->mahasiswa = new Mahasiswa();
         $this->user_repository = new UserRepository();
         $this->berkas_repository = new BerkasRepository();
     }
