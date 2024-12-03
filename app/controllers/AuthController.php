@@ -24,6 +24,7 @@ class AuthController extends Controller
         $this->admin = new Admin();
         $this->mahasiswa = new Mahasiswa();
         $this->berkas = new Berkas();
+        $this->user_repository = new UserRepository();
     }
 
     public function viewLogin(): void
