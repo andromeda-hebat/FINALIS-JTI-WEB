@@ -10,7 +10,6 @@ use App\Repository\BerkasRepository;
 
 class MahasiswaController extends Controller
 {
-
     private BerkasRepository $berkas_repository;
 
     public function __construct()
@@ -116,6 +115,8 @@ class MahasiswaController extends Controller
             if ($is_move_uploaded_file_success) {
                 try {
                     $this->berkas_repository->addNewBerkasProdi(new BerkasProdi($_SESSION['user_id'], $_FILES['distribusi_tugas_akhir']['new_name'], $_FILES['distribusi_magang']['new_name'], $_FILES['bebas_kompen']['new_name'], $_FILES['toeic']['new_name']));
+
+                    $_SESSION['status']['administrasi_prodi'] = "diajukan";
                     http_response_code(200);
                     echo "Sukses mengirimkan formulir!";
                 } catch (\Exception $e) {
