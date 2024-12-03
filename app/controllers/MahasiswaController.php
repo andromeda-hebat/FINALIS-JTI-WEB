@@ -3,6 +3,8 @@
 namespace App\Controllers;
 
 use App\Core\Controller;
+use App\Models\BerkasProdi;
+use App\Models\BerkasTA;
 use App\Repository\BerkasRepository;
 
 
@@ -32,9 +34,9 @@ class MahasiswaController extends Controller
     {
         if (isset($_FILES['tugas_akhir']) && isset($_FILES['program_aplikasi']) && isset($_FILES['publikasi_jurnal'])) {
             $upload_dir = [
-                "tugas_akhir" => __DIR__ . "/../../storage/tugas_akhir/laporan_ta/",
-                "program_aplikasi" => __DIR__ . "/../../storage/tugas_akhir/program_aplikasi/",
-                "publikasi_jurnal" => __DIR__ . "/../../storage/tugas_akhir/publikasi_jurnal/"
+                "tugas_akhir" => __DIR__ . "/../../storage/uploads/tugas_akhir/laporan_ta/",
+                "program_aplikasi" => __DIR__ . "/../../storage/uploads/tugas_akhir/program_aplikasi/",
+                "publikasi_jurnal" => __DIR__ . "/../../storage/uploads/tugas_akhir/publikasi_jurnal/"
             ];
 
             foreach ($upload_dir as $key => $path) {
@@ -55,7 +57,7 @@ class MahasiswaController extends Controller
 
             if ($is_move_uploaded_file_success) {
                 try {
-                    $this->berkas_repository->addNewBerkasTA($_SESSION['user_id'], $_FILES['tugas_akhir']['new_name'], $_FILES['program_aplikasi']['new_name'], $_FILES['publikasi_jurnal']['new_name']);
+                    $this->berkas_repository->addNewBerkasTA(new BerkasTA($_SESSION['user_id'], $_FILES['tugas_akhir']['new_name'], $_FILES['program_aplikasi']['new_name'], $_FILES['publikasi_jurnal']['new_name']));
 
                     $_SESSION['status']['tugas_akhir'] = "diajukan";
                     http_response_code(200);
@@ -89,10 +91,10 @@ class MahasiswaController extends Controller
     public function processAdministrasiProdi(): void {
         if (isset($_FILES['distribusi_tugas_akhir']) && isset($_FILES['distribusi_magang']) && isset($_FILES['bebas_kompen']) && isset($_FILES['toeic'])) {
             $upload_dir = [
-                "distribusi_tugas_akhir" => __DIR__ . "/../../storage/administrasi_prodi/distribusi_tugas_akhir/",
-                "distribusi_magang" => __DIR__ . "/../../storage/administrasi_prodi/distribusi_magang/",
-                "bebas_kompen" => __DIR__ . "/../../storage/administrasi_prodi/bebas_kompen/",
-                "toeic"=> __DIR__ . "/../../storage/administrasi_prodi/toeic/"
+                "distribusi_tugas_akhir" => __DIR__ . "/../../storage/uploads/administrasi_prodi/distribusi_tugas_akhir/",
+                "distribusi_magang" => __DIR__ . "/../../storage/uploads/administrasi_prodi/distribusi_magang/",
+                "bebas_kompen" => __DIR__ . "/../../storage/uploads/administrasi_prodi/bebas_kompen/",
+                "toeic"=> __DIR__ . "/../../storage/uploads/administrasi_prodi/toeic/"
             ];
 
             foreach ($upload_dir as $key => $path) {
@@ -113,7 +115,7 @@ class MahasiswaController extends Controller
 
             if ($is_move_uploaded_file_success) {
                 try {
-                    $this->berkas_repository->addNewBerkasProdi($_SESSION['user_id'], $_FILES['distribusi_tugas_akhir']['new_name'], $_FILES['distribusi_magang']['new_name'], $_FILES['bebas_kompen']['new_name'], $_FILES['toeic']['new_name']);
+                    $this->berkas_repository->addNewBerkasProdi(new BerkasProdi($_SESSION['user_id'], $_FILES['distribusi_tugas_akhir']['new_name'], $_FILES['distribusi_magang']['new_name'], $_FILES['bebas_kompen']['new_name'], $_FILES['toeic']['new_name']));
                     http_response_code(200);
                     echo "Sukses mengirimkan formulir!";
                 } catch (\Exception $e) {
