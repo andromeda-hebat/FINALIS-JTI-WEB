@@ -11,11 +11,11 @@ class UserRepository extends Repository
     public function getUserDataByUserIDAndPassword(string $user_id, string $password): bool|User
     {
         $query = <<<SQL
-            SELECT nim AS user_id, nama_lengkap, password, 'mahasiswa' AS role
+            SELECT nim AS user_id, nama_lengkap, password, 'mahasiswa' AS role, foto_profil
             FROM USERS.Mahasiswa
             WHERE nim = ? AND password = ?
             UNION 
-            SELECT  id_admin AS user_id, nama_lengkap, password, jabatan AS role
+            SELECT  id_admin AS user_id, nama_lengkap, password, jabatan AS role, foto_profil
             FROM USERS.Admin
             WHERE id_admin = ? AND password = ?;
         SQL;
@@ -26,7 +26,7 @@ class UserRepository extends Repository
         $stmt->bindValue(3, $user_id, \PDO::PARAM_STR);
         $stmt->bindValue(4, $password, \PDO::PARAM_STR);
         $stmt->execute();
-        $stmt->setFetchMode(\PDO::FETCH_CLASS, 'User');
+        $stmt->setFetchMode(\PDO::FETCH_CLASS, User::class);
         return $stmt->fetch();
     }
 

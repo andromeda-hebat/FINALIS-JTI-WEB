@@ -3,17 +3,17 @@
 namespace App\Controllers;
 
 use App\Core\Controller;
-use App\Models\Berkas;
+use App\Repository\BerkasRepository;
 
 
 class MahasiswaController extends Controller
 {
 
-    private Berkas $berkas;
+    private BerkasRepository $berkas_repository;
 
     public function __construct()
     {
-        $this->berkas = new Berkas();
+        $this->berkas_repository = new BerkasRepository();
     }
 
     public function tugasAkhir(): void
@@ -55,7 +55,7 @@ class MahasiswaController extends Controller
 
             if ($is_move_uploaded_file_success) {
                 try {
-                    $this->berkas->addNewBerkasTA($_SESSION['user_id'], $_FILES['tugas_akhir']['new_name'], $_FILES['program_aplikasi']['new_name'], $_FILES['publikasi_jurnal']['new_name']);
+                    $this->berkas_repository->addNewBerkasTA($_SESSION['user_id'], $_FILES['tugas_akhir']['new_name'], $_FILES['program_aplikasi']['new_name'], $_FILES['publikasi_jurnal']['new_name']);
 
                     $_SESSION['status']['tugas_akhir'] = "diajukan";
                     http_response_code(200);
@@ -113,7 +113,7 @@ class MahasiswaController extends Controller
 
             if ($is_move_uploaded_file_success) {
                 try {
-                    $this->berkas->addNewBerkasProdi($_SESSION['user_id'], $_FILES['distribusi_tugas_akhir']['new_name'], $_FILES['distribusi_magang']['new_name'], $_FILES['bebas_kompen']['new_name'], $_FILES['toeic']['new_name']);
+                    $this->berkas_repository->addNewBerkasProdi($_SESSION['user_id'], $_FILES['distribusi_tugas_akhir']['new_name'], $_FILES['distribusi_magang']['new_name'], $_FILES['bebas_kompen']['new_name'], $_FILES['toeic']['new_name']);
                     http_response_code(200);
                     echo "Sukses mengirimkan formulir!";
                 } catch (\Exception $e) {

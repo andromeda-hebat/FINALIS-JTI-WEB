@@ -4,6 +4,7 @@ namespace App\Controllers;
 
 use App\Core\Controller;
 use App\Models\{User, Admin, Mahasiswa, Berkas};
+use App\Repository\BerkasRepository;
 use App\Repository\UserRepository;
 
 
@@ -14,8 +15,8 @@ class AuthController extends Controller
     private Admin $admin;
     private Mahasiswa $mahasiswa;
     private Berkas $berkas;
-
     private UserRepository $user_repository;
+    private BerkasRepository $berkas_repository;
 
 
     public function __construct()
@@ -23,8 +24,8 @@ class AuthController extends Controller
         $this->user = new User();
         $this->admin = new Admin();
         $this->mahasiswa = new Mahasiswa();
-        $this->berkas = new Berkas();
         $this->user_repository = new UserRepository();
+        $this->berkas_repository = new BerkasRepository();
     }
 
     public function viewLogin(): void
@@ -79,14 +80,14 @@ class AuthController extends Controller
         $user = $this->user_repository->getUserDataByUserIDAndPassword($_POST['user_id'], $_POST['password']);
 
         if ($user != false) {
-            $_SESSION['user_id'] = $user->getUserId();
-            $_SESSION['full_name'] = $user->getNamaLengkap();
-            $_SESSION['role'] = $user->getRole();
-            $_SESSION['user_photo'] = $user->getProfilePhoto();
+            $_SESSION['user_id'] = $user->user_id;
+            $_SESSION['full_name'] = $user->nama_lengkap;
+            $_SESSION['role'] = $user->role;
+            $_SESSION['user_photo'] = $user->foto_profil;
 
             if ($_SESSION['role'] == "mahasiswa") {
-                $_SESSION['status']['tugas_akhir'] = $this->berkas->checkUserBerkasTAStatus($_SESSION['user_id']);
-                $_SESSION['status']['administrasi_prodi'] = $this->berkas->checkUserBerkasProdiStatus($_SESSION['user_id']);
+                $_SESSION['status']['tugas_akhir'] = $this->berkas_repository->checkUserBerkasTAStatus($_SESSION['user_id']);
+                $_SESSION['status']['administrasi_prodi'] = $this->berkas_repository->checkUserBerkasProdiStatus($_SESSION['user_id']);
             }
             header('Content-Type: application/json');
             echo json_encode(['redirect' => '/dashboard']);
