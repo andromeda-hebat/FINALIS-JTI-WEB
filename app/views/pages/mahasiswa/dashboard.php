@@ -20,17 +20,24 @@
                                 <label for="tugasAkhir" class="form-check-label">Tugas Akhir</label>
                                 <div>
                                     <input type="radio" name="statusFormulir" id="tugasAkhir"
-                                        class="form-check-input me-2 border-dark" disabled <?= (strcasecmp($_SESSION['status']['tugas_akhir'], "diajukan") == 0) ? "checked" : ""?>>
-                                    <button class="btn btn-outline-dark btn-sm rounded-pill">Detail</button>
+                                        class="form-check-input me-2 border-dark my-2" disabled
+                                        <?= (strcasecmp($_SESSION['status']['tugas_akhir'], "diajukan") == 0) ? "checked" : "" ?>>
+                                    <a href="/tugas-akhir" target="_blank"
+                                        class="btn btn-outline-dark btn-sm rounded-pill"
+                                        style="border-color: #052C65;">Detail
+                                    </a>
                                 </div>
                             </div>
                             <div class="d-flex justify-content-between align-items-center py-2">
-    
+
                                 <label for="adminProdi" class="form-check-label">Administrasi Prodi</label>
                                 <div>
                                     <input type="radio" name="statusFormulir" id="adminProdi"
-                                        class="form-check-input me-2 border-black" disabled <?= (strcasecmp($_SESSION['status']['administrasi_prodi'],"disetujui") == 0) ? "checked" : ""?>>
-                                    <button class="btn btn-outline-dark btn-sm rounded-pill">Detail</button>
+                                        class="form-check-input me-2 border-black" disabled
+                                        <?= (strcasecmp($_SESSION['status']['administrasi_prodi'], "disetujui") == 0) ? "checked" : "" ?>>
+                                    <!-- <button class="btn btn-outline-dark btn-sm rounded-pill" style="border-color: #052C65;">Detail</button> -->
+                                    <a href="/administrasi-prodi" class="btn btn-outline-dark btn-sm rounded-pill"
+                                        style="border-color: #052C65;">Detail</a>
                                 </div>
                             </div>
                             <div class="d-flex justify-content-between align-items-center py-2">
@@ -38,14 +45,14 @@
                                 <div>
                                     <input type="radio" name="statusFormulir" id="bebasTanggungan"
                                         class="form-check-input me-2 border-dark" disabled="">
-                                    <button class="btn btn-outline-dark btn-sm rounded-pill">Detail</button>
+                                    <a href="/permintaan-surat" class="btn btn-outline-dark btn-sm rounded-pill"
+                                        style="border-color: #052C65;">Detail</a>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </section>
-
             <!-- Template Surat -->
             <section class="mt-5">
                 <div class="d-flex align-items-center">
@@ -62,28 +69,40 @@
                         <div class="d-flex justify-content-between align-items-center py-2">
                             <div>Surat Pernyataan Publikasi</div>
                             <div>
-                                <button class="me-3 btn btn-outline-dark btn-sm rounded-pill">Preview</button>
+                                <a href="/files/Surat_Pernyataan_Publikasi.pdf" target="_blank"
+                                    class="me-3 btn btn-outline-dark btn-sm rounded-pill"
+                                    style="border-color: #052C65;">Preview
+                                </a>
                                 <button class="btn btn-outline-dark btn-sm rounded-pill">Download</button>
                             </div>
                         </div>
                         <div class="d-flex justify-content-between align-items-center py-2">
                             <div>Tanda Terima Laporan PKL/Magang</div>
                             <div>
-                                <button class="me-3 btn btn-outline-dark btn-sm rounded-pill">Preview</button>
+                                <a href="/files/Tanda Terima Laporan PKL_Magang.pdf" target="_blank"
+                                    class="me-3 btn btn-outline-dark btn-sm rounded-pill"
+                                    style="border-color: #052C65;">Preview
+                                </a>
                                 <button class="btn btn-outline-dark btn-sm rounded-pill">Download</button>
                             </div>
                         </div>
                         <div class="d-flex justify-content-between align-items-center py-2">
                             <div>Tanda Terima Laporan TA/Skripsi</div>
                             <div>
-                                <button class="me-3 btn btn-outline-dark btn-sm rounded-pill">Preview</button>
+                                <a href="/files/Tanda Terima Laporan Skripsi_TI.pdf" target="_blank"
+                                    class="me-3 btn btn-outline-dark btn-sm rounded-pill"
+                                    style="border-color: #052C65;">Preview
+                                </a>
                                 <button class="btn btn-outline-dark btn-sm rounded-pill">Download</button>
                             </div>
                         </div>
                         <div class="d-flex justify-content-between align-items-center py-2">
                             <div>Surat Bebas Kompen</div>
                             <div>
-                                <button class="me-3 btn btn-outline-dark btn-sm rounded-pill">Preview</button>
+                                <a href="/files/Bebas Kompen_TI.pdf" target="_blank"
+                                    class="me-3 btn btn-outline-dark btn-sm rounded-pill"
+                                    style="border-color: #052C65;">Preview
+                                </a>
                                 <button class="btn btn-outline-dark btn-sm rounded-pill">Download</button>
                             </div>
                         </div>
