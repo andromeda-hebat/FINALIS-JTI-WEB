@@ -4,6 +4,7 @@ namespace App\Controllers;
 
 use App\Core\Controller;
 use App\Models\{User, Admin, Mahasiswa, Berkas};
+use App\Repository\UserRepository;
 
 
 class AuthController extends Controller
@@ -13,6 +14,8 @@ class AuthController extends Controller
     private Admin $admin;
     private Mahasiswa $mahasiswa;
     private Berkas $berkas;
+
+    private UserRepository $user_repository;
 
 
     public function __construct()
@@ -33,8 +36,8 @@ class AuthController extends Controller
 
     public function adminLogin(): void
     {
-        if (isset($_POST['username']) && isset($_POST['password'])) {
-            $username = $_POST['username'];
+        if (isset($_POST['id_admin']) && isset($_POST['password'])) {
+            $id_admin = $_POST['id_admin'];
             $password = $_POST['password'];
         } else {
             http_response_code(400);
@@ -42,7 +45,7 @@ class AuthController extends Controller
             return;
         }
 
-        $result = $this->admin->checkUserIsAvailable($username, $password);
+        $result = $this->user_repository->getAdminDataByUserIDAndPassword($id_admin, $password);
 
         header("Content-Type: application/json");
         if ($result === false) {
@@ -72,13 +75,13 @@ class AuthController extends Controller
             return;
         }
 
-        $user = $this->user->getUserDataByUserIDAndPassword($_POST['user_id'], $_POST['password']);
+        $user = $this->user_repository->getUserDataByUserIDAndPassword($_POST['user_id'], $_POST['password']);
 
         if ($user != false) {
-            $_SESSION['user_id'] = $user['user_id'];
-            $_SESSION['full_name'] = $user['nama_lengkap'];
-            $_SESSION['role'] = $user['role'];
-            $_SESSION['user_photo'] = '';
+            $_SESSION['user_id'] = $user->getUserId();
+            $_SESSION['full_name'] = $user->getNamaLengkap();
+            $_SESSION['role'] = $user->getRole();
+            $_SESSION['user_photo'] = $user->getProfilePhoto();
 
             if ($_SESSION['role'] == "mahasiswa") {
                 $_SESSION['status']['tugas_akhir'] = $this->berkas->checkUserBerkasTAStatus($_SESSION['user_id']);

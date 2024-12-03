@@ -1,22 +1,18 @@
 <?php
 
-
 namespace App\Models;
 
-use PDO;
-use App\Core\Model;
-
-
-class Admin extends Model
+class Admin extends User
 {
-    public function checkUserIsAvailable(string $username, string $password): bool|array
-    {
-        $query = "SELECT * FROM USERS.Admin WHERE nama_lengkap = ? AND password = ?";
+    private string $id_admin;
 
-        $stmt = $this->db->getConnection()->prepare($query);
-        $stmt->bindParam(1, $username);
-        $stmt->bindParam(2, $password);
-        $stmt->execute();
-        return $stmt->fetch(PDO::FETCH_ASSOC);
+    public function getIdAdmin(): string
+    {
+        return $this->id_admin;
+    }
+
+    public function setIdAdmin(string $id_admin): void
+    {
+        $this->id_admin = $id_admin;
     }
 }

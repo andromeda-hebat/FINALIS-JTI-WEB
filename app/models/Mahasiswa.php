@@ -2,9 +2,17 @@
 
 namespace App\Models;
 
-use App\Core\Model;
+class Mahasiswa extends User
+{
+    private string $nim;
 
+    public function getNim(): string
+    {
+        return $this->nim;
+    }
 
-class Mahasiswa extends Model {
-
+    public function setNim($nim): void
+    {
+        $this->nim = $nim;
+    }
 }
