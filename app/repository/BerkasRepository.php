@@ -3,6 +3,7 @@
 namespace App\Repository;
 
 use App\Core\Repository;
+use App\Models\BerkasProdi;
 use App\Models\BerkasTA;
 
 class BerkasRepository extends Repository
@@ -53,7 +54,7 @@ class BerkasRepository extends Repository
         }
     }
 
-    public function addNewBerkasTA(BerkasTA $berkasTA): void
+    public function addNewBerkasTA(BerkasTA $berkas_TA): void
     {
         try {
             $query = <<<SQL
@@ -65,17 +66,17 @@ class BerkasRepository extends Repository
             SQL;
 
             $stmt = $this->db->getConnection()->prepare($query);
-            $stmt->bindValue(':nim', $berkasTA->nim, \PDO::PARAM_STR);
-            $stmt->bindValue(':laporan_ta', $berkasTA->laporan_ta, \PDO::PARAM_STR);
-            $stmt->bindValue(':aplikasi', $berkasTA->aplikasi, \PDO::PARAM_STR);
-            $stmt->bindValue(':bukti_publikasi', $berkasTA->bukti_publikasi, \PDO::PARAM_STR);
+            $stmt->bindValue(':nim', $berkas_TA->nim, \PDO::PARAM_STR);
+            $stmt->bindValue(':laporan_ta', $berkas_TA->laporan_ta, \PDO::PARAM_STR);
+            $stmt->bindValue(':aplikasi', $berkas_TA->aplikasi, \PDO::PARAM_STR);
+            $stmt->bindValue(':bukti_publikasi', $berkas_TA->bukti_publikasi, \PDO::PARAM_STR);
             $stmt->execute();
         } catch (\PDOException $e) {
             throw new \PDOException($e->getMessage());
         }
     }
 
-    public function addNewBerkasProdi(string $nim, string $toeic, string $skripsi, string $magang, string $kompen): void
+    public function addNewBerkasProdi(BerkasProdi $berkas_prodi): void
     {
         try {
             $query = <<<SQL
@@ -88,11 +89,11 @@ class BerkasRepository extends Repository
             SQL;
 
             $stmt = $this->db->getConnection()->prepare($query);
-            $stmt->bindValue(':nim', $nim, \PDO::PARAM_STR);
-            $stmt->bindValue(':toeic', $toeic, \PDO::PARAM_STR);
-            $stmt->bindValue(':skripsi', $skripsi, \PDO::PARAM_STR);
-            $stmt->bindValue(':magang', $magang, \PDO::PARAM_STR);
-            $stmt->bindValue(':kompen', $kompen, \PDO::PARAM_STR);
+            $stmt->bindValue(':nim', $berkas_prodi->nim, \PDO::PARAM_STR);
+            $stmt->bindValue(':toeic', $berkas_prodi->toeic, \PDO::PARAM_STR);
+            $stmt->bindValue(':skripsi', $berkas_prodi->distribusi_skripsi, \PDO::PARAM_STR);
+            $stmt->bindValue(':magang', $berkas_prodi->distribusi_magang, \PDO::PARAM_STR);
+            $stmt->bindValue(':kompen', $berkas_prodi->surat_bebas_kompen, \PDO::PARAM_STR);
             $stmt->execute();
         } catch (\PDOException $e) {
             throw new \PDOException($e->getMessage());
