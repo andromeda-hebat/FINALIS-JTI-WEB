@@ -140,7 +140,8 @@ class MahasiswaController extends Controller
             'css'=>["assets/css/sidebar"]
         ]);
         $this->view("pages/mahasiswa/riwayat_pengajuan", [
-            'active_page'=>"riwayat_pengajuan"
+            'active_page'=>"riwayat_pengajuan",
+            'req_history'=>$this->berkas_repository->getUserHistoryRequest($_SESSION['user_id'])
         ]);
         $this->view("templates/footer");
     }
