@@ -185,8 +185,8 @@
                     <p>Pengajuan Bebas Tanggungan Prodi</p>
                 </div>
             </div>
-                <h6 class="mt-5 mb-2 text-center text-white">© Copyright FinalisJTI 2024<br>
-                All Rights Reserved</h6>
+                <p class="mt-5 mb-2 text-center text-white">© Copyright FinalisJTI 2024<br>
+                All Rights Reserved</p>
         </footer>
     </section>
 </main>
