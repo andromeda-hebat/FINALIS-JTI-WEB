@@ -36,8 +36,7 @@ $query_script = file_get_contents($sql_file);
 
 
 try {
-    $db = new Database();
-    $db->getConnection()->exec($query_script);
+    Database::getConnection()->exec($query_script);
     echo COLOR_GREEN . "[!]    Database seeder sucessfully to be inserted!" . COLOR_RESET . PHP_EOL;
 } catch (\Exception | \PDOException $e) {
     echo COLOR_RED . "[!]    There is something error happen: " . $e->getMessage() . COLOR_RESET . PHP_EOL;
