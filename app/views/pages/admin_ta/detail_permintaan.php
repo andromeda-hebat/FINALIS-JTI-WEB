@@ -7,7 +7,6 @@
 
         <main class="halaman mx-5 px-5">
             <section class="mt-2">
-
                 <div class="d-flex w-100 align-items-center ">
                     <a href="/permintaan-verif-ta">
                         <svg width="25" height="25" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -30,11 +29,10 @@
                     <h3 class="ms-1 fw-bold mb-0" style="color: #052C65;">Detail Permintaan</h3>
                 </div>
 
-                <!-- card awal -->
+                <?php if ($data['user_file'] != false): ?>
                 <div class="card my-3 px-5 " style="box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);">
                     <div class="card-body d-flex justify-content-between">
 
-                        <!-- div untuk informasi Mahasiswa -->
                         <div class="me-5">
                             <div class="d-flex">
                                 <h5 class="mb-0" style="color: #8D8D8D;">Informasi Mahasiswa</h5>
@@ -69,7 +67,6 @@
                             </div>
                         </div>
 
-                        <!-- div untuk infomarmasi Permintaan -->
                         <div class="me-5">
                             <div class="d-flex">
                                 <h5 style="color: #8D8D8D;">Informasi Permintaan</h5>
@@ -106,17 +103,13 @@
                                     <p class="my-0" style="color: #8D8D8D;">Status</p>
                                     <p class="my-0">Proses</p>
                                 </div>
-
-
                             </div>
-
                         </div>
-
                     </div>
                 </div>
+
                 <!-- card ke dua -->
                 <div class="card mt-2 px-5 py-2 " style="box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);">
-
                     <div class="card-body d-flex justify-content-between">
                         <!-- kiri  -->
                         <div>
@@ -184,6 +177,11 @@
                         data-bs-target="#statusModal">Kirim</button>
                 </div>
 
+                <?php else: ?>
+                    <div class="card justify-content-center align-items-center" style="min-height: 60vh; box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);">
+                        <h1>Data tidak bisa ditemukan!</h1>
+                    </div>
+                <?php endif; ?>
             </section>
 
 

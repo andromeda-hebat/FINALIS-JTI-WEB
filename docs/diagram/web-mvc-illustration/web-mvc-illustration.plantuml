@@ -1,0 +1,33 @@
+@startuml
+skinparam packageStyle rectangle
+skinparam linetype polyline
+
+package "Web Client" {
+    rectangle View as V {
+        component "HTML/CSS/JS" as HTML
+    }
+}
+
+package "Web Server" {
+    component Controller as C {
+        [Request Handling]
+        [Routing Logic]
+    }
+
+    component Model as M {
+        [Business Logic]
+        [Data Validation]
+    }
+}
+
+package "Database" {
+    database "DB" as DB
+}
+
+V -down-> C : "Request (GET, POST, etc.)"
+C --> M : "Business Logic Call"
+M --> DB : "Query/CRUD Operations"
+DB --> M : "Data Response"
+M --> C : "Processed Data"
+C --> V : "Response (HTML/JSON)"
+@enduml
