@@ -149,21 +149,21 @@
                             <td>Nama Mahasiswa</td>
                             <td>Submit form administrasi prodi</td>
                             <td>24 Oktober, 2024</td>
-                            <td><a href="#" class="btn btn-primary">Detail</a></td>
+                            <td><a href="/detail-permintaan-ta" class="btn btn-primary">Detail</a></td>
                         </tbody>
                         <tbody>
                             <td>2341720001</td>
                             <td>Nama Mahasiswa</td>
                             <td>Submit form administrasi prodi</td>
                             <td>24 Oktober, 2024</td>
-                            <td><a href="#" class="btn btn-primary">Detail</a></td>
+                            <td><a href="/detail-permintaan-ta" class="btn btn-primary">Detail</a></td>
                         </tbody>
                         <tbody>
                             <td>2341720001</td>
                             <td>Nama Mahasiswa</td>
                             <td>Submit form administrasi prodi</td>
                             <td>24 Oktober, 2024</td>
-                            <td><a href="#" class="btn btn-primary">Detail</a></td>
+                            <td><a href="/detail-permintaan-ta" class="btn btn-primary">Detail</a></td>
                         </tbody>
                     </table>
                 </div>
