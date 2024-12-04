@@ -53,22 +53,7 @@
                     </svg>
                 </div>
             <?php elseif (strcasecmp($_SESSION['status']['tugas_akhir'], "ditolak") == 0): ?>
-                <div id="body-content" class="mt-4" style="min-height: 75vh;">
-                    <div class="px-4 card card-body" style="box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25); ">
-                        <p class="text-center">
-                            Formulir yang anda ajukan belum dapat diverifikasi periksa kembali berkas yang<br>anda
-                            upload,
-                            baca keterangan dari admin!
-                        </p>
-                        <p class="mt-4 text-start fw-bold">Keterangan : </p>
-
-                        <textarea name="description" id="keterangan" cols="105" rows="10"
-                            style="resize: none;" disabled>Ini harusnya begitu</textarea>
-                    </div>
-                    <div class="d-flex justify-content-end mt-3">
-                        <button id="btn-edit-form" class="px-4 text-white" style="background-color: #052C65; border-color: #052C65;">Kirim Ulang Formulir</button>
-                    </div>
-                </div>
+                <?php include __DIR__ . '/../../components/mahasiswa/info_data_ditolak.php' ?>
             <?php endif; ?>
         </main>
     </div>
@@ -99,6 +84,14 @@
 
 
 
+
+
+<!-- Bootstrap Modal -->
+<?php include __DIR__ . '/../../components/bs_modal/server_error.php' ?>
+
+
+
+
 <!-- JavaScript for this page -->
 <script src="https://cdn.jsdelivr.net/npm/jquery@3.7.1/dist/jquery.min.js"></script>
 <script>
@@ -119,14 +112,9 @@
                     location.reload();
                 },
                 error: (xhr, status, error) => {
-                    alert('Telah terjadi error pada pengiriman formulir!')
+                    $('#server-error-bs-modal').modal('show');
                 }
             });
-        })
-
-        $('#btn-edit-form').on('click', function() {
-            $('#body-content').hide();
-            $('#empty-form-content').show();
         })
     });
 </script>
