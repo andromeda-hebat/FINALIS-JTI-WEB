@@ -13,7 +13,7 @@
                 <div class="mt-3 d-flex justify-content-between w-100 align-items-center">
                     <!-- Sort -->
                     <h6 class="m-0">Seluruh Permintaan</h6>
-    
+
                 </div>
 
                 <!-- div kotak tabel -->
@@ -29,41 +29,19 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
-                                <td>2341720001</td>
-                                <td>Nama Mahasiswa</td>
-                                <td>Submit form administrasi prodi</td>
-                                <td>24 Oktober, 2024</td>
-                                <td><a href="/detail-permintaan" class="btn btn-primary">Detail</a></td>
-                            </tr>
-                            <tr>
-                                <td>2341720001</td>
-                                <td>Nama Mahasiswa</td>
-                                <td>Submit form administrasi prodi</td>
-                                <td>24 Oktober, 2024</td>
-                                <td><a href="/detail-permintaan" class="btn btn-primary">Detail</a></td>
-                            </tr>
-                            <tr>
-                                <td>2341720001</td>
-                                <td>Nama Mahasiswa</td>
-                                <td>Submit form administrasi prodi</td>
-                                <td>24 Oktober, 2024</td>
-                                <td><a href="/detail-permintaan" class="btn btn-primary">Detail</a></td>
-                            </tr>
-                            <tr>
-                                <td>2341720001</td>
-                                <td>Nama Mahasiswa</td>
-                                <td>Submit form administrasi prodi</td>
-                                <td>24 Oktober, 2024</td>
-                                <td><a href="/detail-permintaan" class="btn btn-primary">Detail</a></td>
-                            </tr>
-                            <tr>
-                                <td>2341720001</td>
-                                <td>Nama Mahasiswa</td>
-                                <td>Submit form administrasi prodi</td>
-                                <td>24 Oktober, 2024</td>
-                                <td><a href="/detail-permintaan" class="btn btn-primary">Detail</a></td>
-                            </tr>
+                            <?php
+                            $iteration = 0;
+                            foreach ($data['all_req_verif'] as $key => $value):
+                                ?>
+                                <tr>
+                                    <td><?= $value->nim ?></td>
+                                    <td><?= $value->nama_lengkap ?></td>
+                                    <td><?= $value->tanggal_request ?></td>
+                                    <td><?= $value->keterangan_verifikasi ?></td>
+                                    <td><a href="/permintaan-verif-prodi/detail/<?= $value->id_verifikasi ?>"
+                                            class="btn btn-primary">Detail</a></td>
+                                </tr>
+                            <?php endforeach; ?>
                         </tbody>
                     </table>
                 </div>

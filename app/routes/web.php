@@ -19,6 +19,10 @@ Router::add('POST', '/login', AuthController::class,'login');
 Router::add('POST', '/logout', AuthController::class,'logout');
 
 
+//Notif
+Router::add('GET', '/notifikasi', NotificationController::class, 'notif');
+
+
 // User: Mahasiswa
 Router::add('GET', '/tugas-akhir', MahasiswaController::class, 'tugasAkhir');
 Router::add('POST', '/tugas-akhir', MahasiswaController::class, 'processTugasAkhir');
@@ -30,15 +34,13 @@ Router::add('GET', '/permintaan-surat', MahasiswaController::class, 'permintaanS
 
 // User: Admin Prodi
 Router::add('GET', '/permintaan-verifikasi', AdminProdiController::class, 'requestVerifikasi');
-Router::add('GET', '/detail-permintaan', AdminProdiController::class, 'detailsRequest');
+Router::add('GET', '/permintaan-verif-prodi/detail/([0-9]+)', AdminProdiController::class, 'showDetailReq');
 
-//Notif
-Router::add('GET', '/notifikasi', NotificationController::class, 'notif');
 
 // User: Admin TA
 Router::add('GET', '/permintaan-verif-ta', AdminTAController::class, 'requestVerifikasi');
 Router::add('GET', '/permintaan-verif-ta/detail/([0-9]+)', AdminTAController::class, 'showDetailReq');
-Router::add('GET', '/detail-permintaan-ta', AdminTAController::class, 'detailsRequest');
+
 
 //Admin Jurusan
 Router::add('GET', '/kelola-admin', AdminJurusanController::class, 'kelolaAdmin');

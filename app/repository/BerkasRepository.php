@@ -186,4 +186,29 @@ class BerkasRepository extends Repository
             throw new \PDOException($e->getMessage());
         }
     }
+
+    public function getSingleBerkasProdiReq(int $id_verifikasi): bool|VerifikasiBerkas
+    {
+        try {
+            $stmt = Database::getConnection()->prepare(<<<SQL
+                SELECT
+                    v.id_verifikasi,
+                    p.id_berkas_prodi AS id_berkas,
+                    m.nim,
+                    m.nama_lengkap,
+                    p.tanggal_request,
+                    v.status_verifikasi,
+                    v.keterangan_verifikasi
+                FROM USERS.Mahasiswa m
+                INNER JOIN BERKAS.Prodi p ON m.nim = p.nim
+                INNER JOIN VER.VerifikasiBerkas v ON v.id_berkas = p.id_berkas_prodi
+                WHERE v.id_verifikasi = :id_verifikasi
+            SQL);
+            $stmt->bindValue(':id_verifikasi', $id_verifikasi, \PDO::PARAM_INT);
+            $stmt->setFetchMode(\PDO::FETCH_CLASS, VerifikasiBerkas::class);
+            return $stmt->fetch();
+        } catch (\PDOException $e) {
+            throw new \PDOException($e->getMessage());
+        }
+    }
 }
