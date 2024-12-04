@@ -1,0 +1,109 @@
+@startuml
+
+package App.Core {
+    class Database {
+        {static} - DB_SERVER: string
+        {static} - DB_NAME: string
+        {static} - DB_USER: string
+        {static} - DB_PASSWORD: string
+        {static} - conn: PDO
+        {static} - initialize(): void
+        {static} + getConnectionWithoutDB(): PDO
+        {static} + getConnection(): PDO
+    }
+
+    class Router {
+        {static} + routes: Array = []
+        {static} + add(method: String, path: String, controller: String, function: String): void
+        {static} + run(): void
+    }
+
+    abstract class Controller {
+        + view(view : String, data: Array= []): void
+    }
+}
+
+package App.Controller {
+    class AuthController {
+        - user_repository: UserRepository
+        - berkas_repository: BerkasRepository
+        + __construct(): void
+        + viewLogin(): void
+        + adminLogin(): void
+        + login(): void
+        + logout(): void
+    }
+
+    class MahasiswaController {
+        - berkas_repository: BerkasRepository
+        __
+        + __construct(): void
+        + tugasAkhir(): void
+        + processTugasAkhir(): void
+        + administrasiProdi(): void
+        + processAdministrasiProdi(): void
+        + riwayatPengajuan(): void
+        + permintaanSurat(): void
+    }
+
+    MahasiswaController -up-|> App.Core.Controller
+    AuthController -up-|> App.Core.Controller
+}
+
+package App.Models {
+    class Berkas {
+        + nim: string
+        + tanggal_request: string
+        + __construct(): void
+    }
+
+    class BerkasProdi extends Berkas {
+        + id_berkas_prodi: string
+        + toeic: string
+        + distribusi_skripsi: string
+        + distribusi_magang: string
+        + surat_bebas_kompen: string
+        + __construct(): void
+    }
+
+    class BerkasTA extends Berkas {
+        + laporan_ta: string
+        + aplikasi: string
+        + bukti_publikasi: string
+    }
+
+    class User {
+        + user_id: string
+        + nama_lengkap: string
+        + role: string 
+        + password: string 
+        + foto_profil: string 
+    }
+
+    class Admin extends User {
+        + id_admin: string
+    }
+}
+
+package App.Repository {
+    class BerkasRepository {
+        + checkUserBerkasTAStatus(user_id: string): bool|string
+        + checkUserBerkasProdiStatus(user_id: string): bool|string
+        + addNewBerkasTA(berkas_TA: BerkasTA): void
+        + addNewBerkasProdi(berkas_prodi: BerkasProdi): void
+        + getUserHistoryRequest(user_id: string): array
+    }
+
+    class UserRepository {
+        + getUserDataByUserIDAndPassword(user_id: String, password: String): bool|User
+        + getAdminDataByUserIDAndPassword(id_admin: String, password: String): bool|Admin
+    }
+
+    BerkasRepository ..> App.Core.Database
+    BerkasRepository ..> App.Models.BerkasProdi
+    BerkasRepository ..> App.Models.BerkasTA
+    UserRepository ..>App.Core.Database
+    UserRepository ..> App.Models.User
+    UserRepository ..> App.Models.Admin
+}
+@enduml
