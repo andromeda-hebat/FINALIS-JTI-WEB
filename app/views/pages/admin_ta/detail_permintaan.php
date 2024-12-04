@@ -61,8 +61,8 @@
                                 <img src="assets/img/foto.jpg" alt="Profil" class="rounded-circle"
                                     style="width: 30px; height: 30px; background-color: #ddd;">
                                 <div class="ms-3">
-                                    <p class="my-0">Stevan Zaky S</p>
-                                    <p class="my-0">NIM 2341720101</p>
+                                    <p class="my-0"><?= $data['user_file']->nama_lengkap ?></p>
+                                    <p class="my-0">NIM <span><?= $data['user_file']->nim ?></span></p>
                                 </div>
                             </div>
                         </div>
@@ -97,11 +97,11 @@
                                 </div>
                                 <div class="mx-5">
                                     <p class="my-0" style="color: #8D8D8D;">ID</p>
-                                    <p class="my-0">RTA-0100145</p>
+                                    <p class="my-0"><?= $data['user_file']->id_verifikasi ?></p>
                                 </div>
                                 <div class="ms-5">
                                     <p class="my-0" style="color: #8D8D8D;">Status</p>
-                                    <p class="my-0">Proses</p>
+                                    <p class="my-0"><?= $data['user_file']->status_verifikasi ?></p>
                                 </div>
                             </div>
                         </div>
@@ -109,7 +109,7 @@
                 </div>
 
                 <!-- card ke dua -->
-                <div class="card mt-2 px-5 py-2 " style="box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);">
+                <form action="/kirim-permintaan-verifikasi" method="POST" class="card mt-2 px-5 py-2 " style="box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);">
                     <div class="card-body d-flex justify-content-between">
                         <!-- kiri  -->
                         <div>
@@ -170,12 +170,12 @@
                             <textarea name="pesan" id="pesan" style="resize: none;" rows="8" cols="59"></textarea>
                         </div>
                     </div>
-                </div>
-                <div class="d-flex justify-content-end">
-                    <button type="button" value="Kirim" id="submitBtn" class="px-4 text-white mt-3"
-                        style="background-color:#052C65 ;" data-bs-toggle="modal"
-                        data-bs-target="#statusModal">Kirim</button>
-                </div>
+                    <div class="d-flex justify-content-end">
+                        <button type="submit" value="Kirim" id="submitBtn" class="px-4 text-white mt-3"
+                            style="background-color:#052C65 ;" data-bs-toggle="modal"
+                            data-bs-target="#statusModal">Kirim</button>
+                    </div>
+                </form>
 
                 <?php else: ?>
                     <div class="card justify-content-center align-items-center" style="min-height: 60vh; box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);">
