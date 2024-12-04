@@ -28,7 +28,7 @@ class Database
             $conn = new \PDO($dsn, self::$DB_USER, self::$DB_PASSWORD);
             $conn->setAttribute(\PDO::ATTR_ERRMODE, \PDO::ERRMODE_EXCEPTION);
         } catch (\PDOException $e) {
-            throw new \Exception("Database connection failed: " . $e->getMessage());
+            echo "Database connection failed: " . $e->getMessage();
         }
         
         return $conn;
@@ -45,7 +45,7 @@ class Database
                 self::$conn = new \PDO($dsn, self::$DB_USER, self::$DB_PASSWORD);
                 self::$conn->setAttribute(\PDO::ATTR_ERRMODE, \PDO::ERRMODE_EXCEPTION);
             } catch (\PDOException $e) {
-                throw new \Exception("Database connection failed: " . $e->getMessage());
+                echo "Database connection failed: " . $e->getMessage();
             }
         }
 
