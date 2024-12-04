@@ -1,0 +1,20 @@
+@startuml
+actor Client
+entity "Web Browser" as Browser
+entity "Server" as Server
+entity "Controller" as Controller
+entity "Repository" as Repository
+entity "Model" as Model
+entity "View" as View
+
+Client -> Browser : Inisialisasi request
+Browser -> Server : Mengirimkan request (HTTP)
+Server -> Controller : Routes Request
+Controller -> Repository : Interaksi dengan data
+Repository -> Model : Mapping data ke OOP
+Model -> Controller : Mengirimkan data
+Controller -> View : Mengirimkan data untuk proses render
+View -> Browser : Mengirimkan konten yang telah dirender (HTML)
+Browser -> Client : Menampilkan konten
+
+@enduml
