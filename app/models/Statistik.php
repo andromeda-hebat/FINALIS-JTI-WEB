@@ -13,4 +13,3 @@ class Statistik extends Model
     public string $keterangan_verifikasi;
 
 }
-?>

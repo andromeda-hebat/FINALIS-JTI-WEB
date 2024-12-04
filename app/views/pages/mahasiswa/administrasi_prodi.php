@@ -5,34 +5,33 @@
         <main class="container px-4" style="margin-top: 5rem;">
             <h2 class="mt-2 ms-1 fw-bold" style="color: #052C65;">Formulir Administrasi Prodi</h2>
 
-            <?php if (strcasecmp($_SESSION['status']['administrasi_prodi'], "kosong") == 0): ?>
-                <div id="body-content" class="mt-4">
-                    <form id="administrasi-prodi-form" action="/administrasi-prodi" method="post" enctype="multipart/form-data">
-                        <div class="card card-body" style="box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);">
-                            <p class="mt-3">Upload berkas berikut untuk memverifikasi tanggungan prodi anda</p>
-                            <label for="skripsi" class="form-label mb-0">Distribusi Laporan Skripsi</label>
-                            <p class="mb-0" style="color:#7C7C7C ;">(File scan PDF)</p>
-                            <input type="file" name="distribusi_tugas_akhir" accept=".pdf" id="input-laporan-ta" class="form-control w-50">
-                            <br>
-                            <label for="magang" class="form-label mb-0">Distribusi Laporan Magang</label>
-                            <p class="mb-0" style="color: #7C7C7C;">(File scan PDF).</p>
-                            <input type="file" name="distribusi_magang" accept=".pdf" id="input-laporan-magang" class="form-control w-50">
-                            <br>
-                            <label for="kompen" class="form-label mb-0">Surat Bebas Kompen</label>
-                            <p class="mb-0" style="color: #7C7C7C;">(File scan PDF)</p>
-                            <input type="file" name="bebas_kompen" accept=".pdf" id="input-bebas-kompen" class="form-control w-50">
-                            <br>
-                            <label for="toeic" class="form-label mb-0">Sertifikat TOEIC</label>
-                            <p class="mb-0" style="color: #7C7C7C;">(File scan PDF)</p>
-                            <input type="file" name="toeic" accept=".pdf" id="input-toeic" class="mb-2 form-control w-50">
-                        </div>
-                        <div class="d-flex justify-content-end">
-                            <input type="submit" value="Kirim" id="submitBtn" class="text-white mt-3 px-3"
-                                style="background-color:#052C65 ;">
-                        </div>
-                    </form>
-                </div>
-            <?php elseif (strcasecmp($_SESSION['status']['administrasi_prodi'], "diajukan") == 0): ?>
+            <div id="empty-form-content" class="mt-4" style="display: <?php echo (strcasecmp($_SESSION['status']['administrasi_prodi'], 'kosong') == 0) ? 'block' : 'none'; ?>;">
+                <form id="administrasi-prodi-form" action="/administrasi-prodi" method="post" enctype="multipart/form-data">
+                    <div class="card card-body" style="box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);">
+                        <p class="mt-3">Upload berkas berikut untuk memverifikasi tanggungan prodi anda</p>
+                        <label for="skripsi" class="form-label mb-0">Distribusi Laporan Skripsi</label>
+                        <p class="mb-0" style="color:#7C7C7C ;">(File scan PDF)</p>
+                        <input type="file" name="distribusi_tugas_akhir" accept=".pdf" id="input-laporan-ta" class="form-control w-50">
+                        <br>
+                        <label for="magang" class="form-label mb-0">Distribusi Laporan Magang</label>
+                        <p class="mb-0" style="color: #7C7C7C;">(File scan PDF).</p>
+                        <input type="file" name="distribusi_magang" accept=".pdf" id="input-laporan-magang" class="form-control w-50">
+                        <br>
+                        <label for="kompen" class="form-label mb-0">Surat Bebas Kompen</label>
+                        <p class="mb-0" style="color: #7C7C7C;">(File scan PDF)</p>
+                        <input type="file" name="bebas_kompen" accept=".pdf" id="input-bebas-kompen" class="form-control w-50">
+                        <br>
+                        <label for="toeic" class="form-label mb-0">Sertifikat TOEIC</label>
+                        <p class="mb-0" style="color: #7C7C7C;">(File scan PDF)</p>
+                        <input type="file" name="toeic" accept=".pdf" id="input-toeic" class="mb-2 form-control w-50">
+                    </div>
+                    <div class="d-flex justify-content-end">
+                        <input type="submit" value="Kirim" id="submitBtn" class="text-white mt-3 px-3"
+                            style="background-color:#052C65 ;">
+                    </div>
+                </form>
+            </div>
+            <?php if (strcasecmp($_SESSION['status']['administrasi_prodi'], "diajukan") == 0): ?>
                 <?php include __DIR__ . '/../../components/mahasiswa/info_data_berhasil_dikirim.php' ?>
             <?php elseif (strcasecmp($_SESSION['status']['administrasi_prodi'], "disetujui") == 0): ?>
                 <div id="body-content"
@@ -55,17 +54,7 @@
                     </svg>
                 </div>
             <?php elseif (strcasecmp($_SESSION['status']['administrasi_prodi'], "ditolak") == 0): ?>
-                <div id="body-content"
-                    class="mt-4 card card-body d-flex flex-column justify-content-center align-items-center"
-                    style="box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25); min-height: 75vh; max-height: 75vh;">
-                    <p>Formulir yang anda ajukan belum dapat diverifikasi periksa kembali berkas yang anda upload, baca
-                        keterangan dari admin!</p>
-                    <p class="fw-bold">Keterangan:</p>
-                    <textarea name="description" id="keterangan" cols="50" rows="10" style="resize: none;">
-                        </textarea>
-                    <div class="w-100">
-                        <button>Ajukan Formulir Ulang</button>
-                    </div>
+                <?php include __DIR__ . '/../../components/mahasiswa/info_data_ditolak.php' ?>
             <?php endif; ?>
         </main>
     </div>
@@ -117,6 +106,7 @@
                 contentType: false,
                 success: (response) => {
                     alert('Formulir sukses terkirim!');
+                    location.reload();
                 },
                 error: (xhr, status, error) => {
                     $('#server-error-bs-modal').modal('show');

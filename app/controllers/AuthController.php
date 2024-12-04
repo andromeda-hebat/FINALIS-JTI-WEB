@@ -26,7 +26,7 @@ class AuthController extends Controller
         $this->view("pages/general/login");
         $this->view("templates/footer");
     }
-
+    
     public function adminLogin(): void
     {
         if (isset($_POST['id_admin']) && isset($_POST['password'])) {
@@ -38,7 +38,17 @@ class AuthController extends Controller
             return;
         }
 
-        $result = $this->user_repository->getAdminDataByUserIDAndPassword($id_admin, $password);
+        try {
+            $result = $this->user_repository->getAdminDataByUserIDAndPassword($id_admin, $password);
+        } catch (\PDOException $e) {
+            header("Content-Type: application/json");
+            http_response_code(500);
+            echo json_encode([
+                "status"=>"error",
+                "message"=>"Database connectivity error!",
+                "detail"=>$e->getMessage()
+            ]);
+        }
 
         header("Content-Type: application/json");
         if ($result === false) {
@@ -68,7 +78,17 @@ class AuthController extends Controller
             return;
         }
 
-        $user = $this->user_repository->getUserDataByUserIDAndPassword($_POST['user_id'], $_POST['password']);
+        try {
+            $user = $this->user_repository->getUserDataByUserIDAndPassword($_POST['user_id'], $_POST['password']);
+        } catch (\PDOException $e) {
+            header("Content-Type: application/json");
+            http_response_code(500);
+            echo json_encode([
+                "status"=>"error",
+                "message"=>"Database connectivity error!",
+                "detail"=>$e->getMessage()
+            ]);
+        }
 
         if ($user != false) {
             $_SESSION['user_id'] = $user->user_id;
