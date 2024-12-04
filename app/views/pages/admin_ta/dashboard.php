@@ -156,7 +156,7 @@
                                 <td><?= $value->nama_lengkap ?></td>
                                 <td><?= $value->tanggal_request ?></td>
                                 <td><?= $value->keterangan_verifikasi ?></td>
-                                <td><a href="#" class="btn btn-primary">Detail</a></td>
+                                <td><a href="/permintaan-verif-ta/detail/<?= $value->id_verifikasi ?>" class="btn btn-primary">Detail</a></td>
                             </tr>
                             <?php endforeach; ?>
                         </tbody>

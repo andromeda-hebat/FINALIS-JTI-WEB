@@ -37,6 +37,7 @@ Router::add('GET', '/notifikasi', NotificationController::class, 'notif');
 
 // User: Admin TA
 Router::add('GET', '/permintaan-verif-ta', AdminTAController::class, 'requestVerifikasi');
+Router::add('GET', '/permintaan-verif-ta/detail/([0-9])', AdminTAController::class, 'showDetailReq');
 Router::add('GET', '/detail-permintaan-ta', AdminTAController::class, 'detailsRequest');
 
 //Admin Jurusan

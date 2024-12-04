@@ -11,7 +11,6 @@ use App\Repository\BerkasRepository;
 
 class AdminTAController extends Controller
 {
-
     public function requestVerifikasi(): void
     {
         $data['title'] = "Permintaan Verifikasi";
@@ -21,12 +20,27 @@ class AdminTAController extends Controller
         $this->view("templates/footer");
     }
 
-    public function detailsRequest(): void
+    public function showDetailReq(int $id_verifikasi): void
     {
-        $data['title'] = "Detail Permintaan";
-        $data['css'] = ["assets/css/sidebar"];
-        $this->view("templates/header", $data);
-        $this->view("pages/admin_ta/detail_permintaan");
+        try {
+            $user_file = (new BerkasRepository)->getSingleBerkasTAReq($id_verifikasi);
+        } catch (\PDOException $e) {
+            http_response_code(500);
+            echo json_encode([
+                "status"=>"error",
+                "message"=>"Database connectivity error!",
+                "detail"=>$e->getMessage()
+            ]);
+            return;
+        }
+
+        $this->view("templates/header", [
+            'title' => "Detail Permintaan",
+            'css' => ["assets/css/sidebar"]
+        ]);
+        $this->view("pages/admin_ta/detail_permintaan", [
+            'user_file' => $user_file
+        ]);
         $this->view("templates/footer");
     }
 }

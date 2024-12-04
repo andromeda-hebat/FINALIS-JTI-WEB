@@ -132,4 +132,22 @@ class BerkasRepository extends Repository
             throw new \PDOException($e->getMessage());
         }
     }
+
+    public function getSingleBerkasTAReq(int $id_verifikasi): bool|VerifikasiBerkas
+    {
+        try {
+            $stmt = Database::getConnection()->prepare(<<<SQL
+                SELECT vb.id_verifikasi, ta.id_ta, m.nim, m.nama_lengkap, ta.tanggal_request, vb.status_verifikasi, vb.keterangan_verifikasi
+                FROM VER.VerifikasiBerkas vb
+                INNER JOIN BERKAS.TA ta ON vb.id_berkas = ta.id_ta
+                INNER JOIN USERS.Mahasiswa m ON ta.nim = m.nim
+                WHERE vb.id_verifikasi = :id_verifikasi
+            SQL);
+            $stmt->bindValue(':id_verifikasi', $id_verifikasi, \PDO::PARAM_INT);
+            $stmt->setFetchMode(\PDO::FETCH_CLASS, VerifikasiBerkas::class);
+            return $stmt->fetch();
+        } catch (\PDOException $e) {
+            throw new \PDOException($e->getMessage());
+        }
+    }
 }
