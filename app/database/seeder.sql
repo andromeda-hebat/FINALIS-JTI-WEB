@@ -1,5 +1,5 @@
 USE [finalis_jti]
-GO
+
 INSERT [USERS].[Mahasiswa] ([nim], [nama_lengkap], [password], [email], [jurusan], [prodi], [foto_profil], [tahun_masuk]) VALUES (N'1211112', N'Budi Setiawan', N'121212', N'abc@gmail.com', N'Teknologi Informasi', N'D4 Teknik Informatika', N'abc.png', N'2020')
 INSERT [USERS].[Mahasiswa] ([nim], [nama_lengkap], [password], [email], [jurusan], [prodi], [foto_profil], [tahun_masuk]) VALUES (N'2341720001', N'Indira Nafa Aurah Huda', N'indira', N'indiranafa@email.com', N'Teknologi Informasi', N'D4 Teknik Informatika', N'C:\Users\khoir\Downloads\foto cowok.jpg', N'2023')
 INSERT [USERS].[Mahasiswa] ([nim], [nama_lengkap], [password], [email], [jurusan], [prodi], [foto_profil], [tahun_masuk]) VALUES (N'2341720008', N'Haikal Muhammad Rafli', N'haikal', N'haikalrafli@email.com', N'Teknologi Informasi', N'D4 Teknik Informatika', N'C:\Users\khoir\Downloads\foto cowok.jpg', N'2023')
@@ -8,24 +8,24 @@ INSERT [USERS].[Mahasiswa] ([nim], [nama_lengkap], [password], [email], [jurusan
 INSERT [USERS].[Mahasiswa] ([nim], [nama_lengkap], [password], [email], [jurusan], [prodi], [foto_profil], [tahun_masuk]) VALUES (N'2341720101', N'Stevan Zaky Setyanto', N'stevan', N'stevanzaky@email.com', N'Teknologi Informasi', N'D4 Teknik Informatika', N'C:\Users\khoir\Downloads\foto cowok.jpg', N'2023')
 INSERT [USERS].[Mahasiswa] ([nim], [nama_lengkap], [password], [email], [jurusan], [prodi], [foto_profil], [tahun_masuk]) VALUES (N'2341720198', N'Fajar Aditya Nugraha', N'fajar', N'fajaraditya@email.com', N'Teknologi Informasi', N'D4 Teknik Informatika', N'C:\Users\khoir\Downloads\foto cowok.jpg', N'2023')
 INSERT [USERS].[Mahasiswa] ([nim], [nama_lengkap], [password], [email], [jurusan], [prodi], [foto_profil], [tahun_masuk]) VALUES (N'2341720250', N'Afifah Khoirunnisa', N'afifahnisa', N'khoirunnisaafifah40@email.com', N'Teknologi Informasi', N'D4 Teknik Informatika', N'C:\Users\khoir\Downloads\foto cowok.jpg', N'2023')
-GO
+
 INSERT [BERKAS].[TA] ([id_ta], [nim], [tanggal_request], [laporan_TA], [aplikasi], [bukti_publikasi]) VALUES (N'TA0001', N'2341720081', CAST(N'2024-12-01' AS Date), N'laporan_ta1.pdf', N'aplikasi1.zip', N'bukti_publikasi1.pdf')
 INSERT [BERKAS].[TA] ([id_ta], [nim], [tanggal_request], [laporan_TA], [aplikasi], [bukti_publikasi]) VALUES (N'TA0002', N'2341720100', CAST(N'2024-12-01' AS Date), N'laporan_ta2.pdf', N'aplikasi2.zip', N'bukti_publikasi2.pdf')
 INSERT [BERKAS].[TA] ([id_ta], [nim], [tanggal_request], [laporan_TA], [aplikasi], [bukti_publikasi]) VALUES (N'TA0003', N'2341720101', CAST(N'2024-12-01' AS Date), N'laporan_ta3.pdf', N'aplikasi3.zip', N'bukti_publikasi3.pdf')
 INSERT [BERKAS].[TA] ([id_ta], [nim], [tanggal_request], [laporan_TA], [aplikasi], [bukti_publikasi]) VALUES (N'TA0004', N'2341720198', CAST(N'2024-12-01' AS Date), N'laporan_ta4.pdf', N'aplikasi4.zip', N'bukti_publikasi4.pdf')
 INSERT [BERKAS].[TA] ([id_ta], [nim], [tanggal_request], [laporan_TA], [aplikasi], [bukti_publikasi]) VALUES (N'TA0005', N'2341720250', CAST(N'2024-12-01' AS Date), N'laporan_ta5.pdf', N'aplikasi5.zip', N'bukti_publikasi5.pdf')
-GO
+
 INSERT [BERKAS].[Prodi] ([id_berkas_prodi], [nim], [tanggal_request], [toeic], [distribusi_skripsi], [distribusi_magang], [surat_bebas_kompen]) VALUES (N'PR0001', N'2341720081', CAST(N'2024-12-01' AS Date), N'800', N'file_skripsi2.pdf', N'file_magang2.pdf', N'surat_kompen2.pdf')
 INSERT [BERKAS].[Prodi] ([id_berkas_prodi], [nim], [tanggal_request], [toeic], [distribusi_skripsi], [distribusi_magang], [surat_bebas_kompen]) VALUES (N'PR0002', N'2341720100', CAST(N'2024-12-01' AS Date), N'850', N'file_skripsi3.pdf', N'file_magang3.pdf', N'surat_kompen3.pdf')
 INSERT [BERKAS].[Prodi] ([id_berkas_prodi], [nim], [tanggal_request], [toeic], [distribusi_skripsi], [distribusi_magang], [surat_bebas_kompen]) VALUES (N'PR0003', N'2341720101', CAST(N'2024-12-01' AS Date), N'750', N'file_skripsi1.pdf', N'file_magang1.pdf', N'surat_kompen1.pdf')
 INSERT [BERKAS].[Prodi] ([id_berkas_prodi], [nim], [tanggal_request], [toeic], [distribusi_skripsi], [distribusi_magang], [surat_bebas_kompen]) VALUES (N'PR0004', N'2341720198', CAST(N'2024-12-01' AS Date), N'800', N'file_skripsi2.pdf', N'file_magang2.pdf', N'surat_kompen2.pdf')
 INSERT [BERKAS].[Prodi] ([id_berkas_prodi], [nim], [tanggal_request], [toeic], [distribusi_skripsi], [distribusi_magang], [surat_bebas_kompen]) VALUES (N'PR0005', N'2341720250', CAST(N'2024-12-01' AS Date), N'800', N'file_skripsi2.pdf', N'file_magang2.pdf', N'surat_kompen2.pdf')
 INSERT [BERKAS].[Prodi] ([id_berkas_prodi], [nim], [tanggal_request], [toeic], [distribusi_skripsi], [distribusi_magang], [surat_bebas_kompen]) VALUES (N'PR0006', N'2341720001', CAST(N'2024-12-02' AS Date), N'674daf149a9ff--Dasar-DasarLatihanBeban.pdf', N'674daf149af0a--Jobsheet-13-GUI-Database.id.pdf', N'674daf149b386--Salinan TEKS - Copy.docx - Google Dokumen.pdf', N'674daf149b984--04. Dasar PHP_compressed.pdf')
-GO
+
 INSERT [USERS].[Admin] ([id_admin], [nama_lengkap], [password], [email], [jabatan], [foto_profil]) VALUES (N'A12345', N'Bagas', N'bag', N'admin.ta@email.com', N'Admin TA', N'C:\Users\khoir\Downloads\foto cowok.jpg')
 INSERT [USERS].[Admin] ([id_admin], [nama_lengkap], [password], [email], [jabatan], [foto_profil]) VALUES (N'A12346', N'Siti', N'siti', N'admin.prodi@email.com', N'Admin Prodi', N'C:\Users\khoir\Downloads\foto cowok.jpg')
 INSERT [USERS].[Admin] ([id_admin], [nama_lengkap], [password], [email], [jabatan], [foto_profil]) VALUES (N'A12347', N'Danin', N'dan', N'admin.jurusan@email.com', N'Admin Jurusan', N'C:\Users\khoir\Downloads\foto cowok.jpg')
-GO
+
 SET IDENTITY_INSERT [VER].[VerifikasiBerkas] ON 
 
 INSERT [VER].[VerifikasiBerkas] ([id_verifikasi], [id_berkas], [jenis_berkas], [id_admin], [status_verifikasi], [tanggal_verifikasi], [keterangan_verifikasi]) VALUES (1, N'PR0001', N'Prodi', N'A12346', N'Disetujui', CAST(N'2024-12-01' AS Date), N'Berkas telah disetujui.')
@@ -40,4 +40,4 @@ INSERT [VER].[VerifikasiBerkas] ([id_verifikasi], [id_berkas], [jenis_berkas], [
 INSERT [VER].[VerifikasiBerkas] ([id_verifikasi], [id_berkas], [jenis_berkas], [id_admin], [status_verifikasi], [tanggal_verifikasi], [keterangan_verifikasi]) VALUES (10, N'TA0005', N'TA', N'A12345', N'Disetujui', CAST(N'2024-12-01' AS Date), N'Berkas telah disetujui')
 INSERT [VER].[VerifikasiBerkas] ([id_verifikasi], [id_berkas], [jenis_berkas], [id_admin], [status_verifikasi], [tanggal_verifikasi], [keterangan_verifikasi]) VALUES (11, N'PR0006', N'Prodi', N'A12346', N'Diajukan', CAST(N'2024-12-02' AS Date), N'Berkas telah diajukan')
 SET IDENTITY_INSERT [VER].[VerifikasiBerkas] OFF
-GO
+
