@@ -11,34 +11,21 @@
                     <thead>
                         <tr>
                             <th scope="col">#</th>
-                            <th scope="col">Tanggal Request</th>
+                            <th scope="col">Tanggal Pengajuan</th>
                             <th scope="col">Jenis Formulir</th>
                             <th scope="col">Status</th>
                             <th scope="col">Keterangan</th>
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <th scope="row">1</th>
-                            <td>14/11/2024</td>
-                            <td>Formulir Tugas Akhir</td>
-                            <td>Proses</td>
-                            <td>-</td>
-                        </tr>
-                        <tr>
-                            <th scope="row">2</th>
-                            <td>13/10/2024</td>
-                            <td>Formulir Tugas Akhir</td>
-                            <td>Terverifikasi</td>
-                            <td>-</td>
-                        </tr>
-                        <tr>
-                            <th scope="row">3</th>
-                            <td>12/9/2024</td>
-                            <td>Formulir Administrasi Prodi</td>
-                            <td>Ditolak</td>
-                            <td>Sertifikat TOEIC kadaluwarsa</td>
-                        </tr>
+                        <?php foreach ($data['req_history'] as $key => $value): ?>
+                            <tr>
+                                <td><?= $value ?></td>
+                                <td><?= $value ?></td>
+                                <td><?= $value ?></td>
+                                <td><?= $value ?></td>
+                            </tr>
+                        <?php endforeach; ?>
                     </tbody>
                 </table>
             </div>

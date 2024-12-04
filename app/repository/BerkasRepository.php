@@ -5,6 +5,7 @@ namespace App\Repository;
 use App\Core\Repository;
 use App\Models\BerkasProdi;
 use App\Models\BerkasTA;
+use App\Models\History;
 
 class BerkasRepository extends Repository
 {
@@ -95,6 +96,24 @@ class BerkasRepository extends Repository
             $stmt->bindValue(':magang', $berkas_prodi->distribusi_magang, \PDO::PARAM_STR);
             $stmt->bindValue(':kompen', $berkas_prodi->surat_bebas_kompen, \PDO::PARAM_STR);
             $stmt->execute();
+        } catch (\PDOException $e) {
+            throw new \PDOException($e->getMessage());
+        }
+    }
+
+    public function getUserHistoryRequest(string $user_id): array
+    {
+        try {
+            $query = <<<SQL
+                SELECT * 
+                FROM something
+                WHERE nim = :nim;
+            SQL;
+
+            $stmt = $this->db->getConnection()->prepare($query);
+            $stmt->bindValue(':nim', $user_id, \PDO::PARAM_STR);
+            $stmt->execute();
+            return $stmt->fetchAll(\PDO::FETCH_CLASS, 'History');
         } catch (\PDOException $e) {
             throw new \PDOException($e->getMessage());
         }
