@@ -30,7 +30,8 @@
                     <h3 class="ms-1 fw-bold mb-0" style="color: #052C65;">Detail Permintaan</h3>
                 </div>
 
-                <!-- card awal -->
+
+                <?php if ($data['user_file'] != false): ?>
                 <div class="card my-3 px-5 " style="box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);">
                     <div class="card-body d-flex justify-content-between">
 
@@ -106,14 +107,11 @@
                                     <p class="my-0" style="color: #8D8D8D;">Status</p>
                                     <p class="my-0">Proses</p>
                                 </div>
-
-
                             </div>
-
                         </div>
-
                     </div>
                 </div>
+                
                 <!-- card ke dua -->
                 <div class="card mt-2 px-5 py-2 " style="box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);">
 
@@ -146,18 +144,14 @@
                             <p class="mt-3 mb-0">Distribusi Laporan Skripsi</p>
                             <a href="/files/distribusilaporanskripsi.pdf"
                                 class="text-dark">distribusilaporanskripsi.pdf</a>
-
                             <p class="mt-3 mb-0">Distribusi Laporan Magang</p>
                             <a href="/files/distribusilaporanmagang.pdf"
                                 class="text-dark">distribusilaporanmagang.pdf</a>
-
                             <p class="mt-3 mb-0">Distribusi Laporan Kompensasi</p>
                             <a href="/files/buktibebaskompensasi.pdf"
                                 class=" text-dark">distribusilaporankompensasi.pdf</a>
-
                             <p class="mt-3 mb-0">Sertifikat TOEIC</p>
                             <a href="/files/sertifikattoeic.pdf" class=" text-dark">sertifikattoeic.pdf</a>
-
                         </div>
 
                         <!-- kanan -->
@@ -186,10 +180,13 @@
                         style="background-color:#052C65 ;" data-bs-toggle="modal"
                         data-bs-target="#statusModal">Kirim</button>
                 </div>
-
+                
+                <?php else: ?>
+                    <div class="card justify-content-center align-items-center" style="min-height: 60vh; box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);">
+                        <h1>Data tidak bisa ditemukan!</h1>
+                    </div>
+                <?php endif; ?>
             </section>
-
-
         </main>
     </div>
 </div>
