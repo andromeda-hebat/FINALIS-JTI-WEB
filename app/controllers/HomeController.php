@@ -33,6 +33,7 @@ class HomeController extends Controller
         $data['css'] = ["assets/css/sidebar"];
         switch ($_SESSION['role']) {
             case 'Admin Prodi':
+                $data['all_req_verif'] = (new BerkasRepository())->getAllBerkasProdiReq();
                 $this->view("templates/header", $data);
                 $this->view("pages/admin_prodi/dashboard", $data);
                 $this->view("templates/footer");

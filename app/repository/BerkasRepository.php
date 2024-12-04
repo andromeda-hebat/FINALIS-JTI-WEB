@@ -122,10 +122,39 @@ class BerkasRepository extends Repository
     {
         try {
             $stmt = Database::getConnection()->query(<<<SQL
-                SELECT vb.id_verifikasi, ta.id_ta, m.nim, m.nama_lengkap, ta.tanggal_request, vb.status_verifikasi, vb.keterangan_verifikasi
+                SELECT 
+                    vb.id_verifikasi, 
+                    ta.id_ta AS id_berkas, 
+                    m.nim, 
+                    m.nama_lengkap, 
+                    ta.tanggal_request, 
+                    vb.status_verifikasi, 
+                    vb.keterangan_verifikasi
                 FROM VER.VerifikasiBerkas vb
                 INNER JOIN BERKAS.TA ta ON vb.id_berkas = ta.id_ta
                 INNER JOIN USERS.Mahasiswa m ON ta.nim = m.nim;
+            SQL);
+            return $stmt->fetchAll(\PDO::FETCH_CLASS, VerifikasiBerkas::class);
+        } catch (\PDOException $e) {
+            throw new \PDOException($e->getMessage());
+        }
+    }
+
+    public function getAllBerkasProdiReq(): array
+    {
+        try {
+            $stmt = Database::getConnection()->query(<<<SQL
+                SELECT TOP 10 
+                    v.id_verifikasi,
+                    p.id_berkas_prodi AS id_berkas,
+                    m.nim,
+                    m.nama_lengkap,
+                    p.tanggal_request,
+                    v.status_verifikasi,
+                    v.keterangan_verifikasi
+                FROM USERS.Mahasiswa m
+                INNER JOIN BERKAS.Prodi p ON m.nim = p.nim
+                INNER JOIN VER.VerifikasiBerkas v ON v.id_berkas = p.id_berkas_prodi
             SQL);
             return $stmt->fetchAll(\PDO::FETCH_CLASS, VerifikasiBerkas::class);
         } catch (\PDOException $e) {
@@ -137,7 +166,14 @@ class BerkasRepository extends Repository
     {
         try {
             $stmt = Database::getConnection()->prepare(<<<SQL
-                SELECT vb.id_verifikasi, ta.id_ta, m.nim, m.nama_lengkap, ta.tanggal_request, vb.status_verifikasi, vb.keterangan_verifikasi
+                SELECT 
+                    vb.id_verifikasi, 
+                    ta.id_ta AS id_berkas, 
+                    m.nim, 
+                    m.nama_lengkap, 
+                    ta.tanggal_request, 
+                    vb.status_verifikasi, 
+                    vb.keterangan_verifikasi
                 FROM VER.VerifikasiBerkas vb
                 INNER JOIN BERKAS.TA ta ON vb.id_berkas = ta.id_ta
                 INNER JOIN USERS.Mahasiswa m ON ta.nim = m.nim
