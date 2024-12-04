@@ -12,7 +12,15 @@
     <nav class="nav w-100 d-flex flex-column text-start">
 
         <a href="/kelola-admin" class="sidebar-nav nav-link text-white w-100 ps-5 fw-bold kelola-data">
-            Kelola Data
+            <div class="d-flex align-items-center">
+                Kelola Data
+                <svg class="ms-3 width="20" height="20" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                    stroke="currentColor" class="size-6">
+                    <path stroke-linecap="round" stroke-linejoin="round"
+                        d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
+                </svg>
+
+            </div>
         </a>
         <div class="submenu ms-5 " style="display: none;">
             <a href="/kelola-admin" class="sidebar-nav nav-link text-white w-100 ps-5">
@@ -49,28 +57,27 @@
 <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
 <script>
     $(document).ready(function () {
-        let submenuPermanent = false;
+        const $submenu = $(".submenu");
+        const $submenuItems = $(".submenu a");
 
-        $(".kelola-data").hover(
+        // Keep submenu open when hovering over submenu items
+        $submenuItems.hover(
             function () {
-                if (!submenuPermanent) {
-                    $(".submenu").slideDown();
-                }
-            },
-            function () {
-                if (!submenuPermanent) {
-                    $(".submenu").slideUp();
-                }
+                $submenu.stop(true, true).show();
             }
         );
 
+
         $(".kelola-data").click(function (e) {
             e.preventDefault();
-            submenuPermanent = !submenuPermanent;
-            if (submenuPermanent) {
-                $(".submenu").slideDown();
-            } else {
-                $(".submenu").slideUp();
+            $submenu.stop(true, true).slideToggle(300);
+            $(this).toggleClass('active');
+        });
+
+        $(document).click(function (e) {
+            if (!$(e.target).closest('.kelola-data, .submenu').length) {
+                $submenu.stop(true, true).slideUp(300);
+                $(".kelola-data").removeClass('active');
             }
         });
     });
