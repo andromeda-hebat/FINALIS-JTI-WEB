@@ -7,6 +7,7 @@ use App\Core\Repository;
 use App\Models\BerkasProdi;
 use App\Models\BerkasTA;
 use App\Models\RiwayatPengajuan;
+use App\Models\VerifikasiBerkas;
 
 class BerkasRepository extends Repository
 {
@@ -19,10 +20,10 @@ class BerkasRepository extends Repository
                 INNER JOIN Berkas.TA AS p ON p.id_ta = v.id_berkas
                 WHERE nim = ?
             SQL);
-            $stmt->bindParam(1, $user_id);
+            $stmt->bindValue(1, $user_id);
             $stmt->execute();
             $result = $stmt->fetch(\PDO::FETCH_ASSOC);
-    
+
             if ($result == false) {
                 return "kosong";
             } else {
@@ -45,7 +46,7 @@ class BerkasRepository extends Repository
             $stmt->bindValue(':nim', $user_id);
             $stmt->execute();
             $result = $stmt->fetch(\PDO::FETCH_ASSOC);
-    
+
             if ($result == false) {
                 return "kosong";
             } else {
@@ -112,6 +113,39 @@ class BerkasRepository extends Repository
             $stmt->bindValue(':nim', $user_id, \PDO::PARAM_STR);
             $stmt->execute();
             return $stmt->fetchAll(\PDO::FETCH_CLASS, RiwayatPengajuan::class);
+        } catch (\PDOException $e) {
+            throw new \PDOException($e->getMessage());
+        }
+    }
+
+    public function getAllBerkasTAReq(): array
+    {
+        try {
+            $stmt = Database::getConnection()->query(<<<SQL
+                SELECT vb.id_verifikasi, ta.id_ta, m.nim, m.nama_lengkap, ta.tanggal_request, vb.status_verifikasi, vb.keterangan_verifikasi
+                FROM VER.VerifikasiBerkas vb
+                INNER JOIN BERKAS.TA ta ON vb.id_berkas = ta.id_ta
+                INNER JOIN USERS.Mahasiswa m ON ta.nim = m.nim;
+            SQL);
+            return $stmt->fetchAll(\PDO::FETCH_CLASS, VerifikasiBerkas::class);
+        } catch (\PDOException $e) {
+            throw new \PDOException($e->getMessage());
+        }
+    }
+
+    public function getSingleBerkasTAReq(int $id_verifikasi): bool|VerifikasiBerkas
+    {
+        try {
+            $stmt = Database::getConnection()->prepare(<<<SQL
+                SELECT vb.id_verifikasi, ta.id_ta, m.nim, m.nama_lengkap, ta.tanggal_request, vb.status_verifikasi, vb.keterangan_verifikasi
+                FROM VER.VerifikasiBerkas vb
+                INNER JOIN BERKAS.TA ta ON vb.id_berkas = ta.id_ta
+                INNER JOIN USERS.Mahasiswa m ON ta.nim = m.nim
+                WHERE vb.id_verifikasi = :id_verifikasi
+            SQL);
+            $stmt->bindValue(':id_verifikasi', $id_verifikasi, \PDO::PARAM_INT);
+            $stmt->setFetchMode(\PDO::FETCH_CLASS, VerifikasiBerkas::class);
+            return $stmt->fetch();
         } catch (\PDOException $e) {
             throw new \PDOException($e->getMessage());
         }
