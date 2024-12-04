@@ -6,7 +6,7 @@ use App\Core\Database;
 use App\Core\Repository;
 use App\Models\BerkasProdi;
 use App\Models\BerkasTA;
-use App\Models\History;
+use App\Models\RiwayatPengajuan;
 
 class BerkasRepository extends Repository
 {
@@ -102,13 +102,16 @@ class BerkasRepository extends Repository
     {
         try {
             $stmt = Database::getConnection()->prepare(<<<SQL
-                SELECT * 
-                FROM something
-                WHERE nim = :nim;
+                SELECT id_berkas, jenis_berkas, status_verifikasi, keterangan_verifikasi
+                FROM VER.VerifikasiBerkas AS vb
+                INNER JOIN BERKAS.Prodi AS p ON vb.id_berkas = p.id_berkas_prodi AND vb.jenis_berkas = 'Prodi'
+                INNER JOIN Berkas.TA AS ta ON vb.id_berkas = ta.id_ta AND vb.jenis_berkas = 'TA'
+                INNER JOIN USERS.Mahasiswa AS m ON m.nim = p.nim OR m.nim = ta.nim
+                WHERE m.nim = :nim;
             SQL);
             $stmt->bindValue(':nim', $user_id, \PDO::PARAM_STR);
             $stmt->execute();
-            return $stmt->fetchAll(\PDO::FETCH_CLASS, 'History');
+            return $stmt->fetchAll(\PDO::FETCH_CLASS, RiwayatPengajuan::class);
         } catch (\PDOException $e) {
             throw new \PDOException($e->getMessage());
         }
