@@ -115,7 +115,7 @@
                     </div>
                 </div>
                 <!-- card ke dua -->
-                <div class="card mt-2 px-5 py-2 "style="box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);">
+                <div class="card mt-2 px-5 py-2 " style="box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);">
 
                     <div class="card-body d-flex justify-content-between">
                         <!-- kiri  -->
@@ -144,16 +144,19 @@
                             </div>
 
                             <p class="mt-3 mb-0">Distribusi Laporan Skripsi</p>
-                            <a href="#" class="text-dark">distribusilaporanskripsi.pdf</a>
+                            <a href="/files/distribusilaporanskripsi.pdf"
+                                class="text-dark">distribusilaporanskripsi.pdf</a>
 
                             <p class="mt-3 mb-0">Distribusi Laporan Magang</p>
-                            <a href="#" class="text-dark">distribusilaporanmagang.pdf</a>
+                            <a href="/files/distribusilaporanmagang.pdf"
+                                class="text-dark">distribusilaporanmagang.pdf</a>
 
                             <p class="mt-3 mb-0">Distribusi Laporan Kompensasi</p>
-                            <a href="#" class=" text-dark">distribusilaporankompensasi.pdf</a>
+                            <a href="/files/buktibebaskompensasi.pdf"
+                                class=" text-dark">distribusilaporankompensasi.pdf</a>
 
                             <p class="mt-3 mb-0">Sertifikat TOEIC</p>
-                            <a href="#" class=" text-dark">sertifikattoeic.pdf</a>
+                            <a href="/files/sertifikattoeic.pdf" class=" text-dark">sertifikattoeic.pdf</a>
 
                         </div>
 
@@ -163,14 +166,15 @@
                             <p>Staff Administrasi Prodi</p>
                             <div class="d-flex mb-3">
                                 <div class="d-flex me-3 ms-3">
-                                    <input type="checkbox" name="terima" id="verify">
+                                    <input type="checkbox" name="decision" id="verify"
+                                        onclick="toggleCheckbox('verify', 'reject')">
                                     <label for="verify">Verify</label>
                                 </div>
                                 <div class="d-flex ms-3">
-                                    <input type="checkbox" name="tolak" id="reject">
+                                    <input type="checkbox" name="decision" id="reject"
+                                        onclick="toggleCheckbox('reject', 'verify')">
                                     <label for="reject">Reject</label>
                                 </div>
-
                             </div>
                             <label for="pesan"></label>
                             <textarea name="pesan" id="pesan" style="resize: none;" rows="8" cols="59"></textarea>
@@ -179,7 +183,8 @@
                 </div>
                 <div class="d-flex justify-content-end">
                     <button type="button" value="Kirim" id="submitBtn" class="px-4 text-white mt-3"
-                        style="background-color:#052C65 ;" data-bs-toggle="modal" data-bs-target="#statusModal">Kirim</button>
+                        style="background-color:#052C65 ;" data-bs-toggle="modal"
+                        data-bs-target="#statusModal">Kirim</button>
                 </div>
 
             </section>
@@ -197,11 +202,11 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                <h6>Data valid 
-                berhasil diupload</h6>
+                <h6>Data valid
+                    berhasil diupload</h6>
             </div>
             <div class="modal-footer">
-                <button type="button"  style="color: #052C65; border-color: #052C65; background-color: white"
+                <button type="button" style="color: #052C65; border-color: #052C65; background-color: white"
                     data-bs-dismiss="modal">Edit</button>
                 <a href="/permintaan-verifikasi">
                     <button type="button" class="text-white" style="background-color: #052C65;">Selesai</button>
@@ -212,3 +217,12 @@
     </div>
 </div>
 
+<script>
+    function toggleCheckbox(selectedId, otherId) {
+        const selectedCheckbox = document.getElementById(selectedId);
+        const otherCheckbox = document.getElementById(otherId);
+        if (selectedCheckbox.checked) {
+            otherCheckbox.checked = false;
+        }
+    }
+</script>
