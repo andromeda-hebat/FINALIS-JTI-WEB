@@ -68,7 +68,7 @@ class MahasiswaController extends Controller
         }
 
         if ($is_move_uploaded_file_success) {
-            $_SESSION['status']['tugas_akhir'] = "diajukan";
+            $_SESSION['status']['administrasi_prodi'] = "diajukan";
 
             http_response_code(200);
             echo json_encode([

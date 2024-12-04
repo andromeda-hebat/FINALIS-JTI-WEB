@@ -138,32 +138,27 @@
                 <div class="w-100 border rounded shadow">
                     <table class="table">
                         <thead class="table">
-                            <th style="background-color: #E4EEFF;">NIM</th>
-                            <th style="background-color: #E4EEFF;">Mahasiswa</th>
-                            <th style="background-color: #E4EEFF;">Aktivitas</th>
-                            <th style="background-color: #E4EEFF;">Tanggal</th>
-                            <th style="background-color: #E4EEFF;">Aksi</th>
+                            <tr>
+                                <th style="background-color: #E4EEFF;">NIM</th>
+                                <th style="background-color: #E4EEFF;">Mahasiswa</th>
+                                <th style="background-color: #E4EEFF;">Tanggal</th>
+                                <th style="background-color: #E4EEFF;">Keterangan</th>
+                                <th style="background-color: #E4EEFF;">Aksi</th>
+                            </tr>
                         </thead>
                         <tbody>
-                            <td>2341720001</td>
-                            <td>Nama Mahasiswa</td>
-                            <td>Submit form administrasi prodi</td>
-                            <td>24 Oktober, 2024</td>
-                            <td><a href="#" class="btn btn-primary">Detail</a></td>
-                        </tbody>
-                        <tbody>
-                            <td>2341720001</td>
-                            <td>Nama Mahasiswa</td>
-                            <td>Submit form administrasi prodi</td>
-                            <td>24 Oktober, 2024</td>
-                            <td><a href="#" class="btn btn-primary">Detail</a></td>
-                        </tbody>
-                        <tbody>
-                            <td>2341720001</td>
-                            <td>Nama Mahasiswa</td>
-                            <td>Submit form administrasi prodi</td>
-                            <td>24 Oktober, 2024</td>
-                            <td><a href="#" class="btn btn-primary">Detail</a></td>
+                            <?php 
+                                $iteration = 0;
+                                foreach ($data['all_req_verif'] as $key => $value):
+                            ?>
+                            <tr>
+                                <td><?= $value->nim ?></td>
+                                <td><?= $value->nama_lengkap ?></td>
+                                <td><?= $value->tanggal_request ?></td>
+                                <td><?= $value->keterangan_verifikasi ?></td>
+                                <td><a href="#" class="btn btn-primary">Detail</a></td>
+                            </tr>
+                            <?php endforeach; ?>
                         </tbody>
                     </table>
                 </div>

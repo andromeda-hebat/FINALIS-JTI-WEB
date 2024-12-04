@@ -3,26 +3,31 @@
 namespace App\Controllers;
 
 use App\Core\Controller;
+use App\Repository\BerkasRepository;
 
-class HomeController extends Controller {
+class HomeController extends Controller
+{
 
-    public function index(): void {
+    public function index(): void
+    {
         $this->view("templates/header", [
-            'title'=>"FINALIS JTI"
+            'title' => "FINALIS JTI"
         ]);
         $this->view("pages/general/index");
         $this->view("templates/footer");
     }
 
-    public function contact(): void {
+    public function contact(): void
+    {
         $this->view("templates/header", [
-            'title'=>"Kontak"
+            'title' => "Kontak"
         ]);
         $this->view("pages/general/contact");
         $this->view("templates/footer");
     }
 
-    public function dashboard(): void {
+    public function dashboard(): void
+    {
         $data['title'] = "Dashboard";
         $data['active_page'] = "dashboard";
         $data['css'] = ["assets/css/sidebar"];
@@ -33,6 +38,7 @@ class HomeController extends Controller {
                 $this->view("templates/footer");
                 break;
             case 'Admin TA':
+                $data['all_req_verif'] = (new BerkasRepository())->getAllBerkasTAReq();
                 $this->view("templates/header", $data);
                 $this->view("pages/admin_ta/dashboard", $data);
                 $this->view("templates/footer");

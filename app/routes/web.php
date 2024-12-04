@@ -35,7 +35,7 @@ Router::add('GET', '/detail-permintaan', AdminProdiController::class, 'detailsRe
 //Notif
 Router::add('GET', '/notifikasi', NotificationController::class, 'notif');
 
-//Admin TA
+// User: Admin TA
 Router::add('GET', '/permintaan-verif-ta', AdminTAController::class, 'requestVerifikasi');
 Router::add('GET', '/detail-permintaan-ta', AdminTAController::class, 'detailsRequest');
 
