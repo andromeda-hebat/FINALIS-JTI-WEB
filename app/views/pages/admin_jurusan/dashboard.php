@@ -6,7 +6,7 @@
         <?php include __DIR__ . '/../../components/admin_jurusan/topbar.php' ?>
 
         <div class="halaman mx-5 ">
-            <h6>Belum ada dashboard pada divisi UI/UX</h6>
+            <h6>Dashboard</h6>
 
         </div>
     </div>
