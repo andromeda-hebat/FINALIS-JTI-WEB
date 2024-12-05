@@ -3,9 +3,9 @@
     style="background-color: #052C65; width: 300px; padding-top: 20px !important;">
     <!-- Bagian Judul -->
     <div class="d-flex text-center py-4 mb-4">
-        <img src="profile-placeholder.png" alt="Logo" class="rounded-circle me-3"
-            style="width: 35px; height: 35px; background-color: #ddd;">
-        <h3 class="align-items-center fw-bold" style="color: #F7DE00;">FINALIS JTI</h3>
+        <img src="assets/img/finalis-jti-logo.png" alt="Logo" class="me-3"
+            style="width: 50px; height: 50px;">
+        <h3 class="d-flex align-items-center justify-content-center fw-bold text-center" style="color: #F7DE00; font-weight: 800; line-height: normal !important;">FINALIS JTI</h3>
     </div>
 
     <!-- Tautan Navigasi -->
