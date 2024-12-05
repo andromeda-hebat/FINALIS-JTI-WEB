@@ -8,6 +8,7 @@ use App\Models\BerkasProdi;
 use App\Models\BerkasTA;
 use App\Models\RiwayatPengajuan;
 use App\Models\VerifikasiBerkas;
+use App\Helpers\ErrorLog;
 
 class BerkasRepository extends Repository
 {
@@ -30,6 +31,7 @@ class BerkasRepository extends Repository
                 return $result['status_verifikasi'];
             }
         } catch (\PDOException $e) {
+            error_log(ErrorLog::formattedErrorLog($e->getMessage()), 3, LOG_FILE_PATH);
             throw new \PDOException($e->getMessage());
         }
     }
@@ -53,6 +55,7 @@ class BerkasRepository extends Repository
                 return $result['status_verifikasi'];
             }
         } catch (\PDOException $e) {
+            error_log(ErrorLog::formattedErrorLog($e->getMessage()), 3, LOG_FILE_PATH);
             throw new \PDOException($e->getMessage());
         }
     }
@@ -73,6 +76,7 @@ class BerkasRepository extends Repository
             $stmt->bindValue(':bukti_publikasi', $berkas_TA->bukti_publikasi, \PDO::PARAM_STR);
             $stmt->execute();
         } catch (\PDOException $e) {
+            error_log(ErrorLog::formattedErrorLog($e->getMessage()), 3, LOG_FILE_PATH);
             throw new \PDOException($e->getMessage());
         }
     }
@@ -95,6 +99,7 @@ class BerkasRepository extends Repository
             $stmt->bindValue(':kompen', $berkas_prodi->surat_bebas_kompen, \PDO::PARAM_STR);
             $stmt->execute();
         } catch (\PDOException $e) {
+            error_log(ErrorLog::formattedErrorLog($e->getMessage()), 3, LOG_FILE_PATH);
             throw new \PDOException($e->getMessage());
         }
     }
@@ -114,6 +119,7 @@ class BerkasRepository extends Repository
             $stmt->execute();
             return $stmt->fetchAll(\PDO::FETCH_CLASS, RiwayatPengajuan::class);
         } catch (\PDOException $e) {
+            error_log(ErrorLog::formattedErrorLog($e->getMessage()), 3, LOG_FILE_PATH);
             throw new \PDOException($e->getMessage());
         }
     }
@@ -136,6 +142,7 @@ class BerkasRepository extends Repository
             SQL);
             return $stmt->fetchAll(\PDO::FETCH_CLASS, VerifikasiBerkas::class);
         } catch (\PDOException $e) {
+            error_log(ErrorLog::formattedErrorLog($e->getMessage()), 3, LOG_FILE_PATH);
             throw new \PDOException($e->getMessage());
         }
     }
@@ -158,6 +165,7 @@ class BerkasRepository extends Repository
             SQL);
             return $stmt->fetchAll(\PDO::FETCH_CLASS, VerifikasiBerkas::class);
         } catch (\PDOException $e) {
+            error_log(ErrorLog::formattedErrorLog($e->getMessage()), 3, LOG_FILE_PATH);
             throw new \PDOException($e->getMessage());
         }
     }
@@ -184,6 +192,7 @@ class BerkasRepository extends Repository
             $stmt->execute();
             return $stmt->fetch();
         } catch (\PDOException $e) {
+            error_log(ErrorLog::formattedErrorLog($e->getMessage()), 3, LOG_FILE_PATH);
             throw new \PDOException($e->getMessage());
         }
     }
@@ -210,6 +219,7 @@ class BerkasRepository extends Repository
             $stmt->execute();
             return $stmt->fetch();
         } catch (\PDOException $e) {
+            error_log(ErrorLog::formattedErrorLog($e->getMessage()), 3, LOG_FILE_PATH);
             throw new \PDOException($e->getMessage());
         }
     }

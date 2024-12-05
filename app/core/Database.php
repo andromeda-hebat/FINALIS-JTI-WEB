@@ -2,6 +2,8 @@
 
 namespace App\Core;
 
+use App\Helpers\ErrorLog;
+
 class Database
 {
     private static string $DB_SERVER;
@@ -28,7 +30,8 @@ class Database
             $conn = new \PDO($dsn, self::$DB_USER, self::$DB_PASSWORD);
             $conn->setAttribute(\PDO::ATTR_ERRMODE, \PDO::ERRMODE_EXCEPTION);
         } catch (\PDOException $e) {
-            echo "Database connection failed: " . $e->getMessage();
+            error_log(ErrorLog::formattedErrorLog($e->getMessage()), 3, LOG_FILE_PATH);
+            throw new \PDOException($e->getMessage());
         }
         
         return $conn;
@@ -45,7 +48,8 @@ class Database
                 self::$conn = new \PDO($dsn, self::$DB_USER, self::$DB_PASSWORD);
                 self::$conn->setAttribute(\PDO::ATTR_ERRMODE, \PDO::ERRMODE_EXCEPTION);
             } catch (\PDOException $e) {
-                echo "Database connection failed: " . $e->getMessage();
+                error_log(ErrorLog::formattedErrorLog($e->getMessage()), 3, LOG_FILE_PATH);
+                throw new \PDOException($e->getMessage());
             }
         }
 
