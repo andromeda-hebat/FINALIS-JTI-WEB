@@ -181,6 +181,7 @@ class BerkasRepository extends Repository
             SQL);
             $stmt->bindValue(':id_verifikasi', $id_verifikasi, \PDO::PARAM_INT);
             $stmt->setFetchMode(\PDO::FETCH_CLASS, VerifikasiBerkas::class);
+            $stmt->execute();
             return $stmt->fetch();
         } catch (\PDOException $e) {
             throw new \PDOException($e->getMessage());
@@ -206,6 +207,7 @@ class BerkasRepository extends Repository
             SQL);
             $stmt->bindValue(':id_verifikasi', $id_verifikasi, \PDO::PARAM_INT);
             $stmt->setFetchMode(\PDO::FETCH_CLASS, VerifikasiBerkas::class);
+            $stmt->execute();
             return $stmt->fetch();
         } catch (\PDOException $e) {
             throw new \PDOException($e->getMessage());
