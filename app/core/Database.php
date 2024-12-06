@@ -20,7 +20,7 @@ class Database
         self::$DB_PASSWORD = $_ENV['DB_PASSWORD'] ?? throw new \Exception('DB_PASSWORD not set');
     }
 
-    private static function getBConnection(string $dsn): \PDO
+    private static function getDBConnection(string $dsn): \PDO
     {
         try {
             $conn = new \PDO($dsn, self::$DB_USER, self::$DB_PASSWORD);
@@ -37,12 +37,12 @@ class Database
     {
         if ($is_with_db) {
             self::initialize();
-            return self::getBConnection("sqlsrv:Server=" . self::$DB_SERVER);
+            return self::getDBConnection("sqlsrv:Server=" . self::$DB_SERVER);
         }
 
         if (self::$conn === null) {
             self::initialize();
-            self::$conn = self::getBConnection("sqlsrv:Server=" . self::$DB_SERVER . ";Database=" . self::$DB_NAME);
+            self::$conn = self::getDBConnection("sqlsrv:Server=" . self::$DB_SERVER . ";Database=" . self::$DB_NAME);
         }
         
         return self::$conn;
