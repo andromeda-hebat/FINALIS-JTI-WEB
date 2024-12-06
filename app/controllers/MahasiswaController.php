@@ -11,12 +11,6 @@ use App\Repository\BerkasRepository;
 
 class MahasiswaController extends Controller
 {
-    private BerkasRepository $berkas_repository;
-
-    public function __construct()
-    {
-        $this->berkas_repository = new BerkasRepository();
-    }
 
     public function tugasAkhir(): void
     {
@@ -47,7 +41,7 @@ class MahasiswaController extends Controller
 
         $is_files_successfully_inserted_to_database = false;
         try {
-            $this->berkas_repository->addNewBerkasTA(new BerkasTA($_SESSION['user_id'], date('Y-m-d'), $_FILES['tugas_akhir']['new_name'], $_FILES['program_aplikasi']['new_name'], $_FILES['publikasi_jurnal']['new_name']));
+            BerkasRepository::addNewBerkasTA(new BerkasTA($_SESSION['user_id'], date('Y-m-d'), $_FILES['tugas_akhir']['new_name'], $_FILES['program_aplikasi']['new_name'], $_FILES['publikasi_jurnal']['new_name']));
 
             $is_files_successfully_inserted_to_database = true;
         } catch (\Exception $e) {
@@ -115,7 +109,7 @@ class MahasiswaController extends Controller
 
         $is_files_successfully_inserted_to_database = false;
         try {
-            $this->berkas_repository->addNewBerkasProdi(new BerkasProdi($_SESSION['user_id'], date('Y-m-d'), $_FILES['distribusi_tugas_akhir']['new_name'], $_FILES['distribusi_magang']['new_name'], $_FILES['bebas_kompen']['new_name'], $_FILES['toeic']['new_name']));
+            BerkasRepository::addNewBerkasProdi(new BerkasProdi($_SESSION['user_id'], date('Y-m-d'), $_FILES['distribusi_tugas_akhir']['new_name'], $_FILES['distribusi_magang']['new_name'], $_FILES['bebas_kompen']['new_name'], $_FILES['toeic']['new_name']));
 
             $is_files_successfully_inserted_to_database = true;
         } catch (\Exception $e) {
@@ -163,7 +157,7 @@ class MahasiswaController extends Controller
         ]);
         $this->view("pages/mahasiswa/riwayat_pengajuan", [
             'active_page' => "riwayat_pengajuan",
-            'req_history' => $this->berkas_repository->getUserHistoryRequest($_SESSION['user_id'])
+            'req_history' => BerkasRepository::getUserHistoryRequest($_SESSION['user_id'])
         ]);
         $this->view("templates/footer");
     }
