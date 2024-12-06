@@ -241,4 +241,23 @@ class BerkasRepository
             throw new \PDOException($e->getMessage());
         }
     }
+
+    public static function updateVerifyStatusBerkasProdi(int $id_verifikasi, string $status_verifikasi, string $keterangan): void
+    {
+        try {
+            $stmt = Database::getConnection()->prepare(<<<SQL
+            UPDATE VER.VerifikasiBerkas
+            SET 
+                status_verifikasi = :status,
+                keterangan_verifikasi = :keterangan
+            WHERE id_verifikasi = :id_verifikasi
+            SQL);
+            $stmt->bindValue(':status', $status_verifikasi, \PDO::PARAM_STR);
+            $stmt->bindValue(':keterangan', $keterangan, \PDO::PARAM_STR);
+            $stmt->bindValue(':id_verifikasi', $id_verifikasi, \PDO::PARAM_STR);
+            $stmt->execute();
+        } catch (\PDOException $e) {
+            throw new \PDOException($e->getMessage());
+        }
+    }
 }

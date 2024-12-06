@@ -15,8 +15,8 @@ class AdminTAController extends Controller
         } catch (\PDOException $e) {
             http_response_code(500);
             echo json_encode([
-                "status"=>"error",
-                "message"=>"Database connectivity error!",
+                "status" => "error",
+                "message" => "Database connectivity error!",
             ]);
             exit;
         }
@@ -38,8 +38,8 @@ class AdminTAController extends Controller
         } catch (\PDOException $e) {
             http_response_code(500);
             echo json_encode([
-                "status"=>"error",
-                "message"=>"Database connectivity error!",
+                "status" => "error",
+                "message" => "Database connectivity error!",
             ]);
             exit;
         }
@@ -52,5 +52,25 @@ class AdminTAController extends Controller
             'user_file' => $user_file
         ]);
         $this->view("templates/footer");
+    }
+
+    public function verifyBerkas(int $id_verifikasi): void
+    {
+        $data = json_decode(file_get_contents('php://input'), true);
+        
+        try {
+            BerkasRepository::updateVerifyStatusBerkasProdi($data['id_verifikasi'], $data['verify'], $data['description']);
+            http_response_code(200);
+            echo json_encode([
+                "status" => "success",
+                "message" => "successfully update verify status"
+            ]);
+        } catch (\PDOException $e) {
+            http_response_code(500);
+            echo json_encode([
+                "status"=>"error",
+                "message"=>"Database connectivity error!",
+            ]);
+        }
     }
 }
