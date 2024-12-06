@@ -6,7 +6,7 @@ use App\Core\Model;
 
 class VerifikasiBerkas extends Model
 {
-    private int $nomor;
+    private ?int $nomor = null;
     private int $id_verifikasi;
     private string $id_berkas;
     private string $status_verifikasi;
