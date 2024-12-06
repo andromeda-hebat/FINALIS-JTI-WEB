@@ -31,6 +31,13 @@ class HomeController extends Controller
         $data['title'] = "Dashboard";
         $data['active_page'] = "dashboard";
         $data['css'] = ["assets/css/sidebar"];
+
+        if (!isset($_SESSION['role'])) {
+            // WARNING: Informs the user that they are not authenticated
+            echo "USER NOT AUTHENTICATED!";
+            return;
+        }
+
         switch ($_SESSION['role']) {
             case 'Admin Prodi':
                 $data['all_req_verif'] = (new BerkasRepository())->getAllBerkasProdiReq();
@@ -53,10 +60,6 @@ class HomeController extends Controller
                 $this->view("templates/header", $data);
                 $this->view("pages/mahasiswa/dashboard", $data);
                 $this->view("templates/footer");
-                break;
-            default:
-                // WARNING: Informs the user that they are not authenticated
-                echo "USER NOT AUTHENTICATED!";
                 break;
         }
     }
