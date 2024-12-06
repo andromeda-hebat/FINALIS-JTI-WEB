@@ -3,12 +3,11 @@
 namespace App\Repository;
 
 use App\Core\Database;
-use App\Core\Repository;
 use App\Models\Admin;
 use App\Models\User;
 use App\Helpers\ErrorLog;
 
-class UserRepository extends Repository
+class UserRepository
 {
     public function getUserDataByUserIDAndPassword(string $user_id, string $password): bool|User
     {
