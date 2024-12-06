@@ -18,16 +18,13 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <?php
-                            $iteration = 0;
-                            foreach ($data['req_history'] as $key => $value): 
-                        ?>
+                        <?php foreach ($data['req_history'] as $key => $value): ?>
                             <tr>
-                                <td><?= ++$iteration ?></td>
+                                <td><?= $value->getNomor() ?></td>
                                 <td><?= $value->getTanggalRequest() ?></td>
-                                <td><?= $value->getJenisBerkas() ?></td>
-                                <td><?= $value->getStatusVerifikasi() ?></td>
-                                <td><?= $value->getKeteranganVerifikasi() ?></td>
+                                <td><?= $value->getJenisFormulir() ?></td>
+                                <td><?= $value->getStatus() ?></td>
+                                <td><?= $value->getKeterangan() ?></td>
                             </tr>
                         <?php endforeach; ?>
                     </tbody>

@@ -155,9 +155,21 @@ class MahasiswaController extends Controller
             'title' => "Riwayat Pengajuan",
             'css' => ["assets/css/sidebar"]
         ]);
+
+        try {
+            $user_history = BerkasRepository::getUserHistoryRequest($_SESSION['user_id']);
+        } catch (\PDOException $e) {
+            http_response_code(500);
+            echo json_encode([
+                "status" => "error",
+                "message" => "Failed to retrieve user history request"
+            ]);
+            exit;
+        }
+
         $this->view("pages/mahasiswa/riwayat_pengajuan", [
             'active_page' => "riwayat_pengajuan",
-            'req_history' => BerkasRepository::getUserHistoryRequest($_SESSION['user_id'])
+            'req_history' => $user_history
         ]);
         $this->view("templates/footer");
     }
