@@ -11,7 +11,6 @@ use App\Repository\BerkasRepository;
 
 class MahasiswaController extends Controller
 {
-
     public function tugasAkhir(): void
     {
         $this->view("templates/header", [

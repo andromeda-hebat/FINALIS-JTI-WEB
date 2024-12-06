@@ -2,9 +2,7 @@
     <!-- Sidebar -->
     <?php include __DIR__ . '/../../components/admin_ta/sidebar.php' ?>
     <div class="flex-grow-1">
-
         <?php include __DIR__ . '/../../components/admin_ta/topbar.php' ?>
-
         <main class="halaman mx-5 px-5">
             <section class="mt-2">
                 <div class="d-flex w-100 align-items-center ">
@@ -30,92 +28,13 @@
                 </div>
 
                 <?php if ($data['user_file'] != false): ?>
-                <div class="card my-3 px-5 " style="box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);">
-                    <div class="card-body d-flex justify-content-between">
+                    <div class="card my-3 px-5 " style="box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);">
+                        <div class="card-body d-flex justify-content-between">
 
-                        <div class="me-5">
-                            <div class="d-flex">
-                                <h5 class="mb-0" style="color: #8D8D8D;">Informasi Mahasiswa</h5>
-                                <svg class="ms-2" width="20" height="20" viewBox="0 0 20 20" fill="none"
-                                    xmlns="http://www.w3.org/2000/svg">
-                                    <g clip-path="url(#clip0_570_1010)">
-                                        <path fill-rule="evenodd" clip-rule="evenodd"
-                                            d="M10 18.75C12.3206 18.75 14.5462 17.8281 16.1872 16.1872C17.8281 14.5462 18.75 12.3206 18.75 10C18.75 7.67936 17.8281 5.45376 16.1872 3.81282C14.5462 2.17187 12.3206 1.25 10 1.25C7.67936 1.25 5.45376 2.17187 3.81282 3.81282C2.17187 5.45376 1.25 7.67936 1.25 10C1.25 12.3206 2.17187 14.5462 3.81282 16.1872C5.45376 17.8281 7.67936 18.75 10 18.75ZM10 20C12.6522 20 15.1957 18.9464 17.0711 17.0711C18.9464 15.1957 20 12.6522 20 10C20 7.34784 18.9464 4.8043 17.0711 2.92893C15.1957 1.05357 12.6522 0 10 0C7.34784 0 4.8043 1.05357 2.92893 2.92893C1.05357 4.8043 0 7.34784 0 10C0 12.6522 1.05357 15.1957 2.92893 17.0711C4.8043 18.9464 7.34784 20 10 20Z"
-                                            fill="#8D8D8D" />
-                                        <path
-                                            d="M11.1624 8.23486L8.29994 8.59361L8.19744 9.06861L8.75994 9.17236C9.12744 9.25986 9.19994 9.39236 9.11994 9.75861L8.19744 14.0936C7.95494 15.2149 8.32869 15.7424 9.20744 15.7424C9.88869 15.7424 10.6799 15.4274 11.0387 14.9949L11.1487 14.4749C10.8987 14.6949 10.5337 14.7824 10.2912 14.7824C9.94744 14.7824 9.82244 14.5411 9.91119 14.1161L11.1624 8.23486Z"
-                                            fill="#8D8D8D" />
-                                        <path
-                                            d="M10 6.875C10.6904 6.875 11.25 6.31536 11.25 5.625C11.25 4.93464 10.6904 4.375 10 4.375C9.30964 4.375 8.75 4.93464 8.75 5.625C8.75 6.31536 9.30964 6.875 10 6.875Z"
-                                            fill="#8D8D8D" />
-                                    </g>
-                                    <defs>
-                                        <clipPath id="clip0_570_1010">
-                                            <rect width="20" height="20" fill="white" />
-                                        </clipPath>
-                                    </defs>
-                                </svg>
-                            </div>
-
-                            <div class="d-flex align-items-center mb-0 mt-2">
-                                <img src="assets/img/foto.jpg" alt="Profil" class="rounded-circle"
-                                    style="width: 30px; height: 30px; background-color: #ddd;">
-                                <div class="ms-3">
-                                    <p class="my-0"><?= $data['user_file']->nama_lengkap ?></p>
-                                    <p class="my-0">NIM <span><?= $data['user_file']->nim ?></span></p>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="me-5">
-                            <div class="d-flex">
-                                <h5 style="color: #8D8D8D;">Informasi Permintaan</h5>
-                                <svg class="ms-2" width="20" height="20" viewBox="0 0 20 20" fill="none"
-                                    xmlns="http://www.w3.org/2000/svg">
-                                    <g clip-path="url(#clip0_570_1010)">
-                                        <path fill-rule="evenodd" clip-rule="evenodd"
-                                            d="M10 18.75C12.3206 18.75 14.5462 17.8281 16.1872 16.1872C17.8281 14.5462 18.75 12.3206 18.75 10C18.75 7.67936 17.8281 5.45376 16.1872 3.81282C14.5462 2.17187 12.3206 1.25 10 1.25C7.67936 1.25 5.45376 2.17187 3.81282 3.81282C2.17187 5.45376 1.25 7.67936 1.25 10C1.25 12.3206 2.17187 14.5462 3.81282 16.1872C5.45376 17.8281 7.67936 18.75 10 18.75ZM10 20C12.6522 20 15.1957 18.9464 17.0711 17.0711C18.9464 15.1957 20 12.6522 20 10C20 7.34784 18.9464 4.8043 17.0711 2.92893C15.1957 1.05357 12.6522 0 10 0C7.34784 0 4.8043 1.05357 2.92893 2.92893C1.05357 4.8043 0 7.34784 0 10C0 12.6522 1.05357 15.1957 2.92893 17.0711C4.8043 18.9464 7.34784 20 10 20Z"
-                                            fill="#8D8D8D" />
-                                        <path
-                                            d="M11.1624 8.23486L8.29994 8.59361L8.19744 9.06861L8.75994 9.17236C9.12744 9.25986 9.19994 9.39236 9.11994 9.75861L8.19744 14.0936C7.95494 15.2149 8.32869 15.7424 9.20744 15.7424C9.88869 15.7424 10.6799 15.4274 11.0387 14.9949L11.1487 14.4749C10.8987 14.6949 10.5337 14.7824 10.2912 14.7824C9.94744 14.7824 9.82244 14.5411 9.91119 14.1161L11.1624 8.23486Z"
-                                            fill="#8D8D8D" />
-                                        <path
-                                            d="M10 6.875C10.6904 6.875 11.25 6.31536 11.25 5.625C11.25 4.93464 10.6904 4.375 10 4.375C9.30964 4.375 8.75 4.93464 8.75 5.625C8.75 6.31536 9.30964 6.875 10 6.875Z"
-                                            fill="#8D8D8D" />
-                                    </g>
-                                    <defs>
-                                        <clipPath id="clip0_570_1010">
-                                            <rect width="20" height="20" fill="white" />
-                                        </clipPath>
-                                    </defs>
-                                </svg>
-                            </div>
-                            <div class="d-flex mb-0 mt-2">
-                                <div class="me-5">
-                                    <p class="my-0" style="color: #8D8D8D;">Jenis</p>
-                                    <p class="my-0">Administrasi Prodi</p>
-                                </div>
-                                <div class="mx-5">
-                                    <p class="my-0" style="color: #8D8D8D;">ID</p>
-                                    <p class="my-0"><?= $data['user_file']->id_verifikasi ?></p>
-                                </div>
-                                <div class="ms-5">
-                                    <p class="my-0" style="color: #8D8D8D;">Status</p>
-                                    <p class="my-0"><?= $data['user_file']->status_verifikasi ?></p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- card ke dua -->
-                <form action="/kirim-permintaan-verifikasi" method="POST" class="card mt-2 px-5 py-2 " style="box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);">
-                    <div class="card-body d-flex justify-content-between">
-                        <!-- kiri  -->
-                        <div>
-                            <div class="d-flex align-items-center">
-                                <h5 class="me-1 my-0">Detail Informasi</h4>
-                                    <svg class="ms-1" width="20" height="20" viewBox="0 0 20 20" fill="none"
+                            <div class="me-5">
+                                <div class="d-flex">
+                                    <h5 class="mb-0" style="color: #8D8D8D;">Informasi Mahasiswa</h5>
+                                    <svg class="ms-2" width="20" height="20" viewBox="0 0 20 20" fill="none"
                                         xmlns="http://www.w3.org/2000/svg">
                                         <g clip-path="url(#clip0_570_1010)">
                                             <path fill-rule="evenodd" clip-rule="evenodd"
@@ -134,62 +53,142 @@
                                             </clipPath>
                                         </defs>
                                     </svg>
-                            </div>
-
-                            <p class="mt-2 mb-0">Laporan TA/Skripsi</p>
-                            <a href="/files/distribusilaporanskripsi.pdf"
-                                class="text-dark">distribusilaporanskripsi.pdf</a>
-
-                            <p class="mt-5 mb-0">Program/Aplikasi TA/Skripsi</p>
-                            <a href="/files/distribusilaporanmagang.pdf"
-                                class="text-dark">distribusilaporanmagang.pdf</a>
-
-                            <p class="mt-5 mb-0">Bukti Publikasi</p>
-                            <a href="/files/buktibebaskompensasi.pdf" class=" text-dark">.buktibebaskompensasi.pdf</a>
-
-                        </div>
-
-                        <!-- kanan -->
-                        <div class="me-2">
-                            <h5 clas="my-0">Proses Verifikasi</h5>
-                            <p>Staff Administrasi Prodi</p>
-                            <div class="d-flex mb-3">
-                                <div class="d-flex me-3 ms-3">
-                                    <input type="checkbox" name="decision" id="verify"
-                                        onclick="toggleCheckbox('verify', 'reject')">
-                                    <label for="verify">Verify</label>
-                                </div>
-                                <div class="d-flex ms-3">
-                                    <input type="checkbox" name="decision" id="reject"
-                                        onclick="toggleCheckbox('reject', 'verify')">
-                                    <label for="reject">Reject</label>
                                 </div>
 
+                                <div class="d-flex align-items-center mb-0 mt-2">
+                                    <img src="assets/img/foto.jpg" alt="Profil" class="rounded-circle"
+                                        style="width: 30px; height: 30px; background-color: #ddd;">
+                                    <div class="ms-3">
+                                        <p class="my-0"><?= $data['user_file']->getNamaLengkap() ?></p>
+                                        <p class="my-0">NIM <span><?= $data['user_file']->getNim() ?></span></p>
+                                    </div>
+                                </div>
                             </div>
-                            <label for="pesan"></label>
-                            <textarea name="pesan" id="pesan" style="resize: none;" rows="8" cols="59"></textarea>
+
+                            <div class="me-5">
+                                <div class="d-flex">
+                                    <h5 style="color: #8D8D8D;">Informasi Permintaan</h5>
+                                    <svg class="ms-2" width="20" height="20" viewBox="0 0 20 20" fill="none"
+                                        xmlns="http://www.w3.org/2000/svg">
+                                        <g clip-path="url(#clip0_570_1010)">
+                                            <path fill-rule="evenodd" clip-rule="evenodd"
+                                                d="M10 18.75C12.3206 18.75 14.5462 17.8281 16.1872 16.1872C17.8281 14.5462 18.75 12.3206 18.75 10C18.75 7.67936 17.8281 5.45376 16.1872 3.81282C14.5462 2.17187 12.3206 1.25 10 1.25C7.67936 1.25 5.45376 2.17187 3.81282 3.81282C2.17187 5.45376 1.25 7.67936 1.25 10C1.25 12.3206 2.17187 14.5462 3.81282 16.1872C5.45376 17.8281 7.67936 18.75 10 18.75ZM10 20C12.6522 20 15.1957 18.9464 17.0711 17.0711C18.9464 15.1957 20 12.6522 20 10C20 7.34784 18.9464 4.8043 17.0711 2.92893C15.1957 1.05357 12.6522 0 10 0C7.34784 0 4.8043 1.05357 2.92893 2.92893C1.05357 4.8043 0 7.34784 0 10C0 12.6522 1.05357 15.1957 2.92893 17.0711C4.8043 18.9464 7.34784 20 10 20Z"
+                                                fill="#8D8D8D" />
+                                            <path
+                                                d="M11.1624 8.23486L8.29994 8.59361L8.19744 9.06861L8.75994 9.17236C9.12744 9.25986 9.19994 9.39236 9.11994 9.75861L8.19744 14.0936C7.95494 15.2149 8.32869 15.7424 9.20744 15.7424C9.88869 15.7424 10.6799 15.4274 11.0387 14.9949L11.1487 14.4749C10.8987 14.6949 10.5337 14.7824 10.2912 14.7824C9.94744 14.7824 9.82244 14.5411 9.91119 14.1161L11.1624 8.23486Z"
+                                                fill="#8D8D8D" />
+                                            <path
+                                                d="M10 6.875C10.6904 6.875 11.25 6.31536 11.25 5.625C11.25 4.93464 10.6904 4.375 10 4.375C9.30964 4.375 8.75 4.93464 8.75 5.625C8.75 6.31536 9.30964 6.875 10 6.875Z"
+                                                fill="#8D8D8D" />
+                                        </g>
+                                        <defs>
+                                            <clipPath id="clip0_570_1010">
+                                                <rect width="20" height="20" fill="white" />
+                                            </clipPath>
+                                        </defs>
+                                    </svg>
+                                </div>
+                                <div class="d-flex mb-0 mt-2">
+                                    <div class="me-5">
+                                        <p class="my-0" style="color: #8D8D8D;">Jenis</p>
+                                        <p class="my-0">Administrasi Prodi</p>
+                                    </div>
+                                    <div class="mx-5">
+                                        <p class="my-0" style="color: #8D8D8D;">ID</p>
+                                        <p class="my-0"><?= $data['user_file']->getIdVerifikasi() ?></p>
+                                    </div>
+                                    <div class="ms-5">
+                                        <p class="my-0" style="color: #8D8D8D;">Status</p>
+                                        <p class="my-0"><?= $data['user_file']->getStatusVerifikasi() ?></p>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
-                    <div class="d-flex justify-content-end">
-                        <button type="submit" value="Kirim" id="submitBtn" class="px-4 text-white mt-3"
-                            style="background-color:#052C65 ;" data-bs-toggle="modal"
-                            data-bs-target="#statusModal">Kirim</button>
-                    </div>
-                </form>
 
+                    <!-- card ke dua -->
+                    <div class="card mt-2 px-5 py-2 " style="box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);">
+                        <div class="card-body d-flex justify-content-between">
+                            <!-- kiri  -->
+                            <div>
+                                <div class="d-flex align-items-center">
+                                    <h5 class="me-1 my-0">Detail Informasi</h4>
+                                        <svg class="ms-1" width="20" height="20" viewBox="0 0 20 20" fill="none"
+                                            xmlns="http://www.w3.org/2000/svg">
+                                            <g clip-path="url(#clip0_570_1010)">
+                                                <path fill-rule="evenodd" clip-rule="evenodd"
+                                                    d="M10 18.75C12.3206 18.75 14.5462 17.8281 16.1872 16.1872C17.8281 14.5462 18.75 12.3206 18.75 10C18.75 7.67936 17.8281 5.45376 16.1872 3.81282C14.5462 2.17187 12.3206 1.25 10 1.25C7.67936 1.25 5.45376 2.17187 3.81282 3.81282C2.17187 5.45376 1.25 7.67936 1.25 10C1.25 12.3206 2.17187 14.5462 3.81282 16.1872C5.45376 17.8281 7.67936 18.75 10 18.75ZM10 20C12.6522 20 15.1957 18.9464 17.0711 17.0711C18.9464 15.1957 20 12.6522 20 10C20 7.34784 18.9464 4.8043 17.0711 2.92893C15.1957 1.05357 12.6522 0 10 0C7.34784 0 4.8043 1.05357 2.92893 2.92893C1.05357 4.8043 0 7.34784 0 10C0 12.6522 1.05357 15.1957 2.92893 17.0711C4.8043 18.9464 7.34784 20 10 20Z"
+                                                    fill="#8D8D8D" />
+                                                <path
+                                                    d="M11.1624 8.23486L8.29994 8.59361L8.19744 9.06861L8.75994 9.17236C9.12744 9.25986 9.19994 9.39236 9.11994 9.75861L8.19744 14.0936C7.95494 15.2149 8.32869 15.7424 9.20744 15.7424C9.88869 15.7424 10.6799 15.4274 11.0387 14.9949L11.1487 14.4749C10.8987 14.6949 10.5337 14.7824 10.2912 14.7824C9.94744 14.7824 9.82244 14.5411 9.91119 14.1161L11.1624 8.23486Z"
+                                                    fill="#8D8D8D" />
+                                                <path
+                                                    d="M10 6.875C10.6904 6.875 11.25 6.31536 11.25 5.625C11.25 4.93464 10.6904 4.375 10 4.375C9.30964 4.375 8.75 4.93464 8.75 5.625C8.75 6.31536 9.30964 6.875 10 6.875Z"
+                                                    fill="#8D8D8D" />
+                                            </g>
+                                            <defs>
+                                                <clipPath id="clip0_570_1010">
+                                                    <rect width="20" height="20" fill="white" />
+                                                </clipPath>
+                                            </defs>
+                                        </svg>
+                                </div>
+
+                                <p class="mt-2 mb-0">Laporan TA/Skripsi</p>
+                                <a href="/files/distribusilaporanskripsi.pdf"
+                                    class="text-dark">distribusilaporanskripsi.pdf</a>
+
+                                <p class="mt-5 mb-0">Program/Aplikasi TA/Skripsi</p>
+                                <a href="/files/distribusilaporanmagang.pdf"
+                                    class="text-dark">distribusilaporanmagang.pdf</a>
+
+                                <p class="mt-5 mb-0">Bukti Publikasi</p>
+                                <a href="/files/buktibebaskompensasi.pdf" class=" text-dark">.buktibebaskompensasi.pdf</a>
+
+                            </div>
+
+                            <!-- kanan -->
+                            <form id="form-verify"
+                                action="/permintaan-verif-ta/detail/<?= $data['user_file']->getIdVerifikasi() ?>"
+                                method="PATCH" class="me-2">
+                                <h5 clas="my-0">Proses Verifikasi</h5>
+                                <p>Staff Verifikator TA</p>
+                                <div class="d-flex mb-3">
+                                    <div class="d-flex me-3 ms-3">
+                                        <input type="radio" name="verify" value="verified" id="verify">
+                                        <label for="verify">Verifikasi</label>
+                                    </div>
+                                    <div class="d-flex ms-3">
+                                        <input type="radio" name="verify" value="rejected" id="reject">
+                                        <label for="reject">Tolak</label>
+                                    </div>
+                                </div>
+                                <textarea name="description" id="description"
+                                    placeholder="Tambahkan keterangan kepada pihak mahasiswa" style="resize: none;" rows="8"
+                                    cols="59"></textarea>
+                                <div class="d-flex justify-content-end">
+                                    <button type="submit" value="Kirim" id="submitBtn" class="px-4 text-white mt-3"
+                                        style="background-color:#052C65;">Kirim</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
                 <?php else: ?>
-                    <div class="card justify-content-center align-items-center" style="min-height: 60vh; box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);">
+                    <div class="card justify-content-center align-items-center"
+                        style="min-height: 60vh; box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);">
                         <h1>Data tidak bisa ditemukan!</h1>
                     </div>
                 <?php endif; ?>
             </section>
-
-
         </main>
     </div>
 </div>
 
-<div class="modal" tabindex="-1" id="statusModal">
+
+
+
+<!-- BOOTSTRAP MODAL -->
+<div class="modal" tabindex="-1" id="info-success-update-modal">
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
             <div class="modal-header">
@@ -197,27 +196,48 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                <h6>Data valid
-                    berhasil diupload</h6>
+                <h6>Formulir berhasil diverifikasi!</h6>
             </div>
             <div class="modal-footer">
-                <button type="button" style="color: #052C65; border-color: #052C65; background-color: white"
-                    data-bs-dismiss="modal">Edit</button>
-                <a href="/permintaan-verifikasi">
-                    <button type="button" class="text-white" style="background-color: #052C65;">Selesai</button>
-                </a>
-
+                <button type="button" class="text-white" style="background-color: #052C65;"
+                    data-bs-dismiss="modal">Selesai</button>
             </div>
         </div>
     </div>
 </div>
 
+<?php include __DIR__ . '/../../components/bs_modal/server_error.php' ?>
+
+
+
+
+<!-- JavaScript for this page -->
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.7.1/dist/jquery.min.js"></script>
 <script>
-    function toggleCheckbox(selectedId, otherId) {
-        const selectedCheckbox = document.getElementById(selectedId);
-        const otherCheckbox = document.getElementById(otherId);
-        if (selectedCheckbox.checked) {
-            otherCheckbox.checked = false;
-        }
-    }
+    $(document).ready(function () {
+        $('#form-verify').on('submit', function (e) {
+            e.preventDefault();
+
+            const data = new FormData($(this)[0]);
+
+            const formObject = {};
+            data.forEach((value, key) => {
+                formObject[key] = value;
+            });
+
+            $.ajax({
+                url: $(this).attr('action'),
+                type: $(this).attr('method'),
+                data: JSON.stringify(formObject),
+                processData: false,
+                contentType: 'application/json',
+                success: function (response) {
+                    $('#info-success-update-modal').modal('show');
+                },
+                error: (xhr, status, error) => {
+                    $('#server-error-bs-modal').modal('show');
+                }
+            });
+        });
+    })
 </script>
