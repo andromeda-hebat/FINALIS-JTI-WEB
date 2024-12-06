@@ -72,8 +72,7 @@
                                 <a href="/files/Surat_Pernyataan_Publikasi.pdf" target="_blank"
                                     class="me-3 btn btn-outline-dark btn-sm rounded-pill"
                                     style="border-color: #052C65;">Preview
-                                </a>
-                                <button class="btn btn-outline-dark btn-sm rounded-pill">Download</button>
+                                </a>        
                             </div>
                         </div>
                         <div class="d-flex justify-content-between align-items-center py-2">
@@ -83,7 +82,6 @@
                                     class="me-3 btn btn-outline-dark btn-sm rounded-pill"
                                     style="border-color: #052C65;">Preview
                                 </a>
-                                <button class="btn btn-outline-dark btn-sm rounded-pill">Download</button>
                             </div>
                         </div>
                         <div class="d-flex justify-content-between align-items-center py-2">
@@ -93,7 +91,6 @@
                                     class="me-3 btn btn-outline-dark btn-sm rounded-pill"
                                     style="border-color: #052C65;">Preview
                                 </a>
-                                <button class="btn btn-outline-dark btn-sm rounded-pill">Download</button>
                             </div>
                         </div>
                         <div class="d-flex justify-content-between align-items-center py-2">
@@ -103,7 +100,6 @@
                                     class="me-3 btn btn-outline-dark btn-sm rounded-pill"
                                     style="border-color: #052C65;">Preview
                                 </a>
-                                <button class="btn btn-outline-dark btn-sm rounded-pill">Download</button>
                             </div>
                         </div>
                     </div>
