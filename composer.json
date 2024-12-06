@@ -14,13 +14,17 @@
     "autoload": {
         "psr-4": {
             "App\\": "app/"
-        }
+        },
+        "files": [
+            "app/config/config.php"
+        ]
     },
     "require": {
         "vlucas/phpdotenv": "^5.6"
     },
     "scripts": {
-        "db-seeder": "php app/database/seeder.php",
+        "db-schema": "php database/schema.php",
+        "db-seeder": "php database/seeder.php",
         "db-init": [
             "@db-seeder"
         ]

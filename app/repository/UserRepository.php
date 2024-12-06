@@ -6,6 +6,7 @@ use App\Core\Database;
 use App\Core\Repository;
 use App\Models\Admin;
 use App\Models\User;
+use App\Helpers\ErrorLog;
 
 class UserRepository extends Repository
 {
@@ -28,6 +29,7 @@ class UserRepository extends Repository
             $stmt->execute();
             $stmt->setFetchMode(\PDO::FETCH_CLASS, User::class);    
         } catch (\PDOException $e) {
+            error_log(ErrorLog::formattedErrorLog($e->getMessage()), 3, LOG_FILE_PATH);
             throw new \PDOException($e->getMessage());
         }
 
@@ -46,6 +48,7 @@ class UserRepository extends Repository
             $stmt->execute();
             $stmt->setFetchMode(\PDO::FETCH_CLASS, 'Admin');
         } catch (\PDOException $e) {
+            error_log(ErrorLog::formattedErrorLog($e->getMessage()), 3, LOG_FILE_PATH);
             throw new \PDOException($e->getMessage());
         }
 
