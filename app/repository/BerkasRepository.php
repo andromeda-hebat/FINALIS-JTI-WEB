@@ -107,7 +107,8 @@ class BerkasRepository
     {
         try {
             $stmt = Database::getConnection()->prepare(<<<SQL
-                SELECT ROW_NUMBER() OVER (ORDER BY tanggal_request ASC) AS nomor,
+                SELECT 
+                    ROW_NUMBER() OVER (ORDER BY tanggal_request ASC) AS nomor,
                     tanggal_request AS tanggal_request,
                     jenis_berkas AS jenis_formulir,
                     status_verifikasi AS status,
@@ -145,7 +146,8 @@ class BerkasRepository
     {
         try {
             $stmt = Database::getConnection()->query(<<<SQL
-                SELECT 
+                SELECT
+                    ROW_NUMBER() OVER (ORDER BY tanggal_request ASC) AS nomor,
                     vb.id_verifikasi, 
                     ta.id_ta AS id_berkas, 
                     m.nim, 
@@ -155,7 +157,8 @@ class BerkasRepository
                     vb.keterangan_verifikasi
                 FROM VER.VerifikasiBerkas vb
                 INNER JOIN BERKAS.TA ta ON vb.id_berkas = ta.id_ta
-                INNER JOIN USERS.Mahasiswa m ON ta.nim = m.nim;
+                INNER JOIN USERS.Mahasiswa m ON ta.nim = m.nim
+                ORDER BY ta.tanggal_request DESC;
             SQL);
             return $stmt->fetchAll(\PDO::FETCH_CLASS, VerifikasiBerkas::class);
         } catch (\PDOException $e) {
@@ -179,6 +182,7 @@ class BerkasRepository
                 FROM USERS.Mahasiswa m
                 INNER JOIN BERKAS.Prodi p ON m.nim = p.nim
                 INNER JOIN VER.VerifikasiBerkas v ON v.id_berkas = p.id_berkas_prodi
+                ORDER BY p.tanggal_request DESC
             SQL);
             return $stmt->fetchAll(\PDO::FETCH_CLASS, VerifikasiBerkas::class);
         } catch (\PDOException $e) {

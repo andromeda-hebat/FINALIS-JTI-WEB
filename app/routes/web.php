@@ -93,7 +93,7 @@ Router::add('GET', '/permintaan-verif-ta/detail/([0-9]+)', AdminTAController::cl
 ]);
 
 
-//Admin Jurusan
+// User: Admin Jurusan
 Router::add('GET', '/kelola-admin', AdminJurusanController::class, 'kelolaAdmin', [
     [
         'class' => AuthMiddleware::class,
