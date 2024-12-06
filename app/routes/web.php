@@ -91,9 +91,15 @@ Router::add('GET', '/permintaan-verif-ta/detail/([0-9]+)', AdminTAController::cl
         'function' => 'checkAuth'
     ]
 ]);
+Router::add('PATCH', '/permintaan-verif-ta/detail/([0-9]+)', AdminTAController::class, 'verifyBerkas', [
+    [
+        'class' => AuthMiddleware::class,
+        'function' => 'checkAuth'
+    ]
+]);
 
 
-//Admin Jurusan
+// User: Admin Jurusan
 Router::add('GET', '/kelola-admin', AdminJurusanController::class, 'kelolaAdmin', [
     [
         'class' => AuthMiddleware::class,

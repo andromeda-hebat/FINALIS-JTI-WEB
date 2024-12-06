@@ -2,43 +2,46 @@
 
 namespace App\Controllers;
 
-require_once __DIR__ . '/../core/Controller.php';
-
-
 use App\Core\Controller;
 use App\Repository\BerkasRepository;
 
 
 class AdminTAController extends Controller
 {
-    private BerkasRepository $berkas_repository;
-
-    public function __construct()
-    {
-        $this->berkas_repository = new BerkasRepository();
-    }
-
     public function requestVerifikasi(): void
     {
-        $data['title'] = "Permintaan Verifikasi";
-        $data['css'] = ["assets/css/sidebar"];
-        $this->view("templates/header", $data);
-        $this->view("pages/admin_ta/permintaan_verifikasi");
+        try {
+            $all_req_verif = BerkasRepository::getAllBerkasTAReq();
+        } catch (\PDOException $e) {
+            http_response_code(500);
+            echo json_encode([
+                "status" => "error",
+                "message" => "Database connectivity error!",
+            ]);
+            exit;
+        }
+
+        $this->view("templates/header", [
+            'title' => "Permintaan Verifikasi",
+            'css' => ["assets/css/sidebar"]
+        ]);
+        $this->view("pages/admin_ta/permintaan_verifikasi", [
+            'all_req_verif' => $all_req_verif
+        ]);
         $this->view("templates/footer");
     }
 
     public function showDetailReq(int $id_verifikasi): void
     {
         try {
-            $user_file = $this->berkas_repository->getSingleBerkasTAReq($id_verifikasi);
+            $user_file = BerkasRepository::getSingleBerkasTAReq($id_verifikasi);
         } catch (\PDOException $e) {
             http_response_code(500);
             echo json_encode([
-                "status"=>"error",
-                "message"=>"Database connectivity error!",
-                "detail"=>$e->getMessage()
+                "status" => "error",
+                "message" => "Database connectivity error!",
             ]);
-            return;
+            exit;
         }
 
         $this->view("templates/header", [
@@ -49,5 +52,25 @@ class AdminTAController extends Controller
             'user_file' => $user_file
         ]);
         $this->view("templates/footer");
+    }
+
+    public function verifyBerkas(int $id_verifikasi): void
+    {
+        $data = json_decode(file_get_contents('php://input'), true);
+        
+        try {
+            BerkasRepository::updateVerifyStatusBerkasProdi($data['id_verifikasi'], $data['verify'], $data['description']);
+            http_response_code(200);
+            echo json_encode([
+                "status" => "success",
+                "message" => "successfully update verify status"
+            ]);
+        } catch (\PDOException $e) {
+            http_response_code(500);
+            echo json_encode([
+                "status"=>"error",
+                "message"=>"Database connectivity error!",
+            ]);
+        }
     }
 }

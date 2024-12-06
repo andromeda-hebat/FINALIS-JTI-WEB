@@ -2,58 +2,35 @@
 
 namespace App\Models;
 
-class RiwayatPengajuan
+use App\Core\Model;
+
+class RiwayatPengajuan extends Model
 {
-    private string $tanggal_request;
-    private string $status_verifikasi;
-    private string $jenis_berkas;
-    private string $keterangan_verifikasi;
+    private ?int $nomor;
+    private ?string $tanggal_request;
+    private ?string $jenis_formulir;
+    private ?string $status;
+    private ?string $keterangan;
 
-    public function __construct(?string $tanggal_request = null, ?string $jenis_berkas = null, ?string $status_verifikasi = null, ?string $keterangan_verifikasi = null)
-    {
-        $this->tanggal_request = $tanggal_request;
-        $this->jenis_berkas = $jenis_berkas;
-        $this->status_verifikasi = $status_verifikasi;
-        $this->keterangan_verifikasi = $keterangan_verifikasi;
-    }
+    public function __construct() { }
 
-    public function getTanggalRequest(): string
-    {
-        return $this->tanggal_request;
-    }
+    public function getNomor(): int { return $this->nomor; }
 
-    public function setTanggalRequest(string $tanggal_request): void
-    {
-        $this->tanggal_request = $tanggal_request;
-    }
+    public function setNomor(int $nomor): void { $this->nomor = $nomor; }
 
-    public function getStatusVerifikasi(): string
-    {
-        return $this->status_verifikasi;
-    }
+    public function getTanggalRequest(): string { return $this->tanggal_request; }
 
-    public function setStatusVerifikasi(string $status_verifikasi): void
-    {
-        $this->status_verifikasi = $status_verifikasi;
-    }
+    public function setTanggalRequest(string $tanggal_request): void { $this->tanggal_request = $tanggal_request; }
 
-    public function getJenisBerkas(): string
-    {
-        return $this->jenis_berkas;
-    }
+    public function getStatus(): string { return $this->status; }
 
-    public function setJenisBerkas(string $jenis_berkas): void
-    {
-        $this->jenis_berkas = $jenis_berkas;
-    }
+    public function setStatus(string $status): void { $this->status = $status; }
 
-    public function getKeteranganVerifikasi(): string
-    {
-        return $this->keterangan_verifikasi;
-    }
+    public function getJenisFormulir(): string { return $this->jenis_formulir; }
 
-    public function setKeteranganVerifikasi(string $keterangan_verifikasi): void
-    {
-        $this->keterangan_verifikasi = $keterangan_verifikasi;
-    }
+    public function setJenisFormulir(string $jenis_formulir): void { $this->jenis_formulir = $jenis_formulir; }
+
+    public function getKeterangan(): string { return $this->keterangan; }
+
+    public function setKeterangan(string $keterangan): void { $this->keterangan = $keterangan; }
 }

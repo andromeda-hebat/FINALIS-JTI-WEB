@@ -3,16 +3,12 @@
 namespace App\Repository;
 
 use App\Core\Database;
-use App\Core\Repository;
-use App\Models\BerkasProdi;
-use App\Models\BerkasTA;
-use App\Models\RiwayatPengajuan;
-use App\Models\VerifikasiBerkas;
+use App\Models\{BerkasProdi, BerkasTA, RiwayatPengajuan, VerifikasiBerkas};
 use App\Helpers\ErrorLog;
 
-class BerkasRepository extends Repository
+class BerkasRepository
 {
-    public function checkUserBerkasTAStatus(string $user_id): bool|string
+    public static function checkUserBerkasTAStatus(string $user_id): bool|string
     {
         try {
             $stmt = Database::getConnection()->prepare(<<<SQL
@@ -36,7 +32,7 @@ class BerkasRepository extends Repository
         }
     }
 
-    public function checkUserBerkasProdiStatus(string $user_id): bool|string
+    public static function checkUserBerkasProdiStatus(string $user_id): bool|string
     {
         try {
             $stmt = Database::getConnection()->prepare(<<<SQL
@@ -60,7 +56,7 @@ class BerkasRepository extends Repository
         }
     }
 
-    public function addNewBerkasTA(BerkasTA $berkas_TA): void
+    public static function addNewBerkasTA(BerkasTA $berkas_TA): void
     {
         try {
             $stmt = Database::getConnection()->prepare(<<<SQL
@@ -81,7 +77,7 @@ class BerkasRepository extends Repository
         }
     }
 
-    public function addNewBerkasProdi(BerkasProdi $berkas_prodi): void
+    public static function addNewBerkasProdi(BerkasProdi $berkas_prodi): void
     {
         try {
             $stmt = Database::getConnection()->prepare(<<<SQL
@@ -104,18 +100,37 @@ class BerkasRepository extends Repository
         }
     }
 
-    public function getUserHistoryRequest(string $user_id): array
+    public static function getUserHistoryRequest(string $user_id): array
     {
         try {
             $stmt = Database::getConnection()->prepare(<<<SQL
-                SELECT id_berkas, jenis_berkas, status_verifikasi, keterangan_verifikasi
-                FROM VER.VerifikasiBerkas AS vb
-                INNER JOIN BERKAS.Prodi AS p ON vb.id_berkas = p.id_berkas_prodi AND vb.jenis_berkas = 'Prodi'
-                INNER JOIN Berkas.TA AS ta ON vb.id_berkas = ta.id_ta AND vb.jenis_berkas = 'TA'
-                INNER JOIN USERS.Mahasiswa AS m ON m.nim = p.nim OR m.nim = ta.nim
-                WHERE m.nim = :nim;
+                SELECT 
+                    ROW_NUMBER() OVER (ORDER BY tanggal_request ASC) AS nomor,
+                    tanggal_request AS tanggal_request,
+                    jenis_berkas AS jenis_formulir,
+                    status_verifikasi AS status,
+                    keterangan_verifikasi AS keterangan
+                FROM (
+                    SELECT P.tanggal_request,
+                        V.status_verifikasi,
+                        V.keterangan_verifikasi,
+                        'Formulir Administrasi Prodi' AS jenis_berkas 
+                    FROM VER.VerifikasiBerkas V
+                    INNER JOIN BERKAS.Prodi P ON P.id_berkas_prodi = V.id_berkas
+                    WHERE P.nim = ?
+                    UNION ALL
+                    SELECT T.tanggal_request,
+                        V.status_verifikasi,
+                        V.keterangan_verifikasi,
+                        'Formulir Tugas Akhir' AS jenis_berkas 
+                    FROM VER.VerifikasiBerkas V
+                    INNER JOIN BERKAS.TA T ON T.id_ta = V.id_berkas
+                    WHERE T.nim = ?
+                ) AS Combined
+                ORDER BY tanggal_request ASC;
             SQL);
-            $stmt->bindValue(':nim', $user_id, \PDO::PARAM_STR);
+            $stmt->bindValue(1, $user_id, \PDO::PARAM_STR);
+            $stmt->bindValue(2, $user_id, \PDO::PARAM_STR);
             $stmt->execute();
             return $stmt->fetchAll(\PDO::FETCH_CLASS, RiwayatPengajuan::class);
         } catch (\PDOException $e) {
@@ -124,11 +139,12 @@ class BerkasRepository extends Repository
         }
     }
 
-    public function getAllBerkasTAReq(): array
+    public static function getAllBerkasTAReq(): array
     {
         try {
             $stmt = Database::getConnection()->query(<<<SQL
-                SELECT 
+                SELECT
+                    ROW_NUMBER() OVER (ORDER BY tanggal_request ASC) AS nomor,
                     vb.id_verifikasi, 
                     ta.id_ta AS id_berkas, 
                     m.nim, 
@@ -138,7 +154,8 @@ class BerkasRepository extends Repository
                     vb.keterangan_verifikasi
                 FROM VER.VerifikasiBerkas vb
                 INNER JOIN BERKAS.TA ta ON vb.id_berkas = ta.id_ta
-                INNER JOIN USERS.Mahasiswa m ON ta.nim = m.nim;
+                INNER JOIN USERS.Mahasiswa m ON ta.nim = m.nim
+                ORDER BY ta.tanggal_request DESC;
             SQL);
             return $stmt->fetchAll(\PDO::FETCH_CLASS, VerifikasiBerkas::class);
         } catch (\PDOException $e) {
@@ -147,7 +164,7 @@ class BerkasRepository extends Repository
         }
     }
 
-    public function getAllBerkasProdiReq(): array
+    public static function getAllBerkasProdiReq(): array
     {
         try {
             $stmt = Database::getConnection()->query(<<<SQL
@@ -162,6 +179,7 @@ class BerkasRepository extends Repository
                 FROM USERS.Mahasiswa m
                 INNER JOIN BERKAS.Prodi p ON m.nim = p.nim
                 INNER JOIN VER.VerifikasiBerkas v ON v.id_berkas = p.id_berkas_prodi
+                ORDER BY p.tanggal_request DESC
             SQL);
             return $stmt->fetchAll(\PDO::FETCH_CLASS, VerifikasiBerkas::class);
         } catch (\PDOException $e) {
@@ -170,7 +188,7 @@ class BerkasRepository extends Repository
         }
     }
 
-    public function getSingleBerkasTAReq(int $id_verifikasi): bool|VerifikasiBerkas
+    public static function getSingleBerkasTAReq(int $id_verifikasi): bool|VerifikasiBerkas
     {
         try {
             $stmt = Database::getConnection()->prepare(<<<SQL
@@ -197,7 +215,7 @@ class BerkasRepository extends Repository
         }
     }
 
-    public function getSingleBerkasProdiReq(int $id_verifikasi): bool|VerifikasiBerkas
+    public static function getSingleBerkasProdiReq(int $id_verifikasi): bool|VerifikasiBerkas
     {
         try {
             $stmt = Database::getConnection()->prepare(<<<SQL
@@ -220,6 +238,25 @@ class BerkasRepository extends Repository
             return $stmt->fetch();
         } catch (\PDOException $e) {
             error_log(ErrorLog::formattedErrorLog($e->getMessage()), 3, LOG_FILE_PATH);
+            throw new \PDOException($e->getMessage());
+        }
+    }
+
+    public static function updateVerifyStatusBerkasProdi(int $id_verifikasi, string $status_verifikasi, string $keterangan): void
+    {
+        try {
+            $stmt = Database::getConnection()->prepare(<<<SQL
+            UPDATE VER.VerifikasiBerkas
+            SET 
+                status_verifikasi = :status,
+                keterangan_verifikasi = :keterangan
+            WHERE id_verifikasi = :id_verifikasi
+            SQL);
+            $stmt->bindValue(':status', $status_verifikasi, \PDO::PARAM_STR);
+            $stmt->bindValue(':keterangan', $keterangan, \PDO::PARAM_STR);
+            $stmt->bindValue(':id_verifikasi', $id_verifikasi, \PDO::PARAM_STR);
+            $stmt->execute();
+        } catch (\PDOException $e) {
             throw new \PDOException($e->getMessage());
         }
     }

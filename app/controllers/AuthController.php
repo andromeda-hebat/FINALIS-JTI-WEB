@@ -9,16 +9,6 @@ use App\Repository\UserRepository;
 
 class AuthController extends Controller
 {
-    private UserRepository $user_repository;
-    private BerkasRepository $berkas_repository;
-
-
-    public function __construct()
-    {
-        $this->user_repository = new UserRepository();
-        $this->berkas_repository = new BerkasRepository();
-    }
-
     public function viewLogin(): void
     {
         $data['title'] = "Login";
@@ -39,7 +29,7 @@ class AuthController extends Controller
         }
 
         try {
-            $result = $this->user_repository->getAdminDataByUserIDAndPassword($id_admin, $password);
+            $result = UserRepository::getAdminDataByUserIDAndPassword($id_admin, $password);
         } catch (\PDOException $e) {
             header("Content-Type: application/json");
             http_response_code(500);
@@ -79,7 +69,7 @@ class AuthController extends Controller
         }
 
         try {
-            $user = $this->user_repository->getUserDataByUserIDAndPassword($_POST['user_id'], $_POST['password']);
+            $user = UserRepository::getUserDataByUserIDAndPassword($_POST['user_id'], $_POST['password']);
         } catch (\PDOException $e) {
             header("Content-Type: application/json");
             http_response_code(500);
@@ -97,8 +87,8 @@ class AuthController extends Controller
             $_SESSION['user_photo'] = $user->foto_profil;
 
             if ($_SESSION['role'] == "mahasiswa") {
-                $_SESSION['status']['tugas_akhir'] = $this->berkas_repository->checkUserBerkasTAStatus($_SESSION['user_id']);
-                $_SESSION['status']['administrasi_prodi'] = $this->berkas_repository->checkUserBerkasProdiStatus($_SESSION['user_id']);
+                $_SESSION['status']['tugas_akhir'] = BerkasRepository::checkUserBerkasTAStatus($_SESSION['user_id']);
+                $_SESSION['status']['administrasi_prodi'] = BerkasRepository::checkUserBerkasProdiStatus($_SESSION['user_id']);
             }
             header('Content-Type: application/json');
             echo json_encode(['redirect' => '/dashboard']);

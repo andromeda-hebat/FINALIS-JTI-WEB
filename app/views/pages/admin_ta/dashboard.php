@@ -139,25 +139,27 @@
                     <table class="table">
                         <thead class="table">
                             <tr>
-                                <th style="background-color: #E4EEFF;">NIM</th>
-                                <th style="background-color: #E4EEFF;">Mahasiswa</th>
-                                <th style="background-color: #E4EEFF;">Tanggal</th>
-                                <th style="background-color: #E4EEFF;">Keterangan</th>
-                                <th style="background-color: #E4EEFF;">Aksi</th>
+                                <th style="background-color:#E4EEFF ;">No</th>
+                                <th style="background-color:#E4EEFF ;">NIM</th>
+                                <th style="background-color:#E4EEFF ;">Mahasiswa</th>
+                                <th style="background-color:#E4EEFF ;">Status</th>
+                                <th style="background-color:#E4EEFF ;">Tanggal Pengajuan</th>
+                                <th style="background-color:#E4EEFF ;">Keterangan</th>
+                                <th style="background-color:#E4EEFF ;">Aksi</th>
                             </tr>
                         </thead>
                         <tbody>
-                            <?php 
-                                $iteration = 0;
-                                foreach ($data['all_req_verif'] as $key => $value):
-                            ?>
-                            <tr>
-                                <td><?= $value->nim ?></td>
-                                <td><?= $value->nama_lengkap ?></td>
-                                <td><?= $value->tanggal_request ?></td>
-                                <td><?= $value->keterangan_verifikasi ?></td>
-                                <td><a href="/permintaan-verif-ta/detail/<?= $value->id_verifikasi ?>" class="btn btn-primary">Detail</a></td>
-                            </tr>
+                            <?php foreach ($data['all_req_verif'] as $key => $value): ?>
+                                <tr>
+                                    <td><?= $value->getNomor() ?></td>
+                                    <td><?= $value->getNim() ?></td>
+                                    <td><?= $value->getNamaLengkap() ?></td>
+                                    <td><?= $value->getStatusVerifikasi() ?></td>
+                                    <td><?= $value->getTanggalRequest() ?></td>
+                                    <td><?= $value->getKeteranganVerifikasi() ?></td>
+                                    <td><a href="/permintaan-verif-ta/detail/<?= $value->getIdVerifikasi() ?>"
+                                            class="btn btn-primary">Rincian</a></td>
+                                </tr>
                             <?php endforeach; ?>
                         </tbody>
                     </table>

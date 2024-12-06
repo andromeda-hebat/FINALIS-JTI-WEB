@@ -33,20 +33,41 @@ class HomeController extends Controller
         $data['css'] = ["assets/css/sidebar"];
 
         if (!isset($_SESSION['role'])) {
-            // WARNING: Informs the user that they are not authenticated
-            echo "USER NOT AUTHENTICATED!";
+            $this->view("templates/header", [
+                'title' => 'Dashboard'
+            ]);
+            $this->view("pages/general/not_authenticate");
+            $this->view('templates/footer');
             return;
         }
 
         switch ($_SESSION['role']) {
             case 'Admin Prodi':
-                $data['all_req_verif'] = (new BerkasRepository())->getAllBerkasProdiReq();
+                try {
+                    $data['all_req_verif'] = BerkasRepository::getAllBerkasProdiReq();
+                } catch (\PDOException $e) {
+                    header("Content-Type: application/json");
+                    http_response_code(500);
+                    echo json_encode([
+                        "status" => "error",
+                        "message" => "Database connectivity error!"
+                    ]);
+                }
                 $this->view("templates/header", $data);
                 $this->view("pages/admin_prodi/dashboard", $data);
                 $this->view("templates/footer");
                 break;
             case 'Admin TA':
-                $data['all_req_verif'] = (new BerkasRepository())->getAllBerkasTAReq();
+                try {
+                    $data['all_req_verif'] = BerkasRepository::getAllBerkasTAReq();
+                } catch (\PDOException $e) {
+                    header("Content-Type: application/json");
+                    http_response_code(500);
+                    echo json_encode([
+                        "status" => "error",
+                        "message" => "Database connectivity error!"
+                    ]);
+                }
                 $this->view("templates/header", $data);
                 $this->view("pages/admin_ta/dashboard", $data);
                 $this->view("templates/footer");
