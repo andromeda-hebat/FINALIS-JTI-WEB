@@ -1,5 +1,7 @@
 # Dokumentasi Basis Data 🛢️
 
+[Kembali](README.md)
+
 Halaman ini berisi dokumentasi basis data yang diimplementasikan di sistem FINALIS JTI
 
 ## Entitas 📦
