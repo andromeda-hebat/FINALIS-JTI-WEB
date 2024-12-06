@@ -33,8 +33,12 @@ class HomeController extends Controller
         $data['css'] = ["assets/css/sidebar"];
 
         if (!isset($_SESSION['role'])) {
-            // WARNING: Informs the user that they are not authenticated
-            echo "USER NOT AUTHENTICATED!";
+            $this->view("templates/header", [
+                'title' => 'Dashboard',
+                'css' => ["assets/css/sidebar"]
+            ]);
+            $this->view("pages/general/not_authenticate");
+            $this->view('templates/footer');
             return;
         }
 
