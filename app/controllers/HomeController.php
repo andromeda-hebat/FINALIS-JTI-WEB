@@ -34,8 +34,7 @@ class HomeController extends Controller
 
         if (!isset($_SESSION['role'])) {
             $this->view("templates/header", [
-                'title' => 'Dashboard',
-                'css' => ["assets/css/sidebar"]
+                'title' => 'Dashboard'
             ]);
             $this->view("pages/general/not_authenticate");
             $this->view('templates/footer');
