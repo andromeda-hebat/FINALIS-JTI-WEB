@@ -5,7 +5,7 @@
 				style="width: 30px; height: 30px; background-color: #ddd;">
 			<div class="ms-2 flex-column text-start">
 				<h5 class="mb-0">Anggi Putra</h5>
-				<p class="mt-0" style="font-size: 12px;">Admin Prodi TA</p>
+				<p class="mt-0" style="font-size: 12px;">Admin TA</p>
 			</div>
 		</div>
 		<div>
