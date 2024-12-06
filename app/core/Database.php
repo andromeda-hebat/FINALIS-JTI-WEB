@@ -33,15 +33,13 @@ class Database
         return $conn;
     }
 
-    public static function getConnectionWithouDB(): \PDO
+    public static function getConnection(bool $is_with_db = false): \PDO
     {
-        self::initialize();
+        if ($is_with_db) {
+            self::initialize();
+            return self::getBConnection("sqlsrv:Server=" . self::$DB_SERVER);
+        }
 
-        return self::getBConnection("sqlsrv:Server=" . self::$DB_SERVER);
-    }
-
-    public static function getConnection(): \PDO
-    {
         if (self::$conn === null) {
             self::initialize();
             self::$conn = self::getBConnection("sqlsrv:Server=" . self::$DB_SERVER . ";Database=" . self::$DB_NAME);
