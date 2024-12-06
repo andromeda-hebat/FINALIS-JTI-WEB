@@ -11,13 +11,6 @@ use App\Repository\BerkasRepository;
 
 class AdminTAController extends Controller
 {
-    private BerkasRepository $berkas_repository;
-
-    public function __construct()
-    {
-        $this->berkas_repository = new BerkasRepository();
-    }
-
     public function requestVerifikasi(): void
     {
         $data['title'] = "Permintaan Verifikasi";
@@ -30,7 +23,7 @@ class AdminTAController extends Controller
     public function showDetailReq(int $id_verifikasi): void
     {
         try {
-            $user_file = $this->berkas_repository->getSingleBerkasTAReq($id_verifikasi);
+            $user_file = BerkasRepository::getSingleBerkasTAReq($id_verifikasi);
         } catch (\PDOException $e) {
             http_response_code(500);
             echo json_encode([
