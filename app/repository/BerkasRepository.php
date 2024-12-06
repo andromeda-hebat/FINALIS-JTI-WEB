@@ -3,16 +3,15 @@
 namespace App\Repository;
 
 use App\Core\Database;
-use App\Core\Repository;
 use App\Models\BerkasProdi;
 use App\Models\BerkasTA;
 use App\Models\RiwayatPengajuan;
 use App\Models\VerifikasiBerkas;
 use App\Helpers\ErrorLog;
 
-class BerkasRepository extends Repository
+class BerkasRepository
 {
-    public function checkUserBerkasTAStatus(string $user_id): bool|string
+    public static function checkUserBerkasTAStatus(string $user_id): bool|string
     {
         try {
             $stmt = Database::getConnection()->prepare(<<<SQL
@@ -36,7 +35,7 @@ class BerkasRepository extends Repository
         }
     }
 
-    public function checkUserBerkasProdiStatus(string $user_id): bool|string
+    public static function checkUserBerkasProdiStatus(string $user_id): bool|string
     {
         try {
             $stmt = Database::getConnection()->prepare(<<<SQL
@@ -60,7 +59,7 @@ class BerkasRepository extends Repository
         }
     }
 
-    public function addNewBerkasTA(BerkasTA $berkas_TA): void
+    public static function addNewBerkasTA(BerkasTA $berkas_TA): void
     {
         try {
             $stmt = Database::getConnection()->prepare(<<<SQL
@@ -81,7 +80,7 @@ class BerkasRepository extends Repository
         }
     }
 
-    public function addNewBerkasProdi(BerkasProdi $berkas_prodi): void
+    public static function addNewBerkasProdi(BerkasProdi $berkas_prodi): void
     {
         try {
             $stmt = Database::getConnection()->prepare(<<<SQL
@@ -104,7 +103,7 @@ class BerkasRepository extends Repository
         }
     }
 
-    public function getUserHistoryRequest(string $user_id): array
+    public static function getUserHistoryRequest(string $user_id): array
     {
         try {
             $stmt = Database::getConnection()->prepare(<<<SQL
@@ -124,7 +123,7 @@ class BerkasRepository extends Repository
         }
     }
 
-    public function getAllBerkasTAReq(): array
+    public static function getAllBerkasTAReq(): array
     {
         try {
             $stmt = Database::getConnection()->query(<<<SQL
@@ -147,7 +146,7 @@ class BerkasRepository extends Repository
         }
     }
 
-    public function getAllBerkasProdiReq(): array
+    public static function getAllBerkasProdiReq(): array
     {
         try {
             $stmt = Database::getConnection()->query(<<<SQL
@@ -170,7 +169,7 @@ class BerkasRepository extends Repository
         }
     }
 
-    public function getSingleBerkasTAReq(int $id_verifikasi): bool|VerifikasiBerkas
+    public static function getSingleBerkasTAReq(int $id_verifikasi): bool|VerifikasiBerkas
     {
         try {
             $stmt = Database::getConnection()->prepare(<<<SQL
@@ -197,7 +196,7 @@ class BerkasRepository extends Repository
         }
     }
 
-    public function getSingleBerkasProdiReq(int $id_verifikasi): bool|VerifikasiBerkas
+    public static function getSingleBerkasProdiReq(int $id_verifikasi): bool|VerifikasiBerkas
     {
         try {
             $stmt = Database::getConnection()->prepare(<<<SQL

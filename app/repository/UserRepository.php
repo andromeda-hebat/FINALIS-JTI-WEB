@@ -3,14 +3,13 @@
 namespace App\Repository;
 
 use App\Core\Database;
-use App\Core\Repository;
 use App\Models\Admin;
 use App\Models\User;
 use App\Helpers\ErrorLog;
 
-class UserRepository extends Repository
+class UserRepository
 {
-    public function getUserDataByUserIDAndPassword(string $user_id, string $password): bool|User
+    public static function getUserDataByUserIDAndPassword(string $user_id, string $password): bool|User
     {
         try {
             $stmt = Database::getConnection()->prepare(<<<SQL
@@ -36,7 +35,7 @@ class UserRepository extends Repository
         return $stmt->fetch();
     }
 
-    public function getAdminDataByUserIDAndPassword(string $id_admin, string $password): bool|Admin
+    public static function getAdminDataByUserIDAndPassword(string $id_admin, string $password): bool|Admin
     {
         try {
             $stmt = Database::getConnection()->prepare(<<<SQL
