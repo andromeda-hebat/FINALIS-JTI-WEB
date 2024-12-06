@@ -2,18 +2,21 @@
 
 namespace App\Core;
 
+use App\Middlewares\AuthMiddleware;
+
 class Router
 {
 
     public static array $routes = [];
 
-    public static function add(string $method, string $path, string $controller, string $function): void
+    public static function add(string $method, string $path, string $controller, string $function, array $middleware = []): void
     {
         self::$routes[] = [
             'method' => $method,
             'path' => $path,
             'controller' => $controller,
-            'function' => $function
+            'function' => $function,
+            'middleware' => $middleware
         ];
     }
 
@@ -37,6 +40,12 @@ class Router
         }
 
         if ($is_path_found && $is_method_found) {
+            if ($route['middleware'] != null) {
+                foreach ($route['middleware'] as $middleware) {
+                    call_user_func([$middleware['class'], $middleware['function']]);
+                }
+            }
+
             $controller = new $route['controller'];
             $function = $route['function'];
 
