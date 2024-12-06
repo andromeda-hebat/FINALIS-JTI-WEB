@@ -3,6 +3,8 @@
 Halaman ini menyajikan dokumentasi bagi developer. Jika anda mencari topik spesifik berkaitan dengan hal teknis proyek, anda bisa melihat submenu berikut:
 - [Basis data](database.md)
 - [UI/UX](ui-ux.md)
+- [Frontend](frontend.md)
+- [Backend](backend.md)
 
 ---
 
