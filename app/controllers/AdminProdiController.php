@@ -12,17 +12,10 @@ use App\Repository\BerkasRepository;
 
 class AdminProdiController extends Controller
 {
-    private BerkasRepository $berkas_repository;
-
-    public function __construct()
-    {
-        $this->berkas_repository = new BerkasRepository();
-    }
-
     public function requestVerifikasi(): void
     {
         try {
-            $all_req_verif = $this->berkas_repository->getAllBerkasProdiReq();
+            $all_req_verif = BerkasRepository::getAllBerkasProdiReq();
         } catch (\PDOException $e) {
             http_response_code(500);
             echo json_encode([
@@ -46,7 +39,7 @@ class AdminProdiController extends Controller
     public function showDetailReq(int $id_verifikasi): void
     {
         try {
-            $user_file = $this->berkas_repository->getSingleBerkasProdiReq($id_verifikasi);
+            $user_file = BerkasRepository::getSingleBerkasProdiReq($id_verifikasi);
         } catch (\PDOException $e) {
             http_response_code(500);
             echo json_encode([
