@@ -56,17 +56,9 @@
 
 <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
 <script>
-    $(document).ready(function () {
+    $(document).ready(function () { 
         const $submenu = $(".submenu");
         const $submenuItems = $(".submenu a");
-
-        // Keep submenu open when hovering over submenu items
-        $submenuItems.hover(
-            function () {
-                $submenu.stop(true, true).show();
-            }
-        );
-
 
         $(".kelola-data").click(function (e) {
             e.preventDefault();
