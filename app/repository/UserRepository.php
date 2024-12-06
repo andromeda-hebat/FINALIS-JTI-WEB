@@ -9,7 +9,7 @@ use App\Helpers\ErrorLog;
 
 class UserRepository
 {
-    public function getUserDataByUserIDAndPassword(string $user_id, string $password): bool|User
+    public static function getUserDataByUserIDAndPassword(string $user_id, string $password): bool|User
     {
         try {
             $stmt = Database::getConnection()->prepare(<<<SQL
@@ -35,7 +35,7 @@ class UserRepository
         return $stmt->fetch();
     }
 
-    public function getAdminDataByUserIDAndPassword(string $id_admin, string $password): bool|Admin
+    public static function getAdminDataByUserIDAndPassword(string $id_admin, string $password): bool|Admin
     {
         try {
             $stmt = Database::getConnection()->prepare(<<<SQL
