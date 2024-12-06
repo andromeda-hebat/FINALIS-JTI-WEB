@@ -107,14 +107,32 @@ class BerkasRepository
     {
         try {
             $stmt = Database::getConnection()->prepare(<<<SQL
-                SELECT id_berkas, jenis_berkas, status_verifikasi, keterangan_verifikasi
-                FROM VER.VerifikasiBerkas AS vb
-                INNER JOIN BERKAS.Prodi AS p ON vb.id_berkas = p.id_berkas_prodi AND vb.jenis_berkas = 'Prodi'
-                INNER JOIN Berkas.TA AS ta ON vb.id_berkas = ta.id_ta AND vb.jenis_berkas = 'TA'
-                INNER JOIN USERS.Mahasiswa AS m ON m.nim = p.nim OR m.nim = ta.nim
-                WHERE m.nim = :nim;
+                SELECT ROW_NUMBER() OVER (ORDER BY tanggal_request ASC) AS nomor,
+                    tanggal_request AS tanggal_request,
+                    jenis_berkas AS jenis_formulir,
+                    status_verifikasi AS status,
+                    keterangan_verifikasi AS keterangan
+                FROM (
+                    SELECT P.tanggal_request,
+                        V.status_verifikasi,
+                        V.keterangan_verifikasi,
+                        'Formulir Administrasi Prodi' AS jenis_berkas 
+                    FROM VER.VerifikasiBerkas V
+                    INNER JOIN BERKAS.Prodi P ON P.id_berkas_prodi = V.id_berkas
+                    WHERE P.nim = ?
+                    UNION ALL
+                    SELECT T.tanggal_request,
+                        V.status_verifikasi,
+                        V.keterangan_verifikasi,
+                        'Formulir Tugas Akhir' AS jenis_berkas 
+                    FROM VER.VerifikasiBerkas V
+                    INNER JOIN BERKAS.TA T ON T.id_ta = V.id_berkas
+                    WHERE T.nim = ?
+                ) AS Combined
+                ORDER BY tanggal_request ASC;
             SQL);
-            $stmt->bindValue(':nim', $user_id, \PDO::PARAM_STR);
+            $stmt->bindValue(1, $user_id, \PDO::PARAM_STR);
+            $stmt->bindValue(2, $user_id, \PDO::PARAM_STR);
             $stmt->execute();
             return $stmt->fetchAll(\PDO::FETCH_CLASS, RiwayatPengajuan::class);
         } catch (\PDOException $e) {
