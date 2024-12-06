@@ -3,10 +3,7 @@
 namespace App\Repository;
 
 use App\Core\Database;
-use App\Models\BerkasProdi;
-use App\Models\BerkasTA;
-use App\Models\RiwayatPengajuan;
-use App\Models\VerifikasiBerkas;
+use App\Models\{BerkasProdi, BerkasTA, RiwayatPengajuan, VerifikasiBerkas};
 use App\Helpers\ErrorLog;
 
 class BerkasRepository
