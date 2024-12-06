@@ -3,8 +3,7 @@
 namespace App\Repository;
 
 use App\Core\Database;
-use App\Models\Admin;
-use App\Models\User;
+use App\Models\{Admin, User};
 use App\Helpers\ErrorLog;
 
 class UserRepository
