@@ -44,7 +44,7 @@ class HomeController extends Controller
         switch ($_SESSION['role']) {
             case 'Admin Prodi':
                 try {
-                    $data['all_req_verif'] = BerkasRepository::getAllBerkasTAReq();
+                    $data['all_req_verif'] = BerkasRepository::getAllBerkasProdiReq();
                 } catch (\PDOException $e) {
                     header("Content-Type: application/json");
                     http_response_code(500);
