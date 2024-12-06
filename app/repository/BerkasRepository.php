@@ -3,14 +3,13 @@
 namespace App\Repository;
 
 use App\Core\Database;
-use App\Core\Repository;
 use App\Models\BerkasProdi;
 use App\Models\BerkasTA;
 use App\Models\RiwayatPengajuan;
 use App\Models\VerifikasiBerkas;
 use App\Helpers\ErrorLog;
 
-class BerkasRepository extends Repository
+class BerkasRepository
 {
     public static function checkUserBerkasTAStatus(string $user_id): bool|string
     {
