@@ -20,12 +20,8 @@ class Database
         self::$DB_PASSWORD = $_ENV['DB_PASSWORD'] ?? throw new \Exception('DB_PASSWORD not set');
     }
 
-    public static function getConnectionWithouDB(): \PDO
+    private static function getBConnection(string $dsn): \PDO
     {
-        self::initialize();
-
-        $dsn = "sqlsrv:Server=" . self::$DB_SERVER;
-        
         try {
             $conn = new \PDO($dsn, self::$DB_USER, self::$DB_PASSWORD);
             $conn->setAttribute(\PDO::ATTR_ERRMODE, \PDO::ERRMODE_EXCEPTION);
@@ -33,26 +29,22 @@ class Database
             error_log(ErrorLog::formattedErrorLog($e->getMessage()), 3, LOG_FILE_PATH);
             throw new \PDOException($e->getMessage());
         }
-        
+
         return $conn;
     }
 
-    public static function getConnection(): \PDO
+    public static function getConnection(bool $is_with_db = false): \PDO
     {
-        if (self::$conn === null) {
+        if ($is_with_db) {
             self::initialize();
-            
-            $dsn = "sqlsrv:Server=" . self::$DB_SERVER . ";Database=" . self::$DB_NAME;
-
-            try {
-                self::$conn = new \PDO($dsn, self::$DB_USER, self::$DB_PASSWORD);
-                self::$conn->setAttribute(\PDO::ATTR_ERRMODE, \PDO::ERRMODE_EXCEPTION);
-            } catch (\PDOException $e) {
-                error_log(ErrorLog::formattedErrorLog($e->getMessage()), 3, LOG_FILE_PATH);
-                throw new \PDOException($e->getMessage());
-            }
+            return self::getBConnection("sqlsrv:Server=" . self::$DB_SERVER);
         }
 
+        if (self::$conn === null) {
+            self::initialize();
+            self::$conn = self::getBConnection("sqlsrv:Server=" . self::$DB_SERVER . ";Database=" . self::$DB_NAME);
+        }
+        
         return self::$conn;
     }
 }
