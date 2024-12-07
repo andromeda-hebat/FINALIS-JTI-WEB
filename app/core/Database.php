@@ -33,18 +33,45 @@ class Database
         return $conn;
     }
 
-    public static function getConnection(bool $is_with_db = false): \PDO
+    public static function getConnection(bool $is_with_db = true, string $db_type = 'Microsoft SQL Server'): \PDO
     {
-        if ($is_with_db) {
-            self::initialize();
-            return self::getDBConnection("sqlsrv:Server=" . self::$DB_SERVER);
-        }
-
         if (self::$conn === null) {
             self::initialize();
-            self::$conn = self::getDBConnection("sqlsrv:Server=" . self::$DB_SERVER . ";Database=" . self::$DB_NAME);
         }
-        
+
+        $dsn = '';
+
+        if ($is_with_db) {
+            switch ($db_type) {
+                case 'Microsoft SQL Server':
+                    $dsn = "sqlsrv:Server=" . self::$DB_SERVER . ";Database=" . self::$DB_NAME;
+                    break;
+                case 'MySQL':
+                case 'MariaDB':
+                    $dsn = "mysql:host=" . self::$DB_SERVER . ";dbname=" . self::$DB_NAME;
+                    break;
+                default:
+                    throw new \InvalidArgumentException("Unsupported database type: $db_type");
+            }
+        } else {
+            switch ($db_type) {
+                case 'Microsoft SQL Server':
+                    $dsn = "sqlsrv:Server=" . self::$DB_SERVER;
+                    break;
+                case 'MySQL':
+                case 'MariaDB':
+                    $dsn = "mysql:host=" . self::$DB_SERVER;
+                    break;
+                default:
+                    throw new \InvalidArgumentException("Unsupported database type: $db_type");
+            }
+        }
+
+        if (self::$conn === null || !$is_with_db) {
+            self::$conn = self::getDBConnection($dsn);
+        }
+
         return self::$conn;
     }
+
 }

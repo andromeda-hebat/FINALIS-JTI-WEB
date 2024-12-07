@@ -40,7 +40,7 @@ try {
     foreach ($queries as $query) {
         $query = trim($query);
         if (!empty($query)) {
-            Database::getConnection(true)->exec($query);
+            Database::getConnection(false)->exec($query);
         }
     }
     echo COLOR_GREEN . "[!]    Database schema sucessfully to be created!" . COLOR_RESET . PHP_EOL;

@@ -25,7 +25,7 @@ class UserRepository
             $stmt->bindValue(3, $user_id, \PDO::PARAM_STR);
             $stmt->bindValue(4, $password, \PDO::PARAM_STR);
             $stmt->execute();
-            $stmt->setFetchMode(\PDO::FETCH_CLASS, User::class);    
+            $stmt->setFetchMode(\PDO::FETCH_CLASS, User::class);
         } catch (\PDOException $e) {
             error_log(ErrorLog::formattedErrorLog($e->getMessage()), 3, LOG_FILE_PATH);
             throw new \PDOException($e->getMessage());

@@ -4,7 +4,6 @@ namespace App\Core;
 
 class Router
 {
-
     public static array $routes = [];
 
     public static function add(string $method, string $path, string $controller, string $function, array $middleware = []): void
