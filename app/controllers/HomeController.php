@@ -41,47 +41,39 @@ class HomeController extends Controller
             return;
         }
 
-        switch ($_SESSION['role']) {
-            case 'Admin Prodi':
-                try {
-                    $data['all_req_verif'] = BerkasRepository::getAllBerkasProdiReq();
-                } catch (\PDOException $e) {
-                    header("Content-Type: application/json");
-                    http_response_code(500);
-                    echo json_encode([
-                        "status" => "error",
-                        "message" => "Database connectivity error!"
-                    ]);
-                }
+        try {
+            $all_req_verif = null;
+            $viewPage = null;
+        
+            switch ($_SESSION['role']) {
+                case 'Admin Prodi':
+                    $all_req_verif = BerkasRepository::getAllBerkasProdiReq();
+                    $viewPage = "pages/admin_prodi/dashboard";
+                    break;
+                case 'Admin TA':
+                    $all_req_verif = BerkasRepository::getAllBerkasTAReq();
+                    $viewPage = "pages/admin_ta/dashboard";
+                    break;
+                case 'Admin Jurusan':
+                    $viewPage = "pages/admin_jurusan/dashboard";
+                    break;
+                case 'mahasiswa':
+                    $viewPage = "pages/mahasiswa/dashboard";
+                    break;
+            }
+        
+            if ($viewPage) {
                 $this->view("templates/header", $data);
-                $this->view("pages/admin_prodi/dashboard", $data);
+                $this->view($viewPage, isset($all_req_verif) ? ['all_req_verif' => $all_req_verif] : $data);
                 $this->view("templates/footer");
-                break;
-            case 'Admin TA':
-                try {
-                    $data['all_req_verif'] = BerkasRepository::getAllBerkasTAReq();
-                } catch (\PDOException $e) {
-                    header("Content-Type: application/json");
-                    http_response_code(500);
-                    echo json_encode([
-                        "status" => "error",
-                        "message" => "Database connectivity error!"
-                    ]);
-                }
-                $this->view("templates/header", $data);
-                $this->view("pages/admin_ta/dashboard", $data);
-                $this->view("templates/footer");
-                break;
-            case 'Admin Jurusan':
-                $this->view("templates/header", $data);
-                $this->view("pages/admin_jurusan/dashboard", $data);
-                $this->view("templates/footer");
-                break;
-            case 'mahasiswa':
-                $this->view("templates/header", $data);
-                $this->view("pages/mahasiswa/dashboard", $data);
-                $this->view("templates/footer");
-                break;
+            }
+        } catch (\PDOException $e) {
+            header("Content-Type: application/json");
+            http_response_code(500);
+            echo json_encode([
+                "status" => "error",
+                "message" => "Database connectivity error!"
+            ]);
         }
     }
 }
