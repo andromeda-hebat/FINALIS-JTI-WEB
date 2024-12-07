@@ -50,13 +50,17 @@ class Router
 
             array_shift($variables);
             call_user_func_array([$controller, $function], $variables);
-            return;
+            exit;
         }
 
         if ($is_path_found && !$is_method_found) {
             http_response_code(405);
-            echo "METHOD NOT ALLOWED!";
-            return;
+            ViewHelper::view("templates/header", [
+                'title' => "HTTP Method Not Allowed!"
+            ]);
+            ViewHelper::view("pages/general/client_method_not_allowed");
+            ViewHelper::view("templates/footer");
+            exit;
         }
 
         if (!$is_path_found) {
@@ -66,7 +70,7 @@ class Router
             ]);
             ViewHelper::view("pages/general/page_not_found");
             ViewHelper::view("templates/footer");
-            return;
+            exit;
         }
     }
 }
