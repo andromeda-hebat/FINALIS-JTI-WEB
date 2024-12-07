@@ -23,7 +23,7 @@ class AdminTAController extends Controller
 
         $this->view("templates/header", [
             'title' => "Permintaan Verifikasi",
-            'css' => ["assets/css/sidebar"]
+            'css' => ["/assets/css/sidebar"]
         ]);
         $this->view("pages/admin_ta/permintaan_verifikasi", [
             'all_req_verif' => $all_req_verif
@@ -46,7 +46,7 @@ class AdminTAController extends Controller
 
         $this->view("templates/header", [
             'title' => "Detail Permintaan",
-            'css' => ["assets/css/sidebar"]
+            'css' => ["/assets/css/sidebar"]
         ]);
         $this->view("pages/admin_ta/detail_permintaan", [
             'user_file' => $user_file
