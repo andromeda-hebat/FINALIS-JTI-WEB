@@ -168,7 +168,8 @@ class BerkasRepository
     {
         try {
             $stmt = Database::getConnection()->query(<<<SQL
-                SELECT TOP 10 
+                SELECT
+                    ROW_NUMBER() OVER (ORDER BY tanggal_request ASC) AS nomor,
                     v.id_verifikasi,
                     p.id_berkas_prodi AS id_berkas,
                     m.nim,
