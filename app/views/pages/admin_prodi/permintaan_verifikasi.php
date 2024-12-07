@@ -19,27 +19,26 @@
                 <!-- div kotak tabel -->
                 <div class="mt-3 w-100 border rounded shadow">
                     <table class="table">
-                        <thead>
-                            <tr>
-                                <th style="background-color:#E4EEFF ;">NIM</th>
-                                <th style="background-color:#E4EEFF ;">Mahasiswa</th>
-                                <th style="background-color:#E4EEFF ;">Aktivitas</th>
-                                <th style="background-color:#E4EEFF ;">Tanggal</th>
-                                <th style="background-color:#E4EEFF ;">Aksi</th>
-                            </tr>
+                        <thead class="table">
+                            <th style="background-color:#E4EEFF ;">No</th>
+                            <th style="background-color:#E4EEFF ;">NIM</th>
+                            <th style="background-color:#E4EEFF ;">Mahasiswa</th>
+                            <th style="background-color:#E4EEFF ;">Status</th>
+                            <th style="background-color:#E4EEFF ;">Tanggal Pengajuan</th>
+                            <th style="background-color:#E4EEFF ;">Keterangan</th>
+                            <th style="background-color:#E4EEFF ;">Aksi</th>
                         </thead>
                         <tbody>
-                            <?php
-                            $iteration = 0;
-                            foreach ($data['all_req_verif'] as $key => $value):
-                                ?>
+                            <?php foreach ($data['all_req_verif'] as $key => $value): ?>
                                 <tr>
-                                    <td><?= $value->nim ?></td>
-                                    <td><?= $value->nama_lengkap ?></td>
-                                    <td><?= $value->tanggal_request ?></td>
-                                    <td><?= $value->keterangan_verifikasi ?></td>
-                                    <td><a href="/permintaan-verif-prodi/detail/<?= $value->id_verifikasi ?>"
-                                            class="btn btn-primary">Detail</a></td>
+                                    <td><?= $value->getNomor() ?></td>
+                                    <td><?= $value->getNim() ?></td>
+                                    <td><?= $value->getNamaLengkap() ?></td>
+                                    <td><?= $value->getStatusVerifikasi() ?></td>
+                                    <td><?= $value->getTanggalRequest() ?></td>
+                                    <td><?= $value->getKeteranganVerifikasi() ?></td>
+                                    <td><a href="/permintaan-verif-ta/detail/<?= $value->getIdVerifikasi() ?>"
+                                            class="btn btn-primary">Rincian</a></td>
                                 </tr>
                             <?php endforeach; ?>
                         </tbody>

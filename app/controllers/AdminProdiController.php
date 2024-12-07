@@ -46,7 +46,7 @@ class AdminProdiController extends Controller
                 "message" => "Database connectivity error!",
                 "detail" => $e->getMessage()
             ]);
-            return;
+            exit;
         }
 
         $this->view("templates/header", [
