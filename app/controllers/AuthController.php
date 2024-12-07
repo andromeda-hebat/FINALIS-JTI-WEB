@@ -88,7 +88,6 @@ class AuthController extends Controller
 
             if ($_SESSION['role'] == "mahasiswa") {
                 try {
-                    echo "hadir!";
                     $_SESSION['status']['tugas_akhir'] = BerkasRepository::checkUserBerkasTAStatus($_SESSION['user_id']);
                     $_SESSION['status']['administrasi_prodi'] = BerkasRepository::checkUserBerkasProdiStatus($_SESSION['user_id']);
                 } catch (\PDOException $e) {
