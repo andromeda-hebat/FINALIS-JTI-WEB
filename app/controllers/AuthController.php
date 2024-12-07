@@ -3,7 +3,7 @@
 namespace App\Controllers;
 
 use App\Helpers\ViewHelper;
-use App\Repository\{BerkasRepository, UserRepository};
+use App\Repository\{UserRepository, BerkasProdiRepository, BerkasTARepository};
 
 
 class AuthController
@@ -28,7 +28,7 @@ class AuthController
         }
 
         try {
-            $result = UserRepository::getAdminDataByUserIDAndPassword($id_admin, $password);
+            $result = UserRepository::getAdminByUserIDAndPassword($id_admin, $password);
         } catch (\PDOException $e) {
             header("Content-Type: application/json");
             http_response_code(500);
@@ -68,7 +68,7 @@ class AuthController
         }
 
         try {
-            $user = UserRepository::getUserDataByUserIDAndPassword($_POST['user_id'], $_POST['password']);
+            $user = UserRepository::getUserByUserIDAndPassword($_POST['user_id'], $_POST['password']);
         } catch (\PDOException $e) {
             header("Content-Type: application/json");
             http_response_code(500);
@@ -87,8 +87,8 @@ class AuthController
 
             if ($_SESSION['role'] == "mahasiswa") {
                 try {
-                    $_SESSION['status']['tugas_akhir'] = BerkasRepository::checkUserBerkasTAStatus($_SESSION['user_id']);
-                    $_SESSION['status']['administrasi_prodi'] = BerkasRepository::checkUserBerkasProdiStatus($_SESSION['user_id']);
+                    $_SESSION['status']['tugas_akhir'] = BerkasTARepository::checkUserBerkasTAStatus($_SESSION['user_id']);
+                    $_SESSION['status']['administrasi_prodi'] = BerkasProdiRepository::checkUserBerkasProdiStatus($_SESSION['user_id']);
                 } catch (\PDOException $e) {
                     header("Content-Type: application/json");
                     http_response_code(500);

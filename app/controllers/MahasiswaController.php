@@ -4,8 +4,7 @@ namespace App\Controllers;
 
 use App\Helpers\{FileManager, ViewHelper};
 use App\Models\{BerkasProdi, BerkasTA};
-use App\Repository\BerkasRepository;
-
+use App\Repository\{BerkasRepository, BerkasProdiRepository, BerkasTARepository};
 
 class MahasiswaController
 {
@@ -38,7 +37,7 @@ class MahasiswaController
 
         $is_files_successfully_inserted_to_database = false;
         try {
-            BerkasRepository::addNewBerkasTA(new BerkasTA($_SESSION['user_id'], date('Y-m-d'), $_FILES['tugas_akhir']['new_name'], $_FILES['program_aplikasi']['new_name'], $_FILES['publikasi_jurnal']['new_name']));
+            BerkasTARepository::addNewBerkasTA(new BerkasTA($_SESSION['user_id'], date('Y-m-d'), $_FILES['tugas_akhir']['new_name'], $_FILES['program_aplikasi']['new_name'], $_FILES['publikasi_jurnal']['new_name']));
 
             $is_files_successfully_inserted_to_database = true;
         } catch (\Exception $e) {
@@ -106,7 +105,7 @@ class MahasiswaController
 
         $is_files_successfully_inserted_to_database = false;
         try {
-            BerkasRepository::addNewBerkasProdi(new BerkasProdi($_SESSION['user_id'], date('Y-m-d'), $_FILES['distribusi_tugas_akhir']['new_name'], $_FILES['distribusi_magang']['new_name'], $_FILES['bebas_kompen']['new_name'], $_FILES['toeic']['new_name']));
+            BerkasProdiRepository::addNewBerkasProdi(new BerkasProdi($_SESSION['user_id'], date('Y-m-d'), $_FILES['distribusi_tugas_akhir']['new_name'], $_FILES['distribusi_magang']['new_name'], $_FILES['bebas_kompen']['new_name'], $_FILES['toeic']['new_name']));
 
             $is_files_successfully_inserted_to_database = true;
         } catch (\Exception $e) {
@@ -154,7 +153,7 @@ class MahasiswaController
         ]);
 
         try {
-            $user_history = BerkasRepository::getUserHistoryRequest($_SESSION['user_id']);
+            $user_history = BerkasRepository::getUserHistoryRequestBerkas($_SESSION['user_id']);
         } catch (\PDOException $e) {
             http_response_code(500);
             echo json_encode([

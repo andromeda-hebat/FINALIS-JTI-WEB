@@ -3,7 +3,7 @@
 namespace App\Controllers;
 
 use App\Helpers\ViewHelper;
-use App\Repository\BerkasRepository;
+use App\Repository\BerkasTARepository;
 
 
 class AdminTAController
@@ -11,7 +11,7 @@ class AdminTAController
     public function requestVerifikasi(): void
     {
         try {
-            $all_req_verif = BerkasRepository::getAllBerkasTAReq();
+            $all_req_verif = BerkasTARepository::getAllBerkasTAReq();
         } catch (\PDOException $e) {
             http_response_code(500);
             echo json_encode([
@@ -34,7 +34,7 @@ class AdminTAController
     public function showDetailReq(int $id_verifikasi): void
     {
         try {
-            $user_file = BerkasRepository::getSingleBerkasTAReq($id_verifikasi);
+            $user_file = BerkasTARepository::getSingleBerkasTAReq($id_verifikasi);
         } catch (\PDOException $e) {
             http_response_code(500);
             echo json_encode([
@@ -59,7 +59,7 @@ class AdminTAController
         $data = json_decode(file_get_contents('php://input'), true);
         
         try {
-            BerkasRepository::updateVerifyStatusBerkasProdi($data['id_verifikasi'], $data['verify'], $data['description']);
+            BerkasTARepository::updateVerifyStatusBerkasTA($data['id_verifikasi'], $data['verify'], $data['description']);
             http_response_code(200);
             echo json_encode([
                 "status" => "success",

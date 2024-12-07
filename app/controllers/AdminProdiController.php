@@ -3,7 +3,7 @@
 namespace App\Controllers;
 
 use App\Helpers\ViewHelper;
-use App\Repository\BerkasRepository;
+use App\Repository\BerkasProdiRepository;
 
 
 class AdminProdiController
@@ -11,7 +11,7 @@ class AdminProdiController
     public function requestVerifikasi(): void
     {
         try {
-            $all_req_verif = BerkasRepository::getAllBerkasProdiReq();
+            $all_req_verif = BerkasProdiRepository::getAllBerkasProdiReq();
         } catch (\PDOException $e) {
             http_response_code(500);
             echo json_encode([
@@ -35,7 +35,7 @@ class AdminProdiController
     public function showDetailReq(int $id_verifikasi): void
     {
         try {
-            $user_file = BerkasRepository::getSingleBerkasProdiReq($id_verifikasi);
+            $user_file = BerkasProdiRepository::getSingleBerkasProdiReq($id_verifikasi);
         } catch (\PDOException $e) {
             http_response_code(500);
             echo json_encode([

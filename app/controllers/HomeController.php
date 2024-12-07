@@ -3,7 +3,7 @@
 namespace App\Controllers;
 
 use App\Helpers\ViewHelper;
-use App\Repository\BerkasRepository;
+use App\Repository\{BerkasProdiRepository, BerkasTARepository};
 
 class HomeController
 {
@@ -46,11 +46,11 @@ class HomeController
         
             switch ($_SESSION['role']) {
                 case 'Admin Prodi':
-                    $all_req_verif = BerkasRepository::getAllBerkasProdiReq();
+                    $all_req_verif = BerkasProdiRepository::getAllBerkasProdiReq();
                     $viewPage = "pages/admin_prodi/dashboard";
                     break;
                 case 'Admin TA':
-                    $all_req_verif = BerkasRepository::getAllBerkasTAReq();
+                    $all_req_verif = BerkasTARepository::getAllBerkasTAReq();
                     $viewPage = "pages/admin_ta/dashboard";
                     break;
                 case 'Admin Jurusan':
