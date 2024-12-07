@@ -2,19 +2,18 @@
 
 namespace App\Controllers;
 
-use App\Core\Controller;
+use App\Helpers\ViewHelper;
 
-
-class NotificationController extends Controller
+class NotificationController
 {
     public function notif(): void
     {
-        $this->view("templates/header",  [
+        ViewHelper::view("templates/header",  [
             'title' => "Notifikasi",
             'css' => ["assets/css/sidebar"]
         ]);
-        $this->view("pages/general/notification");
-        $this->view("templates/footer");
+        ViewHelper::view("pages/general/notification");
+        ViewHelper::view("templates/footer");
     }
 
 }

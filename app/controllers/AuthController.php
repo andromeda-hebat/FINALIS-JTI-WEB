@@ -2,18 +2,18 @@
 
 namespace App\Controllers;
 
-use App\Core\Controller;
+use App\Helpers\ViewHelper;
 use App\Repository\{BerkasRepository, UserRepository};
 
 
-class AuthController extends Controller
+class AuthController
 {
     public function viewLogin(): void
     {
         $data['title'] = "Login";
-        $this->view("templates/header", $data);
-        $this->view("pages/general/login");
-        $this->view("templates/footer");
+        ViewHelper::view("templates/header", $data);
+        ViewHelper::view("pages/general/login");
+        ViewHelper::view("templates/footer");
     }
     
     public function adminLogin(): void
@@ -61,9 +61,9 @@ class AuthController extends Controller
         if (!isset($_POST["user_id"]) || !isset($_POST['password'])) {
             $data['title'] = "Login";
             $data['message'] = "User fail to authenticate!";
-            $this->view("templates/header", $data);
-            $this->view("pages/user_fail_authenticate", $data);
-            $this->view("templates/footer");
+            ViewHelper::view("templates/header", $data);
+            ViewHelper::view("pages/user_fail_authenticate", $data);
+            ViewHelper::view("templates/footer");
             exit;
         }
 

@@ -20,7 +20,7 @@ Router::add('POST', '/login', AuthController::class,'login');
 Router::add('POST', '/logout', AuthController::class,'logout');
 
 
-//Notif
+// Notif
 Router::add('GET', '/notifikasi', NotificationController::class, 'notif');
 
 

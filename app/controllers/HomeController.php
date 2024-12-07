@@ -2,28 +2,27 @@
 
 namespace App\Controllers;
 
-use App\Core\Controller;
+use App\Helpers\ViewHelper;
 use App\Repository\BerkasRepository;
 
-class HomeController extends Controller
+class HomeController
 {
-
     public function index(): void
     {
-        $this->view("templates/header", [
+        ViewHelper::view("templates/header", [
             'title' => "FINALIS JTI"
         ]);
-        $this->view("pages/general/index");
-        $this->view("templates/footer");
+        ViewHelper::view("pages/general/index");
+        ViewHelper::view("templates/footer");
     }
 
     public function contact(): void
     {
-        $this->view("templates/header", [
+        ViewHelper::view("templates/header", [
             'title' => "Kontak"
         ]);
-        $this->view("pages/general/contact");
-        $this->view("templates/footer");
+        ViewHelper::view("pages/general/contact");
+        ViewHelper::view("templates/footer");
     }
 
     public function dashboard(): void
@@ -33,12 +32,12 @@ class HomeController extends Controller
         $data['css'] = ["assets/css/sidebar"];
 
         if (!isset($_SESSION['role'])) {
-            $this->view("templates/header", [
+            ViewHelper::view("templates/header", [
                 'title' => 'Dashboard'
             ]);
-            $this->view("pages/general/not_authenticate");
-            $this->view('templates/footer');
-            return;
+            ViewHelper::view("pages/general/not_authenticate");
+            ViewHelper::view('templates/footer');
+            exit;
         }
 
         try {
@@ -63,9 +62,9 @@ class HomeController extends Controller
             }
         
             if ($viewPage) {
-                $this->view("templates/header", $data);
-                $this->view($viewPage, isset($all_req_verif) ? ['all_req_verif' => $all_req_verif] : $data);
-                $this->view("templates/footer");
+                ViewHelper::view("templates/header", $data);
+                ViewHelper::view($viewPage, isset($all_req_verif) ? ['all_req_verif' => $all_req_verif] : $data);
+                ViewHelper::view("templates/footer");
             }
         } catch (\PDOException $e) {
             header("Content-Type: application/json");
