@@ -64,8 +64,8 @@
                                 <img src="assets/img/foto.jpg" alt="Profil" class="rounded-circle"
                                     style="width: 30px; height: 30px; background-color: #ddd;">
                                 <div class="ms-3">
-                                    <p class="my-0"><?= $data['user_file']->nama_lengkap ?></p>
-                                    <p class="my-0">NIM <span><?= $data['user_file']->nim ?></span></p>
+                                    <p class="my-0"><?= $data['user_file']->getNamaLengkap() ?></p>
+                                    <p class="my-0">NIM <span><?= $data['user_file']->getNim() ?></span></p>
                                 </div>
                             </div>
                         </div>
@@ -101,11 +101,11 @@
                                 </div>
                                 <div class="mx-5">
                                     <p class="my-0" style="color: #8D8D8D;">ID</p>
-                                    <p class="my-0"><?= $data['user_file']->id_verifikasi ?></p>
+                                    <p class="my-0"><?= $data['user_file']->getIdVerifikasi() ?></p>
                                 </div>
                                 <div class="ms-5">
                                     <p class="my-0" style="color: #8D8D8D;">Status</p>
-                                    <p class="my-0"><?= $data['user_file']->status_verifikasi ?></p>
+                                    <p class="my-0"><?= $data['user_file']->getStatusVerifikasi() ?></p>
                                 </div>
                             </div>
                         </div>

@@ -6,7 +6,6 @@ require_once __DIR__ . '/../core/Controller.php';
 
 
 use App\Core\Controller;
-use App\Core\Database;
 use App\Repository\BerkasRepository;
 
 
