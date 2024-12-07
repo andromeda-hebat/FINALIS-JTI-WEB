@@ -2,26 +2,26 @@
     style="background-color: #052C65; width: 250px; height: 100vh; padding-top: 20px;">
     <!-- Bagian Profil -->
     <div class="d-flex text-center py-4 mb-4">
-        <img src="assets/img/finalis-jti-logo.png" alt="Logo" class="me-3"
-            style="width: 50px; height: 50px;">
-        <h3 class="d-flex align-items-center justify-content-center fw-bold text-center" style="color: #F7DE00; font-weight: 800; line-height: normal !important;">FINALIS JTI</h3>
+        <img src="assets/img/finalis-jti-logo.png" alt="Logo" class="me-3" style="width: 50px; height: 50px;">
+        <h3 class="d-flex align-items-center justify-content-center fw-bold text-center"
+            style="color: #F7DE00; font-weight: 800; line-height: normal !important;">FINALIS JTI</h3>
     </div>
 
     <!-- Tautan Navigasi -->
 
     <nav class="nav w-100 d-flex flex-column text-start">
 
-        <a href="/kelola-admin" class="sidebar-nav nav-link text-white w-100 ps-5 fw-bold kelola-data">
+        <div class="sidebar-nav nav-link text-white w-100 ps-5 fw-bold kelola-data">
             <div class="d-flex align-items-center">
                 Kelola Data
-                <svg class="ms-3 width="20" height="20" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
-                    stroke="currentColor" class="size-6">
+                <svg class="ms-3 width=" 20" height="20" xmlns="http://www.w3.org/2000/svg" fill="none"
+                    viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
                     <path stroke-linecap="round" stroke-linejoin="round"
                         d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
                 </svg>
 
             </div>
-        </a>
+        </div>
         <div class="submenu ms-5 " style="display: none;">
             <a href="/kelola-admin" class="sidebar-nav nav-link text-white w-100 ps-5">
                 Admin
@@ -56,22 +56,16 @@
 
 <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
 <script>
-    $(document).ready(function () { 
+    $(document).ready(function () {
         const $submenu = $(".submenu");
         const $submenuItems = $(".submenu a");
 
         $(".kelola-data").click(function (e) {
             e.preventDefault();
-            $submenu.stop(true, true).slideToggle(300);
+            $submenu.slideToggle();
             $(this).toggleClass('active');
         });
 
-        $(document).click(function (e) {
-            if (!$(e.target).closest('.kelola-data, .submenu').length) {
-                $submenu.stop(true, true).slideUp(300);
-                $(".kelola-data").removeClass('active');
-            }
-        });
     });
 </script>
 
