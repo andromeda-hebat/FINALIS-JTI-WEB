@@ -26,7 +26,7 @@
           <div class="card-body p-5">
             <div class="card-title mb-4 d-flex justify-content-start">
               <h4 class="fw-bold" style="color: #052C65;">Edit Data Admin</h4>
-              
+
 
             </div>
             <form>
@@ -34,21 +34,21 @@
                 <label for="nama" class="font-weight-bold">Nama Lengkap</label>
                 <input type="text" class="form-control" id="nama" name="nama" required>
               </div>
-              <div class="form-group mt-3">
-                <label for="telepon" class="font-weight-bold">Nomor Telepon</label>
-                <input type="tel" class="form-control" id="telepon" name="telepon" required>
+              <div class="form-group mt-4">
+                <label for="nama" class="font-weight-bold">NIDN</label>
+                <input type="text" class="form-control" id="nidn" name="nidn" required>
               </div>
               <div class="form-group mt-3">
-                <label aria-placeholder="8-November" for="tanggal" class="font-weight-bold">Tanggal Bergabung</label>
-                <input type="date" class="form-control" id="tanggal" name="tanggal" required>
-              </div>
-              <div class="form-group mt-3">
-                <label for="username" class="font-weight-bold">Username</label>
-                <input type="text" class="form-control" id="username" name="username" required>
+                <label aria-placeholder="8-November" for="tanggal" class="font-weight-bold">Email</label>
+                <input type="email" class="form-control" id="email" name="email" required>
               </div>
               <div class="form-group mt-3">
                 <label for="password" class="font-weight-bold">Password</label>
                 <input type="password" class="form-control" id="password" name="password" required>
+              </div>
+              <div class="form-group mt-3">
+                <label for="password" class="font-weight-bold">Pas Foto</label>
+                <input type="file" class="form-control" id="foto" name="foto" required>
               </div>
               <div class="d-flex justify-content-center mt-4">
                 <button type="submit" class="text-white px-3" style="background-color: #052C65;">Edit</button>

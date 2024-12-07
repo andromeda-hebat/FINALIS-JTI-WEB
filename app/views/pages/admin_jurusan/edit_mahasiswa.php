@@ -49,6 +49,18 @@
                                 <label for="email" class="font-weight-bold">Email</label>
                                 <input type="email" class="form-control" id="email" name="email" required>
                             </div>
+                            <div class="form-group mt-3">
+                                <label for="password" class="font-weight-bold">Password</label>
+                                <input type="password" class="form-control" id="password" name="password" required>
+                            </div>
+                            <div class="form-group mt-3">
+                                <label for="prodi" class="font-weight-bold">Tahun Masuk</label>
+                                <input type="text" class="form-control" id="thnMasuk" name="thnMasuk" required>
+                            </div>
+                            <div class="form-group mt-3">
+                                <label for="password" class="font-weight-bold">Pas Foto</label>
+                                <input type="file" class="form-control" id="foto" name="foto" required>
+                            </div>
                             <div class="d-flex justify-content-center mt-4">
                                 <button type="submit" class="text-white px-2"
                                     style="background-color: #052C65;">Tambahkan</button>
