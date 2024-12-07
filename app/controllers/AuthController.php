@@ -3,8 +3,7 @@
 namespace App\Controllers;
 
 use App\Core\Controller;
-use App\Repository\BerkasRepository;
-use App\Repository\UserRepository;
+use App\Repository\{BerkasRepository, UserRepository};
 
 
 class AuthController extends Controller

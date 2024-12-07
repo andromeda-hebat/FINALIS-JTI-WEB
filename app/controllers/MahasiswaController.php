@@ -4,8 +4,7 @@ namespace App\Controllers;
 
 use App\Core\Controller;
 use App\Helpers\FileManager;
-use App\Models\BerkasProdi;
-use App\Models\BerkasTA;
+use App\Models\{BerkasProdi, BerkasTA};
 use App\Repository\BerkasRepository;
 
 

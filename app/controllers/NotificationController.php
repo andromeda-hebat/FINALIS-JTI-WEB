@@ -2,17 +2,17 @@
 
 namespace App\Controllers;
 
-require_once __DIR__ . '/../core/Controller.php';
-
-
 use App\Core\Controller;
 
 
-class NotificationController extends Controller {
-    public function notif(): void {
-        $data['title'] = "Notifikasi";
-        $data['css'] = ["assets/css/sidebar"];
-        $this->view("templates/header",$data);
+class NotificationController extends Controller
+{
+    public function notif(): void
+    {
+        $this->view("templates/header",  [
+            'title' => "Notifikasi",
+            'css' => ["assets/css/sidebar"]
+        ]);
         $this->view("pages/general/notification");
         $this->view("templates/footer");
     }
