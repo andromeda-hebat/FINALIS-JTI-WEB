@@ -64,7 +64,8 @@ class BerkasRepository
                     @nim = :nim,
                     @laporan_TA = :laporan_ta,
                     @aplikasi = :aplikasi,
-                    @bukti_publikasi = :bukti_publikasi;
+                    @bukti_publikasi = :bukti_publikasi,
+                    @id_admin = 'A12345';
             SQL);
             $stmt->bindValue(':nim', $berkas_TA->nim, \PDO::PARAM_STR);
             $stmt->bindValue(':laporan_ta', $berkas_TA->laporan_ta, \PDO::PARAM_STR);
@@ -86,7 +87,8 @@ class BerkasRepository
                     @toeic = :toeic,
                     @distribusi_skripsi = :skripsi,
                     @distribusi_magang = :magang,
-                    @surat_bebas_kompen = :kompen
+                    @surat_bebas_kompen = :kompen,
+                    @id_admin = 'A12346'
             SQL);
             $stmt->bindValue(':nim', $berkas_prodi->nim, \PDO::PARAM_STR);
             $stmt->bindValue(':toeic', $berkas_prodi->toeic, \PDO::PARAM_STR);
