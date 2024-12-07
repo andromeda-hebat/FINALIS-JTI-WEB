@@ -51,7 +51,7 @@ class AdminProdiController extends Controller
 
         $this->view("templates/header", [
             'title' => "Detail Permintaan",
-            'css' => ["assets/css/sidebar"]
+            'css' => ["/assets/css/sidebar"]
         ]);
         $this->view("pages/admin_prodi/detail_permintaan", [
             'user_file' => $user_file
