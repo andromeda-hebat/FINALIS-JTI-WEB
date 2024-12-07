@@ -2,6 +2,8 @@
 
 namespace App\Core;
 
+use App\Helpers\ViewHelper;
+
 class Router
 {
     public static array $routes = [];
@@ -59,17 +61,12 @@ class Router
 
         if (!$is_path_found) {
             http_response_code(404);
-            self::view("templates/header", [
+            ViewHelper::view("templates/header", [
                 'title' => '404 Not Found!'
             ]);
-            self::view("pages/general/page_not_found");
-            self::view("templates/footer");
+            ViewHelper::view("pages/general/page_not_found");
+            ViewHelper::view("templates/footer");
             return;
         }
-    }
-
-    private static function view(string $view, array $data = []): void
-    {
-        require __DIR__ . '/../views/' . $view . '.php';
     }
 }
