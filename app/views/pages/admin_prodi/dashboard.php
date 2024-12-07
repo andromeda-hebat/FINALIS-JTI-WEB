@@ -152,7 +152,7 @@
                                 <td><?= $value->getStatusVerifikasi() ?></td>
                                 <td><?= $value->getTanggalRequest() ?></td>
                                 <td><?= $value->getKeteranganVerifikasi() ?></td>
-                                <td><a href="/permintaan-verif-ta/detail/<?= $value->getIdVerifikasi() ?>" class="btn btn-primary">Rincian</a></td>
+                                <td><a href="/permintaan-verif-prodi/detail/<?= $value->getIdVerifikasi() ?>" class="btn btn-primary">Rincian</a></td>
                             </tr>
                             <?php endforeach; ?>
                         </tbody>
