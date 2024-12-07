@@ -2,28 +2,27 @@
 
 namespace App\Controllers;
 
-use App\Core\Controller;
-use App\Repository\BerkasRepository;
+use App\Helpers\ViewHelper;
+use App\Repository\{BerkasProdiRepository, BerkasTARepository};
 
-class HomeController extends Controller
+class HomeController
 {
-
     public function index(): void
     {
-        $this->view("templates/header", [
+        ViewHelper::view("templates/header", [
             'title' => "FINALIS JTI"
         ]);
-        $this->view("pages/general/index");
-        $this->view("templates/footer");
+        ViewHelper::view("pages/general/index");
+        ViewHelper::view("templates/footer");
     }
 
     public function contact(): void
     {
-        $this->view("templates/header", [
+        ViewHelper::view("templates/header", [
             'title' => "Kontak"
         ]);
-        $this->view("pages/general/contact");
-        $this->view("templates/footer");
+        ViewHelper::view("pages/general/contact");
+        ViewHelper::view("templates/footer");
     }
 
     public function dashboard(): void
@@ -33,55 +32,47 @@ class HomeController extends Controller
         $data['css'] = ["assets/css/sidebar"];
 
         if (!isset($_SESSION['role'])) {
-            $this->view("templates/header", [
+            ViewHelper::view("templates/header", [
                 'title' => 'Dashboard'
             ]);
-            $this->view("pages/general/not_authenticate");
-            $this->view('templates/footer');
-            return;
+            ViewHelper::view("pages/general/not_authenticate");
+            ViewHelper::view('templates/footer');
+            exit;
         }
 
-        switch ($_SESSION['role']) {
-            case 'Admin Prodi':
-                try {
-                    $data['all_req_verif'] = BerkasRepository::getAllBerkasProdiReq();
-                } catch (\PDOException $e) {
-                    header("Content-Type: application/json");
-                    http_response_code(500);
-                    echo json_encode([
-                        "status" => "error",
-                        "message" => "Database connectivity error!"
-                    ]);
-                }
-                $this->view("templates/header", $data);
-                $this->view("pages/admin_prodi/dashboard", $data);
-                $this->view("templates/footer");
-                break;
-            case 'Admin TA':
-                try {
-                    $data['all_req_verif'] = BerkasRepository::getAllBerkasTAReq();
-                } catch (\PDOException $e) {
-                    header("Content-Type: application/json");
-                    http_response_code(500);
-                    echo json_encode([
-                        "status" => "error",
-                        "message" => "Database connectivity error!"
-                    ]);
-                }
-                $this->view("templates/header", $data);
-                $this->view("pages/admin_ta/dashboard", $data);
-                $this->view("templates/footer");
-                break;
-            case 'Admin Jurusan':
-                $this->view("templates/header", $data);
-                $this->view("pages/admin_jurusan/dashboard", $data);
-                $this->view("templates/footer");
-                break;
-            case 'mahasiswa':
-                $this->view("templates/header", $data);
-                $this->view("pages/mahasiswa/dashboard", $data);
-                $this->view("templates/footer");
-                break;
+        try {
+            $all_req_verif = null;
+            $viewPage = null;
+        
+            switch ($_SESSION['role']) {
+                case 'Admin Prodi':
+                    $all_req_verif = BerkasProdiRepository::getAllBerkasProdiReq();
+                    $viewPage = "pages/admin_prodi/dashboard";
+                    break;
+                case 'Admin TA':
+                    $all_req_verif = BerkasTARepository::getAllBerkasTAReq();
+                    $viewPage = "pages/admin_ta/dashboard";
+                    break;
+                case 'Admin Jurusan':
+                    $viewPage = "pages/admin_jurusan/dashboard";
+                    break;
+                case 'mahasiswa':
+                    $viewPage = "pages/mahasiswa/dashboard";
+                    break;
+            }
+        
+            if ($viewPage) {
+                ViewHelper::view("templates/header", $data);
+                ViewHelper::view($viewPage, isset($all_req_verif) ? ['all_req_verif' => $all_req_verif] : $data);
+                ViewHelper::view("templates/footer");
+            }
+        } catch (\PDOException $e) {
+            header("Content-Type: application/json");
+            http_response_code(500);
+            echo json_encode([
+                "status" => "error",
+                "message" => "Database connectivity error!"
+            ]);
         }
     }
 }

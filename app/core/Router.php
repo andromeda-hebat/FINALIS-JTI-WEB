@@ -2,6 +2,8 @@
 
 namespace App\Core;
 
+use App\Helpers\ViewHelper;
+
 class Router
 {
     public static array $routes = [];
@@ -48,28 +50,27 @@ class Router
 
             array_shift($variables);
             call_user_func_array([$controller, $function], $variables);
-            return;
+            exit;
         }
 
         if ($is_path_found && !$is_method_found) {
             http_response_code(405);
-            echo "METHOD NOT ALLOWED!";
-            return;
+            ViewHelper::view("templates/header", [
+                'title' => "HTTP Method Not Allowed!"
+            ]);
+            ViewHelper::view("pages/general/client_method_not_allowed");
+            ViewHelper::view("templates/footer");
+            exit;
         }
 
         if (!$is_path_found) {
             http_response_code(404);
-            self::view("templates/header", [
+            ViewHelper::view("templates/header", [
                 'title' => '404 Not Found!'
             ]);
-            self::view("pages/general/page_not_found");
-            self::view("templates/footer");
-            return;
+            ViewHelper::view("pages/general/page_not_found");
+            ViewHelper::view("templates/footer");
+            exit;
         }
-    }
-
-    private static function view(string $view, array $data = []): void
-    {
-        require __DIR__ . '/../views/' . $view . '.php';
     }
 }

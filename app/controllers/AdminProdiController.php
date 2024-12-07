@@ -2,16 +2,16 @@
 
 namespace App\Controllers;
 
-use App\Core\Controller;
-use App\Repository\BerkasRepository;
+use App\Helpers\ViewHelper;
+use App\Repository\BerkasProdiRepository;
 
 
-class AdminProdiController extends Controller
+class AdminProdiController
 {
     public function requestVerifikasi(): void
     {
         try {
-            $all_req_verif = BerkasRepository::getAllBerkasProdiReq();
+            $all_req_verif = BerkasProdiRepository::getAllBerkasProdiReq();
         } catch (\PDOException $e) {
             http_response_code(500);
             echo json_encode([
@@ -22,20 +22,20 @@ class AdminProdiController extends Controller
             return;
         }
 
-        $this->view("templates/header", [
+        ViewHelper::view("templates/header", [
             'title' => "Permintaan Verifikasi",
             'css' => ["assets/css/sidebar"]
         ]);
-        $this->view("pages/admin_prodi/permintaan_verifikasi", [
+        ViewHelper::view("pages/admin_prodi/permintaan_verifikasi", [
             'all_req_verif' => $all_req_verif
         ]);
-        $this->view("templates/footer");
+        ViewHelper::view("templates/footer");
     }
 
     public function showDetailReq(int $id_verifikasi): void
     {
         try {
-            $user_file = BerkasRepository::getSingleBerkasProdiReq($id_verifikasi);
+            $user_file = BerkasProdiRepository::getSingleBerkasProdiReq($id_verifikasi);
         } catch (\PDOException $e) {
             http_response_code(500);
             echo json_encode([
@@ -46,13 +46,13 @@ class AdminProdiController extends Controller
             exit;
         }
 
-        $this->view("templates/header", [
+        ViewHelper::view("templates/header", [
             'title' => "Detail Permintaan",
             'css' => ["/assets/css/sidebar"]
         ]);
-        $this->view("pages/admin_prodi/detail_permintaan", [
+        ViewHelper::view("pages/admin_prodi/detail_permintaan", [
             'user_file' => $user_file
         ]);
-        $this->view("templates/footer");
+        ViewHelper::view("templates/footer");
     }
 }

@@ -2,18 +2,18 @@
 
 namespace App\Controllers;
 
-use App\Core\Controller;
-use App\Repository\{BerkasRepository, UserRepository};
+use App\Helpers\ViewHelper;
+use App\Repository\{UserRepository, BerkasProdiRepository, BerkasTARepository};
 
 
-class AuthController extends Controller
+class AuthController
 {
     public function viewLogin(): void
     {
         $data['title'] = "Login";
-        $this->view("templates/header", $data);
-        $this->view("pages/general/login");
-        $this->view("templates/footer");
+        ViewHelper::view("templates/header", $data);
+        ViewHelper::view("pages/general/login");
+        ViewHelper::view("templates/footer");
     }
     
     public function adminLogin(): void
@@ -28,7 +28,7 @@ class AuthController extends Controller
         }
 
         try {
-            $result = UserRepository::getAdminDataByUserIDAndPassword($id_admin, $password);
+            $result = UserRepository::getAdminByUserIDAndPassword($id_admin, $password);
         } catch (\PDOException $e) {
             header("Content-Type: application/json");
             http_response_code(500);
@@ -61,14 +61,14 @@ class AuthController extends Controller
         if (!isset($_POST["user_id"]) || !isset($_POST['password'])) {
             $data['title'] = "Login";
             $data['message'] = "User fail to authenticate!";
-            $this->view("templates/header", $data);
-            $this->view("pages/user_fail_authenticate", $data);
-            $this->view("templates/footer");
+            ViewHelper::view("templates/header", $data);
+            ViewHelper::view("pages/user_fail_authenticate", $data);
+            ViewHelper::view("templates/footer");
             exit;
         }
 
         try {
-            $user = UserRepository::getUserDataByUserIDAndPassword($_POST['user_id'], $_POST['password']);
+            $user = UserRepository::getUserByUserIDAndPassword($_POST['user_id'], $_POST['password']);
         } catch (\PDOException $e) {
             header("Content-Type: application/json");
             http_response_code(500);
@@ -87,8 +87,8 @@ class AuthController extends Controller
 
             if ($_SESSION['role'] == "mahasiswa") {
                 try {
-                    $_SESSION['status']['tugas_akhir'] = BerkasRepository::checkUserBerkasTAStatus($_SESSION['user_id']);
-                    $_SESSION['status']['administrasi_prodi'] = BerkasRepository::checkUserBerkasProdiStatus($_SESSION['user_id']);
+                    $_SESSION['status']['tugas_akhir'] = BerkasTARepository::checkUserBerkasTAStatus($_SESSION['user_id']);
+                    $_SESSION['status']['administrasi_prodi'] = BerkasProdiRepository::checkUserBerkasProdiStatus($_SESSION['user_id']);
                 } catch (\PDOException $e) {
                     header("Content-Type: application/json");
                     http_response_code(500);
