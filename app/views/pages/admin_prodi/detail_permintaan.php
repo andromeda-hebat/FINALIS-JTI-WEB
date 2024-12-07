@@ -159,13 +159,11 @@
                             <p>Staff Administrasi Prodi</p>
                             <div class="d-flex mb-3">
                                 <div class="d-flex me-3 ms-3">
-                                    <input type="checkbox" name="decision" id="verify"
-                                        onclick="toggleCheckbox('verify', 'reject')">
+                                    <input type="radio" name="decision" id="verify">
                                     <label for="verify">Verify</label>
                                 </div>
                                 <div class="d-flex ms-3">
-                                    <input type="checkbox" name="decision" id="reject"
-                                        onclick="toggleCheckbox('reject', 'verify')">
+                                    <input type="radio" name="decision" id="reject">
                                     <label for="reject">Reject</label>
                                 </div>
                             </div>
@@ -212,13 +210,3 @@
         </div>
     </div>
 </div>
-
-<script>
-    function toggleCheckbox(selectedId, otherId) {
-        const selectedCheckbox = document.getElementById(selectedId);
-        const otherCheckbox = document.getElementById(otherId);
-        if (selectedCheckbox.checked) {
-            otherCheckbox.checked = false;
-        }
-    }
-</script>
