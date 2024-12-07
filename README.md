@@ -22,6 +22,7 @@ Terdapat beberapa dokumentasi yang bisa anda lihat sesuai dengan kebutuhan anda.
 | Farrel Augusta Dinata | [@FarrelAD](https://github.com/FarrelAD) | Backend developer |
 | Afifah Khoirunnisa | [@afifahnisa17](https://github.com/afifahnisa17) | Database designer |
 | Dewita Anggraini | [@DewitaA12](https://github.com/DewitaA12) | UI/UX designer |
+| Fajar Aditya Nugraha | [@FajarAdityaNugraha](https://github.com/FajarAdityaNugraha) | UI/UX designer |
 | Stevan Zaky Setyanto | [@vanstevanzaky](https://github.com/vanstevanzaky) | Frontend developer |
 
 ---
