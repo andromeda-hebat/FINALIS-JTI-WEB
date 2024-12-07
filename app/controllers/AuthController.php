@@ -65,7 +65,7 @@ class AuthController extends Controller
             $this->view("templates/header", $data);
             $this->view("pages/user_fail_authenticate", $data);
             $this->view("templates/footer");
-            return;
+            exit;
         }
 
         try {
@@ -75,21 +75,33 @@ class AuthController extends Controller
             http_response_code(500);
             echo json_encode([
                 "status"=>"error",
-                "message"=>"Database connectivity error!",
-                "detail"=>$e->getMessage()
+                "message"=>"Database connectivity error!"
             ]);
+            exit;
         }
 
         if ($user != false) {
-            $_SESSION['user_id'] = $user->user_id;
-            $_SESSION['full_name'] = $user->nama_lengkap;
-            $_SESSION['role'] = $user->role;
-            $_SESSION['user_photo'] = $user->foto_profil;
+            $_SESSION['user_id'] = $user->getUserId();
+            $_SESSION['full_name'] = $user->getNamaLengkap();
+            $_SESSION['role'] = $user->getRole();
+            $_SESSION['user_photo'] = $user->getFotoProfil();
 
             if ($_SESSION['role'] == "mahasiswa") {
-                $_SESSION['status']['tugas_akhir'] = BerkasRepository::checkUserBerkasTAStatus($_SESSION['user_id']);
-                $_SESSION['status']['administrasi_prodi'] = BerkasRepository::checkUserBerkasProdiStatus($_SESSION['user_id']);
+                try {
+                    echo "hadir!";
+                    $_SESSION['status']['tugas_akhir'] = BerkasRepository::checkUserBerkasTAStatus($_SESSION['user_id']);
+                    $_SESSION['status']['administrasi_prodi'] = BerkasRepository::checkUserBerkasProdiStatus($_SESSION['user_id']);
+                } catch (\PDOException $e) {
+                    header("Content-Type: application/json");
+                    http_response_code(500);
+                    echo json_encode([
+                        "status"=>"error",
+                        "message"=>"Database connectivity error!"
+                    ]);
+                    exit;
+                }
             }
+
             header('Content-Type: application/json');
             echo json_encode(['redirect' => '/dashboard']);
         } else {
@@ -98,8 +110,8 @@ class AuthController extends Controller
                 "status" => "error",
                 "message" => "Authentication failed. Please check your credentials.",
             ]);
+            exit;
         }
-
     }
 
     public function logout(): void
