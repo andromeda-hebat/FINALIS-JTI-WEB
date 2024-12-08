@@ -63,7 +63,10 @@ class HomeController
         
             if ($viewPage) {
                 ViewHelper::view("templates/header", $data);
-                ViewHelper::view($viewPage, isset($all_req_verif) ? ['all_req_verif' => $all_req_verif] : $data);
+                ViewHelper::view($viewPage, isset($all_req_verif) ? [
+                    'all_req_verif' => $all_req_verif,
+                    'active_page' => 'dashboard'
+                ] : $data);
                 ViewHelper::view("templates/footer");
             }
         } catch (\PDOException $e) {

@@ -26,7 +26,8 @@ class AdminTAController
             'css' => ["/assets/css/sidebar"]
         ]);
         ViewHelper::view("pages/admin_ta/permintaan_verifikasi", [
-            'all_req_verif' => $all_req_verif
+            'all_req_verif' => $all_req_verif,
+            'active_page' => 'permintaan-verifikasi-ta'
         ]);
         ViewHelper::view("templates/footer");
     }

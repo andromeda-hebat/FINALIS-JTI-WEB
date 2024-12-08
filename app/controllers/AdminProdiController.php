@@ -27,7 +27,8 @@ class AdminProdiController
             'css' => ["assets/css/sidebar"]
         ]);
         ViewHelper::view("pages/admin_prodi/permintaan_verifikasi", [
-            'all_req_verif' => $all_req_verif
+            'all_req_verif' => $all_req_verif,
+            'active_page' => 'permintaan-verifikasi-prodi'
         ]);
         ViewHelper::view("templates/footer");
     }
