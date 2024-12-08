@@ -3,7 +3,7 @@
 namespace App\Controllers;
 
 use App\Helpers\ViewHelper;
-use App\Repository\{UserRepository, BerkasProdiRepository, BerkasTARepository};
+use App\Repository\{UserRepository, BerkasRepository , BerkasProdiRepository, BerkasTARepository};
 
 
 class AuthController
@@ -89,6 +89,7 @@ class AuthController
                 try {
                     $_SESSION['status']['tugas_akhir'] = BerkasTARepository::checkUserBerkasTAStatus($_SESSION['user_id']);
                     $_SESSION['status']['administrasi_prodi'] = BerkasProdiRepository::checkUserBerkasProdiStatus($_SESSION['user_id']);
+                    $_SESSION['status']['bebas_tanggungan'] = 'lunas';
                 } catch (\PDOException $e) {
                     header("Content-Type: application/json");
                     http_response_code(500);
