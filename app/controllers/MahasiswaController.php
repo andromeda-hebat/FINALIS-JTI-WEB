@@ -15,7 +15,7 @@ class MahasiswaController
             'css' => ["assets/css/sidebar"]
         ]);
         ViewHelper::view("pages/mahasiswa/tugas_akhir", [
-            'active_page' => "tugas_akhir"
+            'active_page' => "tugas-akhir"
         ]);
         ViewHelper::view("templates/footer");
     }
@@ -28,7 +28,7 @@ class MahasiswaController
                 "status" => "error",
                 "message" => "Data from form not complete!"
             ]);
-            return;
+            exit;
         }
 
         foreach ($_FILES as $key => &$value) {
@@ -46,7 +46,7 @@ class MahasiswaController
                 "status" => "error",
                 "message" => "Fail to store form data to database!"
             ]);
-            return;
+            exit;
         }
 
         if ($is_files_successfully_inserted_to_database) {
@@ -65,14 +65,14 @@ class MahasiswaController
                 "status" => "success",
                 "message" => "Successfully send form berkas tugas akhir to the server"
             ]);
-            return;
+            exit;
         } else {
             http_response_code(500);
             echo json_encode([
                 "status" => "error",
                 "message" => "Failed to move files in the server!"
             ]);
-            return;
+            exit;
         }
     }
 
@@ -83,7 +83,7 @@ class MahasiswaController
             'css' => ["assets/css/sidebar"]
         ]);
         ViewHelper::view("pages/mahasiswa/administrasi_prodi", [
-            'active_page' => "administrasi_prodi"
+            'active_page' => "administrasi-prodi"
         ]);
         ViewHelper::view("templates/footer");
     }
@@ -96,7 +96,7 @@ class MahasiswaController
                 "status" => "error",
                 "message" => "Data from form not complete!"
             ]);
-            return;
+            exit;
         }
 
         foreach ($_FILES as $key => &$value) {
@@ -114,7 +114,7 @@ class MahasiswaController
                 "status" => "error",
                 "message" => "Fail to store form data to database!"
             ]);
-            return;
+            exit;
         }
 
         if ($is_files_successfully_inserted_to_database) {
@@ -134,24 +134,19 @@ class MahasiswaController
                 "status" => "success",
                 "message" => "Successfully send form berkas tugas akhir to the server"
             ]);
-            return;
+            exit;
         } else {
             http_response_code(500);
             echo json_encode([
                 "status" => "error",
                 "message" => "Failed to move files in the server!"
             ]);
-            return;
+            exit;
         }
     }
 
     public function riwayatPengajuan(): void
     {
-        ViewHelper::view("templates/header", [
-            'title' => "Riwayat Pengajuan",
-            'css' => ["assets/css/sidebar"]
-        ]);
-
         try {
             $user_history = BerkasRepository::getUserHistoryRequestBerkas($_SESSION['user_id']);
         } catch (\PDOException $e) {
@@ -163,8 +158,12 @@ class MahasiswaController
             exit;
         }
 
+        ViewHelper::view("templates/header", [
+            'title' => "Riwayat Pengajuan",
+            'css' => ["assets/css/sidebar"]
+        ]);
         ViewHelper::view("pages/mahasiswa/riwayat_pengajuan", [
-            'active_page' => "riwayat_pengajuan",
+            'active_page' => "riwayat-pengajuan",
             'req_history' => $user_history
         ]);
         ViewHelper::view("templates/footer");
@@ -177,7 +176,7 @@ class MahasiswaController
             'css' => ["assets/css/sidebar"]
         ]);
         ViewHelper::view("pages/mahasiswa/permintaan_surat", [
-            'active_page' => "permintaan_surat",
+            'active_page' => "permintaan-surat",
         ]);
         ViewHelper::view("templates/footer");
     }

@@ -1,5 +1,5 @@
 <div id="sidebar" 
-    class="d-flex flex-column align-items-center border-end justify-content-center vh-100"
+    class="d-flex flex-column align-items-center border-end justify-content-center min-vh-100"
     style="background-color: #052C65; width: 300px; padding-top: 20px !important;">
     <!-- Bagian Judul -->
     <div class="d-flex text-center py-4 mb-4">
@@ -47,30 +47,17 @@
 
 
 
+
 <!-- Bootstrap Modal -->
 <?php include __DIR__ . '/../general/ask_logout_modal.php' ?>
 
 
 
 
+
+<!-- JavaScript for this component -->
 <script>
     const activePage = <?= json_encode($data['active_page']) ?>;
     const bgActiveSidebarColor = '#1E4173';
-    switch (activePage) {
-        case 'dashboard':
-            document.getElementById('nav-dashboard').style.backgroundColor = bgActiveSidebarColor;
-            break;
-        case 'tugas_akhir':
-            document.getElementById('nav-tugas-akhir').style.backgroundColor = bgActiveSidebarColor;
-            break;
-        case 'administrasi_prodi':
-            document.getElementById('nav-administrasi-prodi').style.backgroundColor = bgActiveSidebarColor;
-            break;
-        case 'riwayat_pengajuan':
-            document.getElementById('nav-riwayat-pengajuan').style.backgroundColor = bgActiveSidebarColor;
-            break;
-        case 'permintaan_surat':
-            document.getElementById('nav-permintaan-surat').style.backgroundColor = bgActiveSidebarColor;
-            break;
-    }
+    document.getElementById('nav-'+activePage).style.backgroundColor = bgActiveSidebarColor;
 </script>

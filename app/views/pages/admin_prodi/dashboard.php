@@ -2,11 +2,8 @@
     <!-- Sidebar -->
     <?php include __DIR__ . '/../../components/admin_prodi/sidebar.php' ?>
     <div class="flex-grow-1">
-
         <?php include __DIR__ . '/../../components/admin_prodi/topbar.php' ?>
-
         <div class="halaman mx-5 ">
-
             <!-- div informasi -->
             <section>
                 <!-- div judul Informasi -->
@@ -152,7 +149,7 @@
                                 <td><?= $value->getStatusVerifikasi() ?></td>
                                 <td><?= $value->getTanggalRequest() ?></td>
                                 <td><?= $value->getKeteranganVerifikasi() ?></td>
-                                <td><a href="/permintaan-verif-prodi/detail/<?= $value->getIdVerifikasi() ?>" class="btn btn-primary">Rincian</a></td>
+                                <td><a href="/permintaan-verifikasi-prodi/detail/<?= $value->getIdVerifikasi() ?>" class="btn btn-primary">Rincian</a></td>
                             </tr>
                             <?php endforeach; ?>
                         </tbody>

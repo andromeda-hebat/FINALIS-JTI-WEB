@@ -9,10 +9,10 @@
 
     <!-- Tautan Navigasi -->
     <nav class="nav w-100 d-flex justify-content-center text-start">
-        <a href="/dashboard" class="sidebar-nav nav-link text-white w-100 ps-5">
+        <a href="/dashboard" id="nav-dashboard" class="sidebar-nav nav-link text-white w-100 ps-5">
             Dashboard
         </a>
-        <a href="/permintaan-verif-ta" class="sidebar-nav nav-link text-white w-100 ps-5">
+        <a href="/permintaan-verifikasi-ta" id="nav-permintaan-verifikasi-ta" class="sidebar-nav nav-link text-white w-100 ps-5">
             Permintaan Verifikasi
         </a>
     </nav>
@@ -37,3 +37,13 @@
 
 <!-- Bootstrap Modal -->
 <?php include __DIR__ . '/../general/ask_logout_modal.php' ?>
+
+
+
+
+<!-- JavaScript for this component -->
+<script>
+    const activePage = <?= json_encode($data['active_page']) ?>;
+    const bgActiveSidebarColor = '#1E4173';
+    document.getElementById('nav-'+activePage).style.backgroundColor = bgActiveSidebarColor;
+</script>
