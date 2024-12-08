@@ -2,7 +2,7 @@
     <?php include __DIR__ . '/../../components/mahasiswa/sidebar.php' ?>
     <div class="w-100 position-relative">
         <?php include __DIR__ . '/../../components/mahasiswa/topbar.php' ?>
-        <main class="container px-4" style="margin-top: 5rem;">
+        <main class="container px-4">
             <h2 class="mt-2 ms-1 fw-bold" style="color: #052C65;">Formulir Administrasi Prodi</h2>
 
             <div id="empty-form-content" class="mt-4" style="display: <?php echo (strcasecmp($_SESSION['status']['administrasi_prodi'], 'kosong') == 0) ? 'block' : 'none'; ?>;">

@@ -2,7 +2,7 @@
     <?php include __DIR__ . '/../../components/mahasiswa/sidebar.php' ?>
     <div class="w-100 position-relative">
         <?php include __DIR__ . '/../../components/mahasiswa/topbar.php' ?>
-        <main class="container px-5" style="margin-top: 5rem;">
+        <main class="container px-5">
             <div class="d-flex">
                 <h3 class="mt-2 fw-bold" style="color: #052C65;">Riwayat Pengajuan Formulir</h3>
             </div>
