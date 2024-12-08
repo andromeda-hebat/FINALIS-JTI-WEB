@@ -9,7 +9,7 @@
             <section class="mt-2">
 
                 <div class="d-flex w-100 align-items-center ">
-                    <a href="/permintaan-verifikasi">
+                    <a href="/permintaan-verifikasi-prodi">
                         <svg width="25" height="25" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <g clip-path="url(#clip0_570_986)">
                                 <path fill-rule="evenodd" clip-rule="evenodd"

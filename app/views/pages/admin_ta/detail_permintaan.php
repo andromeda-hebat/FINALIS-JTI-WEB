@@ -6,7 +6,7 @@
         <main class="halaman mx-5 px-5">
             <section class="mt-2">
                 <div class="d-flex w-100 align-items-center ">
-                    <a href="/permintaan-verif-ta">
+                    <a href="/permintaan-verifikasi-ta">
                         <svg width="25" height="25" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <g clip-path="url(#clip0_570_986)">
                                 <path fill-rule="evenodd" clip-rule="evenodd"
@@ -149,7 +149,7 @@
 
                             <!-- kanan -->
                             <form id="form-verify"
-                                action="/permintaan-verif-ta/detail/<?= $data['user_file']->getIdVerifikasi() ?>"
+                                action="/permintaan-verifikasi-ta/detail/<?= $data['user_file']->getIdVerifikasi() ?>"
                                 method="PATCH" class="me-2">
                                 <h5 clas="my-0">Proses Verifikasi</h5>
                                 <p>Staff Verifikator TA</p>

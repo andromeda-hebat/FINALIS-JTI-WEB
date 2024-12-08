@@ -12,7 +12,7 @@
         <a href="/dashboard" id="nav-dashboard" class="sidebar-nav nav-link text-white w-100 ps-5">
             Dashboard
         </a>
-        <a href="/permintaan-verif-ta" id="nav-permintaan-verifikasi-ta" class="sidebar-nav nav-link text-white w-100 ps-5">
+        <a href="/permintaan-verifikasi-ta" id="nav-permintaan-verifikasi-ta" class="sidebar-nav nav-link text-white w-100 ps-5">
             Permintaan Verifikasi
         </a>
     </nav>

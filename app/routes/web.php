@@ -64,13 +64,13 @@ Router::add('GET', '/permintaan-surat', MahasiswaController::class, 'permintaanS
 
 
 // User: Admin Prodi
-Router::add('GET', '/permintaan-verifikasi', AdminProdiController::class, 'requestVerifikasi', [
+Router::add('GET', '/permintaan-verifikasi-prodi', AdminProdiController::class, 'requestVerifikasi', [
     [
         'class' => AuthMiddleware::class,
         'function' => 'checkAuth'
     ]
 ]);
-Router::add('GET', '/permintaan-verif-prodi/detail/([0-9]+)', AdminProdiController::class, 'showDetailReq', [
+Router::add('GET', '/permintaan-verifikasi-prodi/detail/([0-9]+)', AdminProdiController::class, 'showDetailReq', [
     [
         'class' => AuthMiddleware::class,
         'function' => 'checkAuth'
@@ -79,19 +79,19 @@ Router::add('GET', '/permintaan-verif-prodi/detail/([0-9]+)', AdminProdiControll
 
 
 // User: Admin TA
-Router::add('GET', '/permintaan-verif-ta', AdminTAController::class, 'requestVerifikasi', [
+Router::add('GET', '/permintaan-verifikasi-ta', AdminTAController::class, 'requestVerifikasi', [
     [
         'class' => AuthMiddleware::class,
         'function' => 'checkAuth'
     ]
 ]);
-Router::add('GET', '/permintaan-verif-ta/detail/([0-9]+)', AdminTAController::class, 'showDetailReq', [
+Router::add('GET', '/permintaan-verifikasi-ta/detail/([0-9]+)', AdminTAController::class, 'showDetailReq', [
     [
         'class' => AuthMiddleware::class,
         'function' => 'checkAuth'
     ]
 ]);
-Router::add('PATCH', '/permintaan-verif-ta/detail/([0-9]+)', AdminTAController::class, 'verifyBerkas', [
+Router::add('PATCH', '/permintaan-verifikasi-ta/detail/([0-9]+)', AdminTAController::class, 'verifyBerkas', [
     [
         'class' => AuthMiddleware::class,
         'function' => 'checkAuth'
