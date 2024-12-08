@@ -8,9 +8,7 @@
     </div>
 
     <!-- Tautan Navigasi -->
-
     <nav class="nav w-100 d-flex flex-column text-start">
-
         <div class="sidebar-nav nav-link text-white w-100 ps-5 fw-bold kelola-data">
             <div class="d-flex align-items-center">
                 Kelola Data
@@ -19,8 +17,6 @@
                         d="M2.46888 6.96888C2.53854 6.89903 2.62131 6.84362 2.71243 6.80581C2.80354 6.768 2.90122 6.74854 2.99988 6.74854C3.09853 6.74854 3.19621 6.768 3.28733 6.80581C3.37844 6.84362 3.46121 6.89903 3.53088 6.96888L11.9999 15.4394L20.4689 6.96888C20.5386 6.89914 20.6214 6.84383 20.7125 6.80609C20.8036 6.76835 20.9013 6.74893 20.9999 6.74893C21.0985 6.74893 21.1961 6.76835 21.2873 6.80609C21.3784 6.84383 21.4611 6.89914 21.5309 6.96888C21.6006 7.03861 21.6559 7.12139 21.6937 7.2125C21.7314 7.30361 21.7508 7.40126 21.7508 7.49988C21.7508 7.59849 21.7314 7.69614 21.6937 7.78725C21.6559 7.87836 21.6006 7.96114 21.5309 8.03088L12.5309 17.0309C12.4612 17.1007 12.3784 17.1561 12.2873 17.1939C12.1962 17.2318 12.0985 17.2512 11.9999 17.2512C11.9012 17.2512 11.8035 17.2318 11.7124 17.1939C11.6213 17.1561 11.5385 17.1007 11.4689 17.0309L2.46888 8.03088C2.39903 7.96121 2.34362 7.87844 2.30581 7.78733C2.268 7.69621 2.24854 7.59853 2.24854 7.49988C2.24854 7.40122 2.268 7.30354 2.30581 7.21243C2.34362 7.12131 2.39903 7.03854 2.46888 6.96888Z"
                         fill="white" />
                 </svg>
-
-
             </div>
         </div>
         <div class="submenu ms-5 " style="display: none;">
@@ -55,7 +51,19 @@
     </div>
 </div>
 
-<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+
+
+
+
+<!-- Bootstrap Modal -->
+<?php include __DIR__ . '/../general/ask_logout_modal.php' ?>
+
+
+
+
+
+<!-- JavaScript for this component -->
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.7.1/dist/jquery.min.js"></script>
 <script>
     $(document).ready(function () {
         const $submenu = $(".submenu");
@@ -69,16 +77,3 @@
 
     });
 </script>
-
-
-
-
-
-
-
-<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
-
-
-
-<!-- Bootstrap Modal -->
-<?php include __DIR__ . '/../general/ask_logout_modal.php' ?>
