@@ -1,5 +1,5 @@
 <div id="sidebar" 
-    class="d-flex flex-column align-items-center border-end justify-content-center vh-100"
+    class="d-flex flex-column align-items-center border-end justify-content-center min-vh-100"
     style="background-color: #052C65; width: 300px; padding-top: 20px !important;">
     <!-- Bagian Judul -->
     <div class="d-flex text-center py-4 mb-4">

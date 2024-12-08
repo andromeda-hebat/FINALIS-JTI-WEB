@@ -2,8 +2,8 @@
     <?php include __DIR__ . '/../../components/mahasiswa/sidebar.php' ?>
     <div class="w-100 position-relative">
         <?php include __DIR__ . '/../../components/mahasiswa/topbar.php' ?>
-        <main class="container px-4">
-            <h2 class="mt-2 ms-1 fw-bold" style="color: #052C65;">Formulir Administrasi Prodi</h2>
+        <main class="container px-5">
+            <h3 class="mt-2 ms-1 fw-bold" style="color: #052C65;">Formulir Administrasi Prodi</h3>
 
             <div id="empty-form-content" class="mt-4" style="display: <?php echo (strcasecmp($_SESSION['status']['administrasi_prodi'], 'kosong') == 0) ? 'block' : 'none'; ?>;">
                 <form id="administrasi-prodi-form" action="/administrasi-prodi" method="post" enctype="multipart/form-data">
@@ -13,7 +13,7 @@
                         <p class="mb-0" style="color:#7C7C7C ;">(File scan PDF)</p>
                         <input type="file" name="distribusi_tugas_akhir" accept=".pdf" id="input-laporan-ta" class="form-control w-50">
                         <br>
-                        <label for="magang" class="form-label mb-0">Distribusi Laporan Magang</label>
+                            <label for="magang" class="form-label mb-0">Distribusi Laporan Magang</label>
                         <p class="mb-0" style="color: #7C7C7C;">(File scan PDF).</p>
                         <input type="file" name="distribusi_magang" accept=".pdf" id="input-laporan-magang" class="form-control w-50">
                         <br>

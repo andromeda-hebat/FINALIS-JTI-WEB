@@ -1,4 +1,4 @@
-<div id="body-content" class="mt-4" style="min-height: 75vh;">
+<div id="body-content" class="mt-4" style="min-height: 75vh; max-height: 75vh;">
     <div class="px-4 card card-body" style="box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25); ">
         <p class="text-center">
             Formulir yang anda ajukan belum dapat diverifikasi periksa kembali berkas yang<br>anda
