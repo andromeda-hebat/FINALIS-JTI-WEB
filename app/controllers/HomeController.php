@@ -9,6 +9,11 @@ class HomeController
 {
     public function index(): void
     {
+        if (isset($_SESSION['user_id'])) {
+            header('Location: /dashboard');
+            exit;
+        }
+        
         ViewHelper::view("templates/header", [
             'title' => "FINALIS JTI"
         ]);

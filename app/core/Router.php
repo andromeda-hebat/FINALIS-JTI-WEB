@@ -41,7 +41,7 @@ class Router
         if ($is_path_found && $is_method_found) {
             if ($route['middleware'] != null) {
                 foreach ($route['middleware'] as $middleware) {
-                    call_user_func([$middleware['class'], $middleware['function']]);
+                    call_user_func([$middleware['class'], $middleware['function']], $middleware['args']);
                 }
             }
 
