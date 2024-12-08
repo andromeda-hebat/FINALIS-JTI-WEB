@@ -8,6 +8,24 @@ use App\Helpers\ErrorLog;
 
 class BerkasRepository
 {
+    public static function getBebasTanggunganStatus(string $user_id): string
+    {
+        try {
+            $stmt = Database::getConnection()->prepare(<<<SQL
+                SELECT *
+                FROM table
+                WHERE nim = ?
+            SQL);
+            $stmt->bindValue(1, $user_id);
+            $stmt->execute();
+            $result = $stmt->fetch(\PDO::FETCH_ASSOC);
+            return "lunas";
+        } catch (\PDOException $e) {
+            error_log(ErrorLog::formattedErrorLog($e->getMessage()), 3, LOG_FILE_PATH);
+            throw new \PDOException($e->getMessage());
+        }
+    }
+
     public static function getUserHistoryRequestBerkas(string $user_id): array
     {
         try {
