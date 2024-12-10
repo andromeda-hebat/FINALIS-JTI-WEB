@@ -29,7 +29,7 @@ Terdapat beberapa dokumentasi yang bisa anda lihat sesuai dengan kebutuhan anda.
         </td>
         <td width="110px" align="center" style="text-align: left;">
             <a href="https://github.com/DewitaA12">
-                <img src="https://avatars.githubusercontent.com/u/143470195?v=4?s=100" width="100px" alt="Dewita Anggraini"/><br />
+                <img src="https://avatars.githubusercontent.com/u/144205378?v=4?s=100" width="100px" alt="Dewita Anggraini"/><br />
                 <sub>
                     <b>Dewita Anggraini</b>
                 </sub>
