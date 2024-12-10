@@ -17,13 +17,57 @@ Terdapat beberapa dokumentasi yang bisa anda lihat sesuai dengan kebutuhan anda.
 ---
 
 ## Kontributor
-| Nama | GitHub | Peran |
-|--|--| -- |
-| Farrel Augusta Dinata | [@FarrelAD](https://github.com/FarrelAD) | Backend developer |
-| Afifah Khoirunnisa | [@afifahnisa17](https://github.com/afifahnisa17) | Database designer |
-| Dewita Anggraini | [@DewitaA12](https://github.com/DewitaA12) | UI/UX designer |
-| Fajar Aditya Nugraha | [@FajarAdityaNugraha](https://github.com/FajarAdityaNugraha) | UI/UX designer |
-| Stevan Zaky Setyanto | [@vanstevanzaky](https://github.com/vanstevanzaky) | Frontend developer |
+<table>
+    <tr>
+        <td width="110px" align="center" style="text-align: left;">
+            <a href="https://github.com/afifahnisa17">
+                <img src="https://avatars.githubusercontent.com/u/143988656?v=4?s=100" width="100px;" alt="Afifah Khoirunnisa"/><br />
+                <sub>
+                    <b>Afifah Khoirunnisa</b>
+                </sub>
+            </a>
+        </td>
+        <td width="110px" align="center" style="text-align: left;">
+            <a href="https://github.com/DewitaA12">
+                <img src="https://avatars.githubusercontent.com/u/143470195?v=4?s=100" width="100px" alt="Dewita Anggraini"/><br />
+                <sub>
+                    <b>Dewita Anggraini</b>
+                </sub>
+            </a>
+        </td>
+        <td width="110px" align="center" style="text-align: left;">
+            <a href="https://github.com/FajarAdityaNugraha">
+                <img src="https://avatars.githubusercontent.com/u/143700559?v=4?s=100" width="100px" alt="Fajar Aditya Nugraha"/><br />
+                <sub>
+                    <b>Fajar Aditya Nugraha</b>
+                </sub>
+            </a>
+        </td>
+        <td width="110px" align="center" style="text-align: left;">
+            <a href="https://github.com/FarrelAD">
+                <img src="https://avatars.githubusercontent.com/u/140877757?v=4?s=100" width="100px" alt="Farrel Augusta Dinata"/><br />
+                <sub>
+                    <b>Farrel Augusta Dinata</b>
+                </sub>
+            </a>
+        </td>
+        <td width="110px" align="center" style="text-align: left;">
+            <a href="https://github.com/vanstevanzaky">
+                <img src="https://avatars.githubusercontent.com/u/143470195?v=4?s=100" width="100px" alt="Stevan Zaky Setyanto"/><br />
+                <sub>
+                    <b>Stevan Zaky Setyanto</b>
+                </sub>
+            </a>
+        </td>
+    </tr>
+    <tr>
+        <td>Database designer</td>
+        <td>UI/UX designer</td>
+        <td>UI/UX designer</td>
+        <td>Backend developer</td>
+        <td>Frontend developer</td>
+    </tr>
+</table>
 
 ---
 ---
