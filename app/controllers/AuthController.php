@@ -2,18 +2,18 @@
 
 namespace App\Controllers;
 
-use App\Helpers\ViewHelper;
-use App\Repository\{UserRepository, BerkasRepository , BerkasProdiRepository, BerkasTARepository};
+use App\Core\Controller;
+use App\Repository\{UserRepository, BerkasRepository, BerkasProdiRepository, BerkasTARepository};
 
 
-class AuthController
+class AuthController extends Controller
 {
     public function viewLogin(): void
     {
         $data['title'] = "Login";
-        ViewHelper::view("templates/header", $data);
-        ViewHelper::view("pages/general/login");
-        ViewHelper::view("templates/footer");
+        $this->view("templates/header", $data);
+        $this->view("pages/general/login");
+        $this->view("templates/footer");
     }
     
     public function adminLogin(): void
@@ -61,9 +61,9 @@ class AuthController
         if (!isset($_POST["user_id"]) || !isset($_POST['password'])) {
             $data['title'] = "Login";
             $data['message'] = "User fail to authenticate!";
-            ViewHelper::view("templates/header", $data);
-            ViewHelper::view("pages/user_fail_authenticate", $data);
-            ViewHelper::view("templates/footer");
+            $this->view("templates/header", $data);
+            $this->view("pages/user_fail_authenticate", $data);
+            $this->view("templates/footer");
             exit;
         }
 
@@ -118,5 +118,33 @@ class AuthController
         session_unset();
         session_destroy();
         header('Location: /');
+    }
+
+    public function sendPageMethodNotAllowed(): void
+    {
+        http_response_code(405);
+        $this->view("templates/header", [
+            'title' => "HTTP Method Not Allowed!"
+        ]);
+        $this->view("pages/general/client_method_not_allowed");
+    }
+
+    public function sendNotAuthorizedWarning(): void
+    {
+        http_response_code(403);
+        $this->view("templates/header", [
+            'title' => 'Not Authorized!'
+        ]);
+        $this->view("pages/general/not_authorized");
+        $this->view("templates/footer");
+    }
+
+    public function sendPageNotFound(): void
+    {
+        http_response_code(404);
+        $this->view("templates/header", [
+                'title' => '404 Not Found!'
+        ]);
+        $this->view("pages/general/page_not_found");
     }
 }

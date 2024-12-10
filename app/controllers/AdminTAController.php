@@ -2,11 +2,11 @@
 
 namespace App\Controllers;
 
-use App\Helpers\ViewHelper;
+use App\Core\Controller;
 use App\Repository\BerkasTARepository;
 
 
-class AdminTAController
+class AdminTAController extends Controller
 {
     public function requestVerifikasi(): void
     {
@@ -21,15 +21,15 @@ class AdminTAController
             exit;
         }
 
-        ViewHelper::view("templates/header", [
+        $this->view("templates/header", [
             'title' => "Permintaan Verifikasi",
             'css' => ["/assets/css/sidebar"]
         ]);
-        ViewHelper::view("pages/admin_ta/permintaan_verifikasi", [
+        $this->view("pages/admin_ta/permintaan_verifikasi", [
             'all_req_verif' => $all_req_verif,
             'active_page' => 'permintaan-verifikasi-ta'
         ]);
-        ViewHelper::view("templates/footer");
+        $this->view("templates/footer");
     }
 
     public function showDetailReq(int $id_verifikasi): void
@@ -45,14 +45,14 @@ class AdminTAController
             exit;
         }
 
-        ViewHelper::view("templates/header", [
+        $this->view("templates/header", [
             'title' => "Detail Permintaan",
             'css' => ["/assets/css/sidebar"]
         ]);
-        ViewHelper::view("pages/admin_ta/detail_permintaan", [
+        $this->view("pages/admin_ta/detail_permintaan", [
             'user_file' => $user_file
         ]);
-        ViewHelper::view("templates/footer");
+        $this->view("templates/footer");
     }
 
     public function verifyBerkas(int $id_verifikasi): void

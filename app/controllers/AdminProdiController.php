@@ -2,11 +2,11 @@
 
 namespace App\Controllers;
 
-use App\Helpers\ViewHelper;
+use App\Core\Controller;
 use App\Repository\BerkasProdiRepository;
 
 
-class AdminProdiController
+class AdminProdiController extends Controller
 {
     public function requestVerifikasi(): void
     {
@@ -22,15 +22,15 @@ class AdminProdiController
             return;
         }
 
-        ViewHelper::view("templates/header", [
+        $this->view("templates/header", [
             'title' => "Permintaan Verifikasi",
             'css' => ["assets/css/sidebar"]
         ]);
-        ViewHelper::view("pages/admin_prodi/permintaan_verifikasi", [
+        $this->view("pages/admin_prodi/permintaan_verifikasi", [
             'all_req_verif' => $all_req_verif,
             'active_page' => 'permintaan-verifikasi-prodi'
         ]);
-        ViewHelper::view("templates/footer");
+        $this->view("templates/footer");
     }
 
     public function showDetailReq(int $id_verifikasi): void
@@ -47,13 +47,13 @@ class AdminProdiController
             exit;
         }
 
-        ViewHelper::view("templates/header", [
+        $this->view("templates/header", [
             'title' => "Detail Permintaan",
             'css' => ["/assets/css/sidebar"]
         ]);
-        ViewHelper::view("pages/admin_prodi/detail_permintaan", [
+        $this->view("pages/admin_prodi/detail_permintaan", [
             'user_file' => $user_file
         ]);
-        ViewHelper::view("templates/footer");
+        $this->view("templates/footer");
     }
 }

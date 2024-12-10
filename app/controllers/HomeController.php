@@ -2,10 +2,10 @@
 
 namespace App\Controllers;
 
-use App\Helpers\ViewHelper;
+use App\Core\Controller;
 use App\Repository\{BerkasProdiRepository, BerkasTARepository};
 
-class HomeController
+class HomeController extends Controller
 {
     public function index(): void
     {
@@ -14,20 +14,20 @@ class HomeController
             exit;
         }
         
-        ViewHelper::view("templates/header", [
+        $this->view("templates/header", [
             'title' => "FINALIS JTI"
         ]);
-        ViewHelper::view("pages/general/index");
-        ViewHelper::view("templates/footer");
+        $this->view("pages/general/index");
+        $this->view("templates/footer");
     }
 
     public function contact(): void
     {
-        ViewHelper::view("templates/header", [
+        $this->view("templates/header", [
             'title' => "Kontak"
         ]);
-        ViewHelper::view("pages/general/contact");
-        ViewHelper::view("templates/footer");
+        $this->view("pages/general/contact");
+        $this->view("templates/footer");
     }
 
     public function dashboard(): void
@@ -37,11 +37,11 @@ class HomeController
         $data['css'] = ["assets/css/sidebar"];
 
         if (!isset($_SESSION['role'])) {
-            ViewHelper::view("templates/header", [
+            $this->view("templates/header", [
                 'title' => 'Dashboard'
             ]);
-            ViewHelper::view("pages/general/not_authenticate");
-            ViewHelper::view('templates/footer');
+            $this->view("pages/general/not_authenticate");
+            $this->view('templates/footer');
             exit;
         }
 
@@ -67,12 +67,12 @@ class HomeController
             }
         
             if ($viewPage) {
-                ViewHelper::view("templates/header", $data);
-                ViewHelper::view($viewPage, isset($all_req_verif) ? [
+                $this->view("templates/header", $data);
+                $this->view($viewPage, isset($all_req_verif) ? [
                     'all_req_verif' => $all_req_verif,
                     'active_page' => 'dashboard'
                 ] : $data);
-                ViewHelper::view("templates/footer");
+                $this->view("templates/footer");
             }
         } catch (\PDOException $e) {
             header("Content-Type: application/json");
