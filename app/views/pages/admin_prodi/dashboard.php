@@ -10,7 +10,11 @@
                 <div class="d-flex w-100 justify-content-between mt-3">
                     <h2>Dashboard</h2>
                     <div class="d-flex">
-                        <p class="me-2">24 Oktober, 2024</p>
+                        <?php
+                            $formatter = new IntlDateFormatter('id_ID', IntlDateFormatter::LONG, IntlDateFormatter::NONE);
+                            $formatter->setPattern('dd MMMM yyyy');
+                        ?>
+                        <p class="me-2""><?= $formatter->format(new DateTime()) ?></p>
                         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <g clip-path="url(#clip0_530_8611)">
                                 <path fill-rule="evenodd" clip-rule="evenodd"
@@ -29,31 +33,31 @@
 
                     </div>
                 </div>
-                    <!-- div isi Informasi -->
-                    <div class="d-flex border w-100 justify-content-around rounded shadow"
-                        style="background-color: #E4EEFF;">
-                        <div class="d-flex w-15 m-2 d-flex align-items-center" style="color: #052C65;">
-                            <svg class="me-1" width="40" height="40" viewBox="0 0 40 40" fill="none"
-                                xmlns="http://www.w3.org/2000/svg">
-                                <g clip-path="url(#clip0_530_8569)">
-                                    <path fill-rule="evenodd" clip-rule="evenodd"
-                                        d="M20 37.5C24.6413 37.5 29.0925 35.6563 32.3744 32.3744C35.6563 29.0925 37.5 24.6413 37.5 20C37.5 15.3587 35.6563 10.9075 32.3744 7.62563C29.0925 4.34374 24.6413 2.5 20 2.5C15.3587 2.5 10.9075 4.34374 7.62563 7.62563C4.34374 10.9075 2.5 15.3587 2.5 20C2.5 24.6413 4.34374 29.0925 7.62563 32.3744C10.9075 35.6563 15.3587 37.5 20 37.5ZM20 40C25.3043 40 30.3914 37.8929 34.1421 34.1421C37.8929 30.3914 40 25.3043 40 20C40 14.6957 37.8929 9.60859 34.1421 5.85786C30.3914 2.10714 25.3043 0 20 0C14.6957 0 9.60859 2.10714 5.85786 5.85786C2.10714 9.60859 0 14.6957 0 20C0 25.3043 2.10714 30.3914 5.85786 34.1421C9.60859 37.8929 14.6957 40 20 40Z"
-                                        fill="#052C65" />
-                                    <path fill-rule="evenodd" clip-rule="evenodd"
-                                        d="M20.0004 10C20.3319 10 20.6498 10.1317 20.8842 10.3661C21.1187 10.6005 21.2504 10.9185 21.2504 11.25V25.7325L26.6154 20.365C26.7316 20.2488 26.8695 20.1566 27.0214 20.0937C27.1732 20.0308 27.336 19.9984 27.5004 19.9984C27.6647 19.9984 27.8275 20.0308 27.9793 20.0937C28.1312 20.1566 28.2691 20.2488 28.3854 20.365C28.5016 20.4812 28.5938 20.6192 28.6567 20.771C28.7196 20.9229 28.7519 21.0856 28.7519 21.25C28.7519 21.4144 28.7196 21.5771 28.6567 21.729C28.5938 21.8808 28.5016 22.0188 28.3854 22.135L20.8854 29.635C20.7692 29.7514 20.6313 29.8438 20.4794 29.9068C20.3276 29.9698 20.1648 30.0022 20.0004 30.0022C19.8359 30.0022 19.6731 29.9698 19.5213 29.9068C19.3694 29.8438 19.2315 29.7514 19.1154 29.635L11.6154 22.135C11.4991 22.0188 11.4069 21.8808 11.3441 21.729C11.2812 21.5771 11.2488 21.4144 11.2488 21.25C11.2488 21.0856 11.2812 20.9229 11.3441 20.771C11.4069 20.6192 11.4991 20.4812 11.6154 20.365C11.8501 20.1303 12.1684 19.9984 12.5004 19.9984C12.6647 19.9984 12.8275 20.0308 12.9793 20.0937C13.1312 20.1566 13.2691 20.2488 13.3854 20.365L18.7504 25.7325V11.25C18.7504 10.9185 18.8821 10.6005 19.1165 10.3661C19.3509 10.1317 19.6688 10 20.0004 10Z"
-                                        fill="#052C65" />
-                                </g>
-                                <defs>
-                                    <clipPath id="clip0_530_8569">
-                                        <rect width="40" height="40" fill="white" />
-                                    </clipPath>
-                                </defs>
-                            </svg>
-                            <div class="ms-1">
-                                <p class="mb-0">Permintaan</p>
-                                <h6 class="fw-bold">175</h6>
-                            </div>
+                <!-- div isi Informasi -->
+                <div class="d-flex border w-100 justify-content-around rounded shadow"
+                    style="background-color: #E4EEFF;">
+                    <div class="d-flex w-15 m-2 d-flex align-items-center" style="color: #052C65;">
+                        <svg class="me-1" width="40" height="40" viewBox="0 0 40 40" fill="none"
+                            xmlns="http://www.w3.org/2000/svg">
+                            <g clip-path="url(#clip0_530_8569)">
+                                <path fill-rule="evenodd" clip-rule="evenodd"
+                                    d="M20 37.5C24.6413 37.5 29.0925 35.6563 32.3744 32.3744C35.6563 29.0925 37.5 24.6413 37.5 20C37.5 15.3587 35.6563 10.9075 32.3744 7.62563C29.0925 4.34374 24.6413 2.5 20 2.5C15.3587 2.5 10.9075 4.34374 7.62563 7.62563C4.34374 10.9075 2.5 15.3587 2.5 20C2.5 24.6413 4.34374 29.0925 7.62563 32.3744C10.9075 35.6563 15.3587 37.5 20 37.5ZM20 40C25.3043 40 30.3914 37.8929 34.1421 34.1421C37.8929 30.3914 40 25.3043 40 20C40 14.6957 37.8929 9.60859 34.1421 5.85786C30.3914 2.10714 25.3043 0 20 0C14.6957 0 9.60859 2.10714 5.85786 5.85786C2.10714 9.60859 0 14.6957 0 20C0 25.3043 2.10714 30.3914 5.85786 34.1421C9.60859 37.8929 14.6957 40 20 40Z"
+                                    fill="#052C65" />
+                                <path fill-rule="evenodd" clip-rule="evenodd"
+                                    d="M20.0004 10C20.3319 10 20.6498 10.1317 20.8842 10.3661C21.1187 10.6005 21.2504 10.9185 21.2504 11.25V25.7325L26.6154 20.365C26.7316 20.2488 26.8695 20.1566 27.0214 20.0937C27.1732 20.0308 27.336 19.9984 27.5004 19.9984C27.6647 19.9984 27.8275 20.0308 27.9793 20.0937C28.1312 20.1566 28.2691 20.2488 28.3854 20.365C28.5016 20.4812 28.5938 20.6192 28.6567 20.771C28.7196 20.9229 28.7519 21.0856 28.7519 21.25C28.7519 21.4144 28.7196 21.5771 28.6567 21.729C28.5938 21.8808 28.5016 22.0188 28.3854 22.135L20.8854 29.635C20.7692 29.7514 20.6313 29.8438 20.4794 29.9068C20.3276 29.9698 20.1648 30.0022 20.0004 30.0022C19.8359 30.0022 19.6731 29.9698 19.5213 29.9068C19.3694 29.8438 19.2315 29.7514 19.1154 29.635L11.6154 22.135C11.4991 22.0188 11.4069 21.8808 11.3441 21.729C11.2812 21.5771 11.2488 21.4144 11.2488 21.25C11.2488 21.0856 11.2812 20.9229 11.3441 20.771C11.4069 20.6192 11.4991 20.4812 11.6154 20.365C11.8501 20.1303 12.1684 19.9984 12.5004 19.9984C12.6647 19.9984 12.8275 20.0308 12.9793 20.0937C13.1312 20.1566 13.2691 20.2488 13.3854 20.365L18.7504 25.7325V11.25C18.7504 10.9185 18.8821 10.6005 19.1165 10.3661C19.3509 10.1317 19.6688 10 20.0004 10Z"
+                                    fill="#052C65" />
+                            </g>
+                            <defs>
+                                <clipPath id="clip0_530_8569">
+                                    <rect width="40" height="40" fill="white" />
+                                </clipPath>
+                            </defs>
+                        </svg>
+                        <div class="ms-1">
+                            <p class="mb-0">Permintaan</p>
+                            <h6 class="fw-bold">175</h6>
                         </div>
+                    </div>
 
                     <div class="d-flex align-items-center w-15 my-2">
                         <svg class="me-1" width="40" height="40" viewBox="0 0 40 40" fill="none"
@@ -127,34 +131,35 @@
                         </svg>
                         <h5 class="ms-1">Permintaan Terbaru</h5>
                     </div>
-                    
-                <!-- div kotak tabel -->
-                <div class="w-100 border rounded shadow">
-                    <table class="table">
-                        <thead class="table">
-                            <th style="background-color:#E4EEFF ;">No</th>
-                            <th style="background-color:#E4EEFF ;">NIM</th>
-                            <th style="background-color:#E4EEFF ;">Mahasiswa</th>
-                            <th style="background-color:#E4EEFF ;">Status</th>
-                            <th style="background-color:#E4EEFF ;">Tanggal Pengajuan</th>
-                            <th style="background-color:#E4EEFF ;">Keterangan</th>
-                            <th style="background-color:#E4EEFF ;">Aksi</th>
-                        </thead>
-                        <tbody>
-                            <?php foreach ($data['all_req_verif'] as $key => $value): ?>
-                            <tr>
-                                <td><?= $value->getNomor() ?></td>
-                                <td><?= $value->getNim() ?></td>
-                                <td><?= $value->getNamaLengkap() ?></td>
-                                <td><?= $value->getStatusVerifikasi() ?></td>
-                                <td><?= $value->getTanggalRequest() ?></td>
-                                <td><?= $value->getKeteranganVerifikasi() ?></td>
-                                <td><a href="/permintaan-verifikasi-prodi/detail/<?= $value->getIdVerifikasi() ?>" class="btn btn-primary">Rincian</a></td>
-                            </tr>
-                            <?php endforeach; ?>
-                        </tbody>
-                    </table>
-                </div>
+
+                    <!-- div kotak tabel -->
+                    <div class="w-100 border rounded shadow">
+                        <table class="table">
+                            <thead class="table">
+                                <th style="background-color:#E4EEFF ;">No</th>
+                                <th style="background-color:#E4EEFF ;">NIM</th>
+                                <th style="background-color:#E4EEFF ;">Mahasiswa</th>
+                                <th style="background-color:#E4EEFF ;">Status</th>
+                                <th style="background-color:#E4EEFF ;">Tanggal Pengajuan</th>
+                                <th style="background-color:#E4EEFF ;">Keterangan</th>
+                                <th style="background-color:#E4EEFF ;">Aksi</th>
+                            </thead>
+                            <tbody>
+                                <?php foreach ($data['all_req_verif'] as $key => $value): ?>
+                                    <tr>
+                                        <td><?= $value->getNomor() ?></td>
+                                        <td><?= $value->getNim() ?></td>
+                                        <td><?= $value->getNamaLengkap() ?></td>
+                                        <td><?= $value->getStatusVerifikasi() ?></td>
+                                        <td><?= $value->getTanggalRequest() ?></td>
+                                        <td><?= $value->getKeteranganVerifikasi() ?></td>
+                                        <td><a href="/permintaan-verifikasi-prodi/detail/<?= $value->getIdVerifikasi() ?>"
+                                                class="btn btn-primary">Rincian</a></td>
+                                    </tr>
+                                <?php endforeach; ?>
+                            </tbody>
+                        </table>
+                    </div>
             </section>
 
         </div>

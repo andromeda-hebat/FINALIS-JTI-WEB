@@ -13,7 +13,11 @@
                 <div class="d-flex w-100 justify-content-between mt-3">
                     <h2>Dashboard</h2>
                     <div class="d-flex">
-                        <p class="me-2">24 Oktober, 2024</p>
+                        <?php
+                            $formatter = new IntlDateFormatter('id_ID', IntlDateFormatter::LONG, IntlDateFormatter::NONE);
+                            $formatter->setPattern('dd MMMM yyyy');
+                        ?>
+                        <p class="me-2"><?= $formatter->format(new DateTime()) ?></p>
                         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <g clip-path="url(#clip0_530_8611)">
                                 <path fill-rule="evenodd" clip-rule="evenodd"
