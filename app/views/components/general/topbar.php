@@ -3,9 +3,9 @@
 		<div class="d-flex pt-3 ">
 			<img src="<?= $_SESSION['user_photo'] ?>" alt="Profil" class="rounded-circle"
 				style="width: 30px; height: 30px; background-color: #ddd;">
-			<div class="ms-2 flex-column text-start">
+			<div class="ms-3 flex-column text-start">
 				<h5 class="mb-0"><?= $_SESSION['full_name'] ?></h5>
-				<p class="mt-0" style="font-size: 12px;"><?= $_SESSION['user_id'] ?></p>
+				<p class="mt-0" style="font-size: 12px;"><?= ($_SESSION['role'] == 'mahasiswa') ? $_SESSION['user_id'] : $_SESSION['role'] ?></p>
 			</div>
 		</div>
 	</div>

@@ -10,15 +10,7 @@
         <?php include __DIR__ . '/../../components/mahasiswa/sidebar.php' ?>
     <?php endif; ?>
     <div class="flex-grow-1">
-        <?php if (strcasecmp($_SESSION['role'], 'Admin TA') == 0): ?>
-            <?php include __DIR__ . '/../../components/admin_ta/topbar.php' ?>
-        <?php elseif (strcasecmp($_SESSION['role'], 'Admin Prodi') == 0): ?>
-            <?php include __DIR__ . '/../../components/admin_prodi/topbar.php' ?>
-        <?php elseif (strcasecmp($_SESSION['role'], 'Admin Jurusan') == 0): ?>
-            <?php include __DIR__ . '/../../components/admin_jurusan/topbar.php' ?>
-        <?php elseif (strcasecmp($_SESSION['role'], 'Mahasiswa') == 0): ?>
-            <?php include __DIR__ . '/../../components/mahasiswa/topbar.php' ?>
-        <?php endif; ?>
+        <?php include __DIR__ . '/../../components/general/topbar.php' ?>
         <main class="halaman px-5">
             <section class="mt-2">
                 <div class="d-flex w-100 align-items-center ">

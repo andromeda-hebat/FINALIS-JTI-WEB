@@ -2,7 +2,7 @@
     <!-- Sidebar -->
     <?php include __DIR__ . '/../../components/admin_ta/sidebar.php' ?>
     <div class="flex-grow-1">
-        <?php include __DIR__ . '/../../components/admin_ta/topbar.php' ?>
+        <?php include __DIR__ . '/../../components/general/topbar.php' ?>
         <main class="halaman mx-5 px-5">
             <section class="mt-2">
                 <div class="d-flex w-100 align-items-center ">
