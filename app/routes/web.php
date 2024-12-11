@@ -1,7 +1,5 @@
 <?php
 
-require_once __DIR__ . '/../../vendor/autoload.php';
-
 use App\Core\Router;
 use App\Middlewares\{AuthMiddleware};
 use App\Controllers\{HomeController, AuthController, MahasiswaController, AdminProdiController, AdminTAController, AdminJurusanController ,NotificationController};
@@ -23,7 +21,7 @@ Router::add('GET', '/notifikasi', NotificationController::class, 'notif', [
     [
         'class' => AuthMiddleware::class,
         'function' => 'checkAuth',
-        'args' => 'none'
+        'args' => 'any'
     ]
 ]);
 

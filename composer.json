@@ -16,9 +16,7 @@
             "App\\": "app/"
         },
         "files": [
-            "app/config/config.php",
-            "app/routes/web.php",
-            "app/routes/api.php"
+            "app/config/config.php"
         ]
     },
     "require": {
