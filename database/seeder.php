@@ -1,12 +1,12 @@
 <?php
 
-require_once __DIR__ . '/../../vendor/autoload.php';
+require_once __DIR__ . '/../vendor/autoload.php';
 
 use Dotenv\Dotenv;
 use App\Core\Database;
 
 
-(Dotenv::createImmutable(__DIR__ . '/../../'))->load();
+(Dotenv::createImmutable(__DIR__ . '/../'))->load();
 
 
 define('COLOR_RED', "\033[31m");
