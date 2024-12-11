@@ -1,10 +1,10 @@
 <div class="d-flex flex-column align-items-center border-end justify-content-center"
-    style="background-color: #052C65; width: 250px; height: 100vh; padding-top: 20px;">
+    style="background-color: var(--color-navy-blue); width: 250px; height: 100vh; padding-top: 20px;">
     <!-- Bagian Profil -->
     <div class="d-flex text-center py-4 mb-4">
         <img src="assets/img/finalis-jti-logo.png" alt="Logo" class="me-3" style="width: 50px; height: 50px;">
         <h3 class="d-flex align-items-center justify-content-center fw-bold text-center"
-            style="color: #F7DE00; font-weight: 800; line-height: normal !important;">FINALIS JTI</h3>
+            style="color: var(--color-golden-yellow); font-weight: 800; line-height: normal !important;">FINALIS JTI</h3>
     </div>
 
     <!-- Tautan Navigasi -->
