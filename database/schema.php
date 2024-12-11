@@ -1,12 +1,12 @@
 <?php
 
-require_once __DIR__ . '/../../vendor/autoload.php';
+require_once __DIR__ . '/../vendor/autoload.php';
 
 use Dotenv\Dotenv;
 use App\Core\Database;
 
 
-(Dotenv::createImmutable(__DIR__ . '/../../'))->load();
+(Dotenv::createImmutable(__DIR__ . '/../'))->load();
 
 
 define('COLOR_RED', "\033[31m");
@@ -31,17 +31,23 @@ if (!file_exists($sql_file)) {
     die(COLOR_RED . "[!]  Error: The SQL file does not exist." . COLOR_RESET);
 }
 
-$query_script = file_get_contents($sql_file);
-$query_script = mb_convert_encoding($query_script, 'UTF-16', 'UTF-8');
 
 
 try {
-    foreach ($queries as $query) {
-        $query = trim($query);
-        if (!empty($query)) {
-            Database::getConnection(false)->exec($query);
+
+    
+    // $query_script = file_get_contents($sql_file);
+    $query_script = mb_convert_encoding(file_get_contents($sql_file), 'UTF-16', 'UTF-8');
+    $sql_statements = preg_split('/\bGO\b/i', $query_script);
+
+    foreach ($sql_statements as $stmt) {
+        $trimmed = trim($stmt);
+        if (!empty($trimmed)) {
+            Database::getConnection(false)->exec($trimmed);
         }
     }
+
+    Database::getConnection(false)->exec($query_script);
     echo COLOR_GREEN . "[!]    Database schema sucessfully to be created!" . COLOR_RESET . PHP_EOL;
 } catch (\Exception | \PDOException $e) {
     echo COLOR_RED . "[!]    There is something error happen: " . $e->getMessage() . COLOR_RESET . PHP_EOL;
