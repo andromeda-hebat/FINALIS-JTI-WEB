@@ -153,13 +153,14 @@
                                 method="PATCH" class="me-2">
                                 <h5 clas="my-0">Proses Verifikasi</h5>
                                 <p>Staff Verifikator TA</p>
+                                <input type="hidden" name="id_berkas" value="<?= $data['user_file']->getIdBerkas() ?>">
                                 <div class="d-flex mb-3">
                                     <div class="d-flex me-3 ms-3">
-                                        <input type="radio" name="verify" value="verified" id="verify">
+                                        <input type="radio" name="is_verify" value="true" id="verify">
                                         <label for="verify">Verifikasi</label>
                                     </div>
                                     <div class="d-flex ms-3">
-                                        <input type="radio" name="verify" value="rejected" id="reject">
+                                        <input type="radio" name="is_verify" value="false" id="reject">
                                         <label for="reject">Tolak</label>
                                     </div>
                                 </div>
