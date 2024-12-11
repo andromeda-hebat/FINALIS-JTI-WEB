@@ -109,19 +109,20 @@ class BerkasProdiRepository
         }
     }
 
-    public static function updateVerifyStatusBerkasProdi(int $id_verifikasi, string $status_verifikasi, string $keterangan): void
+    public static function updateVerifyStatusBerkasProdi(string $id_berkas, string $status_verifikasi, string $keterangan, string $id_admin): void
     {
         try {
             $stmt = Database::getConnection()->prepare(<<<SQL
-            UPDATE VER.VerifikasiBerkas
-            SET 
-                status_verifikasi = :status,
-                keterangan_verifikasi = :keterangan
-            WHERE id_verifikasi = :id_verifikasi
+            EXEC sp_UpdateVerifikasiBerkasProdi
+                @id_berkas = :id_berkas,
+                @status_verifikasi = :status,
+                @keterangan_verifikasi = :keterangan,
+                @id_admin = :id_admin;
             SQL);
+            $stmt->bindValue(':id_berkas', $id_berkas, \PDO::PARAM_STR);
             $stmt->bindValue(':status', $status_verifikasi, \PDO::PARAM_STR);
             $stmt->bindValue(':keterangan', $keterangan, \PDO::PARAM_STR);
-            $stmt->bindValue(':id_verifikasi', $id_verifikasi, \PDO::PARAM_STR);
+            $stmt->bindValue(':id_admin', $id_admin, \PDO::PARAM_STR);
             $stmt->execute();
         } catch (\PDOException $e) {
             throw new \PDOException($e->getMessage());

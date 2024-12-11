@@ -56,4 +56,25 @@ class AdminProdiController extends Controller
         ]);
         $this->view("templates/footer");
     }
+
+    public function verifyBerkas(int $id_verifikasi): void
+    {
+        $data = json_decode(file_get_contents('php://input'), true);
+        
+        $verify_status = ($data['is_verified'] == true) ? 'Disetujui' : 'Ditolak';
+        try {
+            BerkasProdiRepository::updateVerifyStatusBerkasProdi($data['id_berkas'], $verify_status, $data['description'], $_SESSION['user_id']);
+            http_response_code(200);
+            echo json_encode([
+                "status" => "success",
+                "message" => "successfully update verify status"
+            ]);
+        } catch (\PDOException $e) {
+            http_response_code(500);
+            echo json_encode([
+                "status"=>"error",
+                "message"=>"Database connectivity error!",
+            ]);
+        }
+    }
 }

@@ -153,13 +153,14 @@
                                 method="PATCH" class="me-2">
                                 <h5 clas="my-0">Proses Verifikasi</h5>
                                 <p>Staff Verifikator TA</p>
+                                <input type="hidden" name="id_berkas" value="<?= $data['user_file']->getIdBerkas() ?>">
                                 <div class="d-flex mb-3">
                                     <div class="d-flex me-3 ms-3">
-                                        <input type="radio" name="verify" value="verified" id="verify">
+                                        <input type="radio" name="is_verify" value="true" id="verify">
                                         <label for="verify">Verifikasi</label>
                                     </div>
                                     <div class="d-flex ms-3">
-                                        <input type="radio" name="verify" value="rejected" id="reject">
+                                        <input type="radio" name="is_verify" value="false" id="reject">
                                         <label for="reject">Tolak</label>
                                     </div>
                                 </div>
@@ -187,31 +188,22 @@
 
 
 
-<!-- BOOTSTRAP MODAL -->
-<div class="modal" tabindex="-1" id="info-success-update-modal">
-    <div class="modal-dialog modal-dialog-centered">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title">Terkirim</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-                <h6>Formulir berhasil diverifikasi!</h6>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="text-white" style="background-color: #052C65;"
-                    data-bs-dismiss="modal">Selesai</button>
-            </div>
-        </div>
-    </div>
-</div>
 
-<?php include __DIR__ . '/../../components/bs_modal/server_error.php' ?>
+<?php ////////////////////// ?>
+<?php //--BOOTSTRAP MODAL--/ ?>
+<?php ////////////////////// ?>
+
+<?php require __DIR__ . '/../../components/bs_modal/sucess_update_berkas.php' ?>
+<?php require __DIR__ . '/../../components/bs_modal/server_error.php' ?>
 
 
 
 
-<!-- JavaScript for this page -->
+
+<?php ////////////////////// ?>
+<?php ////--JAVASCRIPT--//// ?>
+<?php ////////////////////// ?>
+
 <script src="https://cdn.jsdelivr.net/npm/jquery@3.7.1/dist/jquery.min.js"></script>
 <script>
     $(document).ready(function () {
