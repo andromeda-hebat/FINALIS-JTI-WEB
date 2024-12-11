@@ -1,7 +1,7 @@
 <?php include __DIR__ . '/../../components/general/navbar.php' ?>
 <main class="container d-flex flex-column justify-content-center align-items-center min-vh-100">
     <div class="mt-5 p-5 w-50 shadow" style="background-color: rgba(196, 217, 255, 0.18);">
-        <h1 class="text-center mt-4 mb-5 fw-bold" style="color: var(--color-navy-blue);">FINALIS JTI</h1>
+        <h1 class="text-center mt-4 mb-5 fw-bold">FINALIS JTI</h1>
         <form method="post" action="/login" id="login-form" class="d-flex flex-column align-items-center rounded-4">
             <div class="w-75 mt-5">
                 <label for="no_induk" class="form-label">NIM/NIDN</label>
@@ -22,7 +22,11 @@
 
 
 
-<!-- Bootstrap modal -->
+
+<?php ////////////////////// ?>
+<?php //--BOOTSTRAP MODAL--/ ?>
+<?php ////////////////////// ?>
+
 <div class="modal fade" id="auth-fail-bs-modal" tabindex="-1" aria-labelledby="authFailModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
@@ -63,6 +67,11 @@
 
 
 
+
+
+<?php ////////////////////// ?>
+<?php ////--JAVASCRIPT--//// ?>
+<?php ////////////////////// ?>
 
 <script src="https://cdn.jsdelivr.net/npm/jquery@3.7.1/dist/jquery.min.js"></script>
 <script>

@@ -1,7 +1,7 @@
 <?php include __DIR__ . '/../../components/general/navbar.php' ?>
 <main class="d-flex flex-column justify-content-center align-items-center min-vh-100"
     style="background-color: rgba(196, 217, 255, 0.18);">
-    <h2 class="text-center mt-5 mb-5 fw-bold" style="color: var(--color-navy-blue);">Hubungi kami melalui formulir berikut</h2>
+    <h2 class="text-center mt-5 mb-5 fw-bold">Hubungi kami melalui formulir berikut</h2>
     <form class="w-50">
         <div class="mb-3 d-flex">
             <div class="w-50 px-4">
