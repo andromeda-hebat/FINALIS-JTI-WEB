@@ -104,6 +104,7 @@ Router::add('GET', '/permintaan-verifikasi-ta/detail/([0-9]+)', AdminTAControlle
 Router::add('PATCH', '/permintaan-verifikasi-ta/detail/([0-9]+)', AdminTAController::class, 'verifyBerkas', [
     [
         'class' => AuthMiddleware::class,
+        'function' => 'checkAuth',
         'args' => 'admin ta'
     ]
 ]);

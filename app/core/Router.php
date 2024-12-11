@@ -2,7 +2,7 @@
 
 namespace App\Core;
 
-use App\Helpers\ViewHelper;
+use App\Controllers\AuthController;
 
 class Router
 {
@@ -54,22 +54,12 @@ class Router
         }
 
         if ($is_path_found && !$is_method_found) {
-            http_response_code(405);
-            ViewHelper::view("templates/header", [
-                'title' => "HTTP Method Not Allowed!"
-            ]);
-            ViewHelper::view("pages/general/client_method_not_allowed");
-            ViewHelper::view("templates/footer");
+            (new AuthController)->sendPageMethodNotAllowed();
             exit;
         }
 
         if (!$is_path_found) {
-            http_response_code(404);
-            ViewHelper::view("templates/header", [
-                'title' => '404 Not Found!'
-            ]);
-            ViewHelper::view("pages/general/page_not_found");
-            ViewHelper::view("templates/footer");
+            (new AuthController)->sendPageNotFound();
             exit;
         }
     }

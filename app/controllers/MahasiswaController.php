@@ -2,22 +2,23 @@
 
 namespace App\Controllers;
 
-use App\Helpers\{FileManager, ViewHelper};
+use App\Core\Controller;
+use App\Helpers\FileManager;
 use App\Models\{BerkasProdi, BerkasTA};
 use App\Repository\{BerkasRepository, BerkasProdiRepository, BerkasTARepository};
 
-class MahasiswaController
+class MahasiswaController extends Controller
 {
     public function tugasAkhir(): void
     {
-        ViewHelper::view("templates/header", [
+        $this->view("templates/header", [
             'title' => "Tugas Akhir",
             'css' => ["assets/css/sidebar"]
         ]);
-        ViewHelper::view("pages/mahasiswa/tugas_akhir", [
+        $this->view("pages/mahasiswa/tugas_akhir", [
             'active_page' => "tugas-akhir"
         ]);
-        ViewHelper::view("templates/footer");
+        $this->view("templates/footer");
     }
 
     public function processTugasAkhir(): void
@@ -78,14 +79,14 @@ class MahasiswaController
 
     public function administrasiProdi(): void
     {
-        ViewHelper::view("templates/header", [
+        $this->view("templates/header", [
             'title' => "Administrasi Prodi",
             'css' => ["assets/css/sidebar"]
         ]);
-        ViewHelper::view("pages/mahasiswa/administrasi_prodi", [
+        $this->view("pages/mahasiswa/administrasi_prodi", [
             'active_page' => "administrasi-prodi"
         ]);
-        ViewHelper::view("templates/footer");
+        $this->view("templates/footer");
     }
 
     public function processAdministrasiProdi(): void
@@ -158,26 +159,26 @@ class MahasiswaController
             exit;
         }
 
-        ViewHelper::view("templates/header", [
+        $this->view("templates/header", [
             'title' => "Riwayat Pengajuan",
             'css' => ["assets/css/sidebar"]
         ]);
-        ViewHelper::view("pages/mahasiswa/riwayat_pengajuan", [
+        $this->view("pages/mahasiswa/riwayat_pengajuan", [
             'active_page' => "riwayat-pengajuan",
             'req_history' => $user_history
         ]);
-        ViewHelper::view("templates/footer");
+        $this->view("templates/footer");
     }
 
     public function permintaanSurat(): void
     {
-        ViewHelper::view("templates/header", [
+        $this->view("templates/header", [
             'title' => "Permintaan Surat",
             'css' => ["assets/css/sidebar"]
         ]);
-        ViewHelper::view("pages/mahasiswa/permintaan_surat", [
+        $this->view("pages/mahasiswa/permintaan_surat", [
             'active_page' => "permintaan-surat",
         ]);
-        ViewHelper::view("templates/footer");
+        $this->view("templates/footer");
     }
 }
