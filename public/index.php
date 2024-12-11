@@ -6,8 +6,7 @@ require_once __DIR__ . '/../app/routes/api.php';
 use App\Core\Router;
 use Dotenv\Dotenv;
 
-$dotenv = Dotenv::createImmutable(__DIR__ . '/../');
-$dotenv->load();
+(Dotenv::createImmutable(__DIR__ . '/../'))->load();
 
 session_start();
 Router::run();

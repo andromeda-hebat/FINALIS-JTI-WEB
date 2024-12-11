@@ -6,8 +6,7 @@ use Dotenv\Dotenv;
 use App\Core\Database;
 
 
-$dotenv = Dotenv::createImmutable(__DIR__ . '/../../');
-$dotenv->load();
+(Dotenv::createImmutable(__DIR__ . '/../../'))->load();
 
 
 define('COLOR_RED', "\033[31m");
