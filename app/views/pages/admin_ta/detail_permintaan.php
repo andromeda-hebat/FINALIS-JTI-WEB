@@ -2,7 +2,7 @@
     <!-- Sidebar -->
     <?php include __DIR__ . '/../../components/admin_ta/sidebar.php' ?>
     <div class="flex-grow-1">
-        <?php include __DIR__ . '/../../components/admin_ta/topbar.php' ?>
+        <?php include __DIR__ . '/../../components/general/topbar.php' ?>
         <main class="halaman mx-5 px-5">
             <section class="mt-2">
                 <div class="d-flex w-100 align-items-center ">
@@ -24,7 +24,7 @@
                         </svg>
                     </a>
 
-                    <h3 class="ms-1 fw-bold mb-0" style="color: #052C65;">Detail Permintaan</h3>
+                    <h3 class="ms-1 fw-bold mb-0" style="color: var(--color-navy-blue);">Detail Permintaan</h3>
                 </div>
 
                 <?php if ($data['user_file'] != false): ?>
@@ -169,7 +169,7 @@
                                     cols="59"></textarea>
                                 <div class="d-flex justify-content-end">
                                     <button type="submit" value="Kirim" id="submitBtn" class="px-4 text-white mt-3"
-                                        style="background-color:#052C65;">Kirim</button>
+                                        style="background-color: var(--color-navy-blue);">Kirim</button>
                                 </div>
                             </form>
                         </div>

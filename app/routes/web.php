@@ -11,17 +11,27 @@ use App\Controllers\{HomeController, AuthController, MahasiswaController, AdminP
 // General
 Router::add('GET', '/', HomeController::class, 'index');
 Router::add('GET', '/kontak', HomeController::class,'contact');
-Router::add('GET', '/dashboard', HomeController::class,'dashboard');
+
+Router::add('GET', '/dashboard', HomeController::class,'dashboard', [
+    [
+        'class' => AuthMiddleware::class,
+        'function' => 'checkAuth',
+        'args' => 'none'
+    ]
+]);
+Router::add('GET', '/notifikasi', NotificationController::class, 'notif', [
+    [
+        'class' => AuthMiddleware::class,
+        'function' => 'checkAuth',
+        'args' => 'none'
+    ]
+]);
 
 
 // Auth
 Router::add('GET','/login', AuthController::class,'viewLogin');
 Router::add('POST', '/login', AuthController::class,'login');
 Router::add('POST', '/logout', AuthController::class,'logout');
-
-
-// Notif
-Router::add('GET', '/notifikasi', NotificationController::class, 'notif');
 
 
 // User: Mahasiswa

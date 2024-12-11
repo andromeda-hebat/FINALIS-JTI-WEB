@@ -2,10 +2,10 @@
     <!-- Sidebar -->
     <?php include __DIR__ . '/../../components/admin_ta/sidebar.php' ?>
     <div class="flex-grow-1">
-        <?php include __DIR__ . '/../../components/admin_ta/topbar.php' ?>
+        <?php include __DIR__ . '/../../components/general/topbar.php' ?>
         <div class="halaman mx-5">
             <section class="mt-5">
-                <h3 class="fw-bold mb-0" style="color: #052C65;">Permintaan Verifikasi</h3>
+                <h3 class="fw-bold mb-0" style="color: var(--color-navy-blue);">Permintaan Verifikasi</h3>
 
                 <!-- div kotak tabel -->
                 <div class="mt-3 w-100 border rounded shadow">

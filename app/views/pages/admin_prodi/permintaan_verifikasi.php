@@ -3,12 +3,12 @@
     <?php include __DIR__ . '/../../components/admin_prodi/sidebar.php' ?>
     <div class="flex-grow-1">
 
-        <?php include __DIR__ . '/../../components/admin_prodi/topbar.php' ?>
+        <?php include __DIR__ . '/../../components/general/topbar.php' ?>
 
         <div class="halaman mx-5">
             <section class="mt-5">
 
-                <h3 class="fw-bold mb-0" style="color: #052C65;">Permintaan Verifikasi</h3>
+                <h3 class="fw-bold mb-0" style="color: var(--color-navy-blue);">Permintaan Verifikasi</h3>
 
                 <div class="mt-3 d-flex justify-content-between w-100 align-items-center">
                     <!-- Sort -->

@@ -7,7 +7,7 @@
 
         <div class="halaman mx-5 ">
             <div class="d-flex w-100 justify-content-start mt-3">
-                <h3 class="fw-bold" style="color: #052C65;">Catatan Aktivitas</h3>
+                <h3 class="fw-bold" style="color: var(--color-navy-blue);">Catatan Aktivitas</h3>
             </div>
 
             <div class="mt-3 w-100 border rounded shadow">

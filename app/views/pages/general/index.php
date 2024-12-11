@@ -1,21 +1,20 @@
 <?php include __DIR__ . '/../../components/general/navbar.php' ?>
-
 <main class="pt-5 ">
     <section id="hero" class="d-flex flex-column justify-content-center min-vh-100"
         style="background-image: url('assets/img/hero-section-home-page.png'); background-size: cover; background-repeat: no-repeat; background-position: center;">
         <div class="ps-5">
-            <h1 style="color: #F7DE00; font-size: 90px;" class="fw-bold">FINALIS JTI</h1>
-            <h6 style="color:white; font-size: 25px;">Menuju Penyelesaian Sempurna Tugas Akhir</h6>
-            <h6 style="color:white; font-size: 25px;">Politeknik Negeri Malang</h6>
+            <h1 style="color: var(--color-golden-yellow); font-size: 90px;" class="fw-bold">FINALIS JTI</h1>
+            <h6 class="text-white" style="font-size: 25px;">Menuju Penyelesaian Sempurna Tugas Akhir</h6>
+            <h6 class="text-white" style="font-size: 25px;">Politeknik Negeri Malang</h6>
         </div>
     </section>
     <section id="tentang" class="d-flex flex-column justify-content-center align-items-center text-center min-vh-100">
-        <h1 style="color: #052C65" class="fw-bold mt-4 pt-0 mb-5">Sistem Informasi <br> Bebas Tanggungan Tugas Akhir
+        <h1 class="fw-bold mt-4 pt-0 mb-5">Sistem Informasi <br> Bebas Tanggungan Tugas Akhir
         </h1>
         <p class="w-50 mb-5">FINALIS JTI adalah sebuah sistem yang mengurusi sistem informasi bebas tanggungan tugas
             akhir. Sistem ini dirancang agar mampu memudahkan kebutuhan mahasiswa dalam mengurusi administrasi bebas
             tanggungan tugas akhir.</p>
-        <h3 style="color: #052C65;" class="fw-bold mb-5">Tujuan</h3>
+        <h3 class="fw-bold mb-5">Tujuan</h3>
         <div class="d-flex justify-content-center">
             <div class="mx-3">
                 <svg width="61" height="50" viewBox="0 0 61 50" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -59,9 +58,9 @@
         </div>
     </section>
     <section id="panduan" class="d-flex flex-column justify-content-center align-items-center text-center min-vh-100">
-        <h2 class="fw-bold mb-5" style="color: #052C65;">Panduan Pengguna</h2>
+        <h2 class="fw-bold mb-5">Panduan Pengguna</h2>
         <ol id="jacord" class="w-50 ms-0 ps-0">
-            <li class="card my-3 shadow" style="background-color: #052C65; cursor: pointer;">
+            <li class="card my-3 shadow" style="background-color: var(--color-navy-blue); cursor: pointer;">
                 <h3 class="card-body m-0 text-white fw-bold">
                     Ungggah Tugas Akhir
                     <svg class="position-absolute end-0 me-3 mt-2" width="20" height="20" viewBox="0 0 30 30"
@@ -95,7 +94,7 @@
                     </ul>
                 </div>
             </li>
-            <li class="card my-3 shadow" style="background-color: #052C65; cursor: pointer;">
+            <li class="card my-3 shadow" style="background-color: var(--color-navy-blue); cursor: pointer;">
                 <h3 class="card-body m-0 text-white fw-bold">
                     Administrasi Prodi
                     <svg class="position-absolute end-0 me-3 mt-2" width="20" height="20" viewBox="0 0 30 30"
@@ -130,7 +129,7 @@
                     </ul>
                 </div>
             </li>
-            <li class="card my-3 shadow" style="background-color: #052C65; cursor: pointer;">
+            <li class="card my-3 shadow" style="background-color: var(--color-navy-blue); cursor: pointer;">
                 <h3 class="card-body m-0 text-white fw-bold">
                     Bebas Tanggungan
                     <svg class="position-absolute end-0 me-3 mt-2" width="20" height="20" viewBox="0 0 30 30"
@@ -155,11 +154,11 @@
         </ol>
 
     </section>
-    <section class="mt-5 d-flex justify-content-center" style=" background-color:#052C65 ;">
+    <section class="mt-5 d-flex justify-content-center" style=" background-color: var(--color-navy-blue);">
         <footer class="mt-5 d-flex flex-column">
             <div class="d-flex">
                 <div class="text-white me-5">
-                    <h3 style="color: #F7DE00;">Finalis JTI</h3>
+                    <h3 style="color: var(--color-golden-yellow);">Finalis JTI</h3>
                     <p>
                         Sistem Informasi Bebas Tanggunngan<br>
                         Jurusan Teknologi Informasi<br>
@@ -170,14 +169,14 @@
                     <p>Faks: +62(0341)404420</p>
                 </div>
                 <div class="d-flex flex-column mx-5">
-                    <h3 style="color: #F7DE00;">Navigasi</h3>
+                    <h3 style="color: var(--color-golden-yellow);">Navigasi</h3>
                     <a href="#hero" class="text-decoration-none text-white mb-1">Beranda</a>
                     <a href="#tentang" class="text-decoration-none text-white mb-1">Tentang</a>
                     <a href="#panduan" class="text-decoration-none text-white mb-1">Panduan</a>
                     <a href="/kontak" class="text-decoration-none text-white mb-1">Kontak</a>
                 </div>
                 <div class="text-white ms-5">
-                    <h3 style="color: #F7DE00;">Layanan</h3>
+                    <h3 style="color: var(--color-golden-yellow);">Layanan</h3>
     
                     <p>Template Surat</p>
                     <p>Verifikasi Tugas Akhir</p>
@@ -190,6 +189,14 @@
         </footer>
     </section>
 </main>
+
+
+
+
+
+<?php ////////////////////// ?>
+<?php ////--JAVASCRIPT--//// ?>
+<?php ////////////////////// ?>
 
 <script src="https://cdn.jsdelivr.net/npm/jquery@3.7.1/dist/jquery.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/jquery-ui@1.14.1/dist/jquery-ui.min.js"></script>

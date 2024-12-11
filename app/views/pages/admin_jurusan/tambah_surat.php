@@ -25,7 +25,7 @@
                 <div class="card shadow-sm" style="background-color: #F3F7FF; min-height: 75vh;">
                     <div class="card-body p-5">
                         <div class="card-title mb-4 d-flex justify-content-start">
-                            <h4 class="fw-bold" style="color: #052C65;">Tambah Template Surat</h4>
+                            <h4 class="fw-bold" style="color: var(--color-navy-blue);">Tambah Template Surat</h4>
   
 
                         </div>
@@ -47,7 +47,7 @@
                     </div>
                     <div class="d-flex justify-content-center mb-5">
                             <button type="submit" class="text-white px-2"
-                                style="background-color: #052C65;">Tambahkan</button>
+                                style="background-color: var(--color-navy-blue);">Tambahkan</button>
                         </div>
                 </div>
             </div>
