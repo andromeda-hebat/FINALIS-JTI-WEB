@@ -8,7 +8,7 @@
             <section>
                 <!-- div judul Informasi -->
                 <div class="d-flex w-100 justify-content-between mt-3">
-                    <h2>Dashboard</h2>
+                    <h2 class="fw-bold" style="color: var(--color-navy-blue);">Dashboard</h2>
                     <div class="d-flex">
                         <?php
                             $formatter = new IntlDateFormatter('id_ID', IntlDateFormatter::LONG, IntlDateFormatter::NONE);
@@ -36,7 +36,7 @@
                 <!-- div isi Informasi -->
                 <div class="d-flex border w-100 justify-content-around rounded shadow"
                     style="background-color: #E4EEFF;">
-                    <div class="d-flex w-15 m-2 d-flex align-items-center" style="color: #052C65;">
+                    <div class="d-flex w-15 m-2 d-flex align-items-center" style="color: var(--color-navy-blue);">
                         <svg class="me-1" width="40" height="40" viewBox="0 0 40 40" fill="none"
                             xmlns="http://www.w3.org/2000/svg">
                             <g clip-path="url(#clip0_530_8569)">

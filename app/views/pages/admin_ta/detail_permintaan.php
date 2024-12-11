@@ -24,7 +24,7 @@
                         </svg>
                     </a>
 
-                    <h3 class="ms-1 fw-bold mb-0" style="color: #052C65;">Detail Permintaan</h3>
+                    <h3 class="ms-1 fw-bold mb-0" style="color: var(--color-navy-blue);">Detail Permintaan</h3>
                 </div>
 
                 <?php if ($data['user_file'] != false): ?>
@@ -169,7 +169,7 @@
                                     cols="59"></textarea>
                                 <div class="d-flex justify-content-end">
                                     <button type="submit" value="Kirim" id="submitBtn" class="px-4 text-white mt-3"
-                                        style="background-color:#052C65;">Kirim</button>
+                                        style="background-color: var(--color-navy-blue);">Kirim</button>
                                 </div>
                             </form>
                         </div>

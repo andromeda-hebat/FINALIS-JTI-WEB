@@ -10,12 +10,12 @@
         </div>
     </section>
     <section id="tentang" class="d-flex flex-column justify-content-center align-items-center text-center min-vh-100">
-        <h1 style="color: #052C65" class="fw-bold mt-4 pt-0 mb-5">Sistem Informasi <br> Bebas Tanggungan Tugas Akhir
-        </h1>
+        <h1class="fw-bold mt-4 pt-0 mb-5">Sistem Informasi <br> Bebas Tanggungan Tugas Akhir
+        </h1class=>
         <p class="w-50 mb-5">FINALIS JTI adalah sebuah sistem yang mengurusi sistem informasi bebas tanggungan tugas
             akhir. Sistem ini dirancang agar mampu memudahkan kebutuhan mahasiswa dalam mengurusi administrasi bebas
             tanggungan tugas akhir.</p>
-        <h3 style="color: #052C65;" class="fw-bold mb-5">Tujuan</h3>
+        <h3class="fw-bold mb-5">Tujuan</h3class=>
         <div class="d-flex justify-content-center">
             <div class="mx-3">
                 <svg width="61" height="50" viewBox="0 0 61 50" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -59,9 +59,9 @@
         </div>
     </section>
     <section id="panduan" class="d-flex flex-column justify-content-center align-items-center text-center min-vh-100">
-        <h2 class="fw-bold mb-5" style="color: #052C65;">Panduan Pengguna</h2>
+        <h2 class="fw-bold mb-5">Panduan Pengguna</h2>
         <ol id="jacord" class="w-50 ms-0 ps-0">
-            <li class="card my-3 shadow" style="background-color: #052C65; cursor: pointer;">
+            <li class="card my-3 shadow" style="background-color: var(--color-navy-blue); cursor: pointer;">
                 <h3 class="card-body m-0 text-white fw-bold">
                     Ungggah Tugas Akhir
                     <svg class="position-absolute end-0 me-3 mt-2" width="20" height="20" viewBox="0 0 30 30"
@@ -95,7 +95,7 @@
                     </ul>
                 </div>
             </li>
-            <li class="card my-3 shadow" style="background-color: #052C65; cursor: pointer;">
+            <li class="card my-3 shadow" style="background-color: var(--color-navy-blue); cursor: pointer;">
                 <h3 class="card-body m-0 text-white fw-bold">
                     Administrasi Prodi
                     <svg class="position-absolute end-0 me-3 mt-2" width="20" height="20" viewBox="0 0 30 30"
@@ -130,7 +130,7 @@
                     </ul>
                 </div>
             </li>
-            <li class="card my-3 shadow" style="background-color: #052C65; cursor: pointer;">
+            <li class="card my-3 shadow" style="background-color: var(--color-navy-blue); cursor: pointer;">
                 <h3 class="card-body m-0 text-white fw-bold">
                     Bebas Tanggungan
                     <svg class="position-absolute end-0 me-3 mt-2" width="20" height="20" viewBox="0 0 30 30"
@@ -155,7 +155,7 @@
         </ol>
 
     </section>
-    <section class="mt-5 d-flex justify-content-center" style=" background-color:#052C65 ;">
+    <section class="mt-5 d-flex justify-content-center" style=" background-color: var(--color-navy-blue);">
         <footer class="mt-5 d-flex flex-column">
             <div class="d-flex">
                 <div class="text-white me-5">

@@ -27,7 +27,7 @@
                         </svg>
                     </a>
 
-                    <h3 class="ms-1 fw-bold mb-0" style="color: #052C65;">Detail Permintaan</h3>
+                    <h3 class="ms-1 fw-bold mb-0" style="color: var(--color-navy-blue);">Detail Permintaan</h3>
                 </div>
 
 
@@ -172,7 +172,7 @@
                                     placeholder="Tambahkan keterangan kepada pihak mahasiswa" style="resize: none; min-width: 80%; min-height: 60%"></textarea>
                             <div class="d-flex justify-content-end">
                                 <button type="submit" value="Kirim" id="submitBtn" class="px-4 text-white mt-3"
-                                    style="background-color:#052C65 ;" data-bs-toggle="modal"
+                                    style="background-color: var(--color-navy-blue);" data-bs-toggle="modal"
                                     data-bs-target="#statusModal">Kirim</button>
                             </div>
                         </form>

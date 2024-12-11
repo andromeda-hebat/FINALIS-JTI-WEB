@@ -14,7 +14,7 @@
         <main class="halaman px-5">
             <section class="mt-2">
                 <div class="d-flex w-100 align-items-center ">
-                    <h3 class="ms-1 fw-bold mb-0" style="color: #052C65;">Notifikasi</h3>
+                    <h3 class="ms-1 fw-bold mb-0">Notifikasi</h3>
                 </div>
                 <div class="card mt-3">
                     <div class="card-body d-flex justify-content-between">

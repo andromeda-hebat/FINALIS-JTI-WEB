@@ -7,7 +7,7 @@
 
         <div class="halaman mx-5 ">
             <div class="d-flex w-100 justify-content-between mt-3">
-                <h3 class="fw-bold" style="color: #052C65;">Kelola Data Mahasiswa</h3>
+                <h3 class="fw-bold" style="color: var(--color-navy-blue);">Kelola Data Mahasiswa</h3>
                 <div class="d-flex">
                     <p class="me-2">24 Oktober, 2024</p>
                     <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -30,7 +30,7 @@
             </div>
             <div class="mt-3 d-flex justify-content-start w-100 align-items-center">
                
-                <div style="background-color: #052C65; ">
+                <div style="background-color: var(--color-navy-blue);">
                     <a href="/tambah-mahasiswa" class="text-decoration-none">
                         <div class="d-flex align-items-center mx-2 my-2">
                             <svg class="me-1" width="20" height="20" viewBox="0 0 20 20" fill="none"
@@ -98,10 +98,10 @@
                 <h6>Apakah anda yakin ingin menghapus data ini ?</h6>
             </div>
             <div class="modal-footer">
-                <button type="button" style="color: #052C65; border-color: #052C65; background-color: white"
+                <button type="button" style="color: var(--color-navy-blue); border-color: var(--color-navy-blue); background-color: white"
                     data-bs-dismiss="modal">Batal</button>
                 <a href="/kelola-mahasiswa">
-                    <button type="button" class="text-white" style="background-color: #052C65;">Hapus</button>
+                    <button type="button" class="text-white" style="background-color: var(--color-navy-blue);">Hapus</button>
                 </a>
 
             </div>

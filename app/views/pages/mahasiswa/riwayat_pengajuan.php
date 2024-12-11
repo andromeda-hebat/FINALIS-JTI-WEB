@@ -4,7 +4,7 @@
         <?php include __DIR__ . '/../../components/mahasiswa/topbar.php' ?>
         <main class="container px-5">
             <div class="d-flex">
-                <h3 class="mt-2 fw-bold" style="color: #052C65;">Riwayat Pengajuan Formulir</h3>
+                <h3 class="mt-2 fw-bold">Riwayat Pengajuan Formulir</h3>
             </div>
             <div class="mt-4">
                 <table class="table table-striped border">

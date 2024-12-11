@@ -12,7 +12,7 @@
     </div>
     <div class="d-flex justify-content-end mt-3">
         <button id="btn-resend-form" class="px-4 text-white"
-            style="background-color: #052C65; border-color: #052C65;">Kirim Ulang Formulir</button>
+            style="background-color: var(--color-navy-blue); border-color: var(--color-navy-blue);">Kirim Ulang Formulir</button>
     </div>
 </div>
 

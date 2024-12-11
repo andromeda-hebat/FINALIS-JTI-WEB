@@ -9,7 +9,7 @@
                 <h6>Formulir berhasil diverifikasi!</h6>
             </div>
             <div class="modal-footer">
-                <button type="button" class="text-white" style="background-color: #052C65;"
+                <button type="button" class="text-white" style="background-color: var(--color-navy-blue);"
                     data-bs-dismiss="modal">Selesai</button>
             </div>
         </div>

@@ -3,7 +3,7 @@
     <div class="w-100 position-relative">
         <?php include __DIR__ . '/../../components/mahasiswa/topbar.php' ?>
         <main class="container px-5">
-            <h3 class="mt-2 ms-1 fw-bold" style="color: #052C65;">Formulir Tugas Akhir</h2>
+            <h3 class="mt-2 ms-1 fw-bold">Formulir Tugas Akhir</h2>
 
             <div id="empty-form-content" class="mt-4" style="display: <?php echo (strcasecmp($_SESSION['status']['tugas_akhir'], 'kosong') == 0) ? 'block' : 'none'; ?>;">
                 <form id="tugas-akhir-form" action="/tugas-akhir" method="post" enctype="multipart/form-data">
@@ -25,7 +25,7 @@
                     </div>
                     <div class="d-flex justify-content-end">
                         <input type="submit" value="Kirim" id="submitBtn" class="text-white mt-3 px-3"
-                            style="background-color: #052C65;">
+                            style="background-color: var(--color-navy-blue);">
                     </div>
                 </form>
             </div>
@@ -75,7 +75,7 @@
                     Periksa kembali data yang anda upload</p>
             </div>
             <div class="modal-footer">
-                <button type="button" class="text-white" style="background-color: #052C65;"
+                <button type="button" class="text-white" style="background-color: var(--color-navy-blue);"
                     data-bs-dismiss="modal">Tutup</button>
             </div>
         </div>
