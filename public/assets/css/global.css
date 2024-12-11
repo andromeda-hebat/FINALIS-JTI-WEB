@@ -1,0 +1,16 @@
+:root {
+    --color-navy-blue: #052C65;
+    --color-golden-yellow: #F7DE00;
+    --color-green-success: #31E200;
+    --color-red-failed: #FF0000;
+}
+
+* {
+    font-family: 'Reddit Sans', 'Roboto', 'Arial', sans-serif;
+}
+
+h1,
+h2,
+h3 {
+    color: var(--color-navy-blue);
+}

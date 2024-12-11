@@ -12,19 +12,14 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Reddit+Sans:ital,wght@0,200..900;1,200..900&display=swap"
         rel="stylesheet">
+    <link rel="stylesheet" href="/assets/css/global.css">
 
     <?php if (isset($data['css'])): ?>
-        <!-- Custom CSS link -->
-        <?php foreach ($data['css'] as $css_link): ?>
-            <link rel="stylesheet" href="<?= $css_link . '.css' ?>">
-        <?php endforeach; ?>
+    <!-- Custom CSS link -->
+    <?php foreach ($data['css'] as $css_link): ?>
+    <link rel="stylesheet" href="<?= $css_link . '.css' ?>">
+    <?php endforeach; ?>
     <?php endif; ?>
-
-    <style>
-        * {
-            font-family: 'Reddit Sans';
-        }
-    </style>
 </head>
 
 <body>
