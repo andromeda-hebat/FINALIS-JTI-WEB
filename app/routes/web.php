@@ -84,6 +84,13 @@ Router::add('GET', '/permintaan-verifikasi-prodi/detail/([0-9]+)', AdminProdiCon
         'args' => 'admin prodi'
     ]
 ]);
+Router::add('PATCH', '/permintaan-verifikasi-prodi/detail/([0-9]+)', AdminProdiController::class, 'verifyBerkas', [
+    [
+        'class' => AuthMiddleware::class,
+        'function' => 'checkAuth',
+        'args' => 'admin prodi'
+    ]
+]);
 
 
 // User: Admin TA

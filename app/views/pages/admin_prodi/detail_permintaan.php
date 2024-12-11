@@ -113,10 +113,10 @@
                 </div>
                 
                 <!-- card ke dua -->
-                <form action="/kirim-permintaan-verifikasi" method="POST" class="card mt-2 px-5 py-2 " style="box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);">
-                    <div class="card-body d-flex justify-content-between">
+                <div class="card mt-2 px-5 py-2 " style="box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);">
+                    <div class="card-body row">
                         <!-- kiri  -->
-                        <div>
+                        <div class="col">
                             <div class="d-flex align-items-center">
                                 <h5 class="me-1 my-0">Detail Informasi</h4>
                                     <svg class="ms-1" width="20" height="20" viewBox="0 0 20 20" fill="none"
@@ -154,29 +154,30 @@
                         </div>
 
                         <!-- kanan -->
-                        <div class="me-2">
+                        <form id="form-verify" action="/permintaan-verifikasi-prodi/detail/<?= $data['user_file']->getIdVerifikasi() ?>" method="PATCH" class="col">
                             <h5 clas="my-0">Proses Verifikasi</h5>
                             <p>Staff Administrasi Prodi</p>
+                            <input type="hidden" name="id_berkas" value="<?= $data['user_file']->getIdBerkas() ?>">
                             <div class="d-flex mb-3">
                                 <div class="d-flex me-3 ms-3">
-                                    <input type="radio" name="decision" id="verify">
-                                    <label for="verify">Verify</label>
+                                    <input type="radio" name="is_verified" value="true" id="verify">
+                                    <label for="verify">Verifikasi</label>
                                 </div>
                                 <div class="d-flex ms-3">
-                                    <input type="radio" name="decision" id="reject">
-                                    <label for="reject">Reject</label>
+                                    <input type="radio" name="is_verified" value="false" id="reject">
+                                    <label for="reject">Tolak</label>
                                 </div>
                             </div>
-                            <label for="pesan"></label>
-                            <textarea name="pesan" id="pesan" style="resize: none;" rows="8" cols="59"></textarea>
-                        </div>
+                            <textarea name="description" id="description"
+                                    placeholder="Tambahkan keterangan kepada pihak mahasiswa" style="resize: none; min-width: 80%; min-height: 60%"></textarea>
+                            <div class="d-flex justify-content-end">
+                                <button type="submit" value="Kirim" id="submitBtn" class="px-4 text-white mt-3"
+                                    style="background-color:#052C65 ;" data-bs-toggle="modal"
+                                    data-bs-target="#statusModal">Kirim</button>
+                            </div>
+                        </form>
                     </div>
-                    <div class="d-flex justify-content-end">
-                        <button type="submit" value="Kirim" id="submitBtn" class="px-4 text-white mt-3"
-                            style="background-color:#052C65 ;" data-bs-toggle="modal"
-                            data-bs-target="#statusModal">Kirim</button>
-                    </div>
-                </form>
+                </div>
                 
                 <?php else: ?>
                     <div class="card justify-content-center align-items-center" style="min-height: 60vh; box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);">
@@ -188,25 +189,51 @@
     </div>
 </div>
 
-<div class="modal" tabindex="-1" id="statusModal">
-    <div class="modal-dialog modal-dialog-centered">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title">Terkirim</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-                <h6>Data valid
-                    berhasil diupload</h6>
-            </div>
-            <div class="modal-footer">
-                <button type="button" style="color: #052C65; border-color: #052C65; background-color: white"
-                    data-bs-dismiss="modal">Edit</button>
-                <a href="/permintaan-verifikasi">
-                    <button type="button" class="text-white" style="background-color: #052C65;">Selesai</button>
-                </a>
 
-            </div>
-        </div>
-    </div>
-</div>
+
+
+
+<?php ////////////////////// ?>
+<?php //--BOOTSTRAP MODAL--/ ?>
+<?php ////////////////////// ?>
+
+<?php require __DIR__ . '/../../components/bs_modal/sucess_update_berkas.php' ?>
+<?php require __DIR__ . '/../../components/bs_modal/server_error.php' ?>
+
+
+
+
+
+<?php ////////////////////// ?>
+<?php ////--JAVASCRIPT--//// ?>
+<?php ////////////////////// ?>
+
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.7.1/dist/jquery.min.js"></script>
+<script>
+    $(document).ready(function () {
+        $('#form-verify').on('submit', function (e) {
+            e.preventDefault();
+
+            const data = new FormData($(this)[0]);
+
+            const formObject = {};
+            data.forEach((value, key) => {
+                formObject[key] = value;
+            });
+
+            $.ajax({
+                url: $(this).attr('action'),
+                type: $(this).attr('method'),
+                data: JSON.stringify(formObject),
+                processData: false,
+                contentType: 'application/json',
+                success: function (response) {
+                    $('#info-success-update-modal').modal('show');
+                },
+                error: (xhr, status, error) => {
+                    $('#server-error-bs-modal').modal('show');
+                }
+            });
+        });
+    })
+</script>
