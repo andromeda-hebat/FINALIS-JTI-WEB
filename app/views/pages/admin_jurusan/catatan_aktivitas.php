@@ -14,11 +14,11 @@
                 <table class="table">
                     <thead>
                         <tr>
-                            <th style="background-color:#E4EEFF ;">User ID</th>
-                            <th style="background-color:#E4EEFF ;">Nama Lengkap</th>
-                            <th style="background-color:#E4EEFF ;">Aktivitas</th>
-                            <th style="background-color:#E4EEFF ;">Tanggal</th>
-                            <th class="text-center" style="background-color:#E4EEFF ;">Aksi</th>
+                            <th>User ID</th>
+                            <th>Nama Lengkap</th>
+                            <th>Aktivitas</th>
+                            <th>Tanggal</th>
+                            <th class="text-center">Aksi</th>
                         </tr>
                     </thead>
                     <tbody>

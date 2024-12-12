@@ -60,11 +60,11 @@
                 <table class="table">
                     <thead>
                         <tr>
-                            <th style="background-color:#E4EEFF ;">No.</th>
-                            <th style="background-color:#E4EEFF ;">Nama Lengkap</th>
-                            <th style="background-color:#E4EEFF ;">NIM</th>
-                            <th style="background-color:#E4EEFF ;">Email</th>
-                            <th class="text-center" style="background-color:#E4EEFF ;">Aksi</th>
+                            <th>No.</th>
+                            <th>Nama Lengkap</th>
+                            <th>NIM</th>
+                            <th>Email</th>
+                            <th class="text-center">Aksi</th>
                         </tr>
                     </thead>
                     <tbody>

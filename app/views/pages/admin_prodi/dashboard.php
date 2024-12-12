@@ -136,13 +136,13 @@
                     <div class="w-100 border rounded shadow">
                         <table class="table">
                             <thead class="table">
-                                <th style="background-color:#E4EEFF ;">No</th>
-                                <th style="background-color:#E4EEFF ;">NIM</th>
-                                <th style="background-color:#E4EEFF ;">Mahasiswa</th>
-                                <th style="background-color:#E4EEFF ;">Status</th>
-                                <th style="background-color:#E4EEFF ;">Tanggal Pengajuan</th>
-                                <th style="background-color:#E4EEFF ;">Keterangan</th>
-                                <th style="background-color:#E4EEFF ;">Aksi</th>
+                                <th>No</th>
+                                <th>NIM</th>
+                                <th>Mahasiswa</th>
+                                <th>Status</th>
+                                <th>Tanggal Pengajuan</th>
+                                <th>Keterangan</th>
+                                <th>Aksi</th>
                             </thead>
                             <tbody>
                                 <?php foreach ($data['all_req_verif'] as $key => $value): ?>
