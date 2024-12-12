@@ -21,7 +21,7 @@ class HomeController extends Controller
         $this->view("templates/footer");
     }
 
-    public function viewCcontact(): void
+    public function viewContact(): void
     {
         $this->view("templates/header", [
             'title' => "Kontak"
