@@ -9,7 +9,7 @@ use App\Repository\{BerkasRepository, BerkasProdiRepository, BerkasTARepository}
 
 class MahasiswaController extends Controller
 {
-    public function tugasAkhir(): void
+    public function viewTugasAkhir(): void
     {
         $this->view("templates/header", [
             'title' => "Tugas Akhir",
@@ -77,7 +77,7 @@ class MahasiswaController extends Controller
         }
     }
 
-    public function administrasiProdi(): void
+    public function viewAdministrasiProdi(): void
     {
         $this->view("templates/header", [
             'title' => "Administrasi Prodi",
@@ -146,7 +146,7 @@ class MahasiswaController extends Controller
         }
     }
 
-    public function riwayatPengajuan(): void
+    public function viewRiwayatPengajuan(): void
     {
         try {
             $user_history = BerkasRepository::getUserHistoryRequestBerkas($_SESSION['user_id']);
@@ -170,7 +170,7 @@ class MahasiswaController extends Controller
         $this->view("templates/footer");
     }
 
-    public function permintaanSurat(): void
+    public function viewPermintaanSurat(): void
     {
         $this->view("templates/header", [
             'title' => "Permintaan Surat",

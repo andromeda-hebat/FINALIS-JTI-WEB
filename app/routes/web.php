@@ -8,16 +8,16 @@ use App\Controllers\{HomeController, AuthController, MahasiswaController, AdminP
 
 // General
 Router::add('GET', '/', HomeController::class, 'index');
-Router::add('GET', '/kontak', HomeController::class,'contact');
+Router::add('GET', '/kontak', HomeController::class,'viewContact');
 
-Router::add('GET', '/dashboard', HomeController::class,'dashboard', [
+Router::add('GET', '/dashboard', HomeController::class,'viewDashboard', [
     [
         'class' => AuthMiddleware::class,
         'function' => 'checkAuth',
         'args' => 'any'
     ]
 ]);
-Router::add('GET', '/notifikasi', NotificationController::class, 'notif', [
+Router::add('GET', '/notifikasi', NotificationController::class, 'viewNotification', [
     [
         'class' => AuthMiddleware::class,
         'function' => 'checkAuth',
@@ -33,7 +33,7 @@ Router::add('POST', '/logout', AuthController::class,'logout');
 
 
 // User: Mahasiswa
-Router::add('GET', '/tugas-akhir', MahasiswaController::class, 'tugasAkhir', [
+Router::add('GET', '/tugas-akhir', MahasiswaController::class, 'viewTugasAkhir', [
     [
         'class' => AuthMiddleware::class,
         'function' => 'checkAuth',
@@ -47,7 +47,7 @@ Router::add('POST', '/tugas-akhir', MahasiswaController::class, 'processTugasAkh
         'args' => 'mahasiswa'
     ]
 ]);
-Router::add('GET', '/administrasi-prodi', MahasiswaController::class, 'administrasiProdi', [
+Router::add('GET', '/administrasi-prodi', MahasiswaController::class, 'viewAdministrasiProdi', [
     [
         'class' => AuthMiddleware::class,
         'function' => 'checkAuth',
@@ -61,14 +61,14 @@ Router::add('POST', '/administrasi-prodi', MahasiswaController::class, 'processA
         'args' => 'mahasiswa'
     ]
 ]);
-Router::add('GET', '/riwayat-pengajuan', MahasiswaController::class, 'riwayatPengajuan', [
+Router::add('GET', '/riwayat-pengajuan', MahasiswaController::class, 'viewRiwayatPengajuan', [
     [
         'class' => AuthMiddleware::class,
         'function' => 'checkAuth',
         'args' => 'mahasiswa'
     ]
 ]);
-Router::add('GET', '/permintaan-surat', MahasiswaController::class, 'permintaanSurat', [
+Router::add('GET', '/permintaan-surat', MahasiswaController::class, 'viewPermintaanSurat', [
     [
         'class' => AuthMiddleware::class,
         'function' => 'checkAuth',
@@ -78,14 +78,14 @@ Router::add('GET', '/permintaan-surat', MahasiswaController::class, 'permintaanS
 
 
 // User: Admin Prodi
-Router::add('GET', '/permintaan-verifikasi-prodi', AdminProdiController::class, 'requestVerifikasi', [
+Router::add('GET', '/permintaan-verifikasi-prodi', AdminProdiController::class, 'viewRequestVerifikasi', [
     [
         'class' => AuthMiddleware::class,
         'function' => 'checkAuth',
         'args' => 'admin prodi'
     ]
 ]);
-Router::add('GET', '/permintaan-verifikasi-prodi/detail/([0-9]+)', AdminProdiController::class, 'showDetailReq', [
+Router::add('GET', '/permintaan-verifikasi-prodi/detail/([0-9]+)', AdminProdiController::class, 'viewDetailRequest', [
     [
         'class' => AuthMiddleware::class,
         'function' => 'checkAuth',
@@ -102,14 +102,14 @@ Router::add('PATCH', '/permintaan-verifikasi-prodi/detail/([0-9]+)', AdminProdiC
 
 
 // User: Admin TA
-Router::add('GET', '/permintaan-verifikasi-ta', AdminTAController::class, 'requestVerifikasi', [
+Router::add('GET', '/permintaan-verifikasi-ta', AdminTAController::class, 'viewRequestVerifikasi', [
     [
         'class' => AuthMiddleware::class,
         'function' => 'checkAuth',
         'args' => 'admin ta'
     ]
 ]);
-Router::add('GET', '/permintaan-verifikasi-ta/detail/([0-9]+)', AdminTAController::class, 'showDetailReq', [
+Router::add('GET', '/permintaan-verifikasi-ta/detail/([0-9]+)', AdminTAController::class, 'viewDetailRequest', [
     [
         'class' => AuthMiddleware::class,
         'function' => 'checkAuth',
