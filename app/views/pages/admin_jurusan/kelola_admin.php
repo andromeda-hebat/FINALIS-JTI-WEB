@@ -29,7 +29,6 @@
                 </div>
             </div>
             <div class="mt-3 d-flex justify-content-start w-100 align-items-center">
-               
                 <div style="background-color: var(--color-navy-blue); ">
                     <a href="/tambah-admin" class="text-decoration-none">
                         <div class="d-flex align-items-center mx-2 my-2">
@@ -59,25 +58,27 @@
                 <table class="table">
                     <thead>
                         <tr>
-                            <th style="background-color:#E4EEFF ;">No.</th>
-                            <th style="background-color:#E4EEFF ;">Nama Lengkap</th>
-                            <th style="background-color:#E4EEFF ;">No. Telp</th>
-                            <th style="background-color:#E4EEFF ;">Tanggal Bergabung</th>
-                            <th class="text-center" style="background-color:#E4EEFF ;">Aksi</th>
+                            <th>No.</th>
+                            <th>Nama Lengkap</th>
+                            <th>Email</th>
+                            <th>Jabatan</th>
+                            <th>Aksi</th>
                         </tr>
                     </thead>
                     <tbody>
+                        <?php foreach ($data['admin_data'] as $key => $value): ?>
                         <tr>
-                            <td>1</td>
-                            <td>Nama Admin</td>
-                            <td>085678342761    </td>
-                            <td>24 Oktober, 2024</td>
-                            <td class="text-center">
+                            <td><?= $value->getNomor() ?></td>
+                            <td><?= $value->getNamaLengkap() ?></td>
+                            <td><?= $value->getEmail() ?></td>
+                            <td><?= $value->getJabatan() ?></td>
+                            <td>
                                 <a href="/edit-admin" class="btn btn-primary">Edit</a>
                                 <button type="button" value="Kirim" id="submitBtn" class="btn btn-primary" data-bs-toggle="modal"
                                     data-bs-target="#statusModal">Hapus</button>
                             </td>
                         </tr>
+                        <?php endforeach; ?>
                     </tbody>
                 </table>
 

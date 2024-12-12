@@ -1,5 +1,6 @@
 :root {
     --color-navy-blue: #052C65;
+    --color-soft-blue: #E4EEFF;
     --color-golden-yellow: #F7DE00;
     --color-green-success: #31E200;
     --color-red-failed: #FF0000;
@@ -13,4 +14,8 @@ h1,
 h2,
 h3 {
     color: var(--color-navy-blue);
+}
+
+th {
+    background-color: var(--color-soft-blue) !important;
 }

@@ -39,10 +39,10 @@
                 <table class="table">
                     <thead>
                         <tr>
-                            <th style="background-color:#E4EEFF ;">Surat</th>
-                            <th style="background-color:#E4EEFF ;">Keperluan</th>
-                            <th style="background-color:#E4EEFF ;">File</th>
-                            <th class="text-center" style="background-color:#E4EEFF ;">Aksi</th>
+                            <th>Surat</th>
+                            <th>Keperluan</th>
+                            <th>File</th>
+                            <th class="text-center">Aksi</th>
                         </tr>
                     </thead>
                     <tbody>

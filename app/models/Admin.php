@@ -4,15 +4,19 @@ namespace App\Models;
 
 class Admin extends User
 {
-    private string $id_admin;
+    private ?int $nomor = null;
+    private string $jabatan;
+    private string $email;
 
-    public function getIdAdmin(): string
-    {
-        return $this->id_admin;
-    }
+    public function getNomor(): int { return $this->nomor; }
 
-    public function setIdAdmin(string $id_admin): void
-    {
-        $this->id_admin = $id_admin;
-    }
+    public function setNomor(int $nomor): void { $this->nomor = $nomor; }
+
+    public function getJabatan(): string { return $this->jabatan; }
+
+    public function setJabatan(string $jabatan): void { $this->jabatan = $jabatan; }
+
+    public function getEmail(): string { return $this->jabatan; }
+
+    public function setEmail(string $email): void { $this->email = $email; }
 }
