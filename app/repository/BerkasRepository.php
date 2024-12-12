@@ -14,14 +14,14 @@ class BerkasRepository
             $stmt = Database::getConnection()->prepare(<<<SQL
                 SELECT
                     CASE 
-                        WHEN COUNT(CASE WHEN jenis_tanggungan = 'Tanggungan TA' AND status_tanggungan = 'Selesai' THEN 1 ELSE 0 END) > 0
-                            AND COUNT(CASE WHEN jenis_tanggungan = 'Tanggungan Prodi' AND status_tanggungan = 'Selesai' THEN 1 ELSE 0 END) > 0
+                        WHEN SUM(CASE WHEN jenis_tanggungan = 'Tanggungan TA' AND status_tanggungan = 'Selesai' THEN 1 ELSE 0 END) > 0
+                            AND SUM(CASE WHEN jenis_tanggungan = 'Tanggungan Prodi' AND status_tanggungan = 'Selesai' THEN 1 ELSE 0 END) > 0
                         THEN 'Lunas'
                         ELSE 'Belum lunas'
                     END AS status_verifikasi,
                     CASE 
-                        WHEN COUNT(CASE WHEN jenis_tanggungan = 'Tanggungan TA' AND status_tanggungan = 'Selesai' THEN 1 ELSE 0 END) > 0
-                            AND COUNT(CASE WHEN jenis_tanggungan = 'Tanggungan Prodi' AND status_tanggungan = 'Selesai' THEN 1 ELSE 0 END) > 0
+                        WHEN SUM(CASE WHEN jenis_tanggungan = 'Tanggungan TA' AND status_tanggungan = 'Selesai' THEN 1 ELSE 0 END) > 0
+                            AND SUM(CASE WHEN jenis_tanggungan = 'Tanggungan Prodi' AND status_tanggungan = 'Selesai' THEN 1 ELSE 0 END) > 0
                         THEN 'Bisa cetak surat bebas tanggungan'
                         ELSE 'Belum bisa cetak surat bebas tanggungan'
                     END AS keterangan_verifikasi
