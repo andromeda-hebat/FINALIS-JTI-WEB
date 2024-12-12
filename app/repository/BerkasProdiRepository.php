@@ -8,7 +8,7 @@ use App\Helpers\ErrorLog;
 
 class BerkasProdiRepository
 {
-    public static function checkUserBerkasProdiStatus(string $user_id): bool|string
+    public static function getStatusBerkasProdi(string $user_id): bool|string
     {
         try {
             $stmt = Database::getConnection()->prepare(<<<SQL

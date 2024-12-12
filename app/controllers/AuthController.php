@@ -84,23 +84,7 @@ class AuthController extends Controller
             $_SESSION['full_name'] = $user->getNamaLengkap();
             $_SESSION['role'] = $user->getRole();
             $_SESSION['user_photo'] = $user->getFotoProfil();
-
-            if ($_SESSION['role'] == "mahasiswa") {
-                try {
-                    $_SESSION['status']['tugas_akhir'] = BerkasTARepository::checkUserBerkasTAStatus($_SESSION['user_id']);
-                    $_SESSION['status']['administrasi_prodi'] = BerkasProdiRepository::checkUserBerkasProdiStatus($_SESSION['user_id']);
-                    $_SESSION['status']['bebas_tanggungan'] = 'lunas';
-                } catch (\PDOException $e) {
-                    header("Content-Type: application/json");
-                    http_response_code(500);
-                    echo json_encode([
-                        "status"=>"error",
-                        "message"=>"Database connectivity error!"
-                    ]);
-                    exit;
-                }
-            }
-
+            
             header('Content-Type: application/json');
             echo json_encode(['redirect' => '/dashboard']);
         } else {
