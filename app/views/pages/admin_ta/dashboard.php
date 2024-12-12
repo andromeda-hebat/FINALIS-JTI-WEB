@@ -1,9 +1,9 @@
 <main class="d-flex">
     <!-- Sidebar -->
     <?php include __DIR__ . '/../../components/admin_ta/sidebar.php' ?>
-    <div class="flex-grow-1">
+    <div class="position-top w-100" style="margin-left: 35vh;">
         <?php include __DIR__ . '/../../components/general/topbar.php' ?>
-        <div class="halaman mx-5 ">
+        <div class="halaman mx-5 " style="min-height:100vh; margin-top:15vh;">
             <!-- div informasi -->
             <section>
                 <!-- div judul Informasi -->
@@ -11,8 +11,8 @@
                     <h2 class="fw-bold" style="color: var(--color-navy-blue);">Dashboard</h2>
                     <div class="d-flex">
                         <?php
-                            $formatter = new IntlDateFormatter('id_ID', IntlDateFormatter::LONG, IntlDateFormatter::NONE);
-                            $formatter->setPattern('dd MMMM yyyy');
+                        $formatter = new IntlDateFormatter('id_ID', IntlDateFormatter::LONG, IntlDateFormatter::NONE);
+                        $formatter->setPattern('dd MMMM yyyy');
                         ?>
                         <p class="me-2"><?= $formatter->format(new DateTime()) ?></p>
                         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">

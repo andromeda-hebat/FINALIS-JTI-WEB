@@ -1,11 +1,11 @@
 <main class="d-flex">
     <!-- Sidebar -->
     <?php include __DIR__ . '/../../components/admin_prodi/sidebar.php' ?>
-    <div class="flex-grow-1">
+    <div class="position-top w-100" style="margin-left: 35vh;">
 
         <?php include __DIR__ . '/../../components/general/topbar.php' ?>
 
-        <div class="halaman mx-5">
+        <div class="halaman mx-5 " style="min-height:100vh; margin-top:15vh;">
             <section class="mt-5">
 
                 <h3 class="fw-bold mb-0" style="color: var(--color-navy-blue);">Permintaan Verifikasi</h3>

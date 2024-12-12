@@ -1,6 +1,6 @@
 <div id="sidebar" 
-    class="d-flex flex-column align-items-center border-end justify-content-center min-vh-100"
-    style="background-color: var(--color-navy-blue); width: 300px; padding-top: 20px !important;">
+    class="d-flex flex-column align-items-center border-end justify-content-center min-vh-100 position-fixed"
+    style="background-color: var(--color-navy-blue); width: 35vh; padding-top: 20px ;">
     <!-- Bagian Judul -->
     <div class="d-flex text-center py-4 mb-4">
         <img src="assets/img/finalis-jti-logo.png" alt="Logo" class="me-3"

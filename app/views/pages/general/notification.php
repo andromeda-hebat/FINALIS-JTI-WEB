@@ -9,9 +9,9 @@
     <?php elseif (strcasecmp($_SESSION['role'], 'Mahasiswa') == 0): ?>
         <?php include __DIR__ . '/../../components/mahasiswa/sidebar.php' ?>
     <?php endif; ?>
-    <div class="flex-grow-1">
+    <div class="position-top w-100" style="margin-left: 35vh;">
         <?php include __DIR__ . '/../../components/general/topbar.php' ?>
-        <main class="halaman px-5">
+        <main class="halaman mx-5 " style="min-height:100vh; margin-top:15vh;">
             <section class="mt-2">
                 <div class="d-flex w-100 align-items-center ">
                     <h3 class="ms-1 fw-bold mb-0">Notifikasi</h3>
