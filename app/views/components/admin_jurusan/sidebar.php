@@ -60,14 +60,20 @@
 
 
 
-<!-- Bootstrap Modal -->
+<?php ////////////////////// ?>
+<?php //--BOOTSTRAP MODAL--/ ?>
+<?php ////////////////////// ?>
+
 <?php include __DIR__ . '/../general/ask_logout_modal.php' ?>
 
 
 
 
 
-<!-- JavaScript for this component -->
+<?php ////////////////////// ?>
+<?php ////--JAVASCRIPT--//// ?>
+<?php ////////////////////// ?>
+
 <script src="https://cdn.jsdelivr.net/npm/jquery@3.7.1/dist/jquery.min.js"></script>
 <script>
     $(document).ready(function () {

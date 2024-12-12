@@ -28,7 +28,7 @@ class MahasiswaController extends Controller
         ]);
         $this->view("pages/mahasiswa/tugas_akhir", [
             'active_page' => "tugas-akhir",
-            'info_berkas' => ($status_ta == false) ? 'belum diajukan' : $status_ta
+            'info_berkas' => ($status_ta == false) ? 'belum diajukan' : $status_ta->getStatusVerifikasi()
         ]);
         $this->view("templates/footer");
     }
@@ -108,7 +108,7 @@ class MahasiswaController extends Controller
         ]);
         $this->view("pages/mahasiswa/administrasi_prodi", [
             'active_page' => "administrasi-prodi",
-            'info_berkas' => ($status_prodi == false) ? 'belum diajukan' : $status_prodi
+            'info_berkas' => ($status_prodi == false) ? 'belum diajukan' : $status_prodi->getStatusVerifikasi()
         ]);
         $this->view("templates/footer");
     }
@@ -212,7 +212,7 @@ class MahasiswaController extends Controller
         ]);
         $this->view("pages/mahasiswa/permintaan_surat", [
             'active_page' => "permintaan-surat",
-            'info_berkas' => $status_bebas_tanggungan
+            'info_berkas' => $status_bebas_tanggungan->getStatusVerifikasi()
         ]);
         $this->view("templates/footer");
     }
