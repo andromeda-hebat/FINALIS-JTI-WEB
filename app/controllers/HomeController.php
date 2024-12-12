@@ -68,8 +68,8 @@ class HomeController extends Controller
                     $status_bebas_tanggungan = BerkasRepository::getStatusBebasTanggungan($_SESSION['user_id']);
                     $this->view("templates/header", $data);
                     $this->view("pages/mahasiswa/dashboard", [
-                        'status_ta' => $status_ta->getStatusVerifikasi(),
-                        'status_prodi' => $status_prodi->getStatusVerifikasi(),
+                        'status_ta' => ($status_ta == false) ? 'Belum diajukan' : $status_ta->getStatusVerifikasi(),
+                        'status_prodi' => ($status_prodi == false) ? 'Belum diajukan' : $status_prodi->getStatusVerifikasi(),
                         'status_bebas_tanggungan' => $status_bebas_tanggungan->getStatusVerifikasi(),
                         'active_page' => 'dashboard'
                     ]);
