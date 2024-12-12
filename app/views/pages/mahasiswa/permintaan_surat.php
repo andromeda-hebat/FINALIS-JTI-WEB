@@ -8,10 +8,13 @@
                 <div class="card mt-3" style="height: 75vh; box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);">
                     <div class="card-body">
                         <?php if (strcasecmp($data['info_berkas']->getStatusVerifikasi(), 'lunas') == 0): ?>
-                        <p class="p-5 mt-5 text-center m-auto">Selamat! Anda berhasil melunasi tanggungan bebas tanggungan tugas akhir. Silakan unduh berkas bebas tanggungan tugas akhir berikut: </p>
-                        <button class="me-3 btn btn-outline-dark btn-sm rounded-pill" style="border-color: var(--color-navy-blue);"
-                                data-pdf="/files/Bebas-kompen-TI.pdf" data-bs-toggle="modal"
-                                data-bs-target="#pdfModal">Unduh berkas bebas tanggungan tugas akhir</button>
+                        <p class="mt-5 text-center">Selamat! Anda berhasil melunasi tanggungan bebas tanggungan tugas akhir. </p>
+                        <p class="text-center">Silakan unduh berkas bebas tanggungan tugas akhir berikut: </p>
+                        <div class="d-flex justify-content-center">
+                            <button class="me-3 btn btn-outline-dark btn-sm rounded-pill" style="border-color: var(--color-navy-blue);"
+                                    data-pdf="/files/Bebas-kompen-TI.pdf" data-bs-toggle="modal"
+                                    data-bs-target="#pdfModal">Unduh berkas bebas tanggungan tugas akhir</button>
+                        </div>
                         <?php else: ?>
                         <p class="p-5 mt-5 text-center m-auto">Surat Bebas Tanggungan Jurusan belom bisa dicetak.<br>
                         Mohon lunasi tanggungan administrasi prodi dan tugas akhir terlebih dahulu</p>
