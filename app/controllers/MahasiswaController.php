@@ -212,7 +212,7 @@ class MahasiswaController extends Controller
         ]);
         $this->view("pages/mahasiswa/permintaan_surat", [
             'active_page' => "permintaan-surat",
-            'info_berkas' => $status_bebas_tanggungan
+            'info_berkas' => $status_bebas_tanggungan->getStatusVerifikasi()
         ]);
         $this->view("templates/footer");
     }
