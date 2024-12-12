@@ -2,7 +2,6 @@
     <?php include __DIR__ . '/../../components/mahasiswa/sidebar.php' ?>
     <div class="w-100 position-relative">
         <?php include __DIR__ . '/../../components/general/topbar.php' ?>
-        <?php var_dump($data['info_berkas'])?>
         <main class="container px-5" style=" max-height: 100vh;">
             <div class="d-flex flex-column">
                 <h3 class="mt-2 fw-bold">Permintaan Surat Bebas Tanggungan</h3>
