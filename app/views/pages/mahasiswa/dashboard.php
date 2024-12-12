@@ -59,8 +59,9 @@
                         <path stroke-linecap="round" stroke-linejoin="round"
                             d="m11.25 11.25.041-.02a.75.75 0 0 1 1.063.852l-.708 2.836a.75.75 0 0 0 1.063.853l.041-.021M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Zm-9-3.75h.008v.008H12V8.25Z" />
                     </svg>
-                    <p class="my-0">Lihat petunjuk pengajuan pada halaman berikut: <a href="/petunjuk-pengajuan"
-                            class="fw-bold">petunjuk pengajuan</a></p>
+                    <p class="my-0">Lihat petunjuk pengajuan pada halaman berikut: 
+                        <a href="/petunjuk-pengajuan" class="fw-bold">petunjuk pengajuan</a>
+                    </p>
                 </div>
             </section>
             <!-- Template Surat -->
@@ -111,8 +112,10 @@
 
 
 
+<?php ////////////////////// ?>
+<?php //--BOOTSTRAP MODAL--/ ?>
+<?php ////////////////////// ?>
 
-<!-- Bootstrap Modal -->
 <div class="modal fade" id="pdfModal" tabindex="-1" aria-labelledby="pdfModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-xl">
         <div class="modal-content">
@@ -134,7 +137,10 @@
 
 
 
-<!-- JavaScript for this page -->
+<?php ////////////////////// ?>
+<?php ////--JAVASCRIPT--//// ?>
+<?php ////////////////////// ?>
+
 <script src="https://cdn.jsdelivr.net/npm/jquery@3.7.1/dist/jquery.min.js"></script>
 <script>
     $(document).ready(function () {
