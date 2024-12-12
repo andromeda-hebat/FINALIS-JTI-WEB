@@ -70,7 +70,7 @@ class HomeController extends Controller
                     $this->view("pages/mahasiswa/dashboard", [
                         'status_ta' => $status_ta->getStatusVerifikasi(),
                         'status_prodi' => $status_prodi->getStatusVerifikasi(),
-                        'status_bebas_tanggungan' => $status_bebas_tanggungan,
+                        'status_bebas_tanggungan' => $status_bebas_tanggungan->getStatusVerifikasi(),
                         'active_page' => 'dashboard'
                     ]);
                     break;

@@ -26,7 +26,7 @@ class BerkasRepository
                         ELSE 'Belum bisa cetak surat bebas tanggungan'
                     END AS keterangan_verifikasi
                 FROM BERKAS.Tanggungan
-                WHERE 
+                WHERE nim = ?
             SQL);
             $stmt->bindValue(1, $user_id);
             $stmt->setFetchMode(\PDO::FETCH_CLASS, StatusBerkas::class);
