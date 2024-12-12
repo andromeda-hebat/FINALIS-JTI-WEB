@@ -33,7 +33,6 @@
                                 </clipPath>
                             </defs>
                             </svg>
-
                     </div>
                 </div>
                 <!-- div isi Informasi -->
@@ -99,18 +98,6 @@
                                 <th style="background-color:#E4EEFF ;">Aksi</th>
                             </thead>
                             <tbody>
-                                <!-- <?php foreach ($data['all_req_verif'] as $key => $value): ?>
-                                        <tr>
-                                            <td><?= $value->getNomor() ?></td>
-                                            <td><?= $value->getNim() ?></td>
-                                            <td><?= $value->getNamaLengkap() ?></td>
-                                            <td><?= $value->getStatusVerifikasi() ?></td>
-                                            <td><?= $value->getTanggalRequest() ?></td>
-                                            <td><?= $value->getKeteranganVerifikasi() ?></td>
-                                            <td><a href="/permintaan-verifikasi-prodi/detail/<?= $value->getIdVerifikasi() ?>"
-                                                    class="btn btn-primary">Rincian</a></td>
-                                        </tr>
-                                    <?php endforeach; ?> -->
                             </tbody>
                         </table>
                     </div>
