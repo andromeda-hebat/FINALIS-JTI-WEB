@@ -1,9 +1,9 @@
 <div id="sidebar" 
     class="d-flex flex-column align-items-center border-end justify-content-center min-vh-100 position-fixed"
-    style="background-color: var(--color-navy-blue); width: 35vh; padding-top: 20px ;">
+    style="background-color: var(--color-navy-blue); width: 35vh; padding-top: 20px; max-height: 100vh;">
     <!-- Bagian Judul -->
     <div class="d-flex text-center py-4 mb-4">
-        <img src="assets/img/finalis-jti-logo.png" alt="Logo" class="me-3"
+        <img src="/assets/img/finalis-jti-logo.png" alt="Logo" class="me-3"
             style="width: 50px; height: 50px;">
         <h3 class="d-flex align-items-center justify-content-center fw-bold text-center" style="color: var(--color-golden-yellow); font-weight: 800; line-height: normal !important;">FINALIS JTI</h3>
     </div>
@@ -30,8 +30,8 @@
     </nav>
 
     <!-- Tombol Keluar -->
-    <div class="mt-auto w-100 mb-4 d-flex justify-content-center" style="">
-        <button type="button" class="sidebar-nav nav-link w-100 ps-5 p-3 d-flex text-white text-start" data-bs-toggle="modal"
+    <div class="mt-auto w-100 mb-4 d-flex justify-content-center">
+        <button type="button" id="logout-btn" class="sidebar-nav nav-link w-100 ps-5 p-3 d-flex text-white text-start" data-bs-toggle="modal"
             data-bs-target="#modalConfirmationLogout">
             <svg class="me-2" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path fill-rule="evenodd" clip-rule="evenodd"
@@ -48,14 +48,20 @@
 
 
 
-<!-- Bootstrap Modal -->
-<?php include __DIR__ . '/../general/ask_logout_modal.php' ?>
+<?php ////////////////////// ?>
+<?php //--BOOTSTRAP MODAL--/ ?>
+<?php ////////////////////// ?>
+
+<?php include __DIR__ . '/../bs_modal/ask_logout_modal.php' ?>
 
 
 
 
 
-<!-- JavaScript for this component -->
+<?php ////////////////////// ?>
+<?php ////--JAVASCRIPT--//// ?>
+<?php ////////////////////// ?>
+
 <script>
     const activePage = <?= json_encode($data['active_page']) ?>;
     const bgActiveSidebarColor = '#1E4173';
