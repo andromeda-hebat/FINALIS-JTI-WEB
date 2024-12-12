@@ -14,7 +14,7 @@ Router::add('GET', '/dashboard', HomeController::class,'dashboard', [
     [
         'class' => AuthMiddleware::class,
         'function' => 'checkAuth',
-        'args' => 'none'
+        'args' => 'any'
     ]
 ]);
 Router::add('GET', '/notifikasi', NotificationController::class, 'notif', [
