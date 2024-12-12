@@ -19,7 +19,7 @@
                             <div class="d-flex justify-content-between align-items-center py-2">
                                 <label for="tugasAkhir" class="form-check-label">Tugas Akhir</label>
                                 <div class="d-flex">
-                                    <p class="me-3 my-0">Status: <span><?= $_SESSION['status']['tugas_akhir'] ?></span>
+                                    <p class="me-3 my-0">Status: <span><?= $data['status_ta'] ?></span>
                                     </p>
                                     <a href="/tugas-akhir" class="btn btn-outline-dark btn-sm rounded-pill"
                                         style="border-color: var(--color-navy-blue);">Detail
@@ -30,7 +30,7 @@
                                 <label for="adminProdi" class="form-check-label">Administrasi Prodi</label>
                                 <div class="d-flex">
                                     <p class="me-3 my-0">Status:
-                                        <span><?= $_SESSION['status']['administrasi_prodi'] ?></span>
+                                        <span><?= $data['status_prodi'] ?></span>
                                     </p>
                                     <a href="/administrasi-prodi" class="btn btn-outline-dark btn-sm rounded-pill"
                                         style="border-color: var(--color-navy-blue);">Detail</a>
@@ -40,7 +40,7 @@
                                 <label for="bebasTanggungan" class="form-check-label">Bebas Tanggungan</label>
                                 <div class="d-flex">
                                     <p class="me-3 my-0">Status:
-                                        <span><?= $_SESSION['status']['bebas_tanggungan'] ?></span>
+                                        <span><?= $data['status_bebas_tanggungan'] ?></span>
                                     </p>
                                     <a href="/permintaan-surat" class="btn btn-outline-dark btn-sm rounded-pill"
                                         style="border-color: var(--color-navy-blue);">Detail</a>

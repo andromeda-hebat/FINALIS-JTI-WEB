@@ -3,7 +3,7 @@
 namespace App\Controllers;
 
 use App\Core\Controller;
-use App\Repository\{BerkasProdiRepository, BerkasTARepository};
+use App\Repository\{BerkasRepository, BerkasProdiRepository, BerkasTARepository};
 
 class HomeController extends Controller
 {
@@ -21,7 +21,7 @@ class HomeController extends Controller
         $this->view("templates/footer");
     }
 
-    public function contact(): void
+    public function viewCcontact(): void
     {
         $this->view("templates/header", [
             'title' => "Kontak"
@@ -30,40 +30,50 @@ class HomeController extends Controller
         $this->view("templates/footer");
     }
 
-    public function dashboard(): void
+    public function viewDashboard(): void
     {
         $data['title'] = "Dashboard";
         $data['active_page'] = "dashboard";
         $data['css'] = ["assets/css/sidebar"];
 
-        try {
-            $all_req_verif = null;
-            $viewPage = null;
-        
+        try { 
             switch ($_SESSION['role']) {
                 case 'Admin Prodi':
                     $all_req_verif = BerkasProdiRepository::getAllBerkasProdiReq();
-                    $viewPage = "pages/admin_prodi/dashboard";
+                    $this->view("templates/header", $data);
+                    $this->view("pages/admin_prodi/dashboard", [
+                        'all_req_verif' => $all_req_verif,
+                        'active_page' => 'dashboard'
+                    ]);
+                    $this->view("templates/footer");
                     break;
                 case 'Admin TA':
                     $all_req_verif = BerkasTARepository::getAllBerkasTAReq();
-                    $viewPage = "pages/admin_ta/dashboard";
+                    $this->view("templates/header", $data);
+                    $this->view("pages/admin_ta/dashboard", [
+                        'all_req_verif' => $all_req_verif,
+                        'active_page' => 'dashboard'
+                    ]);
+                    $this->view("templates/footer");;
                     break;
                 case 'Admin Jurusan':
+                    $this->view("templates/header", $data);
                     $viewPage = "pages/admin_jurusan/dashboard";
+                    $this->view("templates/admin_jurusan/dashboard");
+                    $this->view("templates/footer");
                     break;
                 case 'mahasiswa':
-                    $viewPage = "pages/mahasiswa/dashboard";
+                    $status_ta = BerkasTARepository::getStatusBerkasTA($_SESSION['user_id']);
+                    $status_prodi = BerkasProdiRepository::getStatusBerkasProdi($_SESSION['user_id']);
+                    $status_bebas_tanggungan = BerkasRepository::getStatusBebasTanggungan($_SESSION['user_id']);
+                    $this->view("templates/header", $data);
+                    $this->view("pages/mahasiswa/dashboard", [
+                        'status_ta' => $status_ta->getStatusVerifikasi(),
+                        'status_prodi' => $status_prodi->getStatusVerifikasi(),
+                        'status_bebas_tanggungan' => $status_bebas_tanggungan,
+                        'active_page' => 'dashboard'
+                    ]);
                     break;
-            }
-        
-            if ($viewPage) {
-                $this->view("templates/header", $data);
-                $this->view($viewPage, isset($all_req_verif) ? [
-                    'all_req_verif' => $all_req_verif,
-                    'active_page' => 'dashboard'
-                ] : $data);
-                $this->view("templates/footer");
             }
         } catch (\PDOException $e) {
             header("Content-Type: application/json");

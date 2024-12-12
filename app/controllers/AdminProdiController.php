@@ -8,7 +8,7 @@ use App\Repository\BerkasProdiRepository;
 
 class AdminProdiController extends Controller
 {
-    public function requestVerifikasi(): void
+    public function viewRequestVerifikasi(): void
     {
         try {
             $all_req_verif = BerkasProdiRepository::getAllBerkasProdiReq();
@@ -33,7 +33,7 @@ class AdminProdiController extends Controller
         $this->view("templates/footer");
     }
 
-    public function showDetailReq(int $id_verifikasi): void
+    public function viewDetailRequest(int $id_verifikasi): void
     {
         try {
             $user_file = BerkasProdiRepository::getSingleBerkasProdiReq($id_verifikasi);

@@ -8,7 +8,7 @@ use App\Repository\BerkasTARepository;
 
 class AdminTAController extends Controller
 {
-    public function requestVerifikasi(): void
+    public function viewRequestVerifikasi(): void
     {
         try {
             $all_req_verif = BerkasTARepository::getAllBerkasTAReq();
@@ -32,7 +32,7 @@ class AdminTAController extends Controller
         $this->view("templates/footer");
     }
 
-    public function showDetailReq(int $id_verifikasi): void
+    public function viewDetailRequest(int $id_verifikasi): void
     {
         try {
             $user_file = BerkasTARepository::getSingleBerkasTAReq($id_verifikasi);

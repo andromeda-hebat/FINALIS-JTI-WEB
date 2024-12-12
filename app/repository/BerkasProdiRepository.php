@@ -3,29 +3,24 @@
 namespace App\Repository;
 
 use App\Core\Database;
-use App\Models\{BerkasProdi, VerifikasiBerkas};
+use App\Models\{StatusBerkas, BerkasProdi, VerifikasiBerkas};
 use App\Helpers\ErrorLog;
 
 class BerkasProdiRepository
 {
-    public static function checkUserBerkasProdiStatus(string $user_id): bool|string
+    public static function getStatusBerkasProdi(string $user_id): bool|StatusBerkas
     {
         try {
             $stmt = Database::getConnection()->prepare(<<<SQL
-                SELECT status_verifikasi
+                SELECT status_verifikasi, keterangan_verifikasi
                 FROM VER.VerifikasiBerkas AS v
                 INNER JOIN Berkas.Prodi AS p ON p.id_berkas_prodi = v.id_berkas
                 WHERE nim = :nim
             SQL);
             $stmt->bindValue(':nim', $user_id);
+            $stmt->setFetchMode(\PDO::FETCH_CLASS, StatusBerkas::class);
             $stmt->execute();
-            $result = $stmt->fetch(\PDO::FETCH_ASSOC);
-
-            if ($result == false) {
-                return "kosong";
-            } else {
-                return $result['status_verifikasi'];
-            }
+            return $stmt->fetch();
         } catch (\PDOException $e) {
             error_log(ErrorLog::formattedErrorLog($e->getMessage()), 3, LOG_FILE_PATH);
             throw new \PDOException($e->getMessage());
