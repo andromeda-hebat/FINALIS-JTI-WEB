@@ -5,7 +5,7 @@
         <?php include __DIR__ . '/../../components/general/topbar.php' ?>
         <main class="halaman mx-5 " style="min-height:100vh; margin-top:15vh;">
             <h3 class="mt-2 ms-1 fw-bold">Formulir Administrasi Prodi</h3>
-            <div id="empty-form-content" class="mt-4" style="display: <?php echo (strcasecmp($data['info_berkas']->getStatusVerifikasi(), 'kosong') == 0) ? 'block' : 'none'; ?>;">
+            <div id="empty-form-content" class="mt-4" style="display: <?php echo (strcasecmp($data['info_berkas'], 'belum diajukan') == 0) ? 'block' : 'none'; ?>;">
                 <form id="administrasi-prodi-form" action="/administrasi-prodi" method="post" enctype="multipart/form-data">
                     <div class="card card-body" style="box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);">
                         <p class="mt-3">Upload berkas berikut untuk memverifikasi tanggungan prodi anda</p>
@@ -34,6 +34,8 @@
                     </div>
                 </form>
             </div>
+
+            <?php if(strcasecmp($data['info_berkas'], 'belum diajukan') != 0): ?>
             <?php if (strcasecmp($data['info_berkas']->getStatusVerifikasi(), "diajukan") == 0): ?>
                 <?php include __DIR__ . '/../../components/mahasiswa/info_data_berhasil_dikirim.php' ?>
             <?php elseif (strcasecmp($data['info_berkas']->getStatusVerifikasi(), "disetujui") == 0): ?>
@@ -58,6 +60,7 @@
                 </div>
             <?php elseif (strcasecmp($data['info_berkas']->getStatusVerifikasi(), "ditolak") == 0): ?>
                 <?php include __DIR__ . '/../../components/mahasiswa/info_data_ditolak.php' ?>
+            <?php endif; ?>
             <?php endif; ?>
         </main>
     </div>
