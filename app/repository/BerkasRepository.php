@@ -3,23 +3,35 @@
 namespace App\Repository;
 
 use App\Core\Database;
-use App\Models\RiwayatPengajuan;
+use App\Models\{StatusBerkas, RiwayatPengajuan};
 use App\Helpers\ErrorLog;
 
 class BerkasRepository
 {
-    public static function getBebasTanggunganStatus(string $user_id): string
+    public static function getStatusBebasTanggungan(string $user_id): bool|StatusBerkas
     {
         try {
             $stmt = Database::getConnection()->prepare(<<<SQL
-                SELECT *
-                FROM table
-                WHERE nim = ?
+                SELECT
+                    CASE 
+                        WHEN COUNT(CASE WHEN jenis_tanggungan = 'Tanggungan TA' AND status_tanggungan = 'Selesai' THEN 1 END) = 1
+                            AND COUNT(CASE WHEN jenis_tanggungan = 'Tanggungan Prodi' AND status_tanggungan = 'Selesai' THEN 1 END) = 1
+                        THEN 'Lunas'
+                        ELSE 'Belum lunas'
+                    END AS status_verifikasi,
+                    CASE 
+                        WHEN COUNT(CASE WHEN jenis_tanggungan = 'Tanggungan TA' AND status_tanggungan = 'Selesai' THEN 1 END) = 1
+                            AND COUNT(CASE WHEN jenis_tanggungan = 'Tanggungan Prodi' AND status_tanggungan = 'Selesai' THEN 1 END) = 1
+                        THEN 'Bisa cetak surat bebas tanggungan'
+                        ELSE 'Belum bisa cetak surat bebas tanggungan'
+                    END AS keterangan_verifikasi
+                FROM BERKAS.Tanggungan
+                WHERE 
             SQL);
             $stmt->bindValue(1, $user_id);
+            $stmt->setFetchMode(\PDO::FETCH_CLASS, StatusBerkas::class);
             $stmt->execute();
-            $result = $stmt->fetch(\PDO::FETCH_ASSOC);
-            return "lunas";
+            return $stmt->fetch();
         } catch (\PDOException $e) {
             error_log(ErrorLog::formattedErrorLog($e->getMessage()), 3, LOG_FILE_PATH);
             throw new \PDOException($e->getMessage());

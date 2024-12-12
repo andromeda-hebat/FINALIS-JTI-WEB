@@ -4,8 +4,7 @@
         <?php include __DIR__ . '/../../components/general/topbar.php' ?>
         <main class="container px-5">
             <h3 class="mt-2 ms-1 fw-bold">Formulir Administrasi Prodi</h3>
-
-            <div id="empty-form-content" class="mt-4" style="display: <?php echo (strcasecmp($_SESSION['status']['administrasi_prodi'], 'kosong') == 0) ? 'block' : 'none'; ?>;">
+            <div id="empty-form-content" class="mt-4" style="display: <?php echo (strcasecmp($data['info_berkas']->getStatusVerifikasi(), 'kosong') == 0) ? 'block' : 'none'; ?>;">
                 <form id="administrasi-prodi-form" action="/administrasi-prodi" method="post" enctype="multipart/form-data">
                     <div class="card card-body" style="box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);">
                         <p class="mt-3">Upload berkas berikut untuk memverifikasi tanggungan prodi anda</p>
@@ -31,9 +30,9 @@
                     </div>
                 </form>
             </div>
-            <?php if (strcasecmp($_SESSION['status']['administrasi_prodi'], "diajukan") == 0): ?>
+            <?php if (strcasecmp($data['info_berkas']->getStatusVerifikasi(), "diajukan") == 0): ?>
                 <?php include __DIR__ . '/../../components/mahasiswa/info_data_berhasil_dikirim.php' ?>
-            <?php elseif (strcasecmp($_SESSION['status']['administrasi_prodi'], "disetujui") == 0): ?>
+            <?php elseif (strcasecmp($data['info_berkas']->getStatusVerifikasi(), "disetujui") == 0): ?>
                 <div id="body-content"
                     class="mt-4 card card-body d-flex flex-column justify-content-center align-items-center"
                     style="box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25); min-height: 75vh; max-height: 75vh;">
@@ -53,43 +52,32 @@
                         </defs>
                     </svg>
                 </div>
-            <?php elseif (strcasecmp($_SESSION['status']['administrasi_prodi'], "ditolak") == 0): ?>
+            <?php elseif (strcasecmp($data['info_berkas']->getStatusVerifikasi(), "ditolak") == 0): ?>
                 <?php include __DIR__ . '/../../components/mahasiswa/info_data_ditolak.php' ?>
             <?php endif; ?>
         </main>
     </div>
 </div>
 
-<div class="modal" tabindex="-1" id="statusModal">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title text-danger">Gagal</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-                <p>File gagal diupload
-                    Periksa kembali data yang anda upload</p>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="text-white" style="background-color: var(--color-navy-blue);"
-                    data-bs-dismiss="modal">Tutup</button>
-            </div>
-        </div>
-    </div>
-</div>
+
+
+
+
+<?php ////////////////////// ?>
+<?php //--BOOTSTRAP MODAL--/ ?>
+<?php ////////////////////// ?>
+
+<?php include_once __DIR__ . '/../../components/bs_modal/server_error.php' ?>
+<?php include_once __DIR__ . '/../../components/bs_modal/client_error.php' ?>
 
 
 
 
 
-<!-- Bootstrap Modal -->
-<?php include __DIR__ . '/../../components/bs_modal/server_error.php' ?>
+<?php ////////////////////// ?>
+<?php ////--JAVASCRIPT--//// ?>
+<?php ////////////////////// ?>
 
-
-
-
-<!-- JavaScript for this page -->
 <script src="https://cdn.jsdelivr.net/npm/jquery@3.7.1/dist/jquery.min.js"></script>
 <script>
     $(document).ready(() => {
