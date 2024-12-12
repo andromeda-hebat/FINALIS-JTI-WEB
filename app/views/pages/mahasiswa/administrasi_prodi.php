@@ -1,7 +1,7 @@
 <div class="d-flex">
     <?php include __DIR__ . '/../../components/mahasiswa/sidebar.php' ?>
     <div class="w-100 position-relative">
-        <?php include __DIR__ . '/../../components/mahasiswa/topbar.php' ?>
+        <?php include __DIR__ . '/../../components/general/topbar.php' ?>
         <main class="container px-5">
             <h3 class="mt-2 ms-1 fw-bold">Formulir Administrasi Prodi</h3>
 
