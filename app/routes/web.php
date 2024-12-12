@@ -126,42 +126,49 @@ Router::add('PATCH', '/permintaan-verifikasi-ta/detail/([0-9]+)', AdminTAControl
 
 
 // User: Admin Jurusan
-Router::add('GET', '/kelola-admin', AdminJurusanController::class, 'kelolaAdmin', [
+Router::add('GET', '/kelola-admin', AdminJurusanController::class, 'viewKelolaAdmin', [
     [
         'class' => AuthMiddleware::class,
         'function' => 'checkAuth',
         'args' => 'admin jurusan'
     ]
 ]);
-Router::add('GET', '/tambah-admin', AdminJurusanController::class, 'tambahAdmin', [
+Router::add('GET', '/tambah-admin', AdminJurusanController::class, 'viewTambahAdmin', [
     [
         'class' => AuthMiddleware::class,
         'function' => 'checkAuth',
         'args' => 'admin jurusan'
     ]
 ]);
-Router::add('GET', '/edit-admin', AdminJurusanController::class, 'editAdmin', [
+Router::add('POST', '/tambah-admin', AdminJurusanController::class, 'addNewAdmin', [
     [
         'class' => AuthMiddleware::class,
         'function' => 'checkAuth',
         'args' => 'admin jurusan'
     ]
 ]);
-Router::add('GET', '/kelola-mahasiswa', AdminJurusanController::class, 'kelolaMhs', [
+Router::add('GET', '/edit-admin', AdminJurusanController::class, 'viewEditAdmin', [
     [
         'class' => AuthMiddleware::class,
         'function' => 'checkAuth',
         'args' => 'admin jurusan'
     ]
 ]);
-Router::add('GET', '/tambah-mahasiswa', AdminJurusanController::class, 'tambahMhs', [
+Router::add('GET', '/kelola-mahasiswa', AdminJurusanController::class, 'viewkelolaMahasiswa', [
     [
         'class' => AuthMiddleware::class,
         'function' => 'checkAuth',
         'args' => 'admin jurusan'
     ]
 ]);
-Router::add('GET', '/edit-mahasiswa', AdminJurusanController::class, 'editMhs', [
+Router::add('GET', '/tambah-mahasiswa', AdminJurusanController::class, 'viewTambahMahasiswa', [
+    [
+        'class' => AuthMiddleware::class,
+        'function' => 'checkAuth',
+        'args' => 'admin jurusan'
+    ]
+]);
+Router::add('GET', '/edit-mahasiswa', AdminJurusanController::class, 'viewEditMahasiswa', [
     [
         'class' => AuthMiddleware::class,
         'function' => 'checkAuth',

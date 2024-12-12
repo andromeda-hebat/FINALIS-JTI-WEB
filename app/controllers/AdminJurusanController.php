@@ -6,7 +6,7 @@ use App\Core\Controller;
 
 class AdminJurusanController extends Controller
 {
-    public function kelolaAdmin(): void
+    public function viewKelolaAdmin(): void
     {
         $this->view("templates/header", [
             'title' => "Kelola Admin",
@@ -16,7 +16,7 @@ class AdminJurusanController extends Controller
         $this->view("templates/footer");
     }
 
-    public function tambahAdmin(): void
+    public function viewTambahAdmin(): void
     {
         $this->view("templates/header", [
             'title' => "Tambah Admin",
@@ -25,7 +25,7 @@ class AdminJurusanController extends Controller
         $this->view("pages/admin_jurusan/tambah_admin");
         $this->view("templates/footer");
     }
-    public function editAdmin(): void
+    public function viewEditAdmin(): void
     {
         $this->view("templates/header", [
             'title' => "Edit Admin",
@@ -35,7 +35,7 @@ class AdminJurusanController extends Controller
         $this->view("templates/footer");
     }
 
-    public function kelolaMhs(): void
+    public function viewKelolaMahasiswa(): void
     {
         $this->view("templates/header", [
             'title' => "Kelola Mahasiswa",
@@ -45,7 +45,7 @@ class AdminJurusanController extends Controller
         $this->view("templates/footer");
     }
 
-    public function tambahMhs(): void
+    public function viewTambahMahasiswa(): void
     {
         $this->view("templates/header", [
             'title' => "Tambah Mahasiswa",
@@ -54,7 +54,7 @@ class AdminJurusanController extends Controller
         $this->view("pages/admin_jurusan/tambah_mahasiswa");
         $this->view("templates/footer");
     }
-    public function editMhs(): void
+    public function viewEditMahasiswa(): void
     {
         $this->view("templates/header", [
             'title' => "Edit Mahasiswa",
