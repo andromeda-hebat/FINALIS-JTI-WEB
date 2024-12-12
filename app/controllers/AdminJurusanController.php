@@ -3,16 +3,30 @@
 namespace App\Controllers;
 
 use App\Core\Controller;
+use App\Repository\AdminRepository;
 
 class AdminJurusanController extends Controller
 {
     public function viewKelolaAdmin(): void
     {
+        try {
+            $admin_data = AdminRepository::getAllDataAdmin();
+        } catch (\Exception $e) {
+            http_response_code(500);
+            echo json_encode([
+                "status" => "error",
+                "message" => "Database connectivity error!"
+            ]);
+            exit;
+        }
         $this->view("templates/header", [
             'title' => "Kelola Admin",
             'css' => ["assets/css/sidebar"]
         ]);
-        $this->view("pages/admin_jurusan/kelola_admin");
+        $this->view("pages/admin_jurusan/kelola_admin", [
+            'active_page' => 'kelola_admin',
+            'admin_data' => $admin_data
+        ]);
         $this->view("templates/footer");
     }
 
