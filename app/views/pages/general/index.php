@@ -62,7 +62,7 @@
         <ol id="jacord" class="w-50 ms-0 ps-0">
             <li class="card my-3 shadow" style="background-color: var(--color-navy-blue); cursor: pointer;">
                 <h3 class="card-body m-0 text-white fw-bold">
-                    Ungggah Tugas Akhir
+                    Unggah Tugas Akhir
                     <svg class="position-absolute end-0 me-3 mt-2" width="20" height="20" viewBox="0 0 30 30"
                         fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path fill-rule="evenodd" clip-rule="evenodd"
