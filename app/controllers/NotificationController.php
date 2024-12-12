@@ -6,7 +6,7 @@ use App\Core\Controller;
 
 class NotificationController extends Controller
 {
-    public function notif(): void
+    public function viewNotification(): void
     {
         $this->view("templates/header",  [
             'title' => "Notifikasi",

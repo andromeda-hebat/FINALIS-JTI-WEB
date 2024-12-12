@@ -1,7 +1,7 @@
 <div class="d-flex">
     <?php include __DIR__ . '/../../components/mahasiswa/sidebar.php' ?>
     <div class="w-100 position-relative">
-        <?php include __DIR__ . '/../../components/mahasiswa/topbar.php' ?>
+        <?php include __DIR__ . '/../../components/general/topbar.php' ?>
         <main class="container px-5" style=" max-height: 100vh;">
             <div class="d-flex flex-column">
                 <h3 class="mt-2 fw-bold">Permintaan Surat Bebas Tanggungan</h3>

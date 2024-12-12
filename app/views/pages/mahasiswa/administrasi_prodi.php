@@ -1,7 +1,7 @@
 <div class="d-flex">
     <?php include __DIR__ . '/../../components/mahasiswa/sidebar.php' ?>
     <div class="w-100 position-relative">
-        <?php include __DIR__ . '/../../components/mahasiswa/topbar.php' ?>
+        <?php include __DIR__ . '/../../components/general/topbar.php' ?>
         <main class="container px-5">
             <h3 class="mt-2 ms-1 fw-bold">Formulir Administrasi Prodi</h3>
 
@@ -60,36 +60,25 @@
     </div>
 </div>
 
-<div class="modal" tabindex="-1" id="statusModal">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title text-danger">Gagal</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-                <p>File gagal diupload
-                    Periksa kembali data yang anda upload</p>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="text-white" style="background-color: var(--color-navy-blue);"
-                    data-bs-dismiss="modal">Tutup</button>
-            </div>
-        </div>
-    </div>
-</div>
+
+
+
+
+<?php ////////////////////// ?>
+<?php //--BOOTSTRAP MODAL--/ ?>
+<?php ////////////////////// ?>
+
+<?php include_once __DIR__ . '/../../components/bs_modal/server_error.php' ?>
+<?php include_once __DIR__ . '/../../components/bs_modal/client_error.php' ?>
 
 
 
 
 
-<!-- Bootstrap Modal -->
-<?php include __DIR__ . '/../../components/bs_modal/server_error.php' ?>
+<?php ////////////////////// ?>
+<?php ////--JAVASCRIPT--//// ?>
+<?php ////////////////////// ?>
 
-
-
-
-<!-- JavaScript for this page -->
 <script src="https://cdn.jsdelivr.net/npm/jquery@3.7.1/dist/jquery.min.js"></script>
 <script>
     $(document).ready(() => {

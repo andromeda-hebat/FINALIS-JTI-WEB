@@ -8,18 +8,22 @@ use App\Helpers\ErrorLog;
 
 class BerkasRepository
 {
-    public static function getBebasTanggunganStatus(string $user_id): string
+    public static function getStatusBebasTanggungan(string $user_id): string
     {
         try {
             $stmt = Database::getConnection()->prepare(<<<SQL
-                SELECT *
-                FROM table
-                WHERE nim = ?
+                SELECT
+                    CASE 
+                        WHEN COUNT(CASE WHEN jenis_tanggungan = 'Tanggungan TA' AND status_tanggungan = 'Selesai' THEN 1 END) = 1
+                            AND COUNT(CASE WHEN jenis_tanggungan = 'Tanggungan Prodi' AND status_tanggungan = 'Selesai' THEN 1 END) = 1
+                        THEN 'Bisa cetak surat bebas tanggungan'
+                        ELSE 'Belum bisa cetak surat bebas tanggungan'
+                    END AS status_tanggungan
+                FROM BERKAS.Tanggungan
             SQL);
             $stmt->bindValue(1, $user_id);
             $stmt->execute();
-            $result = $stmt->fetch(\PDO::FETCH_ASSOC);
-            return "lunas";
+            return $stmt->fetch(\PDO::FETCH_ASSOC)['status_tanggungan'];
         } catch (\PDOException $e) {
             error_log(ErrorLog::formattedErrorLog($e->getMessage()), 3, LOG_FILE_PATH);
             throw new \PDOException($e->getMessage());
