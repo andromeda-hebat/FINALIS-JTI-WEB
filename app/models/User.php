@@ -9,8 +9,10 @@ class User extends Model
     public string $user_id;
     public string $nama_lengkap;
     public string $role;
+    private string $email;
     public string $password;
     public string $foto_profil;
+
 
     public function getUserId(): string { return $this->user_id; }
 

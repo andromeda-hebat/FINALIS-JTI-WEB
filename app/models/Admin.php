@@ -4,9 +4,10 @@ namespace App\Models;
 
 class Admin extends User
 {
-    private ?int $nomor = null;
+    private int $nomor;
     private string $jabatan;
     private string $email;
+
 
     public function getNomor(): int { return $this->nomor; }
 
@@ -16,7 +17,7 @@ class Admin extends User
 
     public function setJabatan(string $jabatan): void { $this->jabatan = $jabatan; }
 
-    public function getEmail(): string { return $this->jabatan; }
+    public function getEmail(): string { return $this->email; }
 
     public function setEmail(string $email): void { $this->email = $email; }
 }
