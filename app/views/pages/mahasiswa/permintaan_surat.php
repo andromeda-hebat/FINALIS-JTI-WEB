@@ -30,7 +30,10 @@
 
 
 
-<!-- Bootstrap Modal -->
+<?php ////////////////////// ?>
+<?php //--BOOTSTRAP MODAL--/ ?>
+<?php ////////////////////// ?>
+
 <div class="modal fade" id="pdfModal" tabindex="-1" aria-labelledby="pdfModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-xl">
         <div class="modal-content">
