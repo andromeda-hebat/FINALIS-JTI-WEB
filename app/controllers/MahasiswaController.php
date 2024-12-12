@@ -196,12 +196,23 @@ class MahasiswaController extends Controller
 
     public function viewPermintaanSurat(): void
     {
+        try {
+            $status_bebas_tanggungan = BerkasRepository::getStatusBebasTanggungan($_SESSION['user_id']);
+        } catch (\Exception $e) {
+            http_response_code(500);
+            echo json_encode([
+                "status" => "error",
+                "message" => "Database connectivity error!"
+            ]);
+            exit;
+        }
         $this->view("templates/header", [
             'title' => "Permintaan Surat",
             'css' => ["assets/css/sidebar"]
         ]);
         $this->view("pages/mahasiswa/permintaan_surat", [
             'active_page' => "permintaan-surat",
+            'info_berkas' => $status_bebas_tanggungan
         ]);
         $this->view("templates/footer");
     }
