@@ -3,7 +3,7 @@
 namespace App\Controllers;
 
 use App\Core\Controller;
-use App\Repository\AdminRepository;
+use App\Repository\{AdminRepository, MahasiswaRepository};
 
 class AdminJurusanController extends Controller
 {
@@ -19,6 +19,7 @@ class AdminJurusanController extends Controller
             ]);
             exit;
         }
+
         $this->view("templates/header", [
             'title' => "Kelola Admin",
             'css' => ["assets/css/sidebar"]
@@ -39,6 +40,7 @@ class AdminJurusanController extends Controller
         $this->view("pages/admin_jurusan/tambah_admin");
         $this->view("templates/footer");
     }
+
     public function viewEditAdmin(): void
     {
         $this->view("templates/header", [
@@ -51,11 +53,25 @@ class AdminJurusanController extends Controller
 
     public function viewKelolaMahasiswa(): void
     {
+        try {
+            $mhs_data = MahasiswaRepository::getAllDataMahasiswa();
+        } catch (\Exception $e) {
+            http_response_code(500);
+            echo json_encode([
+                "status" => "error",
+                "message" => "Database connectivity error!"
+            ]);
+            exit;
+        }
+
         $this->view("templates/header", [
             'title' => "Kelola Mahasiswa",
             'css' => ["assets/css/sidebar"]
         ]);
-        $this->view("pages/admin_jurusan/kelola_mahasiswa");
+        $this->view("pages/admin_jurusan/kelola_mahasiswa", [
+            'active_page' => "Kelola Mahasiswa",
+            'mhs_data' => $mhs_data
+        ]);
         $this->view("templates/footer");
     }
 
@@ -68,6 +84,7 @@ class AdminJurusanController extends Controller
         $this->view("pages/admin_jurusan/tambah_mahasiswa");
         $this->view("templates/footer");
     }
+
     public function viewEditMahasiswa(): void
     {
         $this->view("templates/header", [
@@ -97,6 +114,7 @@ class AdminJurusanController extends Controller
         $this->view("pages/admin_jurusan/tambah_surat");
         $this->view("templates/footer");
     }
+
     public function catatanAktivitas(): void
     {
         $this->view("templates/header", [
