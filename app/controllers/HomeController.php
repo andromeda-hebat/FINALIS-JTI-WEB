@@ -72,6 +72,7 @@ class HomeController extends Controller
                         'status_bebas_tanggungan' => $status_bebas_tanggungan->getStatusVerifikasi(),
                         'active_page' => 'dashboard'
                     ]);
+                    $this->view("templates/footer");
                     break;
             }
         } catch (\PDOException $e) {
