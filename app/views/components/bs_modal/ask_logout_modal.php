@@ -1,4 +1,3 @@
-<!-- Bootstrap Modal -->
 <div class="modal" tabindex="-1" id="modalConfirmationLogout">
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
