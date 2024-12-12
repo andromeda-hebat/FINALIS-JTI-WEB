@@ -5,7 +5,7 @@
         <main class="container px-5">
             <h3 class="mt-2 ms-1 fw-bold">Formulir Tugas Akhir</h2>
 
-            <div id="empty-form-content" class="mt-4" style="display: <?php echo (strcasecmp($_SESSION['status']['tugas_akhir'], 'kosong') == 0) ? 'block' : 'none'; ?>;">
+            <div id="empty-form-content" class="mt-4" style="display: <?php echo (strcasecmp($data['info_berkas']->getStatusVerifikasi(), 'kosong') == 0) ? 'block' : 'none'; ?>;">
                 <form id="tugas-akhir-form" action="/tugas-akhir" method="post" enctype="multipart/form-data">
                     <div class="card card-body px-4" style="box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);">
                         <p class="mt-4">Unggah berkas berikut untuk memverifikasi tugas akhir anda</p>
@@ -29,9 +29,9 @@
                     </div>
                 </form>
             </div>
-            <?php if (strcasecmp($_SESSION['status']['tugas_akhir'], "diajukan") == 0): ?>
+            <?php if (strcasecmp($data['info_berkas']->getStatusVerifikasi(), "diajukan") == 0): ?>
                 <?php include __DIR__ . '/../../components/mahasiswa/info_data_berhasil_dikirim.php' ?>
-            <?php elseif (strcasecmp($_SESSION['status']['tugas_akhir'], "disetujui") == 0): ?>
+            <?php elseif (strcasecmp($data['info_berkas']->getStatusVerifikasi(), "disetujui") == 0): ?>
                 <div id="body-content"
                     class="mt-4 card card-body d-flex flex-column justify-content-center align-items-center"
                     style="box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25); min-height: 75vh; max-height: 75vh;">
@@ -52,7 +52,7 @@
                         </defs>
                     </svg>
                 </div>
-            <?php elseif (strcasecmp($_SESSION['status']['tugas_akhir'], "ditolak") == 0): ?>
+            <?php elseif (strcasecmp($data['info_berkas']->getStatusVerifikasi(), "ditolak") == 0): ?>
                 <?php include __DIR__ . '/../../components/mahasiswa/info_data_ditolak.php' ?>
             <?php endif; ?>
         </main>

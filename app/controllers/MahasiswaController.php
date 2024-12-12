@@ -11,12 +11,24 @@ class MahasiswaController extends Controller
 {
     public function viewTugasAkhir(): void
     {
+        try {
+            $status_ta = BerkasTARepository::getStatusBerkasTA($_SESSION['user_id']);
+        } catch (\Exception $e) {
+            http_response_code(500);
+            echo json_encode([
+                "status" => "error",
+                "message" => "Database connectivity error!"
+            ]);
+            exit;
+        }
+
         $this->view("templates/header", [
             'title' => "Tugas Akhir",
             'css' => ["assets/css/sidebar"]
         ]);
         $this->view("pages/mahasiswa/tugas_akhir", [
-            'active_page' => "tugas-akhir"
+            'active_page' => "tugas-akhir",
+            'info_berkas' => $status_ta
         ]);
         $this->view("templates/footer");
     }
@@ -79,12 +91,24 @@ class MahasiswaController extends Controller
 
     public function viewAdministrasiProdi(): void
     {
+        try {
+            $status_prodi = BerkasProdiRepository::getStatusBerkasProdi($_SESSION['user_id']);
+        } catch (\Exception $e) {
+            http_response_code(500);
+            echo json_encode([
+                "status" => "error",
+                "message" => "Database connectivity error!"
+            ]);
+            exit;
+        }
+
         $this->view("templates/header", [
             'title' => "Administrasi Prodi",
             'css' => ["assets/css/sidebar"]
         ]);
         $this->view("pages/mahasiswa/administrasi_prodi", [
-            'active_page' => "administrasi-prodi"
+            'active_page' => "administrasi-prodi",
+            'info_berkas' => $status_prodi
         ]);
         $this->view("templates/footer");
     }
