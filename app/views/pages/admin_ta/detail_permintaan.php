@@ -1,9 +1,9 @@
 <div class="d-flex">
     <!-- Sidebar -->
     <?php include __DIR__ . '/../../components/admin_ta/sidebar.php' ?>
-    <div class="flex-grow-1">
+    <div class="position-top w-100" style="margin-left: 35vh;">
         <?php include __DIR__ . '/../../components/general/topbar.php' ?>
-        <main class="halaman mx-5 px-5">
+        <main class="halaman mx-5 " style="min-height:100vh; margin-top:15vh;">
             <section class="mt-2">
                 <div class="d-flex w-100 align-items-center ">
                     <a href="/permintaan-verifikasi-ta">

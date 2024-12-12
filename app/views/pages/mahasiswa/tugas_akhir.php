@@ -1,8 +1,8 @@
 <div class="d-flex">
     <?php include __DIR__ . '/../../components/mahasiswa/sidebar.php' ?>
-    <div class="w-100 position-relative">
+    <div class="position-top w-100" style="margin-left: 35vh;">
         <?php include __DIR__ . '/../../components/general/topbar.php' ?>
-        <main class="container px-5">
+        <main class="halaman mx-5 " style="min-height:100vh; margin-top:15vh;">
             <h3 class="mt-2 ms-1 fw-bold">Formulir Tugas Akhir</h2>
 
             <div id="empty-form-content" class="mt-4" style="display: <?php echo (strcasecmp($_SESSION['status']['tugas_akhir'], 'kosong') == 0) ? 'block' : 'none'; ?>;">

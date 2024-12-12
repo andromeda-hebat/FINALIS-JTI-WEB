@@ -1,11 +1,11 @@
 <div class="d-flex">
     <!-- Sidebar -->
     <?php include __DIR__ . '/../../components/admin_prodi/sidebar.php' ?>
-    <div class="flex-grow-1">
+    <div class="position-top w-100" style="margin-left: 35vh;">
 
         <?php include __DIR__ . '/../../components/general/topbar.php' ?>
 
-        <main class="halaman mx-5 px-5">
+        <main class="halaman mx-5 " style="min-height:100vh; margin-top:15vh;">
             <section class="mt-2">
 
                 <div class="d-flex w-100 align-items-center ">
@@ -32,94 +32,14 @@
 
 
                 <?php if ($data['user_file'] != false): ?>
-                <div class="card my-3 px-5 " style="box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);">
-                    <div class="card-body d-flex justify-content-between">
+                    <div class="card my-3 px-5 " style="box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);">
+                        <div class="card-body d-flex justify-content-between">
 
-                        <!-- div untuk informasi Mahasiswa -->
-                        <div class="me-5">
-                            <div class="d-flex">
-                                <h5 class="mb-0" style="color: #8D8D8D;">Informasi Mahasiswa</h5>
-                                <svg class="ms-2" width="20" height="20" viewBox="0 0 20 20" fill="none"
-                                    xmlns="http://www.w3.org/2000/svg">
-                                    <g clip-path="url(#clip0_570_1010)">
-                                        <path fill-rule="evenodd" clip-rule="evenodd"
-                                            d="M10 18.75C12.3206 18.75 14.5462 17.8281 16.1872 16.1872C17.8281 14.5462 18.75 12.3206 18.75 10C18.75 7.67936 17.8281 5.45376 16.1872 3.81282C14.5462 2.17187 12.3206 1.25 10 1.25C7.67936 1.25 5.45376 2.17187 3.81282 3.81282C2.17187 5.45376 1.25 7.67936 1.25 10C1.25 12.3206 2.17187 14.5462 3.81282 16.1872C5.45376 17.8281 7.67936 18.75 10 18.75ZM10 20C12.6522 20 15.1957 18.9464 17.0711 17.0711C18.9464 15.1957 20 12.6522 20 10C20 7.34784 18.9464 4.8043 17.0711 2.92893C15.1957 1.05357 12.6522 0 10 0C7.34784 0 4.8043 1.05357 2.92893 2.92893C1.05357 4.8043 0 7.34784 0 10C0 12.6522 1.05357 15.1957 2.92893 17.0711C4.8043 18.9464 7.34784 20 10 20Z"
-                                            fill="#8D8D8D" />
-                                        <path
-                                            d="M11.1624 8.23486L8.29994 8.59361L8.19744 9.06861L8.75994 9.17236C9.12744 9.25986 9.19994 9.39236 9.11994 9.75861L8.19744 14.0936C7.95494 15.2149 8.32869 15.7424 9.20744 15.7424C9.88869 15.7424 10.6799 15.4274 11.0387 14.9949L11.1487 14.4749C10.8987 14.6949 10.5337 14.7824 10.2912 14.7824C9.94744 14.7824 9.82244 14.5411 9.91119 14.1161L11.1624 8.23486Z"
-                                            fill="#8D8D8D" />
-                                        <path
-                                            d="M10 6.875C10.6904 6.875 11.25 6.31536 11.25 5.625C11.25 4.93464 10.6904 4.375 10 4.375C9.30964 4.375 8.75 4.93464 8.75 5.625C8.75 6.31536 9.30964 6.875 10 6.875Z"
-                                            fill="#8D8D8D" />
-                                    </g>
-                                    <defs>
-                                        <clipPath id="clip0_570_1010">
-                                            <rect width="20" height="20" fill="white" />
-                                        </clipPath>
-                                    </defs>
-                                </svg>
-                            </div>
-
-                            <div class="d-flex align-items-center mb-0 mt-2">
-                                <img src="assets/img/foto.jpg" alt="Profil" class="rounded-circle"
-                                    style="width: 30px; height: 30px; background-color: #ddd;">
-                                <div class="ms-3">
-                                    <p class="my-0"><?= $data['user_file']->getNamaLengkap() ?></p>
-                                    <p class="my-0">NIM <span><?= $data['user_file']->getNim() ?></span></p>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- div untuk infomarmasi Permintaan -->
-                        <div class="me-5">
-                            <div class="d-flex">
-                                <h5 style="color: #8D8D8D;">Informasi Permintaan</h5>
-                                <svg class="ms-2" width="20" height="20" viewBox="0 0 20 20" fill="none"
-                                    xmlns="http://www.w3.org/2000/svg">
-                                    <g clip-path="url(#clip0_570_1010)">
-                                        <path fill-rule="evenodd" clip-rule="evenodd"
-                                            d="M10 18.75C12.3206 18.75 14.5462 17.8281 16.1872 16.1872C17.8281 14.5462 18.75 12.3206 18.75 10C18.75 7.67936 17.8281 5.45376 16.1872 3.81282C14.5462 2.17187 12.3206 1.25 10 1.25C7.67936 1.25 5.45376 2.17187 3.81282 3.81282C2.17187 5.45376 1.25 7.67936 1.25 10C1.25 12.3206 2.17187 14.5462 3.81282 16.1872C5.45376 17.8281 7.67936 18.75 10 18.75ZM10 20C12.6522 20 15.1957 18.9464 17.0711 17.0711C18.9464 15.1957 20 12.6522 20 10C20 7.34784 18.9464 4.8043 17.0711 2.92893C15.1957 1.05357 12.6522 0 10 0C7.34784 0 4.8043 1.05357 2.92893 2.92893C1.05357 4.8043 0 7.34784 0 10C0 12.6522 1.05357 15.1957 2.92893 17.0711C4.8043 18.9464 7.34784 20 10 20Z"
-                                            fill="#8D8D8D" />
-                                        <path
-                                            d="M11.1624 8.23486L8.29994 8.59361L8.19744 9.06861L8.75994 9.17236C9.12744 9.25986 9.19994 9.39236 9.11994 9.75861L8.19744 14.0936C7.95494 15.2149 8.32869 15.7424 9.20744 15.7424C9.88869 15.7424 10.6799 15.4274 11.0387 14.9949L11.1487 14.4749C10.8987 14.6949 10.5337 14.7824 10.2912 14.7824C9.94744 14.7824 9.82244 14.5411 9.91119 14.1161L11.1624 8.23486Z"
-                                            fill="#8D8D8D" />
-                                        <path
-                                            d="M10 6.875C10.6904 6.875 11.25 6.31536 11.25 5.625C11.25 4.93464 10.6904 4.375 10 4.375C9.30964 4.375 8.75 4.93464 8.75 5.625C8.75 6.31536 9.30964 6.875 10 6.875Z"
-                                            fill="#8D8D8D" />
-                                    </g>
-                                    <defs>
-                                        <clipPath id="clip0_570_1010">
-                                            <rect width="20" height="20" fill="white" />
-                                        </clipPath>
-                                    </defs>
-                                </svg>
-                            </div>
-                            <div class="d-flex mb-0 mt-2">
-                                <div class="me-5">
-                                    <p class="my-0" style="color: #8D8D8D;">Jenis</p>
-                                    <p class="my-0">Administrasi Prodi</p>
-                                </div>
-                                <div class="mx-5">
-                                    <p class="my-0" style="color: #8D8D8D;">ID</p>
-                                    <p class="my-0"><?= $data['user_file']->getIdVerifikasi() ?></p>
-                                </div>
-                                <div class="ms-5">
-                                    <p class="my-0" style="color: #8D8D8D;">Status</p>
-                                    <p class="my-0"><?= $data['user_file']->getStatusVerifikasi() ?></p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- card ke dua -->
-                <div class="card mt-2 px-5 py-2 " style="box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);">
-                    <div class="card-body row">
-                        <!-- kiri  -->
-                        <div class="col">
-                            <div class="d-flex align-items-center">
-                                <h5 class="me-1 my-0">Detail Informasi</h4>
-                                    <svg class="ms-1" width="20" height="20" viewBox="0 0 20 20" fill="none"
+                            <!-- div untuk informasi Mahasiswa -->
+                            <div class="me-5">
+                                <div class="d-flex">
+                                    <h5 class="mb-0" style="color: #8D8D8D;">Informasi Mahasiswa</h5>
+                                    <svg class="ms-2" width="20" height="20" viewBox="0 0 20 20" fill="none"
                                         xmlns="http://www.w3.org/2000/svg">
                                         <g clip-path="url(#clip0_570_1010)">
                                             <path fill-rule="evenodd" clip-rule="evenodd"
@@ -138,49 +58,135 @@
                                             </clipPath>
                                         </defs>
                                     </svg>
+                                </div>
+
+                                <div class="d-flex align-items-center mb-0 mt-2">
+                                    <img src="assets/img/foto.jpg" alt="Profil" class="rounded-circle"
+                                        style="width: 30px; height: 30px; background-color: #ddd;">
+                                    <div class="ms-3">
+                                        <p class="my-0"><?= $data['user_file']->getNamaLengkap() ?></p>
+                                        <p class="my-0">NIM <span><?= $data['user_file']->getNim() ?></span></p>
+                                    </div>
+                                </div>
                             </div>
 
-                            <p class="mt-3 mb-0">Distribusi Laporan Skripsi</p>
-                            <a href="/files/distribusilaporanskripsi.pdf"
-                                class="text-dark">distribusilaporanskripsi.pdf</a>
-                            <p class="mt-3 mb-0">Distribusi Laporan Magang</p>
-                            <a href="/files/distribusilaporanmagang.pdf"
-                                class="text-dark">distribusilaporanmagang.pdf</a>
-                            <p class="mt-3 mb-0">Distribusi Laporan Kompensasi</p>
-                            <a href="/files/buktibebaskompensasi.pdf"
-                                class=" text-dark">distribusilaporankompensasi.pdf</a>
-                            <p class="mt-3 mb-0">Sertifikat TOEIC</p>
-                            <a href="/files/sertifikattoeic.pdf" class=" text-dark">sertifikattoeic.pdf</a>
+                            <!-- div untuk infomarmasi Permintaan -->
+                            <div class="me-5">
+                                <div class="d-flex">
+                                    <h5 style="color: #8D8D8D;">Informasi Permintaan</h5>
+                                    <svg class="ms-2" width="20" height="20" viewBox="0 0 20 20" fill="none"
+                                        xmlns="http://www.w3.org/2000/svg">
+                                        <g clip-path="url(#clip0_570_1010)">
+                                            <path fill-rule="evenodd" clip-rule="evenodd"
+                                                d="M10 18.75C12.3206 18.75 14.5462 17.8281 16.1872 16.1872C17.8281 14.5462 18.75 12.3206 18.75 10C18.75 7.67936 17.8281 5.45376 16.1872 3.81282C14.5462 2.17187 12.3206 1.25 10 1.25C7.67936 1.25 5.45376 2.17187 3.81282 3.81282C2.17187 5.45376 1.25 7.67936 1.25 10C1.25 12.3206 2.17187 14.5462 3.81282 16.1872C5.45376 17.8281 7.67936 18.75 10 18.75ZM10 20C12.6522 20 15.1957 18.9464 17.0711 17.0711C18.9464 15.1957 20 12.6522 20 10C20 7.34784 18.9464 4.8043 17.0711 2.92893C15.1957 1.05357 12.6522 0 10 0C7.34784 0 4.8043 1.05357 2.92893 2.92893C1.05357 4.8043 0 7.34784 0 10C0 12.6522 1.05357 15.1957 2.92893 17.0711C4.8043 18.9464 7.34784 20 10 20Z"
+                                                fill="#8D8D8D" />
+                                            <path
+                                                d="M11.1624 8.23486L8.29994 8.59361L8.19744 9.06861L8.75994 9.17236C9.12744 9.25986 9.19994 9.39236 9.11994 9.75861L8.19744 14.0936C7.95494 15.2149 8.32869 15.7424 9.20744 15.7424C9.88869 15.7424 10.6799 15.4274 11.0387 14.9949L11.1487 14.4749C10.8987 14.6949 10.5337 14.7824 10.2912 14.7824C9.94744 14.7824 9.82244 14.5411 9.91119 14.1161L11.1624 8.23486Z"
+                                                fill="#8D8D8D" />
+                                            <path
+                                                d="M10 6.875C10.6904 6.875 11.25 6.31536 11.25 5.625C11.25 4.93464 10.6904 4.375 10 4.375C9.30964 4.375 8.75 4.93464 8.75 5.625C8.75 6.31536 9.30964 6.875 10 6.875Z"
+                                                fill="#8D8D8D" />
+                                        </g>
+                                        <defs>
+                                            <clipPath id="clip0_570_1010">
+                                                <rect width="20" height="20" fill="white" />
+                                            </clipPath>
+                                        </defs>
+                                    </svg>
+                                </div>
+                                <div class="d-flex mb-0 mt-2">
+                                    <div class="me-5">
+                                        <p class="my-0" style="color: #8D8D8D;">Jenis</p>
+                                        <p class="my-0">Administrasi Prodi</p>
+                                    </div>
+                                    <div class="mx-5">
+                                        <p class="my-0" style="color: #8D8D8D;">ID</p>
+                                        <p class="my-0"><?= $data['user_file']->getIdVerifikasi() ?></p>
+                                    </div>
+                                    <div class="ms-5">
+                                        <p class="my-0" style="color: #8D8D8D;">Status</p>
+                                        <p class="my-0"><?= $data['user_file']->getStatusVerifikasi() ?></p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- card ke dua -->
+                    <div class="card mt-2 px-5 py-2 " style="box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);">
+                        <div class="card-body row">
+                            <!-- kiri  -->
+                            <div class="col">
+                                <div class="d-flex align-items-center">
+                                    <h5 class="me-1 my-0">Detail Informasi</h4>
+                                        <svg class="ms-1" width="20" height="20" viewBox="0 0 20 20" fill="none"
+                                            xmlns="http://www.w3.org/2000/svg">
+                                            <g clip-path="url(#clip0_570_1010)">
+                                                <path fill-rule="evenodd" clip-rule="evenodd"
+                                                    d="M10 18.75C12.3206 18.75 14.5462 17.8281 16.1872 16.1872C17.8281 14.5462 18.75 12.3206 18.75 10C18.75 7.67936 17.8281 5.45376 16.1872 3.81282C14.5462 2.17187 12.3206 1.25 10 1.25C7.67936 1.25 5.45376 2.17187 3.81282 3.81282C2.17187 5.45376 1.25 7.67936 1.25 10C1.25 12.3206 2.17187 14.5462 3.81282 16.1872C5.45376 17.8281 7.67936 18.75 10 18.75ZM10 20C12.6522 20 15.1957 18.9464 17.0711 17.0711C18.9464 15.1957 20 12.6522 20 10C20 7.34784 18.9464 4.8043 17.0711 2.92893C15.1957 1.05357 12.6522 0 10 0C7.34784 0 4.8043 1.05357 2.92893 2.92893C1.05357 4.8043 0 7.34784 0 10C0 12.6522 1.05357 15.1957 2.92893 17.0711C4.8043 18.9464 7.34784 20 10 20Z"
+                                                    fill="#8D8D8D" />
+                                                <path
+                                                    d="M11.1624 8.23486L8.29994 8.59361L8.19744 9.06861L8.75994 9.17236C9.12744 9.25986 9.19994 9.39236 9.11994 9.75861L8.19744 14.0936C7.95494 15.2149 8.32869 15.7424 9.20744 15.7424C9.88869 15.7424 10.6799 15.4274 11.0387 14.9949L11.1487 14.4749C10.8987 14.6949 10.5337 14.7824 10.2912 14.7824C9.94744 14.7824 9.82244 14.5411 9.91119 14.1161L11.1624 8.23486Z"
+                                                    fill="#8D8D8D" />
+                                                <path
+                                                    d="M10 6.875C10.6904 6.875 11.25 6.31536 11.25 5.625C11.25 4.93464 10.6904 4.375 10 4.375C9.30964 4.375 8.75 4.93464 8.75 5.625C8.75 6.31536 9.30964 6.875 10 6.875Z"
+                                                    fill="#8D8D8D" />
+                                            </g>
+                                            <defs>
+                                                <clipPath id="clip0_570_1010">
+                                                    <rect width="20" height="20" fill="white" />
+                                                </clipPath>
+                                            </defs>
+                                        </svg>
+                                </div>
+
+                                <p class="mt-3 mb-0">Distribusi Laporan Skripsi</p>
+                                <a href="/files/distribusilaporanskripsi.pdf"
+                                    class="text-dark">distribusilaporanskripsi.pdf</a>
+                                <p class="mt-3 mb-0">Distribusi Laporan Magang</p>
+                                <a href="/files/distribusilaporanmagang.pdf"
+                                    class="text-dark">distribusilaporanmagang.pdf</a>
+                                <p class="mt-3 mb-0">Distribusi Laporan Kompensasi</p>
+                                <a href="/files/buktibebaskompensasi.pdf"
+                                    class=" text-dark">distribusilaporankompensasi.pdf</a>
+                                <p class="mt-3 mb-0">Sertifikat TOEIC</p>
+                                <a href="/files/sertifikattoeic.pdf" class=" text-dark">sertifikattoeic.pdf</a>
+                            </div>
+
+                            <!-- kanan -->
+                            <form id="form-verify"
+                                action="/permintaan-verifikasi-prodi/detail/<?= $data['user_file']->getIdVerifikasi() ?>"
+                                method="PATCH" class="col w-100">
+                                <h5 clas="my-0">Proses Verifikasi</h5>
+                                <p>Staff Administrasi Prodi</p>
+                                <input type="hidden" name="id_berkas" value="<?= $data['user_file']->getIdBerkas() ?>">
+                                <div class="d-flex mb-3">
+                                    <div class="d-flex me-3 ms-3">
+                                        <input type="radio" name="is_verified" value="true" id="verify">
+                                        <label for="verify">Verifikasi</label>
+                                    </div>
+                                    <div class="d-flex ms-3">
+                                        <input type="radio" name="is_verified" value="false" id="reject">
+                                        <label for="reject">Tolak</label>
+                                    </div>
+                                </div>
+                                <textarea name="description" id="description"
+                                    placeholder="Tambahkan keterangan kepada pihak mahasiswa"
+                                    style="resize: none; min-width: 80%; min-height: 60%"></textarea>
+                            </form>
                         </div>
 
-                        <!-- kanan -->
-                        <form id="form-verify" action="/permintaan-verifikasi-prodi/detail/<?= $data['user_file']->getIdVerifikasi() ?>" method="PATCH" class="col">
-                            <h5 clas="my-0">Proses Verifikasi</h5>
-                            <p>Staff Administrasi Prodi</p>
-                            <input type="hidden" name="id_berkas" value="<?= $data['user_file']->getIdBerkas() ?>">
-                            <div class="d-flex mb-3">
-                                <div class="d-flex me-3 ms-3">
-                                    <input type="radio" name="is_verified" value="true" id="verify">
-                                    <label for="verify">Verifikasi</label>
-                                </div>
-                                <div class="d-flex ms-3">
-                                    <input type="radio" name="is_verified" value="false" id="reject">
-                                    <label for="reject">Tolak</label>
-                                </div>
-                            </div>
-                            <textarea name="description" id="description"
-                                    placeholder="Tambahkan keterangan kepada pihak mahasiswa" style="resize: none; min-width: 80%; min-height: 60%"></textarea>
-                            <div class="d-flex justify-content-end">
-                                <button type="submit" value="Kirim" id="submitBtn" class="px-4 text-white mt-3"
-                                    style="background-color: var(--color-navy-blue);" data-bs-toggle="modal"
-                                    data-bs-target="#statusModal">Kirim</button>
-                            </div>
-                        </form>
                     </div>
-                </div>
-                
+                    <div class="d-flex justify-content-end">
+                        <button type="submit" value="Kirim" id="submitBtn" class="px-4 text-white mt-3"
+                            style="background-color: var(--color-navy-blue);" data-bs-toggle="modal"
+                            data-bs-target="#info-success-update-modal">Kirim</button>
+                    </div>
+
+
                 <?php else: ?>
-                    <div class="card justify-content-center align-items-center" style="min-height: 60vh; box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);">
+                    <div class="card justify-content-center align-items-center"
+                        style="min-height: 60vh; box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);">
                         <h1>Data tidak bisa ditemukan!</h1>
                     </div>
                 <?php endif; ?>

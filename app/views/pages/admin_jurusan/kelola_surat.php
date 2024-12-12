@@ -1,16 +1,16 @@
 <main class="d-flex">
     <!-- Sidebar -->
     <?php include __DIR__ . '/../../components/admin_jurusan/sidebar.php' ?>
-    <div class="flex-grow-1">
+    <div class="position-top w-100" style="margin-left: 35vh;">
 
         <?php include __DIR__ . '/../../components/general/topbar.php' ?>
 
-        <div class="halaman mx-5 ">
+        <div class="halaman mx-5 " style="min-height:100vh; margin-top:15vh;">
             <div class="d-flex w-100 justify-content-start mt-3">
                 <h3 class="fw-bold" style="color: var(--color-navy-blue);">Daftar Template Surat</h3>
             </div>
             <div class="mt-3 d-flex justify-content-start w-100 align-items-center">
-                
+
                 <div style="background-color: var(--color-navy-blue);">
                     <a href="/tambah-surat" class="text-decoration-none">
                         <div class="d-flex align-items-center mx-2 my-2">
@@ -51,8 +51,8 @@
                             <td>Formulir Tugas Akhir</td>
                             <td>SPP.pdf</td>
                             <td class="text-center">
-                                <button type="button" value="hapus" id="submitBtn" class="btn btn-primary" data-bs-toggle="modal"
-                                    data-bs-target="#statusModal">Hapus</button>
+                                <button type="button" value="hapus" id="submitBtn" class="btn btn-primary"
+                                    data-bs-toggle="modal" data-bs-target="#statusModal">Hapus</button>
                             </td>
                         </tr>
                     </tbody>
@@ -74,10 +74,12 @@
                 <h6>Apakah anda yakin ingin menghapus data template surat ini ?</h6>
             </div>
             <div class="modal-footer">
-                <button type="button" style="color: var(--color-navy-blue); border-color: var(--color-navy-blue); background-color: white"
+                <button type="button"
+                    style="color: var(--color-navy-blue); border-color: var(--color-navy-blue); background-color: white"
                     data-bs-dismiss="modal">Batal</button>
                 <a href="/kelola-surat">
-                    <button type="button" class="text-white" style="background-color: var(--color-navy-blue);">Hapus</button>
+                    <button type="button" class="text-white"
+                        style="background-color: var(--color-navy-blue);">Hapus</button>
                 </a>
 
             </div>

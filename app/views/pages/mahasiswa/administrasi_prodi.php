@@ -1,25 +1,31 @@
 <div class="d-flex">
     <?php include __DIR__ . '/../../components/mahasiswa/sidebar.php' ?>
-    <div class="w-100 position-relative">
+    <div class="position-top w-100" style="margin-left: 35vh;">
+
         <?php include __DIR__ . '/../../components/general/topbar.php' ?>
-        <main class="container px-5">
+        <main class="halaman mx-5 " style="min-height:100vh; margin-top:15vh;">
             <h3 class="mt-2 ms-1 fw-bold">Formulir Administrasi Prodi</h3>
 
-            <div id="empty-form-content" class="mt-4" style="display: <?php echo (strcasecmp($_SESSION['status']['administrasi_prodi'], 'kosong') == 0) ? 'block' : 'none'; ?>;">
-                <form id="administrasi-prodi-form" action="/administrasi-prodi" method="post" enctype="multipart/form-data">
+            <div id="empty-form-content" class="mt-4"
+                style="display: <?php echo (strcasecmp($_SESSION['status']['administrasi_prodi'], 'kosong') == 0) ? 'block' : 'none'; ?>;">
+                <form id="administrasi-prodi-form" action="/administrasi-prodi" method="post"
+                    enctype="multipart/form-data">
                     <div class="card card-body" style="box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);">
                         <p class="mt-3">Upload berkas berikut untuk memverifikasi tanggungan prodi anda</p>
                         <label for="skripsi" class="form-label mb-0">Distribusi Laporan Skripsi</label>
                         <p class="mb-0" style="color:#7C7C7C ;">(File scan PDF)</p>
-                        <input type="file" name="distribusi_tugas_akhir" accept=".pdf" id="input-laporan-ta" class="form-control w-50">
+                        <input type="file" name="distribusi_tugas_akhir" accept=".pdf" id="input-laporan-ta"
+                            class="form-control w-50">
                         <br>
-                            <label for="magang" class="form-label mb-0">Distribusi Laporan Magang</label>
+                        <label for="magang" class="form-label mb-0">Distribusi Laporan Magang</label>
                         <p class="mb-0" style="color: #7C7C7C;">(File scan PDF).</p>
-                        <input type="file" name="distribusi_magang" accept=".pdf" id="input-laporan-magang" class="form-control w-50">
+                        <input type="file" name="distribusi_magang" accept=".pdf" id="input-laporan-magang"
+                            class="form-control w-50">
                         <br>
                         <label for="kompen" class="form-label mb-0">Surat Bebas Kompen</label>
                         <p class="mb-0" style="color: #7C7C7C;">(File scan PDF)</p>
-                        <input type="file" name="bebas_kompen" accept=".pdf" id="input-bebas-kompen" class="form-control w-50">
+                        <input type="file" name="bebas_kompen" accept=".pdf" id="input-bebas-kompen"
+                            class="form-control w-50">
                         <br>
                         <label for="toeic" class="form-label mb-0">Sertifikat TOEIC</label>
                         <p class="mb-0" style="color: #7C7C7C;">(File scan PDF)</p>
