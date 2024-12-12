@@ -58,7 +58,6 @@ class HomeController extends Controller
                     break;
                 case 'Admin Jurusan':
                     $this->view("templates/header", $data);
-                    $viewPage = "pages/admin_jurusan/dashboard";
                     $this->view("pages/admin_jurusan/dashboard");
                     $this->view("templates/footer");
                     break;
