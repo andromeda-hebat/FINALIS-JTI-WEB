@@ -52,8 +52,6 @@
 
                     </a>
                 </div>
-
-
             </div>
 
             <div class="mt-3 w-100 border rounded shadow">
@@ -61,24 +59,32 @@
                     <thead>
                         <tr>
                             <th>No.</th>
-                            <th>Nama Lengkap</th>
                             <th>NIM</th>
+                            <th>Nama Lengkap</th>
                             <th>Email</th>
-                            <th class="text-center">Aksi</th>
+                            <th>Jurusan</th>
+                            <th>Prodi</th>
+                            <th>Tahun Masuk</th>
+                            <th>Aksi</th>
                         </tr>
                     </thead>
                     <tbody>
+                        <?php foreach ($data['mhs_data'] as $key => $value): ?>
                         <tr>
-                            <td>1</td>
-                            <td>Stevan Zaky S.</td>
-                            <td>2341720501</td>
-                            <td>sesaff@gmail.com</td>
+                            <td><?= $value->getNomor() ?></td>
+                            <td><?= $value->getUserId() ?></td>
+                            <td><?= $value->getNamaLengkap() ?></td>
+                            <td><?= $value->getEmail() ?></td>
+                            <td><?= $value->getJurusan() ?></td>
+                            <td><?= $value->getProdi() ?></td>
+                            <td><?= $value->getTahunMasuk() ?></td>
                             <td class="text-center">
                                 <a href="/edit-mahasiswa" class="btn btn-primary">Edit</a>
                                 <button type="button" value="hapus" id="submitBtn" class="btn btn-primary" data-bs-toggle="modal"
                                     data-bs-target="#statusModal">Hapus</button>
                             </td>
                         </tr>
+                        <?php endforeach; ?>
                     </tbody>
                 </table>
 
