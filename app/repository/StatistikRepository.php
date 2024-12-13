@@ -13,20 +13,12 @@ class StatistikRepository
             $stmt = Database::getConnection()->prepare(<<<SQL
                 SELECT 
                     COUNT(*) AS total_pengajuan,
-                    (
-                        SELECT COUNT(*) AS total_pengajuan_TA
-                        FROM VER.VerifikasiBerkas
-                        WHERE status_verifikasi = 'Disetujui'
-                    ) AS total_disetujui,
-                    (
-                        SELECT COUNT(*) AS total_pengajuan_TA
-                        FROM VER.VerifikasiBerkas
-                        WHERE status_verifikasi = 'Ditolak'
-                    ) AS total_ditolak
+                    COUNT(CASE WHEN status_verifikasi = 'Disetujui' THEN 1 END) AS total_disetujui,
+                    COUNT(CASE WHEN status_verifikasi = 'Ditolak' THEN 1 END) AS total_ditolak
                 FROM VER.VerifikasiBerkas
-                WHERE jenis_berkas = ?
+                WHERE jenis_berkas = :jenis_berkas;
                 SQL);
-            $stmt->bindValue(1, $jenis_berkas, \PDO::PARAM_STR);
+            $stmt->bindValue('jenis_berkas', $jenis_berkas, \PDO::PARAM_STR);
             $stmt->execute();
             return $stmt->fetch();
         } catch (\PDOException $e) {
