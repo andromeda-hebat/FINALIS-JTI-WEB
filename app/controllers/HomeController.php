@@ -3,7 +3,7 @@
 namespace App\Controllers;
 
 use App\Core\Controller;
-use App\Repository\{BerkasRepository, BerkasProdiRepository, BerkasTARepository};
+use App\Repository\{BerkasRepository, BerkasProdiRepository, BerkasTARepository, StatistikRepository};
 
 class HomeController extends Controller
 {
@@ -48,9 +48,11 @@ class HomeController extends Controller
                     $this->view("templates/footer");
                     break;
                 case 'Admin TA':
+                    $statistic_request = StatistikRepository::getStatisticRequest('TA');
                     $all_req_verif = BerkasTARepository::getAllBerkasTAReq();
                     $this->view("templates/header", $data);
                     $this->view("pages/admin_ta/dashboard", [
+                        'statistic_request' => $statistic_request,
                         'all_req_verif' => $all_req_verif,
                         'active_page' => 'dashboard'
                     ]);
