@@ -145,7 +145,9 @@
                                         <td><?= $value->getNomor() ?></td>
                                         <td><?= $value->getNim() ?></td>
                                         <td><?= $value->getNamaLengkap() ?></td>
-                                        <td><?= $value->getStatusVerifikasi() ?></td>
+                                        <td>
+                                            <?php include __DIR__ . '/../../atoms/badge_' . strtolower($value->getStatusVerifikasi()) . '.php' ?>
+                                        </td>
                                         <td><?= $value->getTanggalRequest() ?></td>
                                         <td><?= $value->getKeteranganVerifikasi() ?></td>
                                         <td><a href="/permintaan-verifikasi-prodi/detail/<?= $value->getIdVerifikasi() ?>"
