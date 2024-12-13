@@ -76,7 +76,7 @@
                         </svg>
 
                         <div class="ms-1">
-                            <p class="mb-0">Verifikasi</p>
+                            <p class="mb-0">Disetujui</p>
                             <h6 class="fw-bold"><?= $data['statistic_request']['total_disetujui'] ?></h6>
                         </div>
                     </div>
