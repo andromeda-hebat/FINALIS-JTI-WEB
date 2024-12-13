@@ -39,9 +39,11 @@ class HomeController extends Controller
         try { 
             switch ($_SESSION['role']) {
                 case 'Admin Prodi':
+                    $statistic_request = StatistikRepository::getStatisticRequest('Prodi');
                     $all_req_verif = BerkasProdiRepository::getAllBerkasProdiReq();
                     $this->view("templates/header", $data);
                     $this->view("pages/admin_prodi/dashboard", [
+                        'statistic_request' => $statistic_request,
                         'all_req_verif' => $all_req_verif,
                         'active_page' => 'dashboard'
                     ]);

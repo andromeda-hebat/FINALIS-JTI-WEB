@@ -1,15 +1,12 @@
-<main class="d-flex">
-    <!-- Sidebar -->
+<div class="d-flex">
     <?php include __DIR__ . '/../../components/admin_prodi/sidebar.php' ?>
     <div class="position-top w-100" style="margin-left: 35vh;">
-
         <?php include __DIR__ . '/../../components/general/topbar.php' ?>
-        <div class="halaman mx-5 " style="min-height:100vh; margin-top:15vh;">
-            <!-- div informasi -->
+        <main class="halaman mx-5 " style="min-height:100vh; margin-top:15vh;">
+            
             <section>
-                <!-- div judul Informasi -->
                 <div class="d-flex w-100 justify-content-between mt-3">
-                    <h2>Dashboard</h2>
+                    <h3 class="fw-bold">Dashboard</h3>
                     <div class="d-flex">
                         <?php
                             $formatter = new IntlDateFormatter('id_ID', IntlDateFormatter::LONG, IntlDateFormatter::NONE);
@@ -34,7 +31,7 @@
 
                     </div>
                 </div>
-                <!-- div isi Informasi -->
+
                 <div class="d-flex border w-100 justify-content-around rounded shadow"
                     style="background-color: #E4EEFF;">
                     <div class="d-flex w-15 m-2 d-flex align-items-center" style="color: #052C65;">
@@ -56,7 +53,7 @@
                         </svg>
                         <div class="ms-1">
                             <p class="mb-0">Permintaan</p>
-                            <h6 class="fw-bold">175</h6>
+                            <h6 class="fw-bold"><?= $data['statistic_request']['total_pengajuan'] ?></h6>
                         </div>
                     </div>
 
@@ -79,8 +76,8 @@
                         </svg>
 
                         <div class="ms-1">
-                            <p class="mb-0">Verifikasi</p>
-                            <h6 class="fw-bold">75</h6>
+                            <p class="mb-0">Disetujui</p>
+                            <h6 class="fw-bold"><?= $data['statistic_request']['total_disetujui'] ?></h6>
                         </div>
                     </div>
 
@@ -103,15 +100,13 @@
 
                         <div class="ms-1">
                             <p class="mb-0">Ditolak</p>
-                            <h6 class="fw-bold">75</h6>
+                            <h6 class="fw-bold"><?= $data['statistic_request']['total_ditolak'] ?></h6>
                         </div>
                     </div>
                 </div>
             </section>
 
-            <!-- div bagian tabel -->
             <section class="mt-5">
-                <!-- div judul tabel -->
                 <div class="">
                     <div class="d-flex w-100 ">
                         <svg class="me-1" width="24" height="24" viewBox="0 0 24 24" fill="none"
@@ -133,7 +128,6 @@
                         <h5 class="ms-1">Permintaan Terbaru</h5>
                     </div>
 
-                    <!-- div kotak tabel -->
                     <div class="w-100 border rounded shadow">
                         <table class="table">
                             <thead class="table">
@@ -163,6 +157,6 @@
                     </div>
             </section>
 
-        </div>
+        </main>
     </div>
-</main>
+</div>
