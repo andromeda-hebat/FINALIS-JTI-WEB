@@ -1,16 +1,12 @@
-<main class="d-flex">
-    <!-- Sidebar -->
+<div class="d-flex">
     <?php include __DIR__ . '/../../components/admin_jurusan/sidebar.php' ?>
     <div class="position-top w-100" style="margin-left: 35vh;">
-
         <?php include __DIR__ . '/../../components/general/topbar.php' ?>
+        <main class="halaman mx-5 " style="min-height:100vh; margin-top:15vh;">
 
-        <div class="halaman mx-5 " style="min-height:100vh; margin-top:15vh;">
-            <!-- div informasi -->
             <section>
-                <!-- div judul Informasi -->
                 <div class="d-flex w-100 justify-content-between mt-3">
-                    <h2>Dashboard</h2>
+                    <h2 class="fw-bold">Dashboard</h2>
                     <div class="d-flex">
                         <?php
                         $formatter = new IntlDateFormatter('id_ID', IntlDateFormatter::LONG, IntlDateFormatter::NONE);
@@ -35,7 +31,6 @@
                             </svg>
                     </div>
                 </div>
-                <!-- div isi Informasi -->
                 <div class="d-flex border w-100 justify-content-around rounded shadow"
                     style="background-color: #E4EEFF;">
                     <div class="w-15 m-2 d-flex align-items-center d-flex" style="color: #052C65;">
@@ -61,9 +56,7 @@
                 </div>
             </section>
 
-            <!-- div bagian tabel -->
             <section class="mt-5">
-                <!-- div judul tabel -->
                 <div class="">
                     <div class="d-flex w-100 ">
                         <svg class="me-1" width="24" height="24" viewBox="0 0 24 24" fill="none"
@@ -85,7 +78,6 @@
                         <h5 class="ms-1">Permintaan Terbaru</h5>
                     </div>
 
-                    <!-- div kotak tabel -->
                     <div class="w-100 border rounded shadow">
                         <table class="table">
                             <thead class="table">
@@ -103,6 +95,6 @@
                     </div>
             </section>
 
-        </div>
+        </main>
     </div>
-</main>
+</div>
