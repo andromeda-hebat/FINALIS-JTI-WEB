@@ -7,7 +7,7 @@
                 <h3 class="mt-2 fw-bold">Permintaan Surat Bebas Tanggungan</h3>
                 <div class="card mt-3" style="height: 75vh; box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);">
                     <div class="card-body">
-                        <?php if (strcasecmp($data['info_berkas']->getStatusVerifikasi(), 'lunas') == 0): ?>
+                        <?php if (strcasecmp($data['info_berkas'], 'lunas') == 0): ?>
                         <p class="mt-5 text-center">Selamat! Anda berhasil melunasi tanggungan bebas tanggungan tugas akhir. </p>
                         <p class="text-center">Silakan unduh berkas bebas tanggungan tugas akhir berikut: </p>
                         <div class="d-flex justify-content-center">
