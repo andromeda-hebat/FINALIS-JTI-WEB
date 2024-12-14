@@ -3,7 +3,7 @@
 namespace App\Repository;
 
 use App\Core\Database;
-use App\Models\{StatusBerkas, BerkasProdi, VerifikasiBerkas};
+use App\Models\{StatusBerkas, BerkasProdi, BerkasPengajuan, DetailBerkasProdiPengajuan};
 use App\Helpers\ErrorLog;
 
 class BerkasProdiRepository
@@ -70,32 +70,36 @@ class BerkasProdiRepository
                     INNER JOIN VER.VerifikasiBerkas v ON v.id_berkas = p.id_berkas_prodi
                     ORDER BY p.tanggal_request DESC
                 SQL)
-                ->fetchAll(\PDO::FETCH_CLASS, VerifikasiBerkas::class);
+                ->fetchAll(\PDO::FETCH_CLASS, BerkasPengajuan::class);
         } catch (\PDOException $e) {
             error_log(ErrorLog::formattedErrorLog($e->getMessage()), 3, LOG_FILE_PATH);
             throw new \PDOException($e->getMessage());
         }
     }
 
-    public static function getSingleBerkasProdiReq(int $id_verifikasi): bool|VerifikasiBerkas
+    public static function getSingleBerkasProdiReq(int $id_verifikasi): bool|DetailBerkasProdiPengajuan
     {
         try {
             $stmt = Database::getConnection()->prepare(<<<SQL
                 SELECT
-                    v.id_verifikasi,
-                    p.id_berkas_prodi AS id_berkas,
+                    vb.id_verifikasi,
+                    pr.id_berkas_prodi AS id_berkas,
                     m.nim,
                     m.nama_lengkap,
-                    p.tanggal_request,
-                    v.status_verifikasi,
-                    v.keterangan_verifikasi
-                FROM USERS.Mahasiswa m
-                INNER JOIN BERKAS.Prodi p ON m.nim = p.nim
-                INNER JOIN VER.VerifikasiBerkas v ON v.id_berkas = p.id_berkas_prodi
-                WHERE v.id_verifikasi = :id_verifikasi
+                    pr.tanggal_request,
+                    vb.status_verifikasi,
+                    vb.keterangan_verifikasi,
+                    pr.distribusi_magang,
+                    pr.distribusi_skripsi,
+                    pr.surat_bebas_kompen,
+                    pr.toeic
+                FROM VER.VerifikasiBerkas vb
+                INNER JOIN BERKAS.Prodi pr ON vb.id_berkas = pr.id_berkas_prodi
+                INNER JOIN USERS.Mahasiswa m ON pr.nim = m.nim
+                WHERE vb.id_verifikasi = :id_verifikasi;
             SQL);
             $stmt->bindValue(':id_verifikasi', $id_verifikasi, \PDO::PARAM_INT);
-            $stmt->setFetchMode(\PDO::FETCH_CLASS, VerifikasiBerkas::class);
+            $stmt->setFetchMode(\PDO::FETCH_CLASS, DetailBerkasProdiPengajuan::class);
             $stmt->execute();
             return $stmt->fetch();
         } catch (\PDOException $e) {
