@@ -61,8 +61,12 @@ class HomeController extends Controller
                     $this->view("templates/footer");;
                     break;
                 case 'Admin Jurusan':
+                    $users_statistic = StatistikRepository::getTotalUserStatistic();
                     $this->view("templates/header", $data);
-                    $this->view("pages/admin_jurusan/dashboard");
+                    $this->view("pages/admin_jurusan/dashboard", [
+                        'active_page' => 'dashboard',
+                        'total_user' => $users_statistic
+                    ]);
                     $this->view("templates/footer");
                     break;
                 case 'mahasiswa':
