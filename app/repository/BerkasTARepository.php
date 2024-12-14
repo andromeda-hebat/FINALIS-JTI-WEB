@@ -3,7 +3,7 @@
 namespace App\Repository;
 
 use App\Core\Database;
-use App\Models\{StatusBerkas, BerkasTA, VerifikasiBerkas};
+use App\Models\{StatusBerkas, BerkasTA, BerkasPengajuan, DetailBerkasTAPengajuan};
 use App\Helpers\ErrorLog;
 
 class BerkasTARepository
@@ -69,7 +69,7 @@ class BerkasTARepository
                     INNER JOIN USERS.Mahasiswa m ON ta.nim = m.nim
                     ORDER BY ta.tanggal_request DESC;
                 SQL)
-                ->fetchAll(\PDO::FETCH_CLASS, VerifikasiBerkas::class);
+                ->fetchAll(\PDO::FETCH_CLASS, BerkasPengajuan::class);
         } catch (\PDOException $e) {
             error_log(ErrorLog::formattedErrorLog($e->getMessage()), 3, LOG_FILE_PATH);
             throw new \PDOException($e->getMessage());
@@ -77,7 +77,7 @@ class BerkasTARepository
     }
 
     
-    public static function getSingleBerkasTAReq(int $id_verifikasi): bool|VerifikasiBerkas
+    public static function getSingleBerkasTAReq(int $id_verifikasi): bool|DetailBerkasTAPengajuan
     {
         try {
             $stmt = Database::getConnection()->prepare(<<<SQL
@@ -88,14 +88,17 @@ class BerkasTARepository
                     m.nama_lengkap, 
                     ta.tanggal_request, 
                     vb.status_verifikasi, 
-                    vb.keterangan_verifikasi
+                    vb.keterangan_verifikasi,
+                    ta.laporan_TA AS laporan_ta,
+                    ta.aplikasi,
+                    ta.bukti_publikasi
                 FROM VER.VerifikasiBerkas vb
                 INNER JOIN BERKAS.TA ta ON vb.id_berkas = ta.id_ta
                 INNER JOIN USERS.Mahasiswa m ON ta.nim = m.nim
                 WHERE vb.id_verifikasi = :id_verifikasi
             SQL);
             $stmt->bindValue(':id_verifikasi', $id_verifikasi, \PDO::PARAM_INT);
-            $stmt->setFetchMode(\PDO::FETCH_CLASS, VerifikasiBerkas::class);
+            $stmt->setFetchMode(\PDO::FETCH_CLASS | \PDO::FETCH_PROPS_LATE, DetailBerkasTAPengajuan::class);
             $stmt->execute();
             return $stmt->fetch();
         } catch (\PDOException $e) {

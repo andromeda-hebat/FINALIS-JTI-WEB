@@ -1,4 +1,4 @@
-<div id="topbar" class="navbar d-flex justify-content-between position-fixed" style="width: 84%; height: 10vh; background-color: white;">
+<div id="topbar" class="navbar z-3 d-flex justify-content-between position-fixed" style="width: 84%; height: 10vh; background-color: white;">
 	<div class="ms-5">
 		<div class="d-flex pt-3 ">
 			<img src="<?= $_SESSION['user_photo'] ?>" alt="Profil" class="rounded-circle"

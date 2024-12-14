@@ -4,16 +4,16 @@ namespace App\Models;
 
 use App\Core\Model;
 
-class VerifikasiBerkas extends Model
+class BerkasPengajuan extends Model
 {
-    private ?int $nomor = null;
-    private int $id_verifikasi;
-    private string $id_berkas;
-    private string $status_verifikasi;
-    private string $nim;
-    private string $nama_lengkap;
-    private string $tanggal_request;
-    private string $keterangan_verifikasi;
+    protected ?int $nomor = null;
+    protected int $id_verifikasi;
+    protected string $id_berkas;
+    protected string $status_verifikasi;
+    protected string $nim;
+    protected string $nama_lengkap;
+    protected string $tanggal_request;
+    protected string $keterangan_verifikasi;
 
 
     public function getNomor(): int { return $this->nomor; }
