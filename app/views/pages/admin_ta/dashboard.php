@@ -2,8 +2,7 @@
     <?php include __DIR__ . '/../../components/admin_ta/sidebar.php' ?>
     <div class="position-top w-100" style="margin-left: 35vh;">
         <?php include __DIR__ . '/../../components/general/topbar.php' ?>
-        <main class="halaman mx-5 " style="min-height:100vh; margin-top:15vh;">
-
+        <main class="halaman mx-5 " style="min-height:100vh; margin-top: 10vh;">
             <section>
                 <div class="d-flex w-100 justify-content-between mt-3">
                     <h3 class="fw-bold">Dashboard</h3>
@@ -154,7 +153,7 @@
                                     <td><?= $value->getTanggalRequest() ?></td>
                                     <td><?= $value->getKeteranganVerifikasi() ?></td>
                                     <td><a href="/permintaan-verifikasi-ta/detail/<?= $value->getIdVerifikasi() ?>"
-                                            class="btn btn-primary">Rincian</a></td>
+                                            class="btn" style="border-radius: 5px; border: 1px solid #052C65;">Detail</a></td>
                                 </tr>
                             <?php endforeach; ?>
                         </tbody>
