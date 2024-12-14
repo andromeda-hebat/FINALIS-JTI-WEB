@@ -1,10 +1,7 @@
 <div class="d-flex">
-    <!-- Sidebar -->
     <?php include __DIR__ . '/../../components/admin_prodi/sidebar.php' ?>
     <div class="position-top w-100" style="margin-left: 35vh;">
-
         <?php include __DIR__ . '/../../components/general/topbar.php' ?>
-
         <main class="halaman mx-5 " style="min-height:100vh; margin-top:15vh;">
             <section class="mt-2">
 
@@ -33,8 +30,8 @@
 
                 <?php if ($data['user_file'] != false): ?>
                     <div class="card my-3 px-5 " style="box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);">
-                        <div class="card-body d-flex justify-content-between">
-                            <div class="me-5">
+                        <div class="card-body row">
+                            <div class="col me-5">
                                 <div class="d-flex">
                                     <h5 class="mb-0" style="color: #8D8D8D;">Informasi Mahasiswa</h5>
                                     <svg class="ms-2" width="20" height="20" viewBox="0 0 20 20" fill="none"
@@ -68,7 +65,7 @@
                                 </div>
                             </div>
 
-                            <div class="me-5">
+                            <div class="col me-5">
                                 <div class="d-flex">
                                     <h5 style="color: #8D8D8D;">Informasi Permintaan</h5>
                                     <svg class="ms-2" width="20" height="20" viewBox="0 0 20 20" fill="none"
@@ -109,10 +106,8 @@
                         </div>
                     </div>
 
-                    <!-- card ke dua -->
                     <div class="card mt-2 px-5 py-2 " style="box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);">
                         <div class="card-body row">
-                            <!-- kiri  -->
                             <div class="col">
                                 <div class="d-flex align-items-center">
                                     <h5 class="me-1 my-0">Detail Informasi</h4>
@@ -150,7 +145,6 @@
                                 <a href="/files/sertifikattoeic.pdf" class=" text-dark"><?= $data['user_file']->getToeic() ?></a>
                             </div>
 
-                            <!-- kanan -->
                             <form id="form-verify"
                                 action="/permintaan-verifikasi-prodi/detail/<?= $data['user_file']->getIdVerifikasi() ?>"
                                 method="PATCH" class="col w-100">
@@ -179,7 +173,6 @@
                             style="background-color: var(--color-navy-blue);" data-bs-toggle="modal"
                             data-bs-target="#info-success-update-modal">Kirim</button>
                     </div>
-
 
                 <?php else: ?>
                     <div class="card justify-content-center align-items-center"
