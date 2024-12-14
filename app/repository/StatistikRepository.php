@@ -26,4 +26,32 @@ class StatistikRepository
             throw new \PDOException($e->getMessage());
         }
     }
+
+    public static function getTotalUserStatistic(): bool|array
+    {
+        try {
+            return Database::getConnection()
+                ->query(<<<SQL
+                    SELECT 
+                        (
+                            SELECT COUNT(*)
+                            FROM USERS.Mahasiswa
+                        ) AS mahasiswa,
+                        (
+                            SELECT COUNT(*)
+                            FROM USERS.Admin
+                            WHERE jabatan = 'Admin Prodi'
+                        ) AS admin_prodi,
+                        (
+                            SELECT COUNT(*)
+                            FROM USERS.Admin
+                            WHERE jabatan = 'Admin TA'
+                        ) AS admin_ta;
+                SQL)
+                ->fetch();
+        } catch (\PDOException $e) {
+            error_log(ErrorLog::formattedErrorLog($e->getMessage()), 3, LOG_FILE_PATH);
+            throw new \PDOException($e->getMessage());
+        }
+    }
 }

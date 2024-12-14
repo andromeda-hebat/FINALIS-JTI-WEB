@@ -36,21 +36,21 @@
                     <div class="w-15 m-2 d-flex align-items-center d-flex" style="color: #052C65;">
                         <div>
                             <p class="mb-0 text-center">Mahasiswa Tingkat Akhir</p>
-                            <h6 class="fw-bold text-center">175</h6>
+                            <h6 class="fw-bold text-center"><?= $data['total_user']['mahasiswa'] ?></h6>
                         </div>
                     </div>
 
                     <div class="w-15 m-2 d-flex align-items-center d-flex" style="color: #052C65;">
                         <div class="ms-1">
                             <p class="mb-0 text-center">Admin Program Studi</p>
-                            <h6 class="fw-bold text-center">3</h6>
+                            <h6 class="fw-bold text-center"><?= $data['total_user']['admin_prodi'] ?></h6>
                         </div>
                     </div>
 
                     <div class="w-15 m-2 d-flex align-items-center d-flex" style="color: #052C65;">
                         <div class="ms-1">
                             <p class="mb-0 text-center">Admin Tugas Akhir</p>
-                            <h6 class="fw-bold text-center">3</h6>
+                            <h6 class="fw-bold text-center"><?= $data['total_user']['admin_ta'] ?></h6>
                         </div>
                     </div>
                 </div>
