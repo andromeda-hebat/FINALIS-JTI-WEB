@@ -105,7 +105,7 @@
                     </div>
 
                     <div class="card mt-2 px-5 py-2 " style="box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25); min-height: 60vh;">
-                        <div class="card-body d-flex justify-content-between">
+                        <div class="card-body row">
                             <div class="col">
                                 <div class="d-flex align-items-center">
                                     <h5 class="me-1 my-0">Detail Berkas</h4>
