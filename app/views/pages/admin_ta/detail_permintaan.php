@@ -1,10 +1,9 @@
 <div class="d-flex">
-    <!-- Sidebar -->
     <?php include __DIR__ . '/../../components/admin_ta/sidebar.php' ?>
     <div class="position-top w-100" style="margin-left: 35vh;">
         <?php include __DIR__ . '/../../components/general/topbar.php' ?>
-        <main class="halaman mx-5 " style="min-height:100vh; margin-top:15vh;">
-            <section class="mt-2">
+        <main class="halaman mx-5 " style="min-height:100vh; margin-top: 10vh;">
+            <section>
                 <div class="d-flex w-100 align-items-center ">
                     <a href="/permintaan-verifikasi-ta">
                         <svg width="25" height="25" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -29,11 +28,10 @@
 
                 <?php if ($data['user_file'] != false): ?>
                     <div class="card my-3 px-5 " style="box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);">
-                        <div class="card-body d-flex justify-content-between">
-
-                            <div class="me-5">
+                        <div class="card-body row">
+                            <div class="col me-5">
                                 <div class="d-flex">
-                                    <h5 class="mb-0" style="color: #8D8D8D;">Informasi Mahasiswa</h5>
+                                    <h5 class="mb-0" style="color: var(--color-light-gray);">Informasi Mahasiswa</h5>
                                     <svg class="ms-2" width="20" height="20" viewBox="0 0 20 20" fill="none"
                                         xmlns="http://www.w3.org/2000/svg">
                                         <g clip-path="url(#clip0_570_1010)">
@@ -65,9 +63,9 @@
                                 </div>
                             </div>
 
-                            <div class="me-5">
+                            <div class="col me-5">
                                 <div class="d-flex">
-                                    <h5 style="color: #8D8D8D;">Informasi Permintaan</h5>
+                                    <h5 style="color: var(--color-light-gray);">Informasi Permintaan</h5>
                                     <svg class="ms-2" width="20" height="20" viewBox="0 0 20 20" fill="none"
                                         xmlns="http://www.w3.org/2000/svg">
                                         <g clip-path="url(#clip0_570_1010)">
@@ -90,29 +88,27 @@
                                 </div>
                                 <div class="d-flex mb-0 mt-2">
                                     <div class="me-5">
-                                        <p class="my-0" style="color: #8D8D8D;">Jenis</p>
-                                        <p class="my-0">Administrasi Prodi</p>
+                                        <p class="my-0" style="color: var(--color-light-gray);">Jenis</p>
+                                        <p class="my-0">Tugas Akhir</p>
                                     </div>
                                     <div class="mx-5">
-                                        <p class="my-0" style="color: #8D8D8D;">ID</p>
+                                        <p class="my-0" style="color: var(--color-light-gray);">ID pengajuan</p>
                                         <p class="my-0"><?= $data['user_file']->getIdVerifikasi() ?></p>
                                     </div>
                                     <div class="ms-5">
-                                        <p class="my-0" style="color: #8D8D8D;">Status</p>
-                                        <p class="my-0"><?= $data['user_file']->getStatusVerifikasi() ?></p>
+                                        <p class="my-0" style="color: var(--color-light-gray);">Status</p>
+                                        <?php include __DIR__ . '/../../atoms/badge_' . strtolower($data['user_file']->getStatusVerifikasi()) . '.php' ?>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
 
-                    <!-- card ke dua -->
-                    <div class="card mt-2 px-5 py-2 " style="box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);">
+                    <div class="card mt-2 px-5 py-2 " style="box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25); min-height: 60vh;">
                         <div class="card-body d-flex justify-content-between">
-                            <!-- kiri  -->
-                            <div>
+                            <div class="col">
                                 <div class="d-flex align-items-center">
-                                    <h5 class="me-1 my-0">Detail Informasi</h4>
+                                    <h5 class="me-1 my-0">Detail Berkas</h4>
                                         <svg class="ms-1" width="20" height="20" viewBox="0 0 20 20" fill="none"
                                             xmlns="http://www.w3.org/2000/svg">
                                             <g clip-path="url(#clip0_570_1010)">
@@ -136,38 +132,36 @@
 
                                 <p class="mt-2 mb-0">Laporan TA/Skripsi</p>
                                 <a href="/files/distribusilaporanskripsi.pdf"
-                                    class="text-dark">distribusilaporanskripsi.pdf</a>
+                                    class="text-dark"><?= $data['user_file']->getLaporanTA() ?></a>
 
                                 <p class="mt-5 mb-0">Program/Aplikasi TA/Skripsi</p>
                                 <a href="/files/distribusilaporanmagang.pdf"
-                                    class="text-dark">distribusilaporanmagang.pdf</a>
+                                    class="text-dark"><?= $data['user_file']->getAplikasi() ?></a>
 
                                 <p class="mt-5 mb-0">Bukti Publikasi</p>
-                                <a href="/files/buktibebaskompensasi.pdf" class=" text-dark">.buktibebaskompensasi.pdf</a>
+                                <a href="/files/buktibebaskompensasi.pdf" class=" text-dark"><?= $data['user_file']->getBuktiPublikasi() ?></a>
 
                             </div>
 
-                            <!-- kanan -->
                             <form id="form-verify"
                                 action="/permintaan-verifikasi-ta/detail/<?= $data['user_file']->getIdVerifikasi() ?>"
-                                method="PATCH" class="me-2">
+                                method="PATCH" class="col me-2">
                                 <h5 clas="my-0">Proses Verifikasi</h5>
-                                <p>Staff Verifikator TA</p>
+
                                 <input type="hidden" name="id_berkas" value="<?= $data['user_file']->getIdBerkas() ?>">
                                 <div class="d-flex mb-3">
                                     <div class="d-flex me-3 ms-3">
-                                        <input type="radio" name="is_verify" value="true" id="verify">
-                                        <label for="verify">Verifikasi</label>
+                                        <input type="radio" name="is_verify" value="true" id="verify" class="me-2">
+                                        <label for="verify">Setuju</label>
                                     </div>
                                     <div class="d-flex ms-3">
-                                        <input type="radio" name="is_verify" value="false" id="reject">
+                                        <input type="radio" name="is_verify" value="false" id="reject" class="me-2">
                                         <label for="reject">Tolak</label>
                                     </div>
                                 </div>
                                 <textarea name="description" id="description"
-                                    placeholder="Tambahkan keterangan kepada pihak mahasiswa" style="resize: none;" rows="8"
-                                    cols="59"></textarea>
-                                <div class="d-flex justify-content-end">
+                                    placeholder="Tambahkan keterangan kepada pihak mahasiswa" style="resize: none; width: 70%; height: 40%;"></textarea>
+                                <div class="d-flex justify-content-start">
                                     <button type="submit" value="Kirim" id="submitBtn" class="px-4 text-white mt-3"
                                         style="background-color: var(--color-navy-blue);">Kirim</button>
                                 </div>
@@ -177,7 +171,7 @@
                 <?php else: ?>
                     <div class="card justify-content-center align-items-center"
                         style="min-height: 60vh; box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);">
-                        <h1>Data tidak bisa ditemukan!</h1>
+                        <h1 class="fw-bold">Data tidak bisa ditemukan!</h1>
                     </div>
                 <?php endif; ?>
             </section>
@@ -205,31 +199,4 @@
 <?php ////////////////////// ?>
 
 <script src="https://cdn.jsdelivr.net/npm/jquery@3.7.1/dist/jquery.min.js"></script>
-<script>
-    $(document).ready(function () {
-        $('#form-verify').on('submit', function (e) {
-            e.preventDefault();
-
-            const data = new FormData($(this)[0]);
-
-            const formObject = {};
-            data.forEach((value, key) => {
-                formObject[key] = value;
-            });
-
-            $.ajax({
-                url: $(this).attr('action'),
-                type: $(this).attr('method'),
-                data: JSON.stringify(formObject),
-                processData: false,
-                contentType: 'application/json',
-                success: function (response) {
-                    $('#info-success-update-modal').modal('show');
-                },
-                error: (xhr, status, error) => {
-                    $('#server-error-bs-modal').modal('show');
-                }
-            });
-        });
-    })
-</script>
+<script src="/assets/js/admin/detail_permintaan.js"></script>
