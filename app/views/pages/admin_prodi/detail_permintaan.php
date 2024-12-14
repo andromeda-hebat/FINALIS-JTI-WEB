@@ -34,8 +34,6 @@
                 <?php if ($data['user_file'] != false): ?>
                     <div class="card my-3 px-5 " style="box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);">
                         <div class="card-body d-flex justify-content-between">
-
-                            <!-- div untuk informasi Mahasiswa -->
                             <div class="me-5">
                                 <div class="d-flex">
                                     <h5 class="mb-0" style="color: #8D8D8D;">Informasi Mahasiswa</h5>
@@ -70,7 +68,6 @@
                                 </div>
                             </div>
 
-                            <!-- div untuk infomarmasi Permintaan -->
                             <div class="me-5">
                                 <div class="d-flex">
                                     <h5 style="color: #8D8D8D;">Informasi Permintaan</h5>
@@ -142,15 +139,15 @@
 
                                 <p class="mt-3 mb-0">Distribusi Laporan Skripsi</p>
                                 <a href="/files/distribusilaporanskripsi.pdf"
-                                    class="text-dark">distribusilaporanskripsi.pdf</a>
+                                    class="text-dark"><?= $data['user_file']->getDistribusiSkripsi() ?></a>
                                 <p class="mt-3 mb-0">Distribusi Laporan Magang</p>
                                 <a href="/files/distribusilaporanmagang.pdf"
-                                    class="text-dark">distribusilaporanmagang.pdf</a>
+                                    class="text-dark"><?= $data['user_file']->getDistribusiMagang() ?></a>
                                 <p class="mt-3 mb-0">Distribusi Laporan Kompensasi</p>
                                 <a href="/files/buktibebaskompensasi.pdf"
-                                    class=" text-dark">distribusilaporankompensasi.pdf</a>
+                                    class=" text-dark"><?= $data['user_file']->getSuratBebasKompen() ?></a>
                                 <p class="mt-3 mb-0">Sertifikat TOEIC</p>
-                                <a href="/files/sertifikattoeic.pdf" class=" text-dark">sertifikattoeic.pdf</a>
+                                <a href="/files/sertifikattoeic.pdf" class=" text-dark"><?= $data['user_file']->getToeic() ?></a>
                             </div>
 
                             <!-- kanan -->
@@ -215,31 +212,4 @@
 <?php ////////////////////// ?>
 
 <script src="https://cdn.jsdelivr.net/npm/jquery@3.7.1/dist/jquery.min.js"></script>
-<script>
-    $(document).ready(function () {
-        $('#form-verify').on('submit', function (e) {
-            e.preventDefault();
-
-            const data = new FormData($(this)[0]);
-
-            const formObject = {};
-            data.forEach((value, key) => {
-                formObject[key] = value;
-            });
-
-            $.ajax({
-                url: $(this).attr('action'),
-                type: $(this).attr('method'),
-                data: JSON.stringify(formObject),
-                processData: false,
-                contentType: 'application/json',
-                success: function (response) {
-                    $('#info-success-update-modal').modal('show');
-                },
-                error: (xhr, status, error) => {
-                    $('#server-error-bs-modal').modal('show');
-                }
-            });
-        });
-    })
-</script>
+<script src="/assets/js/admin/detail_permintaan.js"></script>
