@@ -113,7 +113,6 @@ class AdminJurusanController extends Controller
     public function editAdminData(): void
     {
         $client_data = json_decode(file_get_contents('php://input'), true);
-        // var_dump($client_data);
 
         if (
             !empty($client_data['id_admin']) &&
@@ -153,6 +152,26 @@ class AdminJurusanController extends Controller
                 ]);
                 exit;
             }
+        }
+    }
+
+    public function deleteAdminData(string $id_admin): void
+    {
+        try {
+            AdminRepository::deleteAdminByID($id_admin);
+            http_response_code(200);
+            echo json_encode([
+                "status" => "success",
+                "message" => "Successfully to delete admin data!",
+            ]);
+            exit;
+        } catch (\PDOException $e) {
+            http_response_code(500);
+            echo json_encode([
+                "status" => "error",
+                "message" => "Database connectivity error!",
+            ]);
+            exit;
         }
     }
 

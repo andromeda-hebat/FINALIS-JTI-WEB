@@ -122,4 +122,19 @@ class AdminRepository
             throw new \PDOException($e->getMessage());
         }
     }
+
+    public static function deleteAdminByID(string $id_admin): void
+    {
+        try {
+            $stmt = Database::getConnection()->prepare(<<<SQL
+                DELETE FROM USERS.ADMIN
+                WHERE id_admin = :id_admin
+            SQL);
+            $stmt->bindValue(':id_admin', $id_admin, \PDO::PARAM_STR);
+            $stmt->execute();
+        } catch (\PDOException $e) {
+            error_log(ErrorLog::formattedErrorLog($e->getMessage()), 3, LOG_FILE_PATH);
+            throw new \PDOException($e->getMessage());
+        }
+    }
 }

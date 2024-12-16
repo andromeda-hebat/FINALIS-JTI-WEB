@@ -12,8 +12,8 @@
                 <button type="button"
                     style="color: var(--color-navy-blue); border-color: var(--color-navy-blue); background-color: white"
                     data-bs-dismiss="modal">Batal</button>
-                <form action="/kelola-admin" method="delete" id="form-delete-data">
-                    <button type="button" class="text-white"
+                <form action="/kelola-admin/<?= $value->getUserId() ?>" method="delete" id="form-delete-data">
+                    <button type="submit" class="text-white"
                         style="background-color: var(--color-navy-blue);">Hapus</button>
                 </form>
             </div>
@@ -35,17 +35,15 @@
         $('#form-delete-data').on('submit', function (e) {
             e.preventDefault();
 
-            const data = new FormData($(this)[0]);
-
-            const formObject = {};
-            data.forEach((value, key) => {
-                formObject[key] = value;
+            const formData = {};
+            $(this).serializeArray().forEach(field => {
+                formData[field.name] = field.value;
             });
 
             $.ajax({
                 url: $(this).attr('action'),
                 type: $(this).attr('method'),
-                data: JSON.stringify(formObject),
+                data: JSON.stringify(formData),
                 processData: false,
                 contentType: 'application/json',
                 success: function (response) {

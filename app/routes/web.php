@@ -161,6 +161,13 @@ Router::add('PATCH', '/kelola-admin/edit', AdminJurusanController::class, 'editA
         'args' => 'admin jurusan'
     ]
 ]);
+Router::add('DELETE', '/kelola-admin/([a-zA-Z0-9]+)', AdminJurusanController::class, 'deleteAdminData', [
+    [
+        'class' => AuthMiddleware::class,
+        'function' => 'checkAuth',
+        'args' => 'admin jurusan'
+    ]
+]);
 Router::add('GET', '/kelola-mahasiswa', AdminJurusanController::class, 'viewkelolaMahasiswa', [
     [
         'class' => AuthMiddleware::class,
