@@ -1,7 +1,7 @@
 <div id="topbar" class="navbar z-3 d-flex justify-content-between position-fixed" style="width: 84%; height: 10vh; background-color: white;">
 	<div class="ms-5">
 		<div class="d-flex pt-3 ">
-			<img src="<?= $_SESSION['user_photo'] ?>" alt="Profil" class="rounded-circle"
+			<img src="data:image/png;base64,<?= $_SESSION['user_photo'] ?>" alt="Profil" class="rounded-circle"
 				style="width: 30px; height: 30px; background-color: #ddd;">
 			<div class="ms-3 flex-column text-start">
 				<h5 class="mb-0"><?= $_SESSION['full_name'] ?></h5>
