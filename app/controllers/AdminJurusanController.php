@@ -4,6 +4,7 @@ namespace App\Controllers;
 
 use App\Core\Controller;
 use App\Repository\{AdminRepository, MahasiswaRepository};
+use App\Models\Admin;
 
 class AdminJurusanController extends Controller
 {
@@ -29,6 +30,51 @@ class AdminJurusanController extends Controller
             'admin_data' => $admin_data
         ]);
         $this->view("templates/footer");
+    }
+
+    public function addNewAdmin(): void
+    {
+        if (
+            !empty($_POST['id_admin']) &&
+            !empty($_POST['nama']) &&
+            filter_var($_POST['email'], FILTER_VALIDATE_EMAIL) &&
+            !empty($_POST['jabatan']) &&
+            !empty($_POST['password']) &&
+            !empty($_POST['foto-profil'])
+        ) {
+            $id_admin = htmlspecialchars(strip_tags($_POST['id_admin']));
+            $nama = htmlspecialchars(strip_tags($_POST['nama']));
+            $email = htmlspecialchars(strip_tags($_POST['email']));
+            $jabatan = htmlspecialchars(strip_tags($_POST['jabatan']));
+            $password = htmlspecialchars(strip_tags($_POST['password']));
+            $hashed_password = password_hash($password, PASSWORD_BCRYPT);
+            $foto_profil = base64_encode(htmlspecialchars(strip_tags($_POST['foto-profil'])));
+
+            $admin = new Admin;
+            $admin->setUserId($id_admin);
+            $admin->setNamaLengkap($nama);
+            $admin->setEmail($email);
+            $admin->setJabatan($jabatan);
+            $admin->setPassword($hashed_password);
+            $admin->setFotoProfil($foto_profil);
+
+            try {
+                AdminRepository::addNewAdmin($admin);
+                http_response_code(200);
+                echo json_encode([
+                    "status" => "success",
+                    "message" => "Successfully add new admin data!",
+                ]);
+                exit;
+            } catch (\PDOException $e) {
+                http_response_code(500);
+                echo json_encode([
+                    "status" => "error",
+                    "message" => "Database connectivity error!",
+                ]);
+                exit;
+            }
+        }
     }
 
     public function viewTambahAdmin(): void

@@ -29,4 +29,24 @@ class AdminRepository
             throw new \PDOException($e->getMessage());
         }
     }
+
+    public static function addNewAdmin(Admin $new_admin): void
+    {
+        try {
+            $stmt = Database::getConnection()->prepare(<<<SQL
+                INSERT INTO USERS.Admin 
+                VALUES (:id_admin, :nama_lengkap, :password, :email, :jabatan, :foto_profil)
+            SQL);
+            $stmt->bindValue(':id_admin', $new_admin->getUserId(), \PDO::PARAM_STR);
+            $stmt->bindValue(':nama_lengkap', $new_admin->getNamaLengkap(), \PDO::PARAM_STR);
+            $stmt->bindValue(':password', $new_admin->getPassword(), \PDO::PARAM_STR);
+            $stmt->bindValue(':email', $new_admin->getEmail(), \PDO::PARAM_STR);
+            $stmt->bindValue(':jabatan', $new_admin->getJabatan(), \PDO::PARAM_STR);
+            $stmt->bindValue(':foto_profil', $new_admin->getFotoProfil(), \PDO::PARAM_STR);
+            $stmt->execute();
+        } catch (\PDOException $e) {
+            error_log(ErrorLog::formattedErrorLog($e->getMessage()), 3, LOG_FILE_PATH);
+            throw new \PDOException($e->getMessage());
+        }
+    }
 }
