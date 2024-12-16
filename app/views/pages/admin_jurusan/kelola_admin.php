@@ -49,7 +49,7 @@
                             <td><?= $value->getEmail() ?></td>
                             <td><?= $value->getJabatan() ?></td>
                             <td>
-                                <a href="/kelola-admin/edit" class="btn btn-primary">Edit</a>
+                                <a href="/kelola-admin/edit/<?= $value->getUserId() ?>" class="btn btn-primary">Edit</a>
                                 <button type="button" id="deleteBtn" class="btn btn-danger" data-bs-toggle="modal"
                                     data-bs-target="#deleteModal">Hapus</button>
                             </td>
