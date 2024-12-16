@@ -27,7 +27,7 @@
                         <div class="card-title mb-4 d-flex justify-content-start">
                             <h4 class="fw-bold" style="color: var(--color-navy-blue);">Tambah Data Admin</h4>
                         </div>
-                        <form action="/tambah-admin" method="post" id="tambah-admin-form">
+                        <form action="/kelola-admin/tambah" method="post" id="tambah-admin-form">
                             <div class="form-group mt-4">
                                 <label for="input-id-admin" class="font-weight-bold">NIDN</label>
                                 <input type="text" class="form-control" id="input-id-admin" name="id_admin" required>

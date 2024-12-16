@@ -133,14 +133,14 @@ Router::add('GET', '/kelola-admin', AdminJurusanController::class, 'viewKelolaAd
         'args' => 'admin jurusan'
     ]
 ]);
-Router::add('GET', '/tambah-admin', AdminJurusanController::class, 'viewTambahAdmin', [
+Router::add('GET', '/kelola-admin/tambah', AdminJurusanController::class, 'viewTambahAdmin', [
     [
         'class' => AuthMiddleware::class,
         'function' => 'checkAuth',
         'args' => 'admin jurusan'
     ]
 ]);
-Router::add('POST', '/tambah-admin', AdminJurusanController::class, 'addNewAdmin', [
+Router::add('POST', '/kelola-admin/tambah', AdminJurusanController::class, 'addNewAdmin', [
     [
         'class' => AuthMiddleware::class,
         'function' => 'checkAuth',

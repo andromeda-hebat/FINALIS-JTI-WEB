@@ -8,7 +8,7 @@
             </div>
             <div class="mt-3 d-flex justify-content-start w-100 align-items-center">
                 <div style="background-color: var(--color-navy-blue); ">
-                    <a href="/tambah-admin" class="text-decoration-none">
+                    <a href="/kelola-admin/tambah" class="text-decoration-none">
                         <div class="d-flex align-items-center mx-2 my-2">
                             <svg class="me-1" width="20" height="20" viewBox="0 0 20 20" fill="none"
                                 xmlns="http://www.w3.org/2000/svg">
@@ -49,7 +49,7 @@
                             <td><?= $value->getEmail() ?></td>
                             <td><?= $value->getJabatan() ?></td>
                             <td>
-                                <a href="/edit-admin" class="btn btn-primary">Edit</a>
+                                <a href="/kelola-admin/edit" class="btn btn-primary">Edit</a>
                                 <button type="button" id="deleteBtn" class="btn btn-danger" data-bs-toggle="modal"
                                     data-bs-target="#deleteModal">Hapus</button>
                             </td>
