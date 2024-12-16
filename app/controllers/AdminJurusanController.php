@@ -4,6 +4,7 @@ namespace App\Controllers;
 
 use App\Core\Controller;
 use App\Repository\{AdminRepository, MahasiswaRepository};
+use App\Models\Admin;
 
 class AdminJurusanController extends Controller
 {
@@ -31,6 +32,51 @@ class AdminJurusanController extends Controller
         $this->view("templates/footer");
     }
 
+    public function addNewAdmin(): void
+    {
+        if (
+            !empty($_POST['id_admin']) &&
+            !empty($_POST['nama']) &&
+            filter_var($_POST['email'], FILTER_VALIDATE_EMAIL) &&
+            !empty($_POST['jabatan']) &&
+            !empty($_POST['password']) &&
+            !empty($_POST['foto-profil'])
+        ) {
+            $id_admin = htmlspecialchars(strip_tags($_POST['id_admin']));
+            $nama = htmlspecialchars(strip_tags($_POST['nama']));
+            $email = htmlspecialchars(strip_tags($_POST['email']));
+            $jabatan = htmlspecialchars(strip_tags($_POST['jabatan']));
+            $password = htmlspecialchars(strip_tags($_POST['password']));
+            $hashed_password = password_hash($password, PASSWORD_BCRYPT);
+            $foto_profil = base64_encode(htmlspecialchars(strip_tags($_POST['foto-profil'])));
+
+            $admin = new Admin;
+            $admin->setUserId($id_admin);
+            $admin->setNamaLengkap($nama);
+            $admin->setEmail($email);
+            $admin->setJabatan($jabatan);
+            $admin->setPassword($hashed_password);
+            $admin->setFotoProfil($foto_profil);
+
+            try {
+                AdminRepository::addNewAdmin($admin);
+                http_response_code(200);
+                echo json_encode([
+                    "status" => "success",
+                    "message" => "Successfully add new admin data!",
+                ]);
+                exit;
+            } catch (\PDOException $e) {
+                http_response_code(500);
+                echo json_encode([
+                    "status" => "error",
+                    "message" => "Database connectivity error!",
+                ]);
+                exit;
+            }
+        }
+    }
+
     public function viewTambahAdmin(): void
     {
         $this->view("templates/header", [
@@ -41,14 +87,92 @@ class AdminJurusanController extends Controller
         $this->view("templates/footer");
     }
 
-    public function viewEditAdmin(): void
+    public function viewEditAdmin(string $id_admin): void
     {
+        try {
+            $admin = AdminRepository::getSingleDataAdmin($id_admin);
+        } catch (\PDOException $e) {
+            http_response_code(500);
+            echo json_encode([
+                "status" => "error",
+                "message" => "Database connectivity error!",
+            ]);
+            exit;
+        }
+
         $this->view("templates/header", [
             'title' => "Edit Admin",
             'css' => ["assets/css/sidebar"]
         ]);
-        $this->view("pages/admin_jurusan/edit_admin");
+        $this->view("pages/admin_jurusan/edit_admin", [
+            'admin_data' => $admin
+        ]);
         $this->view("templates/footer");
+    }
+
+    public function editAdminData(): void
+    {
+        $client_data = json_decode(file_get_contents('php://input'), true);
+
+        if (
+            !empty($client_data['id_admin']) &&
+            isset($client_data['nama']) &&
+            isset($client_data['email']) &&
+            isset($client_data['jabatan']) &&
+            isset($client_data['password']) &&
+            isset($client_data['foto_profil'])
+        ) {
+            $admin = new Admin;
+            $admin->setUserId($client_data['id_admin']);
+            $admin->setNamaLengkap($client_data['nama']);
+            $admin->setEmail($client_data['email']);
+            $admin->setJabatan($client_data['jabatan']);
+            $admin->setFotoProfil($client_data['foto_profil']);
+
+            try {
+                if (!empty($client_data['password'])) {
+                    $hashed_password = password_hash($client_data['password'], PASSWORD_BCRYPT);
+                    $admin->setPassword($hashed_password);
+                    AdminRepository::updateAllFieldDataAdmin($admin);
+                } else {
+                    AdminRepository::updateDataAdminWithoutPassword($admin);
+                }
+
+                http_response_code(200);
+                echo json_encode([
+                    "status" => "success",
+                    "message" => "Successfully to update admin data!",
+                ]);
+                exit;
+            } catch (\PDOException $e) {
+                http_response_code(500);
+                echo json_encode([
+                    "status" => "error",
+                    "message" => "Database connectivity error!",
+                ]);
+                exit;
+            }
+        }
+    }
+
+    public function deleteAdminData(string $id_admin): void
+    {
+        try {
+            AdminRepository::deleteAdminByID($id_admin);
+            http_response_code(200);
+            echo json_encode([
+                "status" => "success",
+                "message" => "Successfully to delete admin data!",
+            ]);
+            exit;
+        } catch (\PDOException $e) {
+            http_response_code(500);
+            echo json_encode([
+                "status" => "error",
+                "message" => "Database connectivity error!",
+            ]);
+            exit;
+        }
     }
 
     public function viewKelolaMahasiswa(): void

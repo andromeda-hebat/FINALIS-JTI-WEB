@@ -27,27 +27,37 @@
                         <div class="card-title mb-4 d-flex justify-content-start">
                             <h4 class="fw-bold" style="color: var(--color-navy-blue);">Tambah Data Admin</h4>
                         </div>
-                        <form>
+                        <form action="/kelola-admin/tambah" method="post" id="tambah-admin-form">
                             <div class="form-group mt-4">
-                                <label for="nama" class="font-weight-bold">Nama Lengkap</label>
-                                <input type="text" class="form-control" id="nama" name="nama" required>
+                                <label for="input-id-admin" class="font-weight-bold">NIDN</label>
+                                <input type="text" class="form-control" id="input-id-admin" name="id_admin" required>
                             </div>
                             <div class="form-group mt-4">
-                                <label for="nama" class="font-weight-bold">NIDN</label>
-                                <input type="text" class="form-control" id="nidn" name="nidn" required>
+                                <label for="input-nama" class="font-weight-bold">Nama Lengkap</label>
+                                <input type="text" class="form-control" id="input-nama" name="nama" required>
                             </div>
                             <div class="form-group mt-3">
-                                <label aria-placeholder="8-November" for="tanggal"
-                                    class="font-weight-bold">Email</label>
-                                <input type="email" class="form-control" id="email" name="email" required>
+                                <label for="input-email" class="font-weight-bold">Email</label>
+                                <input type="email" class="form-control" id="input-email" name="email" required>
                             </div>
                             <div class="form-group mt-3">
-                                <label for="password" class="font-weight-bold">Password</label>
-                                <input type="password" class="form-control" id="password" name="password" required>
+                                <label for="input-jabatan" class="font-weight-bold">Jabatan</label>
+                                <select class="form-select" name="jabatan" id="input-jabatan" required>
+                                    <option value="Admin TA">Admin TA</option>
+                                    <option value="Admin Prodi">Admin Prodi</option>
+                                </select>
                             </div>
                             <div class="form-group mt-3">
-                                <label for="password" class="font-weight-bold">Pas Foto</label>
-                                <input type="file" class="form-control" id="foto" name="foto" required>
+                                <label for="input-password" class="font-weight-bold">Password</label>
+                                <input type="password" class="form-control" id="input-password" name="password" required>
+                            </div>
+                            <div class="form-group mt-3">
+                                <label for="input-konfirmasi-password" class="font-weight-bold">Konfirmasi Password</label>
+                                <input type="password" class="form-control" id="input-konfirmasi-password" required>
+                            </div>
+                            <div class="form-group mt-3">
+                                <label for="input-foto-profil" class="font-weight-bold">Foto profil</label>
+                                <input type="file" class="form-control" id="input-foto-profil" name="foto-profil" required>
                             </div>
                             <div class="d-flex justify-content-center mt-4">
                                 <button type="submit" class="text-white px-3"
@@ -60,3 +70,16 @@
         </div>
     </div>
 </div>
+
+
+
+
+
+<?php ////////////////////// ?>
+<?php ////--JAVASCRIPT--//// ?>
+<?php ////////////////////// ?>
+
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.7.1/dist/jquery.min.js"></script>
+<script>
+    // Add logic here to validate password confirmation
+</script>

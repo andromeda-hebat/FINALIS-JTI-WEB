@@ -26,30 +26,46 @@
                     <div class="card-body p-5">
                         <div class="card-title mb-4 d-flex justify-content-start">
                             <h4 class="fw-bold" style="color: var(--color-navy-blue);">Edit Data Admin</h4>
-
-
                         </div>
-                        <form>
+                        <form action="/kelola-admin/edit" method="patch" id="edit-admin-form">
                             <div class="form-group mt-4">
-                                <label for="nama" class="font-weight-bold">Nama Lengkap</label>
-                                <input type="text" class="form-control" id="nama" name="nama" required>
+                                <label for="input-id-admin" class="font-weight-bold">NIDN</label>
+                                <input type="text" class="form-control" id="input-id-admin" name="id_admin"
+                                    value="<?= $data['admin_data']->getUserId() ?>" readonly>
                             </div>
                             <div class="form-group mt-4">
-                                <label for="nama" class="font-weight-bold">NIDN</label>
-                                <input type="text" class="form-control" id="nidn" name="nidn" required>
+                                <label for="input-nama" class="font-weight-bold">Nama Lengkap</label>
+                                <input type="text" class="form-control" id="input-nama" name="nama"
+                                    value="<?= $data['admin_data']->getNamaLengkap() ?>">
                             </div>
                             <div class="form-group mt-3">
-                                <label aria-placeholder="8-November" for="tanggal"
-                                    class="font-weight-bold">Email</label>
-                                <input type="email" class="form-control" id="email" name="email" required>
+                                <label for="input-email" class="font-weight-bold">Email</label>
+                                <input type="email" class="form-control" id="input-email" name="email"
+                                    value="<?= $data['admin_data']->getEmail() ?>">
                             </div>
                             <div class="form-group mt-3">
-                                <label for="password" class="font-weight-bold">Password</label>
-                                <input type="password" class="form-control" id="password" name="password" required>
+                                <label for="input-jabatan" class="font-weight-bold">Jabatan</label>
+                                <select class="form-select" name="jabatan" id="input-jabatan">
+                                    <option value="Admin TA" <?= $data['admin_data']->getRole() == 'Admin TA' ? 'selected' : '' ?>>Admin TA</option>
+                                    <option value="Admin Prodi" <?= $data['admin_data']->getRole() == 'Admin Prodi' ? 'selected' : '' ?>>Admin Prodi</option>
+                                </select>
                             </div>
                             <div class="form-group mt-3">
-                                <label for="password" class="font-weight-bold">Pas Foto</label>
-                                <input type="file" class="form-control" id="foto" name="foto" required>
+                                <label for="input-password" class="font-weight-bold">Password baru</label>
+                                <input type="password" class="form-control" id="input-password" name="password">
+                            </div>
+                            <div class="form-group mt-3">
+                                <label for="input-konfirmasi-password" class="font-weight-bold">Konfirmasi
+                                    Password</label>
+                                <input type="password" class="form-control" id="input-konfirmasi-password"
+                                    name="konfirmasi-password">
+                            </div>
+                            <div class="form-group mt-3">
+                                <label for="input-foto-profil" class="font-weight-bold">Foto profil</label><br>
+                                <input type="hidden" name="foto_profil" value="<?= $data['admin_data']->getFotoProfil() ?>">
+                                <img src="data:image/png;base64,<?= $data['admin_data']->getFotoProfil() ?>"
+                                    alt="Foto profil" style="width: 100px;">
+                                <input type="file" class="form-control" id="input-foto-profil" name="foto-profil" accept="image/*">
                             </div>
                             <div class="d-flex justify-content-center mt-4">
                                 <button type="submit" class="text-white px-3"
@@ -62,3 +78,63 @@
         </div>
     </div>
 </div>
+
+
+
+
+
+<?php ////////////////////// ?>
+<?php //--BOOTSTRAP MODAL--/ ?>
+<?php ////////////////////// ?>
+
+<?php include __DIR__ . '/../../components/bs_modal/server_error.php' ?>
+
+
+
+
+
+<?php ////////////////////// ?>
+<?php ////--JAVASCRIPT--//// ?>
+<?php ////////////////////// ?>
+
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.7.1/dist/jquery.min.js"></script>
+<script>
+    $(document).ready(function () {
+        $('#input-password').on('change', function () {
+            const value = $(this).val();
+            if (value !== '') {
+                $('#input-konfirmasi-password').attr('required', true);
+            } else {
+                $('#input-konfirmasi-password').attr('required', false);
+            }
+        });
+
+        $('#edit-admin-form').on('submit', function (e) {
+            e.preventDefault();
+
+            const formData = {};
+            $(this).serializeArray().forEach(field => {
+                formData[field.name] = field.value;
+            });
+
+            if (formData.password != formData["konfirmasi-password"]) {
+                alert("Password dan konfirmasi password tidak sesuai!");
+                return;
+            }
+
+            $.ajax({
+                url: $(this).attr('action'),
+                type: $(this).attr('method'),
+                data: JSON.stringify(formData),
+                processData: false,
+                contentType: 'application/json',
+                success: function (response) {
+                    alert("Sukses memperbarui data admin!")
+                },
+                error: (xhr, status, error) => {
+                    $('#server-error-bs-modal').modal('show');
+                }
+            });
+        });
+    })
+</script>

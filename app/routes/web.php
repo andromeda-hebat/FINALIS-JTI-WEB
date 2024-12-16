@@ -133,21 +133,35 @@ Router::add('GET', '/kelola-admin', AdminJurusanController::class, 'viewKelolaAd
         'args' => 'admin jurusan'
     ]
 ]);
-Router::add('GET', '/tambah-admin', AdminJurusanController::class, 'viewTambahAdmin', [
+Router::add('GET', '/kelola-admin/tambah', AdminJurusanController::class, 'viewTambahAdmin', [
     [
         'class' => AuthMiddleware::class,
         'function' => 'checkAuth',
         'args' => 'admin jurusan'
     ]
 ]);
-Router::add('POST', '/tambah-admin', AdminJurusanController::class, 'addNewAdmin', [
+Router::add('POST', '/kelola-admin/tambah', AdminJurusanController::class, 'addNewAdmin', [
     [
         'class' => AuthMiddleware::class,
         'function' => 'checkAuth',
         'args' => 'admin jurusan'
     ]
 ]);
-Router::add('GET', '/edit-admin', AdminJurusanController::class, 'viewEditAdmin', [
+Router::add('GET', '/kelola-admin/edit/([a-zA-Z0-9]+)', AdminJurusanController::class, 'viewEditAdmin', [
+    [
+        'class' => AuthMiddleware::class,
+        'function' => 'checkAuth',
+        'args' => 'admin jurusan'
+    ]
+]);
+Router::add('PATCH', '/kelola-admin/edit', AdminJurusanController::class, 'editAdminData', [
+    [
+        'class' => AuthMiddleware::class,
+        'function' => 'checkAuth',
+        'args' => 'admin jurusan'
+    ]
+]);
+Router::add('DELETE', '/kelola-admin/([a-zA-Z0-9]+)', AdminJurusanController::class, 'deleteAdminData', [
     [
         'class' => AuthMiddleware::class,
         'function' => 'checkAuth',
