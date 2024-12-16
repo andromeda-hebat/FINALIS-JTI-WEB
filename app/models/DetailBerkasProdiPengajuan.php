@@ -4,11 +4,16 @@ namespace App\Models;
 
 class DetailBerkasProdiPengajuan extends BerkasPengajuan
 {
+    private string $foto_profil;
     private string $distribusi_magang;
     private string $distribusi_skripsi;
     private string $surat_bebas_kompen;
     private string $toeic;
 
+
+    public function getFotoProfil(): string { return $this->foto_profil; }
+
+    public function setFotoProfil(string $foto_profil): void { $this->foto_profil = $foto_profil; }
 
     public function getDistribusiMagang(): string { return $this->distribusi_magang; }
 

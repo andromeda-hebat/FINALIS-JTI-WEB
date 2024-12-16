@@ -85,8 +85,9 @@ class BerkasTARepository
                     vb.id_verifikasi, 
                     ta.id_ta AS id_berkas, 
                     m.nim, 
-                    m.nama_lengkap, 
-                    ta.tanggal_request, 
+                    m.nama_lengkap,
+                    m.foto_profil,
+                    ta.tanggal_request,
                     vb.status_verifikasi, 
                     vb.keterangan_verifikasi,
                     ta.laporan_TA AS laporan_ta,
@@ -98,7 +99,7 @@ class BerkasTARepository
                 WHERE vb.id_verifikasi = :id_verifikasi
             SQL);
             $stmt->bindValue(':id_verifikasi', $id_verifikasi, \PDO::PARAM_INT);
-            $stmt->setFetchMode(\PDO::FETCH_CLASS | \PDO::FETCH_PROPS_LATE, DetailBerkasTAPengajuan::class);
+            $stmt->setFetchMode(\PDO::FETCH_CLASS, DetailBerkasTAPengajuan::class);
             $stmt->execute();
             return $stmt->fetch();
         } catch (\PDOException $e) {

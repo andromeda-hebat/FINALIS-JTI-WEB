@@ -54,7 +54,7 @@
                                 </div>
 
                                 <div class="d-flex align-items-center mb-0 mt-2">
-                                    <img src="assets/img/foto.jpg" alt="Profil" class="rounded-circle"
+                                    <img src="data:image/png;base64,<?= $data['user_file']->getFotoProfil() ?>" alt="Foto profil" class="rounded-circle"
                                         style="width: 30px; height: 30px; background-color: #ddd;">
                                     <div class="ms-3">
                                         <p class="my-0"><?= $data['user_file']->getNamaLengkap() ?></p>
@@ -131,16 +131,19 @@
                                 </div>
 
                                 <p class="mt-2 mb-0">Laporan TA/Skripsi</p>
-                                <a href="/files/distribusilaporanskripsi.pdf"
-                                    class="text-dark"><?= $data['user_file']->getLaporanTA() ?></a>
+                                <p style="color: var(--color-light-gray)"><?= $data['user_file']->getLaporanTA() ?></p>
+                                <button class="btn-preview-file btn-secondary" data-pdf="<?= $data['user_file']->getFileLaporanTA() ?>" data-bs-toggle="modal"
+                                data-bs-target="#filePreviewModal">Buka file</button>
 
                                 <p class="mt-5 mb-0">Program/Aplikasi TA/Skripsi</p>
-                                <a href="/files/distribusilaporanmagang.pdf"
-                                    class="text-dark"><?= $data['user_file']->getAplikasi() ?></a>
+                                <p style="color: var(--color-light-gray)"><?= $data['user_file']->getAplikasi() ?></p>
+                                <button class="btn-preview-file btn-secondary" data-pdf="<?= $data['user_file']->getFileAplikasi() ?>" data-bs-toggle="modal"
+                                data-bs-target="#filePreviewModal">Buka file</button>
 
                                 <p class="mt-5 mb-0">Bukti Publikasi</p>
-                                <a href="/files/buktibebaskompensasi.pdf" class=" text-dark"><?= $data['user_file']->getBuktiPublikasi() ?></a>
-
+                                <p style="color: var(--color-light-gray)"><?= $data['user_file']->getBuktiPublikasi() ?></p>
+                                <button class="btn-preview-file btn-secondary" data-pdf="<?= $data['user_file']->getFileBuktiPublikasi() ?>" data-bs-toggle="modal"
+                                data-bs-target="#filePreviewModal">Buka file</button>
                             </div>
 
                             <form id="form-verify"
@@ -186,6 +189,23 @@
 <?php ////////////////////// ?>
 <?php //--BOOTSTRAP MODAL--/ ?>
 <?php ////////////////////// ?>
+
+<div class="modal fade" id="filePreviewModal" tabindex="-1" aria-labelledby="fileModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-fullscreen modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="pdfModalLabel">Pengecekan file</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <iframe id="pdfViewer" style="width: 100%; height: 500px;" frameborder="0"></iframe>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button>
+            </div>
+        </div>
+    </div>
+</div>
 
 <?php require __DIR__ . '/../../components/bs_modal/sucess_update_berkas.php' ?>
 <?php require __DIR__ . '/../../components/bs_modal/server_error.php' ?>

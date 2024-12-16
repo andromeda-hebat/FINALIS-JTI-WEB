@@ -86,6 +86,7 @@ class BerkasProdiRepository
                     pr.id_berkas_prodi AS id_berkas,
                     m.nim,
                     m.nama_lengkap,
+                    m.foto_profil,
                     pr.tanggal_request,
                     vb.status_verifikasi,
                     vb.keterangan_verifikasi,

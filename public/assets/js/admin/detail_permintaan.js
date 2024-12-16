@@ -23,4 +23,15 @@ $(document).ready(function () {
             }
         });
     });
+
+    $('#filePreviewModal').on('show.bs.modal', function (event) {
+        const button = $(event.relatedTarget);
+        const pdfFile = button.data('pdf');
+
+        $('#pdfViewer').attr('src', 'data:application/pdf;base64,' + pdfFile);
+    });
+
+    $('#filePreviewModal').on('hidden.bs.modal', function () {
+        $('#pdfViewer').attr('src', '');
+    });
 });
