@@ -27,26 +27,36 @@
                         <div class="card-title mb-4 d-flex justify-content-start">
                             <h4 class="fw-bold" style="color: var(--color-navy-blue);">Tambah Data Admin</h4>
                         </div>
-                        <form>
+                        <form action="/tambah-admin" method="post">
+                            <div class="form-group mt-4">
+                                <label for="nama" class="font-weight-bold">NIDN</label>
+                                <input type="text" class="form-control" id="nama" name="nama" required>
+                            </div>
                             <div class="form-group mt-4">
                                 <label for="nama" class="font-weight-bold">Nama Lengkap</label>
                                 <input type="text" class="form-control" id="nama" name="nama" required>
                             </div>
-                            <div class="form-group mt-4">
-                                <label for="nama" class="font-weight-bold">NIDN</label>
-                                <input type="text" class="form-control" id="nidn" name="nidn" required>
+                            <div class="form-group mt-3">
+                                <label aria-placeholder="8-November" for="tanggal" class="font-weight-bold">Email</label>
+                                <input type="email" class="form-control" id="email" name="email" required>
                             </div>
                             <div class="form-group mt-3">
-                                <label aria-placeholder="8-November" for="tanggal"
-                                    class="font-weight-bold">Email</label>
-                                <input type="email" class="form-control" id="email" name="email" required>
+                                <label aria-placeholder="8-November" for="tanggal" class="font-weight-bold">Jabatan</label>
+                                <select class="form-select" name="jabatan" id="input-jabatan" required>
+                                    <option value="admin-ta">Admin TA</option>
+                                    <option value="admin-prodi">Admin Prodi</option>
+                                </select>
                             </div>
                             <div class="form-group mt-3">
                                 <label for="password" class="font-weight-bold">Password</label>
                                 <input type="password" class="form-control" id="password" name="password" required>
                             </div>
                             <div class="form-group mt-3">
-                                <label for="password" class="font-weight-bold">Pas Foto</label>
+                                <label for="password" class="font-weight-bold">Konfirmasi Password</label>
+                                <input type="password" class="form-control" id="password" name="password" required>
+                            </div>
+                            <div class="form-group mt-3">
+                                <label for="password" class="font-weight-bold">Foto profil</label>
                                 <input type="file" class="form-control" id="foto" name="foto" required>
                             </div>
                             <div class="d-flex justify-content-center mt-4">
