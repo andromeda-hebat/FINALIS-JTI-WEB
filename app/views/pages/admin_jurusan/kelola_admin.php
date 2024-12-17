@@ -1,3 +1,13 @@
+<?php require_once __DIR__ . '/../../components/bs_modal/confirm_delete_data.php' ?>
+
+
+
+
+
+<?php ////////////////////// ?>
+<?php ///////--HTML--/////// ?>
+<?php ////////////////////// ?>
+
 <div class="d-flex">
     <?php include __DIR__ . '/../../components/admin_jurusan/sidebar.php' ?>
     <div class="position-top w-100" style="margin-left: 35vh;">
@@ -50,7 +60,7 @@
                             <td><?= $value->getRole() ?></td>
                             <td>
                                 <a href="/kelola-admin/edit/<?= $value->getUserId() ?>" class="btn btn-primary">Edit</a>
-                                <button type="button" id="deleteBtn" class="btn btn-danger" data-bs-toggle="modal"
+                                <button type="button" id="delete-trigger-btn" class="btn btn-danger" data-user-id="<?= $value->getUserId() ?>" data-bs-toggle="modal"
                                     data-bs-target="#deleteModal">Hapus</button>
                             </td>
                         </tr>
@@ -70,6 +80,4 @@
 <?php //--BOOTSTRAP MODAL--/ ?>
 <?php ////////////////////// ?>
 
-<?php include __DIR__ . '/../../components/bs_modal/confirm_delete_data.php' ?>
-<?php include __DIR__ . '/../../components/bs_modal/sucess_update_berkas.php' ?>
-<?php include __DIR__ . '/../../components/bs_modal/server_error.php' ?>
+<?php ConfirmDeleteData("Hapus data admin", "/kelola-admin") ?>
