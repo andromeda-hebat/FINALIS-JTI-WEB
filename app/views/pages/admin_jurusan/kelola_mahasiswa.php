@@ -1,3 +1,13 @@
+<?php require_once __DIR__ . '/../../components/bs_modal/confirm_delete_data.php' ?>
+
+
+
+
+
+<?php ////////////////////// ?>
+<?php ///////--HTML--/////// ?>
+<?php ////////////////////// ?>
+
 <div class="d-flex">
     <?php include __DIR__ . '/../../components/admin_jurusan/sidebar.php' ?>
     <div class="position-top w-100" style="margin-left: 35vh;">
@@ -56,7 +66,7 @@
                             <td><?= $value->getTahunMasuk() ?></td>
                             <td class="text-center">
                                 <a href="/kelola-mahasiswa/edit/<?= $value->getUserId() ?>" class="btn btn-primary">Edit</a>
-                                <button type="button" value="hapus" id="deleteBtn" class="btn btn-danger"
+                                <button type="button" value="hapus" id="deleteBtn" class="btn btn-danger" data-user-id="<?= $value->getUserId() ?>" 
                                     data-bs-toggle="modal" data-bs-target="#deleteModal">Hapus</button>
                             </td>
                         </tr>
@@ -66,6 +76,7 @@
 
             </div>
         </main>
+    </div>
 </div>
 
 
@@ -76,64 +87,4 @@
 <?php //--BOOTSTRAP MODAL--/ ?>
 <?php ////////////////////// ?>
 
-<?php include __DIR__ . '/../../components/bs_modal/sucess_update_berkas.php' ?>
-<?php include __DIR__ . '/../../components/bs_modal/server_error.php' ?>
-
-<div class="modal" tabindex="-1" id="deleteModal">
-    <div class="modal-dialog modal-dialog-centered">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title">Hapus Data Mahasiswa</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-                <h6>Apakah anda yakin ingin menghapus data ini ?</h6>
-            </div>
-            <div class="modal-footer">
-                <button type="button"
-                    style="color: var(--color-navy-blue); border-color: var(--color-navy-blue); background-color: white"
-                    data-bs-dismiss="modal">Batal</button>
-                <form action="/kelola-mahasiswa/<?= $value->getUserId() ?>" method="delete" id="form-delete-data">
-                    <button type="submit" class="text-white"
-                        style="background-color: var(--color-navy-blue);">Hapus</button>
-                </form>
-            </div>
-        </div>
-    </div>
-</div>
-
-
-
-
-
-<?php ////////////////////// ?>
-<?php ////--JAVASCRIPT--//// ?>
-<?php ////////////////////// ?>
-
-<script src="https://cdn.jsdelivr.net/npm/jquery@3.7.1/dist/jquery.min.js"></script>
-<script>
-    $(document).ready(function () {
-        $('#form-delete-data').on('submit', function (e) {
-            e.preventDefault();
-
-            const formData = {};
-            $(this).serializeArray().forEach(field => {
-                formData[field.name] = field.value;
-            });
-
-            $.ajax({
-                url: $(this).attr('action'),
-                type: $(this).attr('method'),
-                data: JSON.stringify(formData),
-                processData: false,
-                contentType: 'application/json',
-                success: function (response) {
-                    $('#info-success-update-modal').modal('show');
-                },
-                error: (xhr, status, error) => {
-                    $('#server-error-bs-modal').modal('show');
-                }
-            })
-        });
-    });
-</script>
+<?php ConfirmDeleteData("Hapus data mahasiswa", "/kelola-mahasiswa") ?>
