@@ -1,8 +1,14 @@
+<?php require_once __DIR__ . '/../../components/bs_modal/success_request.php' ?>
+<?php require_once __DIR__ . '/../../components/bs_modal/error_request.php' ?>
+
+
+
+<?php function ConfirmDeleteData(string $title, string $url): void { ?>
 <div class="modal" tabindex="-1" id="deleteModal">
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title">Hapus Data Admin</h5>
+                <h5 class="modal-title"><?= $title ?></h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
@@ -12,14 +18,22 @@
                 <button type="button"
                     style="color: var(--color-navy-blue); border-color: var(--color-navy-blue); background-color: white"
                     data-bs-dismiss="modal">Batal</button>
-                <form action="/kelola-admin/<?= $value->getUserId() ?>" method="delete" id="form-delete-data">
-                    <button type="submit" class="text-white"
-                        style="background-color: var(--color-navy-blue);">Hapus</button>
-                </form>
+                <button id="btn-delete" type="button" class="text-white" style="background-color: var(--color-navy-blue);" data-target-id-delete="">Hapus</button>
             </div>
         </div>
     </div>
 </div>
+
+
+
+
+
+<?php /////////////////////// ?>
+<?php //-EXTERNAL COMPONENT-/ ?>
+<?php /////////////////////// ?>
+
+<?php SuccessRequest("Berhasil!", "Sukses hapus data admin") ?>
+<?php ErrorRequest("Gagal!", "Gagal menghapus data admin!") ?>
 
 
 
@@ -32,27 +46,40 @@
 <script src="https://cdn.jsdelivr.net/npm/jquery@3.7.1/dist/jquery.min.js"></script>
 <script>
     $(document).ready(function () {
-        $('#form-delete-data').on('submit', function (e) {
-            e.preventDefault();
-
-            const formData = {};
-            $(this).serializeArray().forEach(field => {
-                formData[field.name] = field.value;
-            });
+        $('#btn-delete').on('click', function(e) {
+            const targetId = $(this).data('target-id-delete');
 
             $.ajax({
-                url: $(this).attr('action'),
-                type: $(this).attr('method'),
-                data: JSON.stringify(formData),
+                url: '<?= $url ?>/' + targetId,
+                type: 'DELETE',
+                data: null,
                 processData: false,
                 contentType: 'application/json',
                 success: function (response) {
-                    $('#info-success-update-modal').modal('show');
+                    $('#deleteModal').modal('hide');
+                    $('#info-success-bs-modal').modal('show');
+                    $('#info-success-bs-modal').on('hidden.bs.modal', function () {
+                        location.reload();
+                    });
                 },
                 error: (xhr, status, error) => {
-                    $('#server-error-bs-modal').modal('show');
+                    $('#deleteModal').modal('hide');
+                    $('#error-bs-modal').modal('show');
                 }
             })
         });
+
+        $('#deleteModal').on('show.bs.modal', function (event) {
+            const button = $(event.relatedTarget);
+            const userId = button.data('user-id');
+
+            $('#btn-delete').attr('data-target-id-delete', userId);
+        });
+
+        $('#deleteModal').on('hidden.bs.modal', function () {
+            $('#btn-delete').attr('data-target-id-delete', '');
+        });
     });
 </script>
+
+<?php } ?>
