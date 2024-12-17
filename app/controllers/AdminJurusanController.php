@@ -3,6 +3,7 @@
 namespace App\Controllers;
 
 use App\Core\Controller;
+use App\Models\Mahasiswa;
 use App\Repository\{AdminRepository, MahasiswaRepository};
 use App\Models\Admin;
 
@@ -207,6 +208,57 @@ class AdminJurusanController extends Controller
         ]);
         $this->view("pages/admin_jurusan/tambah_mahasiswa");
         $this->view("templates/footer");
+    }
+
+    public function addNewMahasiswa(): void
+    {
+        if (
+            !empty($_POST['nim']) &&
+            !empty($_POST['nama']) &&
+            !empty($_POST['jurusan']) &&
+            !empty($_POST['prodi']) &&
+            filter_var($_POST['email'], FILTER_VALIDATE_EMAIL) &&
+            !empty($_POST['password']) &&
+            !empty($_POST['tahun_masuk']) &&
+            !empty($_POST['foto_profil'])
+        ) {
+            $nim = htmlspecialchars(strip_tags($_POST['nim']));
+            $nama = htmlspecialchars(strip_tags($_POST['nama']));
+            $jurusan = htmlspecialchars(strip_tags($_POST['jurusan']));
+            $prodi = htmlspecialchars(strip_tags($_POST['prodi']));
+            $email = htmlspecialchars(strip_tags($_POST['email']));
+            $tahun_masuk = htmlspecialchars(strip_tags($_POST['tahun_masuk']));
+            $password = htmlspecialchars(strip_tags($_POST['password']));
+            $hashed_password = password_hash($password, PASSWORD_BCRYPT);
+            $foto_profil = base64_encode(htmlspecialchars(strip_tags($_POST['foto_profil'])));
+
+            $mahasiswa = new Mahasiswa;
+            $mahasiswa->setUserId($nim);
+            $mahasiswa->setNamaLengkap($nama);
+            $mahasiswa->setJurusan($jurusan);
+            $mahasiswa->setProdi($prodi);
+            $mahasiswa->setTahunMasuk($tahun_masuk);
+            $mahasiswa->setEmail($email);
+            $mahasiswa->setPassword($hashed_password);
+            $mahasiswa->setFotoProfil($foto_profil);
+
+            try {
+                MahasiswaRepository::addNewMahasiswa($mahasiswa);
+                http_response_code(200);
+                echo json_encode([
+                    "status" => "success",
+                    "message" => "Successfully add new admin data!",
+                ]);
+                exit;
+            } catch (\PDOException $e) {
+                http_response_code(500);
+                echo json_encode([
+                    "status" => "error",
+                    "message" => "Database connectivity error!",
+                ]);
+                exit;
+            }
+        }
     }
 
     public function viewEditMahasiswa(): void

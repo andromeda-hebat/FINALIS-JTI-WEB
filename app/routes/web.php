@@ -175,7 +175,14 @@ Router::add('GET', '/kelola-mahasiswa', AdminJurusanController::class, 'viewkelo
         'args' => 'admin jurusan'
     ]
 ]);
-Router::add('GET', '/tambah-mahasiswa', AdminJurusanController::class, 'viewTambahMahasiswa', [
+Router::add('GET', '/kelola-mahasiswa/tambah', AdminJurusanController::class, 'viewTambahMahasiswa', [
+    [
+        'class' => AuthMiddleware::class,
+        'function' => 'checkAuth',
+        'args' => 'admin jurusan'
+    ]
+]);
+Router::add('POST', '/kelola-mahasiswa/tambah', AdminJurusanController::class, 'addNewMahasiswa', [
     [
         'class' => AuthMiddleware::class,
         'function' => 'checkAuth',
