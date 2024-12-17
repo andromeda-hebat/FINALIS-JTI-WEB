@@ -4,15 +4,19 @@ namespace App\Models;
 
 class BerkasTA extends Berkas
 {
-    public string $laporan_ta;
-    public string $aplikasi;
-    public string $bukti_publikasi;
+    private string $laporan_ta;
+    private string $aplikasi;
+    private string $bukti_publikasi;
 
-    public function __construct(?string $nim = null, ?string $tanggal_request = null, ?string $laporan_ta = null, ?string $aplikasi = null, ?string $bukti_publikasi = null)
-    {
-        parent::__construct($nim, $tanggal_request);
-        $this->laporan_ta = $laporan_ta;
-        $this->aplikasi = $aplikasi;
-        $this->bukti_publikasi = $bukti_publikasi;
-    }
+    public function getLaporanTa(): string { return $this->laporan_ta; }
+
+    public function setLaporanTa(string $laporan_ta): void { $this->laporan_ta = $laporan_ta; }
+
+    public function getAplikasi(): string { return $this->aplikasi; }
+
+    public function setAplikasi(string $aplikasi): void { $this->aplikasi = $aplikasi; }
+
+    public function getBuktiPublikasi(): string { return $this->bukti_publikasi; }
+
+    public function setBuktiPublikasi(string $bukti_publikasi): void { $this->bukti_publikasi = $bukti_publikasi; }
 }
