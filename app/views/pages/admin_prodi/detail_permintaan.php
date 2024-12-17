@@ -1,3 +1,13 @@
+<?php require_once __DIR__ . '/../../components/bs_modal/file_viewer.php' ?>
+<?php require_once __DIR__ . '/../../components/bs_modal/confirm_delete_data.php' ?>
+
+
+
+
+<?php ////////////////////// ?>
+<?php ///////--HTML--/////// ?>
+<?php ////////////////////// ?>
+
 <div class="d-flex">
     <?php include __DIR__ . '/../../components/admin_prodi/sidebar.php' ?>
     <div class="position-top w-100" style="margin-left: 35vh;">
@@ -56,7 +66,8 @@
                                 </div>
 
                                 <div class="d-flex align-items-center mb-0 mt-2">
-                                    <img src="data:image/png;base64,<?= $data['user_file']->getFotoProfil() ?>" alt="Foto profil" class="rounded-circle"
+                                    <img src="data:image/png;base64,<?= $data['user_file']->getFotoProfil() ?>"
+                                        alt="Foto profil" class="rounded-circle"
                                         style="width: 30px; height: 30px; background-color: #ddd;">
                                     <div class="ms-3">
                                         <p class="my-0"><?= $data['user_file']->getNamaLengkap() ?></p>
@@ -133,24 +144,31 @@
                                 </div>
 
                                 <p class="mt-3 mb-0">Distribusi Laporan Skripsi</p>
-                                <p style="color: var(--color-light-gray)"><?= $data['user_file']->getDistribusiSkripsi() ?></p>
-                                <button class="btn-preview-file btn-secondary" data-pdf="<?= $data['user_file']->getFileDistribusiSkripsi() ?>" data-bs-toggle="modal"
-                                    data-bs-target="#filePreviewModal">Buka file</button>
+                                <p style="color: var(--color-light-gray)"><?= $data['user_file']->getDistribusiSkripsi() ?>
+                                </p>
+                                <button class="btn-preview-file btn-secondary"
+                                    data-pdf="<?= $data['user_file']->getFileDistribusiSkripsi() ?>" data-bs-toggle="modal"
+                                    data-bs-target="#file-preview-modal">Buka file</button>
 
                                 <p class="mt-3 mb-0">Distribusi Laporan Magang</p>
-                                <p style="color: var(--color-light-gray)"><?= $data['user_file']->getDistribusiMagang() ?></p>
-                                <button class="btn-preview-file btn-secondary" data-pdf="<?= $data['user_file']->getFileDistribusiMagang() ?>" data-bs-toggle="modal"
-                                    data-bs-target="#filePreviewModal">Buka file</button>
+                                <p style="color: var(--color-light-gray)"><?= $data['user_file']->getDistribusiMagang() ?>
+                                </p>
+                                <button class="btn-preview-file btn-secondary"
+                                    data-pdf="<?= $data['user_file']->getFileDistribusiMagang() ?>" data-bs-toggle="modal"
+                                    data-bs-target="#file-preview-modal">Buka file</button>
 
                                 <p class="mt-3 mb-0">Distribusi Laporan Kompensasi</p>
-                                <p style="color: var(--color-light-gray)"><?= $data['user_file']->getSuratBebasKompen() ?></p>
-                                <button class="btn-preview-file btn-secondary" data-pdf="<?= $data['user_file']->getFileSuratBebasKompen() ?>" data-bs-toggle="modal"
-                                    data-bs-target="#filePreviewModal">Buka file</button>
+                                <p style="color: var(--color-light-gray)"><?= $data['user_file']->getSuratBebasKompen() ?>
+                                </p>
+                                <button class="btn-preview-file btn-secondary"
+                                    data-pdf="<?= $data['user_file']->getFileSuratBebasKompen() ?>" data-bs-toggle="modal"
+                                    data-bs-target="#file-preview-modal">Buka file</button>
 
                                 <p class="mt-3 mb-0">Sertifikat TOEIC</p>
                                 <p style="color: var(--color-light-gray)"><?= $data['user_file']->getToeic() ?></p>
-                                <button class="btn-preview-file btn-secondary" data-pdf="<?= $data['user_file']->getFileToeic() ?>" data-bs-toggle="modal"
-                                data-bs-target="#filePreviewModal">Buka file</button>
+                                <button class="btn-preview-file btn-secondary"
+                                    data-pdf="<?= $data['user_file']->getFileToeic() ?>" data-bs-toggle="modal"
+                                    data-bs-target="#file-preview-modal">Buka file</button>
                             </div>
 
                             <form id="form-verify"
@@ -201,25 +219,9 @@
 <?php //--BOOTSTRAP MODAL--/ ?>
 <?php ////////////////////// ?>
 
-<div class="modal fade" id="filePreviewModal" tabindex="-1" aria-labelledby="fileModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-fullscreen modal-dialog-centered">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="pdfModalLabel">Pengecekan file</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-                <iframe id="pdfViewer" style="width: 100%; height: 500px;" frameborder="0"></iframe>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button>
-            </div>
-        </div>
-    </div>
-</div>
-
-<?php require __DIR__ . '/../../components/bs_modal/sucess_update_berkas.php' ?>
-<?php require __DIR__ . '/../../components/bs_modal/server_error.php' ?>
+<?php FileViewer() ?>
+<?php Alert("info-success-bs-modal", "Berhasil!", "Sukses melakukan verifikasi berkas pengajuan administrasi prodi!") ?>
+<?php Alert("info-error-bs-modal", "Gagal!", "Gagal melakukan verifikasi berkas pengajuan administrasi prodi!") ?>
 
 
 
@@ -230,4 +232,31 @@
 <?php ////////////////////// ?>
 
 <script src="https://cdn.jsdelivr.net/npm/jquery@3.7.1/dist/jquery.min.js"></script>
-<script src="/assets/js/admin/detail_permintaan.js"></script>
+<script>
+    $(document).ready(function () {
+        $('#form-verify').on('submit', function (e) {
+            e.preventDefault();
+
+            const data = new FormData($(this)[0]);
+
+            const formObject = {};
+            data.forEach((value, key) => {
+                formObject[key] = value;
+            });
+
+            $.ajax({
+                url: $(this).attr('action'),
+                type: $(this).attr('method'),
+                data: JSON.stringify(formObject),
+                processData: false,
+                contentType: 'application/json',
+                success: function (response) {
+                    $('#info-success-bs-modal').modal('show');
+                },
+                error: (xhr, status, error) => {
+                    $('#info-error-bs-modal').modal('show');
+                }
+            });
+        });
+    });
+</script>

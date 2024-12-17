@@ -93,7 +93,7 @@
 <?php //--BOOTSTRAP MODAL--/ ?>
 <?php ////////////////////// ?>
 
-<?php include __DIR__ . '/../../components/bs_modal/server_error.php' ?>
+<?php Alert("info-error-bs-modal", "Gagal!", "Gagal memperbarui data mahasiswa!") ?>
 
 
 
