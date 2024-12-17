@@ -1,3 +1,13 @@
+<?php require_once __DIR__ . '/../../components/bs_modal/file_viewer.php' ?>
+<?php require_once __DIR__ . '/../../components/bs_modal/confirm_delete_data.php' ?>
+
+
+
+
+<?php ////////////////////// ?>
+<?php ///////--HTML--/////// ?>
+<?php ////////////////////// ?>
+
 <div class="d-flex">
     <?php include __DIR__ . '/../../components/admin_ta/sidebar.php' ?>
     <div class="position-top w-100" style="margin-left: 35vh;">
@@ -190,25 +200,9 @@
 <?php //--BOOTSTRAP MODAL--/ ?>
 <?php ////////////////////// ?>
 
-<div class="modal fade" id="filePreviewModal" tabindex="-1" aria-labelledby="fileModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-fullscreen modal-dialog-centered">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="pdfModalLabel">Pengecekan file</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-                <iframe id="pdfViewer" style="width: 100%; height: 500px;" frameborder="0"></iframe>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button>
-            </div>
-        </div>
-    </div>
-</div>
-
-<?php require __DIR__ . '/../../components/bs_modal/sucess_update_berkas.php' ?>
-<?php require __DIR__ . '/../../components/bs_modal/server_error.php' ?>
+<?php FileViewer(true) ?>
+<?php Alert("info-success-bs-modal", "Berhasil!", "Sukses melakukan verifikasi berkas pengajuan tugas akhir!") ?>
+<?php Alert("info-error-bs-modal", "Gagal!", "Gagal melakukan verifikasi berkas pengajuan tugas akhir!") ?>
 
 
 
@@ -219,4 +213,31 @@
 <?php ////////////////////// ?>
 
 <script src="https://cdn.jsdelivr.net/npm/jquery@3.7.1/dist/jquery.min.js"></script>
-<script src="/assets/js/admin/detail_permintaan.js"></script>
+<script>
+    $(document).ready(function () {
+        $('#form-verify').on('submit', function (e) {
+            e.preventDefault();
+
+            const data = new FormData($(this)[0]);
+
+            const formObject = {};
+            data.forEach((value, key) => {
+                formObject[key] = value;
+            });
+
+            $.ajax({
+                url: $(this).attr('action'),
+                type: $(this).attr('method'),
+                data: JSON.stringify(formObject),
+                processData: false,
+                contentType: 'application/json',
+                success: function (response) {
+                    $('#info-success-bs-modal').modal('show');
+                },
+                error: (xhr, status, error) => {
+                    $('#info-error-bs-modal').modal('show');
+                }
+            });
+        });
+    });
+</script>
