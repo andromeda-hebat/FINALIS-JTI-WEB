@@ -1,5 +1,4 @@
-<?php require_once __DIR__ . '/../../components/bs_modal/success_request.php' ?>
-<?php require_once __DIR__ . '/../../components/bs_modal/error_request.php' ?>
+<?php require_once __DIR__ . '/../../components/bs_modal/alert.php' ?>
 
 
 
@@ -32,8 +31,8 @@
 <?php //-EXTERNAL COMPONENT-/ ?>
 <?php /////////////////////// ?>
 
-<?php SuccessRequest("Berhasil!", "Sukses hapus data admin") ?>
-<?php ErrorRequest("Gagal!", "Gagal menghapus data admin!") ?>
+<?php Alert("info-success-bs-modal", "Berhasil!", "Sukses hapus data admin") ?>
+<?php Alert("info-error-bs-modal", "Gagal!", "Gagal menghapus data admin!") ?>
 
 
 
@@ -64,7 +63,7 @@
                 },
                 error: (xhr, status, error) => {
                     $('#deleteModal').modal('hide');
-                    $('#error-bs-modal').modal('show');
+                    $('#info-error-bs-modal').modal('show');
                 }
             })
         });
