@@ -17,7 +17,6 @@ class AdminRepository
                         ROW_NUMBER() OVER (ORDER BY id_admin ASC) AS nomor,
                         id_admin AS user_id,
                         nama_lengkap,
-                        password,
                         email,
                         jabatan AS role
                     FROM USERS.Admin
