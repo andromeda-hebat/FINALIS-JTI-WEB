@@ -60,4 +60,88 @@ class MahasiswaRepository
             throw new \PDOException($e->getMessage());
         }
     }
+
+    public static function getSingleDataMahasiswa(string $nim): bool|Mahasiswa
+    {
+        try {
+            $stmt = Database::getConnection()->prepare(<<<SQL
+                SELECT
+                    nim AS user_id,
+                    nama_lengkap,
+                    password,
+                    email,
+                    jurusan,
+                    prodi,
+                    tahun_masuk,
+                    foto_profil
+                FROM USERS.Mahasiswa
+                WHERE nim = :nim
+            SQL);
+            $stmt->bindValue(':nim', $nim, \PDO::PARAM_STR);
+            $stmt->setFetchMode(\PDO::FETCH_CLASS, Mahasiswa::class);
+            $stmt->execute();
+            return $stmt->fetch();
+        } catch (\PDOException $e) {
+            error_log(ErrorLog::formattedErrorLog($e->getMessage()), 3, LOG_FILE_PATH);
+            throw new \PDOException($e->getMessage());
+        }
+    }
+
+    public static function updateDataMahasiswaWithoutPassword(Mahasiswa $mhs): void
+    {
+        try {
+            $stmt = Database::getConnection()->prepare(<<<SQL
+                UPDATE USERS.Mahasiswa
+                SET 
+                    nama_lengkap = :nama_lengkap,
+                    email = :email,
+                    jurusan = :jurusan,
+                    prodi = :prodi,
+                    tahun_masuk = :tahun_masuk,
+                    foto_profil = :foto_profil
+                WHERE nim = :nim
+            SQL);
+            $stmt->bindValue(':nama_lengkap', $mhs->getNamaLengkap(), \PDO::PARAM_STR);
+            $stmt->bindValue(':email', $mhs->getEmail(), \PDO::PARAM_STR);
+            $stmt->bindValue(':jurusan', $mhs->getJurusan(), \PDO::PARAM_STR);
+            $stmt->bindValue(':prodi', $mhs->getProdi(), \PDO::PARAM_STR);
+            $stmt->bindValue(':tahun_masuk', $mhs->getTahunMasuk(), \PDO::PARAM_STR);
+            $stmt->bindValue(':foto_profil', $mhs->getFotoProfil(), \PDO::PARAM_STR);
+            $stmt->bindValue(':nim', $mhs->getUserId(), \PDO::PARAM_STR);
+            $stmt->execute();
+        } catch (\PDOException $e) {
+            error_log(ErrorLog::formattedErrorLog($e->getMessage()), 3, LOG_FILE_PATH);
+            throw new \PDOException($e->getMessage());
+        }
+    }
+
+    public static function updateAllFieldDataMahasiswa(Mahasiswa $mhs): void
+    {
+        try {
+            $stmt = Database::getConnection()->prepare(<<<SQL
+                UPDATE USERS.Mahasiswa
+                SET 
+                    nama_lengkap = :nama_lengkap,
+                    email = :email,
+                    password = :password,
+                    jurusan = :jurusan,
+                    prodi = :prodi,
+                    tahun_masuk = :tahun_masuk,
+                    foto_profil = :foto_profil
+                WHERE nim = :nim
+            SQL);
+            $stmt->bindValue(':nama_lengkap', $mhs->getNamaLengkap(), \PDO::PARAM_STR);
+            $stmt->bindValue(':email', $mhs->getEmail(), \PDO::PARAM_STR);
+            $stmt->bindValue(':password', $mhs->getPassword(), \PDO::PARAM_STR);
+            $stmt->bindValue(':jurusan', $mhs->getJurusan(), \PDO::PARAM_STR);
+            $stmt->bindValue(':prodi', $mhs->getProdi(), \PDO::PARAM_STR);
+            $stmt->bindValue(':tahun_masuk', $mhs->getTahunMasuk(), \PDO::PARAM_STR);
+            $stmt->bindValue(':foto_profil', $mhs->getFotoProfil(), \PDO::PARAM_STR);
+            $stmt->bindValue(':nim', $mhs->getUserId(), \PDO::PARAM_STR);
+            $stmt->execute();
+        } catch (\PDOException $e) {
+            error_log(ErrorLog::formattedErrorLog($e->getMessage()), 3, LOG_FILE_PATH);
+            throw new \PDOException($e->getMessage());
+        }
+    }
 }

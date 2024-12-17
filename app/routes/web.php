@@ -189,7 +189,14 @@ Router::add('POST', '/kelola-mahasiswa/tambah', AdminJurusanController::class, '
         'args' => 'admin jurusan'
     ]
 ]);
-Router::add('GET', '/edit-mahasiswa', AdminJurusanController::class, 'viewEditMahasiswa', [
+Router::add('GET', '/kelola-mahasiswa/edit/([0-9]+)', AdminJurusanController::class, 'viewEditMahasiswa', [
+    [
+        'class' => AuthMiddleware::class,
+        'function' => 'checkAuth',
+        'args' => 'admin jurusan'
+    ]
+]);
+Router::add('PATCH', '/kelola-mahasiswa/edit', AdminJurusanController::class, 'editMahasiswaData', [
     [
         'class' => AuthMiddleware::class,
         'function' => 'checkAuth',

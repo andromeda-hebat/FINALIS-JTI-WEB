@@ -28,42 +28,54 @@
                             <h4 class="fw-bold" style="color: var(--color-navy-blue);">Edit Data Mahasiswa</h4>
 
                         </div>
-                        <form>
+                        <form action="/kelola-mahasiswa/edit" method="patch" id="edit-mahasiswa-form">
                             <div class="form-group mt-4">
-                                <label for="nama" class="font-weight-bold">Nama Lengkap</label>
-                                <input type="text" class="form-control" id="nama" name="nama" required>
+                                <label for="input-nama" class="font-weight-bold">Nama Lengkap</label>
+                                <input type="text" class="form-control" id="input-nama" name="nama" value="<?= $data['mhs_data']->getNamaLengkap() ?>" required>
                             </div>
                             <div class="form-group mt-3">
-                                <label for="nim" class="font-weight-bold">NIM</label>
-                                <input type="text" class="form-control" id="nim" name="nim" required>
+                                <label for="input-nim" class="font-weight-bold">NIM</label>
+                                <input type="text" class="form-control" id="input-nim" name="nim" value="<?= $data['mhs_data']->getUserId() ?>" readonly required>
                             </div>
                             <div class="form-group mt-3">
-                                <label for="jurusan" class="font-weight-bold">Jurusan</label>
-                                <input type="text" class="form-control" id="jurusan" name="jurusan" required>
+                                <label for="input-jurusan" class="font-weight-bold">Jurusan</label>
+                                <input type="text" class="form-control" id="input-jurusan" name="jurusan"
+                                    value="Teknologi Informasi" readonly required>
                             </div>
                             <div class="form-group mt-3">
-                                <label for="prodi" class="font-weight-bold">Prodi</label>
-                                <input type="text" class="form-control" id="prodi" name="prodi" required>
+                                <label for="input-prodi" class="font-weight-bold">Prodi</label>
+                                <select class="form-select" name="prodi" id="input-prodi" required>
+                                    <option value="D4 Teknik Informatika" <?= $data['mhs_data']->getProdi() == 'D4 Teknik Informatika' ? 'selected' : '' ?>>D4 Teknik Informatika</option>
+                                    <option value="D4 Sistem Informasi Bisnis" <?= $data['mhs_data']->getProdi() == 'D4 Sistem Informasi Bisnis' ? 'selected' : '' ?>>D4 Sistem Informasi Bisnis</option>
+                                    <option value="D2 Pengembangan Piranti Lunak Situs" <?= $data['mhs_data']->getProdi() == 'D2 Pengembangan Piranti Lunak Situs' ? 'selected' : '' ?>>D2 Pengembangan Piranti Lunak
+                                        Situs</option>
+                                </select>
                             </div>
                             <div class="form-group mt-3">
-                                <label for="email" class="font-weight-bold">Email</label>
-                                <input type="email" class="form-control" id="email" name="email" required>
+                                <label for="input-email" class="font-weight-bold">Email</label>
+                                <input type="email" class="form-control" id="input-email" name="email" value="<?= $data['mhs_data']->getEmail() ?>" required>
                             </div>
                             <div class="form-group mt-3">
-                                <label for="password" class="font-weight-bold">Password</label>
-                                <input type="password" class="form-control" id="password" name="password" required>
+                                <label for="input-password" class="font-weight-bold">Password</label>
+                                <input type="password" class="form-control" id="input-password" name="password">
                             </div>
                             <div class="form-group mt-3">
-                                <label for="prodi" class="font-weight-bold">Tahun Masuk</label>
-                                <input type="text" class="form-control" id="thnMasuk" name="thnMasuk" required>
+                                <label for="input-konfirmasi-password" class="font-weight-bold">Konfirmasi
+                                    Password</label>
+                                <input type="password" class="form-control" name="konfirmasi-password" id="input-konfirmasi-password">
                             </div>
                             <div class="form-group mt-3">
-                                <label for="password" class="font-weight-bold">Pas Foto</label>
-                                <input type="file" class="form-control" id="foto" name="foto" required>
+                                <label for="input-tahun-masuk" class="font-weight-bold">Tahun Masuk</label>
+                                <input type="text" class="form-control" id="input-tahun-masuk" name="tahun_masuk" value="<?= $data['mhs_data']->getTahunMasuk() ?>">
+                            </div>
+                            <div class="form-group mt-3">
+                                <label for="input-foto-profil" class="font-weight-bold">Foto profil</label>
+                                <input type="file" class="form-control" id="input-foto-profil" name="foto-profil">
+                                <input type="hidden" name="foto_profil" value="<?= $data['mhs_data']->getFotoProfil() ?>">
                             </div>
                             <div class="d-flex justify-content-center mt-4">
                                 <button type="submit" class="text-white px-2"
-                                    style="background-color: var(--color-navy-blue);">Tambahkan</button>
+                                    style="background-color: var(--color-navy-blue);">Perbarui data</button>
                             </div>
                         </form>
                     </div>
@@ -72,3 +84,63 @@
         </div>
     </div>
 </div>
+
+
+
+
+
+<?php ////////////////////// ?>
+<?php //--BOOTSTRAP MODAL--/ ?>
+<?php ////////////////////// ?>
+
+<?php include __DIR__ . '/../../components/bs_modal/server_error.php' ?>
+
+
+
+
+
+<?php ////////////////////// ?>
+<?php ////--JAVASCRIPT--//// ?>
+<?php ////////////////////// ?>
+
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.7.1/dist/jquery.min.js"></script>
+<script>
+    $(document).ready(function () {
+        $('#input-password').on('change', function () {
+            const value = $(this).val();
+            if (value !== '') {
+                $('#input-konfirmasi-password').attr('required', true);
+            } else {
+                $('#input-konfirmasi-password').attr('required', false);
+            }
+        });
+
+        $('#edit-mahasiswa-form').on('submit', function (e) {
+            e.preventDefault();
+
+            const formData = {};
+            $(this).serializeArray().forEach(field => {
+                formData[field.name] = field.value;
+            });
+
+            if (formData.password != formData["konfirmasi-password"]) {
+                alert("Password dan konfirmasi password tidak sesuai!");
+                return;
+            }
+
+            $.ajax({
+                url: $(this).attr('action'),
+                type: $(this).attr('method'),
+                data: JSON.stringify(formData),
+                processData: false,
+                contentType: 'application/json',
+                success: function (response) {
+                    alert("Sukses memperbarui data admin!")
+                },
+                error: (xhr, status, error) => {
+                    $('#server-error-bs-modal').modal('show');
+                }
+            });
+        });
+    })
+</script>
