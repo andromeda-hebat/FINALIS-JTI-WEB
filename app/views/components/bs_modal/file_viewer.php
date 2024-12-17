@@ -1,6 +1,6 @@
-<?php function FileViewer(): void { ?>
+<?php function FileViewer(bool $is_fullscreen): void { ?>
 <div class="modal fade" id="file-preview-modal" tabindex="-1" aria-labelledby="fileModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-fullscreen modal-dialog-centered">
+    <div class="modal-dialog <?= $is_fullscreen == true ? 'modal-fullscreen' : 'modal-xl' ?> modal-dialog-centered">
         <div class="modal-content">
             <div class="modal-header">
                 <h5 class="modal-title" id="pdfModalLabel">Pratinjau file</h5>

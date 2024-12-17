@@ -219,7 +219,7 @@
 <?php //--BOOTSTRAP MODAL--/ ?>
 <?php ////////////////////// ?>
 
-<?php FileViewer() ?>
+<?php FileViewer(true) ?>
 <?php Alert("info-success-bs-modal", "Berhasil!", "Sukses melakukan verifikasi berkas pengajuan administrasi prodi!") ?>
 <?php Alert("info-error-bs-modal", "Gagal!", "Gagal melakukan verifikasi berkas pengajuan administrasi prodi!") ?>
 
