@@ -1,3 +1,13 @@
+<?php require_once __DIR__ . '/../../components/bs_modal/alert.php' ?>
+
+
+
+
+
+<?php ////////////////////// ?>
+<?php ///////--HTML--/////// ?>
+<?php ////////////////////// ?>
+
 <div>
     <div class="mt-3 ms-3">
         <a href="/kelola-admin">
@@ -53,11 +63,11 @@
                             </div>
                             <div class="form-group mt-3">
                                 <label for="input-konfirmasi-password" class="font-weight-bold">Konfirmasi Password</label>
-                                <input type="password" class="form-control" id="input-konfirmasi-password" required>
+                                <input type="password" class="form-control" id="input-konfirmasi-password" name="konfirmasi_password" required>
                             </div>
                             <div class="form-group mt-3">
                                 <label for="input-foto-profil" class="font-weight-bold">Foto profil</label>
-                                <input type="file" class="form-control" id="input-foto-profil" name="foto-profil" required>
+                                <input type="file" class="form-control" id="input-foto-profil" name="foto_profil" required>
                             </div>
                             <div class="d-flex justify-content-center mt-4">
                                 <button type="submit" class="text-white px-3"
@@ -76,10 +86,47 @@
 
 
 <?php ////////////////////// ?>
+<?php //--BOOTSTRAP MODAL--/ ?>
+<?php ////////////////////// ?>
+
+<?php Alert("incorrect-password-bs-modal", "Peringatan!", "Password dan konfirmasi password tidak sesuai!") ?>
+<?php Alert("info-success-bs-modal", "Berhasil!", "Sukses menambahkan data admin baru!") ?>
+<?php Alert("info-error-bs-modal", "Gagal!", "Gagal menambahkan data admin baru!") ?>
+
+
+
+
+
+<?php ////////////////////// ?>
 <?php ////--JAVASCRIPT--//// ?>
 <?php ////////////////////// ?>
 
 <script src="https://cdn.jsdelivr.net/npm/jquery@3.7.1/dist/jquery.min.js"></script>
 <script>
-    // Add logic here to validate password confirmation
+    $(document).ready(function() {
+        $('#tambah-admin-form').on('submit', function(e) {
+            e.preventDefault();
+
+            const formData = new FormData(this);
+
+            if (formData.get('password') !== formData.get('konfirmasi_password')) {
+                $('#incorrect-password-bs-modal').modal('show');
+                return;
+            }
+
+            $.ajax({
+                url: '/kelola-admin/tambah',
+                type: $(this).attr('method'),
+                data: formData,
+                processData: false,
+                contentType: false,
+                success: function (response) {
+                    $('#info-success-bs-modal').modal('show');
+                },
+                error: (xhr, status, error) => {
+                    $('#info-error-bs-modal').modal('show');
+                }
+            });
+        })
+    });
 </script>
