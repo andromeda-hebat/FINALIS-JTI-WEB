@@ -1,4 +1,4 @@
-<?php function Alert(string $id, string $title, string $message): void { ?>
+<?php function Alert(string $id, string $title, string $message, bool $is_logout_alert = false): void { ?>
 <div class="modal" tabindex="-1" id="<?= $id ?>">
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
@@ -10,6 +10,11 @@
                 <p><?= $message ?></p>
             </div>
             <div class="modal-footer">
+                <?php if ($is_logout_alert): ?>
+                <form action="/logout" method="post" class="modal-footer">
+                    <button type="submit" class="px-4">Iya</button>
+                </form>
+                <?php endif; ?>
                 <button type="button" class="text-white" style="background-color: var(--color-navy-blue);"
                     data-bs-dismiss="modal">Tutup</button>
             </div>
