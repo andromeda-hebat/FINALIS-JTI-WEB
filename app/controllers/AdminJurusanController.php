@@ -54,7 +54,7 @@ class AdminJurusanController extends Controller
             $admin->setUserId($id_admin);
             $admin->setNamaLengkap($nama);
             $admin->setEmail($email);
-            $admin->setJabatan($jabatan);
+            $admin->setRole($jabatan);
             $admin->setPassword($hashed_password);
             $admin->setFotoProfil($foto_profil);
 
@@ -126,7 +126,7 @@ class AdminJurusanController extends Controller
             $admin->setUserId($client_data['id_admin']);
             $admin->setNamaLengkap($client_data['nama']);
             $admin->setEmail($client_data['email']);
-            $admin->setJabatan($client_data['jabatan']);
+            $admin->setRole($client_data['jabatan']);
             $admin->setFotoProfil($client_data['foto_profil']);
 
             try {

@@ -47,7 +47,7 @@
                             <td><?= $value->getNomor() ?></td>
                             <td><?= $value->getNamaLengkap() ?></td>
                             <td><?= $value->getEmail() ?></td>
-                            <td><?= $value->getJabatan() ?></td>
+                            <td><?= $value->getRole() ?></td>
                             <td>
                                 <a href="/kelola-admin/edit/<?= $value->getUserId() ?>" class="btn btn-primary">Edit</a>
                                 <button type="button" id="deleteBtn" class="btn btn-danger" data-bs-toggle="modal"
