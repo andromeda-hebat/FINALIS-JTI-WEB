@@ -4,14 +4,16 @@ namespace App\Models;
 
 use App\Core\Model;
 
-class Berkas extends Model
+abstract class Berkas extends Model
 {
-    public string $nim;
-    public string $tanggal_request;
+    protected string $nim;
+    protected string $tanggal_request;
 
-    public function __construct(?string $nim = null, ?string $tanggal_request = null)
-    {
-        $this->nim = $nim;
-        $this->tanggal_request = $tanggal_request;
-    }
+    public function getNim(): string { return $this->nim; }
+
+    public function setNim(string $nim): void { $this->nim = $nim; }
+
+    public function getTanggalRequest(): string { return $this->tanggal_request; }
+
+    public function setTanggalRequest(string $tanggal_request): void { $this->tanggal_request = $tanggal_request; }
 }

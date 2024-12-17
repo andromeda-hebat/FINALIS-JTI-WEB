@@ -39,11 +39,11 @@ class BerkasProdiRepository
                     @surat_bebas_kompen = :kompen,
                     @id_admin = 'A12346'
             SQL);
-            $stmt->bindValue(':nim', $berkas_prodi->nim, \PDO::PARAM_STR);
-            $stmt->bindValue(':toeic', $berkas_prodi->toeic, \PDO::PARAM_STR);
-            $stmt->bindValue(':skripsi', $berkas_prodi->distribusi_skripsi, \PDO::PARAM_STR);
-            $stmt->bindValue(':magang', $berkas_prodi->distribusi_magang, \PDO::PARAM_STR);
-            $stmt->bindValue(':kompen', $berkas_prodi->surat_bebas_kompen, \PDO::PARAM_STR);
+            $stmt->bindValue(':nim', $berkas_prodi->getNim(), \PDO::PARAM_STR);
+            $stmt->bindValue(':toeic', $berkas_prodi->getToeic(), \PDO::PARAM_STR);
+            $stmt->bindValue(':skripsi', $berkas_prodi->getDistribusiTugasAkhir(), \PDO::PARAM_STR);
+            $stmt->bindValue(':magang', $berkas_prodi->getDistribusiMagang(), \PDO::PARAM_STR);
+            $stmt->bindValue(':kompen', $berkas_prodi->getSuratBebasKompen(), \PDO::PARAM_STR);
             $stmt->execute();
         } catch (\PDOException $e) {
             error_log(ErrorLog::formattedErrorLog($e->getMessage()), 3, LOG_FILE_PATH);

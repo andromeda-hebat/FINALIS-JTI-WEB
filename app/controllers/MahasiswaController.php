@@ -50,7 +50,14 @@ class MahasiswaController extends Controller
 
         $is_files_successfully_inserted_to_database = false;
         try {
-            BerkasTARepository::addNewBerkasTA(new BerkasTA($_SESSION['user_id'], date('Y-m-d'), $_FILES['tugas_akhir']['new_name'], $_FILES['program_aplikasi']['new_name'], $_FILES['publikasi_jurnal']['new_name']));
+            $berkas_ta = new BerkasTA;
+            $berkas_ta->setNim($_SESSION['user_id']);
+            $berkas_ta->setTanggalRequest(date('Y-m-d'));
+            $berkas_ta->setLaporanTa($_FILES['tugas_akhir']['new_name']);
+            $berkas_ta->setAplikasi($_FILES['program_aplikasi']['new_name']);
+            $berkas_ta->setBuktiPublikasi($_FILES['publikasi_jurnal']['new_name']);
+
+            BerkasTARepository::addNewBerkasTA($berkas_ta);
 
             $is_files_successfully_inserted_to_database = true;
         } catch (\Exception $e) {
@@ -130,7 +137,15 @@ class MahasiswaController extends Controller
 
         $is_files_successfully_inserted_to_database = false;
         try {
-            BerkasProdiRepository::addNewBerkasProdi(new BerkasProdi($_SESSION['user_id'], date('Y-m-d'), $_FILES['distribusi_tugas_akhir']['new_name'], $_FILES['distribusi_magang']['new_name'], $_FILES['bebas_kompen']['new_name'], $_FILES['toeic']['new_name']));
+            $berkas_prodi = new BerkasProdi;
+            $berkas_prodi->setNim($_SESSION['user_id']);
+            $berkas_prodi->setTanggalRequest(date('Y-m-d'));
+            $berkas_prodi->setToeic($_FILES['toeic']['new_name']);
+            $berkas_prodi->setDistribusiMagang($_FILES['distribusi_magang']['new_name']);
+            $berkas_prodi->setDistribusiTugasAkhir($_FILES['distribusi_tugas_akhir']['new_name']);
+            $berkas_prodi->setSuratBebasKompen($_FILES['bebas_kompen']['new_name']);
+
+            BerkasProdiRepository::addNewBerkasProdi($berkas_prodi);
 
             $is_files_successfully_inserted_to_database = true;
         } catch (\Exception $e) {

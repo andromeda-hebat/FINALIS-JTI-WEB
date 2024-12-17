@@ -39,10 +39,10 @@ class BerkasTARepository
                     @bukti_publikasi = :bukti_publikasi,
                     @id_admin = 'A12345';
             SQL);
-            $stmt->bindValue(':nim', $berkas_TA->nim, \PDO::PARAM_STR);
-            $stmt->bindValue(':laporan_ta', $berkas_TA->laporan_ta, \PDO::PARAM_STR);
-            $stmt->bindValue(':aplikasi', $berkas_TA->aplikasi, \PDO::PARAM_STR);
-            $stmt->bindValue(':bukti_publikasi', $berkas_TA->bukti_publikasi, \PDO::PARAM_STR);
+            $stmt->bindValue(':nim', $berkas_TA->getNim(), \PDO::PARAM_STR);
+            $stmt->bindValue(':laporan_ta', $berkas_TA->getLaporanTa(), \PDO::PARAM_STR);
+            $stmt->bindValue(':aplikasi', $berkas_TA->getAplikasi(), \PDO::PARAM_STR);
+            $stmt->bindValue(':bukti_publikasi', $berkas_TA->getBuktiPublikasi(), \PDO::PARAM_STR);
             $stmt->execute();
         } catch (\PDOException $e) {
             error_log(ErrorLog::formattedErrorLog($e->getMessage()), 3, LOG_FILE_PATH);
