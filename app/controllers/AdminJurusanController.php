@@ -332,6 +332,26 @@ class AdminJurusanController extends Controller
         }
     }
 
+    public function deleteMahasiswaData(string $nim): void
+    {
+        try {
+            MahasiswaRepository::deleteMahasiswaByID($nim);
+            http_response_code(200);
+            echo json_encode([
+                "status" => "success",
+                "message" => "Successfully to delete mahasiswa data!",
+            ]);
+            exit;
+        } catch (\PDOException $e) {
+            http_response_code(500);
+            echo json_encode([
+                "status" => "error",
+                "message" => "Database connectivity error!",
+            ]);
+            exit;
+        }
+    }
+
     public function kelolaTemplateSurat(): void
     {
         $this->view("templates/header", [

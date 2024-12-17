@@ -144,4 +144,19 @@ class MahasiswaRepository
             throw new \PDOException($e->getMessage());
         }
     }
+
+    public static function deleteMahasiswaByID(string $nim): void
+    {
+        try {
+            $stmt = Database::getConnection()->prepare(<<<SQL
+                DELETE FROM USERS.Mahasiswa
+                WHERE nim = :nim
+            SQL);
+            $stmt->bindValue(':nim', $nim, \PDO::PARAM_STR);
+            $stmt->execute();
+        } catch (\PDOException $e) {
+            error_log(ErrorLog::formattedErrorLog($e->getMessage()), 3, LOG_FILE_PATH);
+            throw new \PDOException($e->getMessage());
+        }
+    }
 }
