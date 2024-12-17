@@ -175,14 +175,35 @@ Router::add('GET', '/kelola-mahasiswa', AdminJurusanController::class, 'viewkelo
         'args' => 'admin jurusan'
     ]
 ]);
-Router::add('GET', '/tambah-mahasiswa', AdminJurusanController::class, 'viewTambahMahasiswa', [
+Router::add('GET', '/kelola-mahasiswa/tambah', AdminJurusanController::class, 'viewTambahMahasiswa', [
     [
         'class' => AuthMiddleware::class,
         'function' => 'checkAuth',
         'args' => 'admin jurusan'
     ]
 ]);
-Router::add('GET', '/edit-mahasiswa', AdminJurusanController::class, 'viewEditMahasiswa', [
+Router::add('POST', '/kelola-mahasiswa/tambah', AdminJurusanController::class, 'addNewMahasiswa', [
+    [
+        'class' => AuthMiddleware::class,
+        'function' => 'checkAuth',
+        'args' => 'admin jurusan'
+    ]
+]);
+Router::add('GET', '/kelola-mahasiswa/edit/([0-9]+)', AdminJurusanController::class, 'viewEditMahasiswa', [
+    [
+        'class' => AuthMiddleware::class,
+        'function' => 'checkAuth',
+        'args' => 'admin jurusan'
+    ]
+]);
+Router::add('PATCH', '/kelola-mahasiswa/edit', AdminJurusanController::class, 'editMahasiswaData', [
+    [
+        'class' => AuthMiddleware::class,
+        'function' => 'checkAuth',
+        'args' => 'admin jurusan'
+    ]
+]);
+Router::add('DELETE', '/kelola-mahasiswa/([a-zA-Z0-9]+)', AdminJurusanController::class, 'deleteMahasiswaData', [
     [
         'class' => AuthMiddleware::class,
         'function' => 'checkAuth',

@@ -3,6 +3,7 @@
 namespace App\Controllers;
 
 use App\Core\Controller;
+use App\Models\Mahasiswa;
 use App\Repository\{AdminRepository, MahasiswaRepository};
 use App\Models\Admin;
 
@@ -54,7 +55,7 @@ class AdminJurusanController extends Controller
             $admin->setUserId($id_admin);
             $admin->setNamaLengkap($nama);
             $admin->setEmail($email);
-            $admin->setJabatan($jabatan);
+            $admin->setRole($jabatan);
             $admin->setPassword($hashed_password);
             $admin->setFotoProfil($foto_profil);
 
@@ -126,7 +127,7 @@ class AdminJurusanController extends Controller
             $admin->setUserId($client_data['id_admin']);
             $admin->setNamaLengkap($client_data['nama']);
             $admin->setEmail($client_data['email']);
-            $admin->setJabatan($client_data['jabatan']);
+            $admin->setRole($client_data['jabatan']);
             $admin->setFotoProfil($client_data['foto_profil']);
 
             try {
@@ -209,14 +210,146 @@ class AdminJurusanController extends Controller
         $this->view("templates/footer");
     }
 
-    public function viewEditMahasiswa(): void
+    public function addNewMahasiswa(): void
     {
+        if (
+            !empty($_POST['nim']) &&
+            !empty($_POST['nama']) &&
+            !empty($_POST['jurusan']) &&
+            !empty($_POST['prodi']) &&
+            filter_var($_POST['email'], FILTER_VALIDATE_EMAIL) &&
+            !empty($_POST['password']) &&
+            !empty($_POST['tahun_masuk']) &&
+            !empty($_POST['foto_profil'])
+        ) {
+            $nim = htmlspecialchars(strip_tags($_POST['nim']));
+            $nama = htmlspecialchars(strip_tags($_POST['nama']));
+            $jurusan = htmlspecialchars(strip_tags($_POST['jurusan']));
+            $prodi = htmlspecialchars(strip_tags($_POST['prodi']));
+            $email = htmlspecialchars(strip_tags($_POST['email']));
+            $tahun_masuk = htmlspecialchars(strip_tags($_POST['tahun_masuk']));
+            $password = htmlspecialchars(strip_tags($_POST['password']));
+            $hashed_password = password_hash($password, PASSWORD_BCRYPT);
+            $foto_profil = base64_encode(htmlspecialchars(strip_tags($_POST['foto_profil'])));
+
+            $mahasiswa = new Mahasiswa;
+            $mahasiswa->setUserId($nim);
+            $mahasiswa->setNamaLengkap($nama);
+            $mahasiswa->setJurusan($jurusan);
+            $mahasiswa->setProdi($prodi);
+            $mahasiswa->setTahunMasuk($tahun_masuk);
+            $mahasiswa->setEmail($email);
+            $mahasiswa->setPassword($hashed_password);
+            $mahasiswa->setFotoProfil($foto_profil);
+
+            try {
+                MahasiswaRepository::addNewMahasiswa($mahasiswa);
+                http_response_code(200);
+                echo json_encode([
+                    "status" => "success",
+                    "message" => "Successfully add new admin data!",
+                ]);
+                exit;
+            } catch (\PDOException $e) {
+                http_response_code(500);
+                echo json_encode([
+                    "status" => "error",
+                    "message" => "Database connectivity error!",
+                ]);
+                exit;
+            }
+        }
+    }
+
+    public function viewEditMahasiswa(string $nim): void
+    {
+        try {
+            $mahasiswa = MahasiswaRepository::getSingleDataMahasiswa($nim);
+        } catch (\PDOException $e) {
+            http_response_code(500);
+            echo json_encode([
+                "status" => "error",
+                "message" => "Database connectivity error!",
+            ]);
+            exit;
+        }
+
         $this->view("templates/header", [
             'title' => "Edit Mahasiswa",
             'css' => ["assets/css/sidebar"]
         ]);
-        $this->view("pages/admin_jurusan/edit_mahasiswa");
+        $this->view("pages/admin_jurusan/edit_mahasiswa", [
+            'mhs_data' => $mahasiswa
+        ]);
         $this->view("templates/footer");
+    }
+
+    public function editMahasiswaData(): void
+    {
+        $client_data = json_decode(file_get_contents('php://input'), true);
+
+        if (
+            !empty($client_data['nim']) &&
+            isset($client_data['nama']) &&
+            isset($client_data['jurusan']) &&
+            isset($client_data['prodi']) &&
+            isset($client_data['email']) &&
+            isset($client_data['tahun_masuk']) &&
+            isset($client_data['foto_profil'])
+        ) {
+            $mahasiswa = new Mahasiswa;
+            $mahasiswa->setUserId($client_data['nim']);
+            $mahasiswa->setNamaLengkap($client_data['nama']);
+            $mahasiswa->setJurusan($client_data['jurusan']);
+            $mahasiswa->setProdi($client_data['prodi']);
+            $mahasiswa->setEmail($client_data['email']);
+            $mahasiswa->setTahunMasuk($client_data['tahun_masuk']);
+            $mahasiswa->setFotoProfil($client_data['foto_profil']);
+
+            try {
+                if (!empty($client_data['password'])) {
+                    $hashed_password = password_hash($client_data['password'], PASSWORD_BCRYPT);
+                    $mahasiswa->setPassword($hashed_password);
+                    MahasiswaRepository::updateAllFieldDataMahasiswa($mahasiswa);
+                } else {
+                    MahasiswaRepository::updateDataMahasiswaWithoutPassword($mahasiswa);
+                }
+
+                http_response_code(200);
+                echo json_encode([
+                    "status" => "success",
+                    "message" => "Successfully to update admin data!",
+                ]);
+                exit;
+            } catch (\PDOException $e) {
+                http_response_code(500);
+                echo json_encode([
+                    "status" => "error",
+                    "message" => "Database connectivity error!",
+                ]);
+                exit;
+            }
+        }
+    }
+
+    public function deleteMahasiswaData(string $nim): void
+    {
+        try {
+            MahasiswaRepository::deleteMahasiswaByID($nim);
+            http_response_code(200);
+            echo json_encode([
+                "status" => "success",
+                "message" => "Successfully to delete mahasiswa data!",
+            ]);
+            exit;
+        } catch (\PDOException $e) {
+            http_response_code(500);
+            echo json_encode([
+                "status" => "error",
+                "message" => "Database connectivity error!",
+            ]);
+            exit;
+        }
     }
 
     public function kelolaTemplateSurat(): void

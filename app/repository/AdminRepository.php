@@ -19,8 +19,9 @@ class AdminRepository
                         nama_lengkap,
                         password,
                         email,
-                        jabatan
+                        jabatan AS role
                     FROM USERS.Admin
+                    WHERE jabatan != 'Admin Jurusan'
                 SQL)
                 ->fetchAll(\PDO::FETCH_CLASS, Admin::class);
         } catch (\PDOException $e) {
@@ -40,7 +41,7 @@ class AdminRepository
             $stmt->bindValue(':nama_lengkap', $new_admin->getNamaLengkap(), \PDO::PARAM_STR);
             $stmt->bindValue(':password', $new_admin->getPassword(), \PDO::PARAM_STR);
             $stmt->bindValue(':email', $new_admin->getEmail(), \PDO::PARAM_STR);
-            $stmt->bindValue(':jabatan', $new_admin->getJabatan(), \PDO::PARAM_STR);
+            $stmt->bindValue(':jabatan', $new_admin->getRole(), \PDO::PARAM_STR);
             $stmt->bindValue(':foto_profil', $new_admin->getFotoProfil(), \PDO::PARAM_STR);
             $stmt->execute();
         } catch (\PDOException $e) {
@@ -87,7 +88,7 @@ class AdminRepository
             SQL);
             $stmt->bindValue(':nama_lengkap', $admin->getNamaLengkap(), \PDO::PARAM_STR);
             $stmt->bindValue(':email', $admin->getEmail(), \PDO::PARAM_STR);
-            $stmt->bindValue(':jabatan', $admin->getJabatan(), \PDO::PARAM_STR);
+            $stmt->bindValue(':jabatan', $admin->getRole(), \PDO::PARAM_STR);
             $stmt->bindValue(':foto_profil', $admin->getFotoProfil(), \PDO::PARAM_STR);
             $stmt->bindValue(':id_admin', $admin->getUserId(), \PDO::PARAM_STR);
             $stmt->execute();
@@ -113,7 +114,7 @@ class AdminRepository
             $stmt->bindValue(':nama_lengkap', $admin->getNamaLengkap(), \PDO::PARAM_STR);
             $stmt->bindValue(':password', $admin->getPassword(), \PDO::PARAM_STR);
             $stmt->bindValue(':email', $admin->getEmail(), \PDO::PARAM_STR);
-            $stmt->bindValue(':jabatan', $admin->getJabatan(), \PDO::PARAM_STR);
+            $stmt->bindValue(':jabatan', $admin->getRole(), \PDO::PARAM_STR);
             $stmt->bindValue(':foto_profil', $admin->getFotoProfil(), \PDO::PARAM_STR);
             $stmt->bindValue(':id_admin', $admin->getUserId(), \PDO::PARAM_STR);
             $stmt->execute();
