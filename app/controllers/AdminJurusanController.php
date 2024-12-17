@@ -54,15 +54,19 @@ class AdminJurusanController extends Controller
             $hashed_password = password_hash($password, PASSWORD_BCRYPT);
 
             $allowed_img_types = ['image/jpeg', 'image/png'];
-            if (in_array($_FILES['foto_profil']['type'], $allowed_img_types)) {
+            if (
+                in_array($_FILES['foto_profil']['type'], $allowed_img_types) &&
+                $_FILES['foto_profil']['size'] <= 2097152
+            ) {
                 $file_data = file_get_contents($_FILES['foto_profil']['tmp_name']);
                 $foto_profil = base64_encode($file_data);
             } else {
                 http_response_code(415);
                 echo json_encode([
                     "status" => "error",
-                    "message" => "unsupported media type"
+                    "message" => "unsupported media type or file size exceeds limit"
                 ]);
+                exit;
             }
 
             $admin = new Admin;
