@@ -5,7 +5,7 @@ namespace App\Controllers;
 use App\Core\Controller;
 use App\Repository\NotifikasiRepository;
 
-class NotificationController extends Controller
+class NotifikasiController extends Controller
 {
     public function viewNotification(): void
     {

@@ -3,7 +3,7 @@
 namespace App\Repository;
 
 use App\Core\Database;
-use App\Models\Notification;
+use App\Models\Notifikasi;
 use App\Helpers\ErrorLog;
 
 class NotifikasiRepository
@@ -30,7 +30,7 @@ class NotifikasiRepository
             SQL);
             $stmt->bindValue(':user_id', $user_id, \PDO::PARAM_STR);
             $stmt->execute();
-            return $stmt->fetchAll(\PDO::FETCH_CLASS, Notification::class);
+            return $stmt->fetchAll(\PDO::FETCH_CLASS, Notifikasi::class);
         } catch (\PDOException $e) {
             error_log(ErrorLog::formattedErrorLog($e->getMessage()), 3, LOG_FILE_PATH);
             throw new \PDOException($e->getMessage());
@@ -59,7 +59,7 @@ class NotifikasiRepository
             SQL);
             $stmt->bindValue(':user_id', $user_id, \PDO::PARAM_STR);
             $stmt->execute();
-            return $stmt->fetchAll(\PDO::FETCH_CLASS, Notification::class);
+            return $stmt->fetchAll(\PDO::FETCH_CLASS, Notifikasi::class);
         } catch (\PDOException $e) {
             error_log(ErrorLog::formattedErrorLog($e->getMessage()), 3, LOG_FILE_PATH);
             throw new \PDOException($e->getMessage());
@@ -87,7 +87,7 @@ class NotifikasiRepository
             SQL);
             $stmt->bindValue(':user_id', $user_id, \PDO::PARAM_STR);
             $stmt->execute();
-            return $stmt->fetchAll(\PDO::FETCH_CLASS, Notification::class);
+            return $stmt->fetchAll(\PDO::FETCH_CLASS, Notifikasi::class);
         } catch (\PDOException $e) {
             error_log(ErrorLog::formattedErrorLog($e->getMessage()), 3, LOG_FILE_PATH);
             throw new \PDOException($e->getMessage());

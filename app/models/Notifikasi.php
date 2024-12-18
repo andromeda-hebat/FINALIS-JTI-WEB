@@ -4,7 +4,7 @@ namespace App\Models;
 
 use App\Core\Model;
 
-class Notification extends Model
+class Notifikasi extends Model
 {
     private int $id_notifikasi;
     private string $admin;
