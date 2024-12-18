@@ -13,7 +13,7 @@ class HomeController extends Controller
             header('Location: /dashboard');
             exit;
         }
-        
+
         $this->view("templates/header", [
             'title' => "FINALIS JTI"
         ]);
@@ -36,7 +36,7 @@ class HomeController extends Controller
         $data['active_page'] = "dashboard";
         $data['css'] = ["assets/css/sidebar"];
 
-        try { 
+        try {
             switch ($_SESSION['role']) {
                 case 'Admin Prodi':
                     $statistic_request = StatistikRepository::getStatisticRequest('Prodi');
@@ -58,7 +58,8 @@ class HomeController extends Controller
                         'all_req_verif' => $all_req_verif,
                         'active_page' => 'dashboard'
                     ]);
-                    $this->view("templates/footer");;
+                    $this->view("templates/footer");
+                    ;
                     break;
                 case 'Admin Jurusan':
                     $users_statistic = StatistikRepository::getTotalUserStatistic();
@@ -90,6 +91,36 @@ class HomeController extends Controller
                 "status" => "error",
                 "message" => "Database connectivity error!"
             ]);
+        }
+    }
+
+    public function viewUploadFile(): void
+    {
+        $base_dir = realpath(__DIR__ . '/../../storage/uploads');
+
+        $file = $_GET['file'] ?? '';
+        $file = basename($file);
+
+        $category = $_GET['category'] ?? '';
+        $category = basename($category);
+
+        $sub_category = $_GET['sub_category'] ?? '';
+        $sub_category = basename($sub_category);
+
+        $file_path = $base_dir . '/' . $category . '/' . $sub_category . '/' . $file;
+
+        if (file_exists($file_path) && mime_content_type($file_path) === 'application/pdf' && strpos(realpath($file_path), $base_dir) === 0) {
+            header('Content-Type: application/pdf');
+            header('Content-Length: ' . filesize($file_path));
+            header('Content-Disposition: inline; filename="' . $file . '"');
+
+            readfile($file_path);
+        } else {
+            http_response_code(404);
+            $this->view("templates/header", [
+                'title' => '404 Not Found!'
+            ]);
+            $this->view("pages/general/page_not_found");
         }
     }
 }

@@ -24,6 +24,13 @@ Router::add('GET', '/notifikasi', NotifikasiController::class, 'viewNotification
         'args' => 'any'
     ]
 ]);
+Router::add('GET', '/uploads', HomeController::class, 'viewUploadFile', [
+    [
+        'class' => AuthMiddleware::class,
+        'function' => 'checkAuth',
+        'args' => 'any'
+    ]
+]);
 
 
 // Auth
