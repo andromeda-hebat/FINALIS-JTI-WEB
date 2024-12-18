@@ -24,7 +24,7 @@ class AdminProdiController extends Controller
 
         $this->view("templates/header", [
             'title' => "Permintaan Verifikasi",
-            'css' => ["assets/css/sidebar"]
+            'css' => ["/assets/css/sidebar"]
         ]);
         $this->view("pages/admin_prodi/permintaan_verifikasi", [
             'all_req_verif' => $all_req_verif,
@@ -52,6 +52,7 @@ class AdminProdiController extends Controller
             'css' => ["/assets/css/sidebar"]
         ]);
         $this->view("pages/admin_prodi/detail_permintaan", [
+            'active_page' => "permintaan-verifikasi-prodi",
             'user_file' => $user_file
         ]);
         $this->view("templates/footer");
