@@ -79,11 +79,11 @@
                 processData: false,
                 contentType: false,
                 success: (response) => {
-                    alert('Formulir sukses terkirim!');
-                    location.reload();
+                    $('#info-success-bs-modal').modal('show');
+                    $('#info-success-bs-modal').on('hidden.bs.modal', () => location.reload());
                 },
                 error: (xhr, status, error) => {
-                    $('#server-error-bs-modal').modal('show');
+                    $('#info-error-bs-modal').modal('show');
                 }
             });
         })

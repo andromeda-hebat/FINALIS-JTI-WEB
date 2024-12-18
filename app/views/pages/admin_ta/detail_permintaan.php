@@ -142,18 +142,27 @@
 
                                 <p class="mt-2 mb-0">Laporan TA/Skripsi</p>
                                 <p style="color: var(--color-light-gray)"><?= $data['user_file']->getLaporanTA() ?></p>
-                                <button class="btn-preview-file btn-secondary" data-pdf="<?= $data['user_file']->getFileLaporanTA() ?>" data-bs-toggle="modal"
-                                data-bs-target="#filePreviewModal">Buka file</button>
+                                <button class="btn-preview-file btn-secondary" 
+                                    data-pdf-name="<?= $data['user_file']->getLaporanTA() ?>"
+                                    data-pdf-sub-category="laporan_ta"
+                                    data-bs-toggle="modal"
+                                data-bs-target="#file-preview-modal">Buka file</button>
 
                                 <p class="mt-5 mb-0">Program/Aplikasi TA/Skripsi</p>
                                 <p style="color: var(--color-light-gray)"><?= $data['user_file']->getAplikasi() ?></p>
-                                <button class="btn-preview-file btn-secondary" data-pdf="<?= $data['user_file']->getFileAplikasi() ?>" data-bs-toggle="modal"
-                                data-bs-target="#filePreviewModal">Buka file</button>
+                                <button class="btn-preview-file btn-secondary" 
+                                    data-pdf-name="<?= $data['user_file']->getAplikasi() ?>"
+                                    data-pdf-sub-category="program_aplikasi"
+                                    data-bs-toggle="modal"
+                                data-bs-target="#file-preview-modal">Buka file</button>
 
                                 <p class="mt-5 mb-0">Bukti Publikasi</p>
                                 <p style="color: var(--color-light-gray)"><?= $data['user_file']->getBuktiPublikasi() ?></p>
-                                <button class="btn-preview-file btn-secondary" data-pdf="<?= $data['user_file']->getFileBuktiPublikasi() ?>" data-bs-toggle="modal"
-                                data-bs-target="#filePreviewModal">Buka file</button>
+                                <button class="btn-preview-file btn-secondary" 
+                                    data-pdf-name="<?= $data['user_file']->getBuktiPublikasi() ?>" 
+                                    data-pdf-sub-category="publikasi_jurnal"
+                                    data-bs-toggle="modal"
+                                data-bs-target="#file-preview-modal">Buka file</button>
                             </div>
 
                             <form id="form-verify"
@@ -200,7 +209,7 @@
 <?php //--BOOTSTRAP MODAL--/ ?>
 <?php ////////////////////// ?>
 
-<?php FileViewer(true) ?>
+<?php FileViewer(true, true, "tugas_akhir") ?>
 <?php Alert("info-success-bs-modal", "Berhasil!", "Sukses melakukan verifikasi berkas pengajuan tugas akhir!") ?>
 <?php Alert("info-error-bs-modal", "Gagal!", "Gagal melakukan verifikasi berkas pengajuan tugas akhir!") ?>
 
