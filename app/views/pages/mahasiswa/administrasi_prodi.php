@@ -83,7 +83,7 @@
                 contentType: false,
                 success: (response) => {
                     $('#info-success-bs-modal').modal('show');
-                    location.reload();
+                    $('#info-success-bs-modal').on('hidden.bs.modal', () => location.reload());
                 },
                 error: (xhr, status, error) => {
                     $('#info-error-bs-modal').modal('show');
