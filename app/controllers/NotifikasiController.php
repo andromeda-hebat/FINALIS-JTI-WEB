@@ -35,7 +35,7 @@ class NotifikasiController extends Controller
             'title' => "Notifikasi",
             'css' => ["assets/css/sidebar"]
         ]);
-        $this->view("pages/general/notification", [
+        $this->view("pages/general/notifikasi", [
             'notifications' => $notifications
         ]);
         $this->view("templates/footer");

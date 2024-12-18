@@ -83,7 +83,7 @@ class NotifikasiRepository
                 INNER JOIN VER.LogAktivitas v ON v.id_admin = n.id_admin
                 WHERE
                     n.tujuan_notifikasi = 'Mahasiswa' AND
-                    n.nim = :user_id;
+                    n.nim = :user_id
             SQL);
             $stmt->bindValue(':user_id', $user_id, \PDO::PARAM_STR);
             $stmt->execute();
