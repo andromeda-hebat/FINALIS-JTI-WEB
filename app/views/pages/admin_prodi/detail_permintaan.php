@@ -147,27 +147,35 @@
                                 <p style="color: var(--color-light-gray)"><?= $data['user_file']->getDistribusiSkripsi() ?>
                                 </p>
                                 <button class="btn-preview-file btn-secondary"
-                                    data-pdf="<?= $data['user_file']->getFileDistribusiSkripsi() ?>" data-bs-toggle="modal"
+                                    data-pdf-name="<?= htmlspecialchars($data['user_file']->getDistribusiSkripsi()) ?>"
+                                    data-pdf-sub-category="distribusi_tugas_akhir"
+                                    data-bs-toggle="modal"
                                     data-bs-target="#file-preview-modal">Buka file</button>
 
                                 <p class="mt-3 mb-0">Distribusi Laporan Magang</p>
                                 <p style="color: var(--color-light-gray)"><?= $data['user_file']->getDistribusiMagang() ?>
                                 </p>
                                 <button class="btn-preview-file btn-secondary"
-                                    data-pdf="<?= $data['user_file']->getFileDistribusiMagang() ?>" data-bs-toggle="modal"
+                                    data-pdf-name="<?= htmlspecialchars($data['user_file']->getDistribusiMagang()) ?>"
+                                    data-pdf-sub-category="distribusi_magang"
+                                    data-bs-toggle="modal"
                                     data-bs-target="#file-preview-modal">Buka file</button>
 
                                 <p class="mt-3 mb-0">Distribusi Laporan Kompensasi</p>
                                 <p style="color: var(--color-light-gray)"><?= $data['user_file']->getSuratBebasKompen() ?>
                                 </p>
                                 <button class="btn-preview-file btn-secondary"
-                                    data-pdf="<?= $data['user_file']->getFileSuratBebasKompen() ?>" data-bs-toggle="modal"
+                                    data-pdf-name="<?= htmlspecialchars($data['user_file']->getSuratBebasKompen()) ?>"
+                                    data-pdf-sub-category="bebas_kompen"
+                                    data-bs-toggle="modal"
                                     data-bs-target="#file-preview-modal">Buka file</button>
 
                                 <p class="mt-3 mb-0">Sertifikat TOEIC</p>
                                 <p style="color: var(--color-light-gray)"><?= $data['user_file']->getToeic() ?></p>
                                 <button class="btn-preview-file btn-secondary"
-                                    data-pdf="<?= $data['user_file']->getFileToeic() ?>" data-bs-toggle="modal"
+                                    data-pdf-name="<?= htmlspecialchars($data['user_file']->getToeic()) ?>"
+                                    data-pdf-sub-category="toeic"
+                                    data-bs-toggle="modal"
                                     data-bs-target="#file-preview-modal">Buka file</button>
                             </div>
 
@@ -190,16 +198,13 @@
                                 <textarea name="description" id="description"
                                     placeholder="Tambahkan keterangan kepada pihak mahasiswa"
                                     style="resize: none; min-width: 80%; min-height: 60%"></textarea>
+                                <div class="d-flex justify-content-end">
+                                    <button type="submit" value="Kirim" id="submitBtn" class="px-4 text-white mt-3"
+                                        style="background-color: var(--color-navy-blue);">Kirim</button>
+                                </div>
                             </form>
                         </div>
-
                     </div>
-                    <div class="d-flex justify-content-end">
-                        <button type="submit" value="Kirim" id="submitBtn" class="px-4 text-white mt-3"
-                            style="background-color: var(--color-navy-blue);" data-bs-toggle="modal"
-                            data-bs-target="#info-success-update-modal">Kirim</button>
-                    </div>
-
                 <?php else: ?>
                     <div class="card justify-content-center align-items-center"
                         style="min-height: 60vh; box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);">
@@ -219,7 +224,7 @@
 <?php //--BOOTSTRAP MODAL--/ ?>
 <?php ////////////////////// ?>
 
-<?php FileViewer(true) ?>
+<?php FileViewer(true, true, "administrasi_prodi") ?>
 <?php Alert("info-success-bs-modal", "Berhasil!", "Sukses melakukan verifikasi berkas pengajuan administrasi prodi!") ?>
 <?php Alert("info-error-bs-modal", "Gagal!", "Gagal melakukan verifikasi berkas pengajuan administrasi prodi!") ?>
 
