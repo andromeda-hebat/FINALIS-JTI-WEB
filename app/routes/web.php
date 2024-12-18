@@ -2,7 +2,7 @@
 
 use App\Core\Router;
 use App\Middlewares\{AuthMiddleware};
-use App\Controllers\{HomeController, AuthController, MahasiswaController, AdminProdiController, AdminTAController, AdminJurusanController ,NotificationController};
+use App\Controllers\{HomeController, AuthController, MahasiswaController, AdminProdiController, AdminTAController, AdminJurusanController ,NotifikasiController};
 
 
 
@@ -17,7 +17,7 @@ Router::add('GET', '/dashboard', HomeController::class,'viewDashboard', [
         'args' => 'any'
     ]
 ]);
-Router::add('GET', '/notifikasi', NotificationController::class, 'viewNotification', [
+Router::add('GET', '/notifikasi', NotifikasiController::class, 'viewNotification', [
     [
         'class' => AuthMiddleware::class,
         'function' => 'checkAuth',

@@ -1,9 +1,17 @@
+<?php require_once __DIR__ . '/../../components/bs_modal/file_viewer.php' ?>
+
+
+
+
+<?php ////////////////////// ?>
+<?php ///////--HTML--/////// ?>
+<?php ////////////////////// ?>
+
 <div class="d-flex">
     <?php include __DIR__ . '/../../components/mahasiswa/sidebar.php' ?>
     <div class="position-top w-100" style="margin-left: 35vh;">
         <?php include __DIR__ . '/../../components/general/topbar.php' ?>
         <main class="halaman mx-5 " style="min-height:100vh; margin-top:15vh;">
-            <!-- Status Formulir -->
             <section>
                 <div class="d-flex align-items-center mb-3">
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
@@ -64,7 +72,6 @@
                     </p>
                 </div>
             </section>
-            <!-- Template Surat -->
             <section class="mt-5">
                 <div class="d-flex align-items-center">
                     <svg class="me-2" width="30" height="30" viewBox="0 0 30 30" fill="none"
@@ -81,25 +88,25 @@
                             <div>Surat Pernyataan Publikasi</div>
                             <button class="me-3 btn btn-outline-dark btn-sm rounded-pill" style="border-color: var(--color-navy-blue);"
                                 data-pdf="/files/Surat-pernyataan-publikasi.pdf" data-bs-toggle="modal"
-                                data-bs-target="#pdfModal">Pratinjau</button>
+                                data-bs-target="#file-preview-modal">Pratinjau</button>
                         </div>
                         <div class="d-flex justify-content-between align-items-center py-2">
                             <div>Tanda Terima Laporan PKL/Magang</div>
                             <button class="me-3 btn btn-outline-dark btn-sm rounded-pill" style="border-color: var(--color-navy-blue);"
                                 data-pdf="/files/Tanda-terima-laporan-PKL-magang.pdf" data-bs-toggle="modal"
-                                data-bs-target="#pdfModal">Pratinjau</button>
+                                data-bs-target="#file-preview-modal">Pratinjau</button>
                         </div>
                         <div class="d-flex justify-content-between align-items-center py-2">
                             <div>Tanda Terima Laporan TA/Skripsi</div>
                             <button class="me-3 btn btn-outline-dark btn-sm rounded-pill" style="border-color: var(--color-navy-blue);"
                                 data-pdf="/files/Tanda-terima-laporan-skripsi-TI.pdf" data-bs-toggle="modal"
-                                data-bs-target="#pdfModal">Pratinjau</button>
+                                data-bs-target="#file-preview-modal">Pratinjau</button>
                         </div>
                         <div class="d-flex justify-content-between align-items-center py-2">
                             <div>Surat Bebas Kompen</div>
                             <button class="me-3 btn btn-outline-dark btn-sm rounded-pill" style="border-color: var(--color-navy-blue);"
                                 data-pdf="/files/Bebas-kompen-TI.pdf" data-bs-toggle="modal"
-                                data-bs-target="#pdfModal">Pratinjau</button>
+                                data-bs-target="#file-preview-modal">Pratinjau</button>
                         </div>
                     </div>
                 </div>
@@ -116,43 +123,4 @@
 <?php //--BOOTSTRAP MODAL--/ ?>
 <?php ////////////////////// ?>
 
-<div class="modal fade" id="pdfModal" tabindex="-1" aria-labelledby="pdfModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-xl">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="pdfModalLabel">PDF Preview</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-                <iframe id="pdfViewer" style="width: 100%; height: 500px;" frameborder="0"></iframe>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-            </div>
-        </div>
-    </div>
-</div>
-
-
-
-
-
-<?php ////////////////////// ?>
-<?php ////--JAVASCRIPT--//// ?>
-<?php ////////////////////// ?>
-
-<script src="https://cdn.jsdelivr.net/npm/jquery@3.7.1/dist/jquery.min.js"></script>
-<script>
-    $(document).ready(function () {
-        $('#pdfModal').on('show.bs.modal', function (event) {
-            const button = $(event.relatedTarget);
-            const pdfFile = button.data('pdf');
-
-            $('#pdfViewer').attr('src', pdfFile);
-        });
-
-        $('#pdfModal').on('hidden.bs.modal', function () {
-            $('#pdfViewer').attr('src', '');
-        });
-    });
-</script>
+<?php FileViewer(false) ?>

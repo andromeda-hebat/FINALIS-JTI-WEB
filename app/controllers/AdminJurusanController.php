@@ -41,7 +41,10 @@ class AdminJurusanController extends Controller
             filter_var($_POST['email'], FILTER_VALIDATE_EMAIL) &&
             !empty($_POST['jabatan']) &&
             !empty($_POST['password']) &&
-            !empty($_POST['foto-profil'])
+            (
+                isset($_FILES['foto_profil']) &&
+                $_FILES['foto_profil']['error'] === UPLOAD_ERR_OK
+            )
         ) {
             $id_admin = htmlspecialchars(strip_tags($_POST['id_admin']));
             $nama = htmlspecialchars(strip_tags($_POST['nama']));
@@ -49,7 +52,22 @@ class AdminJurusanController extends Controller
             $jabatan = htmlspecialchars(strip_tags($_POST['jabatan']));
             $password = htmlspecialchars(strip_tags($_POST['password']));
             $hashed_password = password_hash($password, PASSWORD_BCRYPT);
-            $foto_profil = base64_encode(htmlspecialchars(strip_tags($_POST['foto-profil'])));
+
+            $allowed_img_types = ['image/jpeg', 'image/png'];
+            if (
+                in_array($_FILES['foto_profil']['type'], $allowed_img_types) &&
+                $_FILES['foto_profil']['size'] <= 2097152
+            ) {
+                $file_data = file_get_contents($_FILES['foto_profil']['tmp_name']);
+                $foto_profil = base64_encode($file_data);
+            } else {
+                http_response_code(415);
+                echo json_encode([
+                    "status" => "error",
+                    "message" => "unsupported media type or file size exceeds limit"
+                ]);
+                exit;
+            }
 
             $admin = new Admin;
             $admin->setUserId($id_admin);
@@ -75,6 +93,12 @@ class AdminJurusanController extends Controller
                 ]);
                 exit;
             }
+        } else {
+            http_response_code(400);
+            echo json_encode([
+                "status" => "error",
+                "message" => "client send incomplete data"
+            ]);
         }
     }
 
@@ -220,7 +244,10 @@ class AdminJurusanController extends Controller
             filter_var($_POST['email'], FILTER_VALIDATE_EMAIL) &&
             !empty($_POST['password']) &&
             !empty($_POST['tahun_masuk']) &&
-            !empty($_POST['foto_profil'])
+            (
+                isset($_FILES['foto_profil']) &&
+                $_FILES['foto_profil']['error'] === UPLOAD_ERR_OK
+            )
         ) {
             $nim = htmlspecialchars(strip_tags($_POST['nim']));
             $nama = htmlspecialchars(strip_tags($_POST['nama']));
@@ -230,7 +257,22 @@ class AdminJurusanController extends Controller
             $tahun_masuk = htmlspecialchars(strip_tags($_POST['tahun_masuk']));
             $password = htmlspecialchars(strip_tags($_POST['password']));
             $hashed_password = password_hash($password, PASSWORD_BCRYPT);
-            $foto_profil = base64_encode(htmlspecialchars(strip_tags($_POST['foto_profil'])));
+            
+            $allowed_img_types = ['image/jpeg', 'image/png'];
+            if (
+                in_array($_FILES['foto_profil']['type'], $allowed_img_types) &&
+                $_FILES['foto_profil']['size'] <= 2097152
+            ) {
+                $file_data = file_get_contents($_FILES['foto_profil']['tmp_name']);
+                $foto_profil = base64_encode($file_data);
+            } else {
+                http_response_code(415);
+                echo json_encode([
+                    "status" => "error",
+                    "message" => "unsupported media type or file size exceeds limit"
+                ]);
+                exit;
+            }
 
             $mahasiswa = new Mahasiswa;
             $mahasiswa->setUserId($nim);

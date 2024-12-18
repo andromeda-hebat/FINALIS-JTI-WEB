@@ -1,3 +1,13 @@
+<?php require_once __DIR__ . '/../../components/bs_modal/alert.php' ?>
+
+
+
+
+
+<?php ////////////////////// ?>
+<?php ///////--HTML--/////// ?>
+<?php ////////////////////// ?>
+
 <div class="d-flex">
     <?php include __DIR__ . '/../../components/mahasiswa/sidebar.php' ?>
     <div class="position-top w-100" style="margin-left: 35vh;">
@@ -47,9 +57,8 @@
 <?php //--BOOTSTRAP MODAL--/ ?>
 <?php ////////////////////// ?>
 
-<?php include_once __DIR__ . '/../../components/bs_modal/server_error.php' ?>
-<?php include_once __DIR__ . '/../../components/bs_modal/client_error.php' ?>
-
+<?php Alert("info-success-bs-modal", "Berhasil!", "Sukses melakukan pengajuan berkas administrasi prodi!") ?>
+<?php Alert("info-error-bs-modal", "Gagal!", "Gagal melakukan pengajuan berkas administrasi prodi!") ?>
 
 
 
@@ -73,11 +82,11 @@
                 processData: false,
                 contentType: false,
                 success: (response) => {
-                    alert('Formulir sukses terkirim!');
+                    $('#info-success-bs-modal').modal('show');
                     location.reload();
                 },
                 error: (xhr, status, error) => {
-                    $('#server-error-bs-modal').modal('show');
+                    $('#info-error-bs-modal').modal('show');
                 }
             });
         })

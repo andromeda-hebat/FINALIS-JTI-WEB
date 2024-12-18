@@ -1,13 +1,21 @@
+<?php require_once __DIR__ . '/../../components/bs_modal/alert.php' ?>
+
+
+
+
+
+<?php ////////////////////// ?>
+<?php ///////--HTML--/////// ?>
+<?php ////////////////////// ?>
+
 <div class="d-flex flex-column align-items-center border-end justify-content-center position-fixed"
     style="background-color: var(--color-navy-blue); width: 35vh; height: 100vh; padding-top: 20px;">
-    <!-- Bagian Profil -->
     <div class="d-flex text-center py-4 mb-4">
         <img src="/assets/img/finalis-jti-logo.png" alt="Logo" class="me-3"
             style="width: 50px; height: 50px;">
         <h3 class="d-flex align-items-center justify-content-center fw-bold text-center" style="color: var(--color-golden-yellow); font-weight: 800; line-height: normal !important;">FINALIS JTI</h3>
     </div>
 
-    <!-- Tautan Navigasi -->
     <nav class="nav w-100 d-flex justify-content-center text-start">
         <a href="/dashboard" id="nav-dashboard" class="sidebar-nav nav-link text-white w-100 ps-5">
             Dashboard
@@ -17,7 +25,6 @@
         </a>
     </nav>
 
-    <!-- Tombol Keluar -->
     <div class="mt-auto w-100 mb-4 d-flex justify-content-center">
         <button type="button" class="sidebar-nav nav-link w-100 ps-5 p-3 d-flex text-white text-start" data-bs-toggle="modal"
             data-bs-target="#modalConfirmationLogout">
@@ -40,7 +47,7 @@
 <?php //--BOOTSTRAP MODAL--/ ?>
 <?php ////////////////////// ?>
 
-<?php include __DIR__ . '/../bs_modal/ask_logout_modal.php' ?>
+<?php Alert("modal-confirmation-logout", "Konfirmasi logout", "Apakah anda yakin untuk logout?", true) ?>
 
 
 
