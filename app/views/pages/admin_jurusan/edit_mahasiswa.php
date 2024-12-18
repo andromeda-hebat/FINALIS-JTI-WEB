@@ -1,3 +1,13 @@
+<?php require_once __DIR__ . '/../../components/bs_modal/alert.php' ?>
+
+
+
+
+
+<?php ////////////////////// ?>
+<?php ///////--HTML--/////// ?>
+<?php ////////////////////// ?>
+
 <div>
     <div class="mt-3 ms-3">
         <a href="/kelola-mahasiswa">

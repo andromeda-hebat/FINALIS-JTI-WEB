@@ -80,4 +80,4 @@
 <?php //--BOOTSTRAP MODAL--/ ?>
 <?php ////////////////////// ?>
 
-<?php ConfirmDeleteData("Hapus data admin", "/kelola-admin") ?>
+<?php ConfirmDeleteData("Hapus data admin", "/kelola-admin", "admin") ?>

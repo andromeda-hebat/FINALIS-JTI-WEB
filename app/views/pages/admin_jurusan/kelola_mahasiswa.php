@@ -87,4 +87,4 @@
 <?php //--BOOTSTRAP MODAL--/ ?>
 <?php ////////////////////// ?>
 
-<?php ConfirmDeleteData("Hapus data mahasiswa", "/kelola-mahasiswa") ?>
+<?php ConfirmDeleteData("Hapus data mahasiswa", "/kelola-mahasiswa", "mahasiswa") ?>

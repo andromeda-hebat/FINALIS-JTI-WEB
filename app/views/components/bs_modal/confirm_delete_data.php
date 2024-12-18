@@ -2,7 +2,7 @@
 
 
 
-<?php function ConfirmDeleteData(string $title, string $url): void { ?>
+<?php function ConfirmDeleteData(string $title, string $url, string $user): void { ?>
 <div class="modal" tabindex="-1" id="deleteModal">
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
@@ -31,8 +31,8 @@
 <?php //-EXTERNAL COMPONENT-/ ?>
 <?php /////////////////////// ?>
 
-<?php Alert("info-success-bs-modal", "Berhasil!", "Sukses hapus data admin") ?>
-<?php Alert("info-error-bs-modal", "Gagal!", "Gagal menghapus data admin!") ?>
+<?php Alert("info-success-bs-modal", "Berhasil!", "Sukses hapus data " . $user) ?>
+<?php Alert("info-error-bs-modal", "Gagal!", "Gagal menghapus data " . $user) ?>
 
 
 

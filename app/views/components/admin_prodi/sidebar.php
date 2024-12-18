@@ -46,7 +46,7 @@
 <?php //--BOOTSTRAP MODAL--/ ?>
 <?php ////////////////////// ?>
 
-<?php Alert("modal-confirmation-logout", "Konfirmasi logout", "Apakah anda yakin untuk logout?") ?>
+<?php Alert("modal-confirmation-logout", "Konfirmasi logout", "Apakah anda yakin untuk logout?", true) ?>
 
 
 
