@@ -85,6 +85,7 @@
                                 <th style="background-color:#E4EEFF ;">NIM</th>
                                 <th style="background-color:#E4EEFF ;">Mahasiswa</th>
                                 <th style="background-color:#E4EEFF ;">Status</th>
+                                <th style="background-color:#E4EEFF ;">Jenis Berkas</th>
                                 <th style="background-color:#E4EEFF ;">Tanggal Pengajuan</th>
                                 <th style="background-color:#E4EEFF ;">Keterangan</th>
                             </thead>
@@ -98,6 +99,7 @@
                                         <td>
                                             <?php include __DIR__ . '/../../atoms/badge_' . strtolower($value->getStatusVerifikasi()) . '.php' ?>
                                         </td>
+                                        <td><?= $value->getJenisBerkas() ?></td>
                                         <td><?= $value->getTanggalRequest() ?></td>
                                         <td><?= $value->getKeteranganVerifikasi() ?></td>
                                     </tr>

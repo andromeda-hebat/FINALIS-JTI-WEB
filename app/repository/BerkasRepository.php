@@ -90,7 +90,8 @@ class BerkasRepository
                             m.nim, 
                             m.nama_lengkap, 
                             ta.tanggal_request, 
-                            vb.status_verifikasi, 
+                            vb.status_verifikasi,
+                            'Berkas TA' AS jenis_berkas,
                             vb.keterangan_verifikasi
                         FROM VER.VerifikasiBerkas vb
                         INNER JOIN BERKAS.TA ta ON vb.id_berkas = ta.id_ta
@@ -103,6 +104,7 @@ class BerkasRepository
                             m.nama_lengkap,
                             p.tanggal_request,
                             v.status_verifikasi,
+                            'Berkas Prodi' AS jenis_berkas,
                             v.keterangan_verifikasi
                         FROM USERS.Mahasiswa m
                         INNER JOIN BERKAS.Prodi p ON m.nim = p.nim

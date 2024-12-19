@@ -14,6 +14,7 @@ class BerkasPengajuan extends Model
     protected string $nama_lengkap;
     protected string $tanggal_request;
     protected string $keterangan_verifikasi;
+    private string $jenis_berkas;
 
 
     public function getNomor(): int { return $this->nomor; }
@@ -47,4 +48,8 @@ class BerkasPengajuan extends Model
     public function getKeteranganVerifikasi(): string { return $this->keterangan_verifikasi; }
 
     public function setKeteranganVerifikasi(string $keterangan_verifikasi): void { $this->keterangan_verifikasi = $keterangan_verifikasi; }
+
+    public function getJenisBerkas(): string {return $this->jenis_berkas;}
+
+    public function setJenisBerkas(string $jenis_berkas){$this->jenis_berkas = $jenis_berkas;}
 }
