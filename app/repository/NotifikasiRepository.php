@@ -12,13 +12,12 @@ class NotifikasiRepository
     {
         try {
             $stmt = Database::getConnection()->prepare(<<<SQL
-                SELECT 
-                    n.id_notifikasi,
+                SELECT DISTINCT
                     a.nama_lengkap AS 'admin',
                     m.nama_lengkap AS 'mahasiswa',
                     n.pesan,
-                    PR.tanggal_request AS 'tanggal',
-                    n.status_notifikasi AS 'status'
+                    n.status_notifikasi AS 'status',
+                    PR.tanggal_request AS 'tanggal'
                 FROM VER.Notifikasi n
                 INNER JOIN USERS.Admin a ON a.id_admin  = n.id_admin
                 INNER JOIN USERS.Mahasiswa m ON m.nim = n.nim
@@ -41,7 +40,7 @@ class NotifikasiRepository
     {
         try {
             $stmt = Database::getConnection()->prepare(<<<SQL
-                SELECT 
+                SELECT DISTINCT
                     n.id_notifikasi,
                     a.nama_lengkap AS 'admin',
                     m.nama_lengkap AS 'mahasiswa',
@@ -70,7 +69,7 @@ class NotifikasiRepository
     {
         try {
             $stmt = Database::getConnection()->prepare(<<<SQL
-                SELECT 
+                SELECT DISTINCT
                     n.id_notifikasi,
                     a.nama_lengkap AS 'admin',
                     m.nama_lengkap AS 'mahasiswa',
