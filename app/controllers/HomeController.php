@@ -63,10 +63,12 @@ class HomeController extends Controller
                     break;
                 case 'Admin Jurusan':
                     $users_statistic = StatistikRepository::getTotalUserStatistic();
+                    $all_req_verif = BerkasRepository::getAllBerkas();
                     $this->view("templates/header", $data);
                     $this->view("pages/admin_jurusan/dashboard", [
                         'active_page' => 'dashboard',
-                        'total_user' => $users_statistic
+                        'total_user' => $users_statistic,
+                        'all_req_verif' => $all_req_verif
                     ]);
                     $this->view("templates/footer");
                     break;
