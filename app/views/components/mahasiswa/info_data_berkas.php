@@ -36,7 +36,7 @@
             <p class="mt-4 text-start fw-bold">Keterangan : </p>
 
             <textarea name="description" id="keterangan" cols="105" rows="10" style="resize: none;" disabled>
-                <?= $data['info_berkas']->getKeteranganVerifikasi() ?>
+                <?= $data['keterangan_verifikasi'] ?>
             </textarea>
         </div>
         <div class="d-flex justify-content-end mt-3">
