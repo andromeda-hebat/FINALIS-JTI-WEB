@@ -59,7 +59,7 @@ class AdminTAController extends Controller
     {
         $data = json_decode(file_get_contents('php://input'), true);
         
-        $verify_status = ($data['is_verify'] == true) ? 'Disetujui' : 'Ditolak';
+        $verify_status = ($data['is_verify'] == "true") ? 'Disetujui' : 'Ditolak';
         try {
             BerkasTARepository::updateVerifyStatusBerkasTA($data['id_berkas'], $verify_status, $data['description'], $_SESSION['user_id']);
             http_response_code(200);
