@@ -92,25 +92,25 @@
                         <div class="d-flex justify-content-between align-items-center py-2">
                             <div>Surat Pernyataan Publikasi</div>
                             <button class="me-3 btn btn-outline-dark btn-sm rounded-pill" style="border-color: var(--color-navy-blue);"
-                                data-pdf="/files/Surat-pernyataan-publikasi.pdf" data-bs-toggle="modal"
+                                data-pdf-name="/files/Surat-pernyataan-publikasi.pdf" data-bs-toggle="modal"
                                 data-bs-target="#file-preview-modal">Pratinjau</button>
                         </div>
                         <div class="d-flex justify-content-between align-items-center py-2">
                             <div>Tanda Terima Laporan PKL/Magang</div>
                             <button class="me-3 btn btn-outline-dark btn-sm rounded-pill" style="border-color: var(--color-navy-blue);"
-                                data-pdf="/files/Tanda-terima-laporan-PKL-magang.pdf" data-bs-toggle="modal"
+                                data-pdf-name="/files/Tanda-terima-laporan-PKL-magang.pdf" data-bs-toggle="modal"
                                 data-bs-target="#file-preview-modal">Pratinjau</button>
                         </div>
                         <div class="d-flex justify-content-between align-items-center py-2">
                             <div>Tanda Terima Laporan TA/Skripsi</div>
                             <button class="me-3 btn btn-outline-dark btn-sm rounded-pill" style="border-color: var(--color-navy-blue);"
-                                data-pdf="/files/Tanda-terima-laporan-skripsi-TI.pdf" data-bs-toggle="modal"
+                                data-pdf-name="/files/Tanda-terima-laporan-skripsi-TI.pdf" data-bs-toggle="modal"
                                 data-bs-target="#file-preview-modal">Pratinjau</button>
                         </div>
                         <div class="d-flex justify-content-between align-items-center py-2">
                             <div>Surat Bebas Kompen</div>
                             <button class="me-3 btn btn-outline-dark btn-sm rounded-pill" style="border-color: var(--color-navy-blue);"
-                                data-pdf="/files/Bebas-kompen-TI.pdf" data-bs-toggle="modal"
+                                data-pdf-name="/files/Bebas-kompen-TI.pdf" data-bs-toggle="modal"
                                 data-bs-target="#file-preview-modal">Pratinjau</button>
                         </div>
                     </div>
@@ -128,4 +128,4 @@
 <?php //--BOOTSTRAP MODAL--/ ?>
 <?php ////////////////////// ?>
 
-<?php FileViewer(false) ?>
+<?php FileViewer(true) ?>
