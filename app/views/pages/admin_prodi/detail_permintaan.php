@@ -110,7 +110,7 @@
                                     </div>
                                     <div class="ms-5">
                                         <p class="my-0" style="color: #8D8D8D;">Status</p>
-                                        <p class="my-0"><?= $data['user_file']->getStatusVerifikasi() ?></p>
+                                        <?php include __DIR__ . '/../../atoms/badge_' . strtolower($data['user_file']->getStatusVerifikasi()) . '.php' ?>
                                     </div>
                                 </div>
                             </div>
