@@ -26,8 +26,6 @@
                     <div class="card-body p-5">
                         <div class="card-title mb-4 d-flex justify-content-start">
                             <h4 class="fw-bold" style="color: var(--color-navy-blue);">Tambah Template Surat</h4>
-  
-
                         </div>
                         <form>
                             <div class="form-group mt-4">
@@ -43,7 +41,6 @@
                                 <input type="file" class="form-control" id="upload" name="upload" required>
                             </div>
                         </form>
-
                     </div>
                     <div class="d-flex justify-content-center mb-5">
                             <button type="submit" class="text-white px-2"

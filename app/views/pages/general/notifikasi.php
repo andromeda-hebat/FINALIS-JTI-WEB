@@ -1,3 +1,13 @@
+<style>
+    .card-not-read {
+        background-color:rgb(197, 197, 197);
+        color: black;
+        border: 1px solid rgb(131, 129, 129);
+    }
+</style>
+
+
+
 <div class="d-flex">
     <?php if (strcasecmp($_SESSION['role'], 'Admin TA') == 0): ?>
         <?php include __DIR__ . '/../../components/admin_ta/sidebar.php' ?>
@@ -17,7 +27,7 @@
                 </div>
                 <button class="mt-3">Tandai semua sudah dibaca</button>
                 <?php foreach ($data['notifications'] as $key => $value): ?>
-                <div class="card mt-3" style="<?= $value->getStatus() == 'Belum Dibaca' ? 'background-color: #999da2; color: white;' : '' ?>;">
+                <div class="card mt-3 <?= $value->getStatus() == 'Belum Dibaca' ? 'card-not-read' : '' ?>">
                     <div class="card-body d-flex justify-content-between">
                         <div>
                             <p><?= $value->getAdmin() ?></p>
