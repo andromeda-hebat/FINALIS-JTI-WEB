@@ -16,8 +16,8 @@ class BerkasRepository
                     CASE 
                         WHEN SUM(CASE WHEN jenis_tanggungan = 'Tanggungan TA' AND status_tanggungan = 'Selesai' THEN 1 ELSE 0 END) > 0
                             AND SUM(CASE WHEN jenis_tanggungan = 'Tanggungan Prodi' AND status_tanggungan = 'Selesai' THEN 1 ELSE 0 END) > 0
-                        THEN 'Lunas'
-                        ELSE 'Belum lunas'
+                        THEN 'lunas'
+                        ELSE 'belum_lunas'
                     END AS status_verifikasi,
                     CASE 
                         WHEN SUM(CASE WHEN jenis_tanggungan = 'Tanggungan TA' AND status_tanggungan = 'Selesai' THEN 1 ELSE 0 END) > 0

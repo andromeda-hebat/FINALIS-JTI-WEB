@@ -27,9 +27,10 @@
                             <div class="d-flex justify-content-between align-items-center py-2">
                                 <label for="tugasAkhir" class="form-check-label">Tugas Akhir</label>
                                 <div class="d-flex">
-                                    <p class="me-3 my-0">Status: <span><?= $data['status_ta'] ?></span>
+                                    <p>
+                                        <?php include __DIR__ . '/../../atoms/badge_' . strtolower($data['status_ta']) . '.php' ?>
                                     </p>
-                                    <a href="/tugas-akhir" class="btn btn-outline-dark btn-sm rounded-pill"
+                                    <a href="/tugas-akhir" class="btn btn-outline-dark btn-sm rounded-pill ms-3"
                                         style="border-color: var(--color-navy-blue);">Detail
                                     </a>
                                 </div>
@@ -37,20 +38,20 @@
                             <div class="d-flex justify-content-between align-items-center py-2">
                                 <label for="adminProdi" class="form-check-label">Administrasi Prodi</label>
                                 <div class="d-flex">
-                                    <p class="me-3 my-0">Status:
-                                        <span><?= $data['status_prodi'] ?></span>
+                                    <p>
+                                        <?php include __DIR__ . '/../../atoms/badge_' . strtolower($data['status_prodi']) . '.php' ?>
                                     </p>
-                                    <a href="/administrasi-prodi" class="btn btn-outline-dark btn-sm rounded-pill"
+                                    <a href="/administrasi-prodi" class="btn btn-outline-dark btn-sm rounded-pill ms-3"
                                         style="border-color: var(--color-navy-blue);">Detail</a>
                                 </div>
                             </div>
                             <div class="d-flex justify-content-between align-items-center py-2">
                                 <label for="bebasTanggungan" class="form-check-label">Bebas Tanggungan</label>
                                 <div class="d-flex">
-                                    <p class="me-3 my-0">Status:
-                                        <span><?= $data['status_bebas_tanggungan'] ?></span>
+                                    <p>
+                                        <?php include __DIR__ . '/../../atoms/badge_' . strtolower($data['status_bebas_tanggungan']) . '.php' ?>
                                     </p>
-                                    <a href="/permintaan-surat" class="btn btn-outline-dark btn-sm rounded-pill"
+                                    <a href="/permintaan-surat" class="btn btn-outline-dark btn-sm rounded-pill ms-3"
                                         style="border-color: var(--color-navy-blue);">Detail</a>
                                 </div>
                             </div>
