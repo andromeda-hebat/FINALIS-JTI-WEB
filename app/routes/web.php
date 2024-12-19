@@ -82,6 +82,13 @@ Router::add('GET', '/permintaan-surat', MahasiswaController::class, 'viewPermint
         'args' => 'mahasiswa'
     ]
 ]);
+Router::add('GET', '/panduan-surat', MahasiswaController::class, 'viewPanduan', [
+    [
+        'class' => AuthMiddleware::class,
+        'function' => 'checkAuth',
+        'args' => 'mahasiswa'
+    ]
+]);
 
 
 // User: Admin Prodi

@@ -231,4 +231,19 @@ class MahasiswaController extends Controller
         ]);
         $this->view("templates/footer");
     }
+
+    public function viewPanduan(): void
+    {
+        $this->view("templates/header", [
+            'title' => "Panduan",
+        ]);
+        $this->view("pages/mahasiswa/panduan_surat", [
+
+        ]);
+        $this->view("templates/footer");
+    }
+
+
+
+
 }
