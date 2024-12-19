@@ -27,9 +27,11 @@
                             <div class="d-flex justify-content-between align-items-center py-2">
                                 <label for="tugasAkhir" class="form-check-label">Tugas Akhir</label>
                                 <div class="d-flex">
+                                    <?php if ($data['status_ta'] != "Belum diajukan"): ?>
                                     <p>
                                         <?php include __DIR__ . '/../../atoms/badge_' . strtolower($data['status_ta']) . '.php' ?>
                                     </p>
+                                    <?php endif; ?>
                                     <a href="/tugas-akhir" class="btn btn-outline-dark btn-sm rounded-pill ms-3"
                                         style="border-color: var(--color-navy-blue);">Detail
                                     </a>
@@ -38,9 +40,11 @@
                             <div class="d-flex justify-content-between align-items-center py-2">
                                 <label for="adminProdi" class="form-check-label">Administrasi Prodi</label>
                                 <div class="d-flex">
+                                    <?php if ($data['status_prodi'] != "Belum diajukan"): ?>
                                     <p>
                                         <?php include __DIR__ . '/../../atoms/badge_' . strtolower($data['status_prodi']) . '.php' ?>
                                     </p>
+                                    <?php endif; ?>
                                     <a href="/administrasi-prodi" class="btn btn-outline-dark btn-sm rounded-pill ms-3"
                                         style="border-color: var(--color-navy-blue);">Detail</a>
                                 </div>
