@@ -9,6 +9,7 @@
 			</div>
 		</div>
 	</div>
+	<?php if (strcasecmp($_SESSION['role'], 'Admin Jurusan') != 0): ?>
 	<div class="me-5">
 		<a href="/notifikasi">
 			<svg width="30" height="30" viewBox="0 0 50 50" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -26,4 +27,5 @@
 			</svg>
 		</a>
 	</div>
+	<?php endif; ?>
 </div>
