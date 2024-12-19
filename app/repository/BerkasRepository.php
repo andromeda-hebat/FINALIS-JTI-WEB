@@ -56,7 +56,7 @@ class BerkasRepository
                     FROM VER.VerifikasiBerkas V
                     INNER JOIN BERKAS.Prodi P ON P.id_berkas_prodi = V.id_berkas
                     WHERE P.nim = ?
-                    UNION ALL
+                    UNION
                     SELECT T.tanggal_request,
                         V.status_verifikasi,
                         V.keterangan_verifikasi,
