@@ -87,9 +87,21 @@
                                 <th style="background-color:#E4EEFF ;">Status</th>
                                 <th style="background-color:#E4EEFF ;">Tanggal Pengajuan</th>
                                 <th style="background-color:#E4EEFF ;">Keterangan</th>
-                                <th style="background-color:#E4EEFF ;">Aksi</th>
                             </thead>
                             <tbody>
+                                <?php $number = 0; ?>
+                                <?php foreach ($data['all_req_verif'] as $key => $value): ?>
+                                    <tr>
+                                        <td><?= ++$number ?></td>
+                                        <td><?= $value->getNim() ?></td>
+                                        <td><?= $value->getNamaLengkap() ?></td>
+                                        <td>
+                                            <?php include __DIR__ . '/../../atoms/badge_' . strtolower($value->getStatusVerifikasi()) . '.php' ?>
+                                        </td>
+                                        <td><?= $value->getTanggalRequest() ?></td>
+                                        <td><?= $value->getKeteranganVerifikasi() ?></td>
+                                    </tr>
+                                <?php endforeach; ?>
                             </tbody>
                         </table>
                     </div>
