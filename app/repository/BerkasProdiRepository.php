@@ -77,6 +77,33 @@ class BerkasProdiRepository
         }
     }
 
+    public static function getAllSubmittedBerkasProdi(): array
+    {
+        try {
+            return Database::getConnection()
+                ->query(<<<SQL
+                    SELECT
+                        ROW_NUMBER() OVER (ORDER BY tanggal_request ASC) AS nomor,
+                        v.id_verifikasi,
+                        p.id_berkas_prodi AS id_berkas,
+                        m.nim,
+                        m.nama_lengkap,
+                        p.tanggal_request,
+                        v.status_verifikasi,
+                        v.keterangan_verifikasi
+                    FROM USERS.Mahasiswa m
+                    INNER JOIN BERKAS.Prodi p ON m.nim = p.nim
+                    INNER JOIN VER.VerifikasiBerkas v ON v.id_berkas = p.id_berkas_prodi
+                    WHERE v.status_verifikasi = 'Diajukan'
+                    ORDER BY p.tanggal_request DESC
+                SQL)
+                ->fetchAll(\PDO::FETCH_CLASS, BerkasPengajuan::class);
+        } catch (\PDOException $e) {
+            error_log(ErrorLog::formattedErrorLog($e->getMessage()), 3, LOG_FILE_PATH);
+            throw new \PDOException($e->getMessage());
+        }
+    }
+
     public static function getSingleBerkasProdiReq(int $id_verifikasi): bool|DetailBerkasProdiPengajuan
     {
         try {
