@@ -40,7 +40,7 @@ class HomeController extends Controller
             switch ($_SESSION['role']) {
                 case 'Admin Prodi':
                     $statistic_request = StatistikRepository::getStatisticRequest('Prodi');
-                    $all_req_verif = BerkasProdiRepository::getAllBerkasProdiReq();
+                    $all_req_verif = BerkasProdiRepository::getAllSubmittedBerkasProdi();
                     $this->view("templates/header", $data);
                     $this->view("pages/admin_prodi/dashboard", [
                         'statistic_request' => $statistic_request,
@@ -51,7 +51,7 @@ class HomeController extends Controller
                     break;
                 case 'Admin TA':
                     $statistic_request = StatistikRepository::getStatisticRequest('TA');
-                    $all_req_verif = BerkasTARepository::getAllBerkasTAReq();
+                    $all_req_verif = BerkasTARepository::getAllSubmittedBerkasTA();
                     $this->view("templates/header", $data);
                     $this->view("pages/admin_ta/dashboard", [
                         'statistic_request' => $statistic_request,

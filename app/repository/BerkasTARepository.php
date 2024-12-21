@@ -76,6 +76,33 @@ class BerkasTARepository
         }
     }
 
+    public static function getAllSubmittedBerkasTA(): array
+    {
+        try {
+            return Database::getConnection()
+                ->query(<<<SQL
+                    SELECT
+                        ROW_NUMBER() OVER (ORDER BY tanggal_request ASC) AS nomor,
+                        vb.id_verifikasi, 
+                        ta.id_ta AS id_berkas, 
+                        m.nim, 
+                        m.nama_lengkap, 
+                        ta.tanggal_request, 
+                        vb.status_verifikasi, 
+                        vb.keterangan_verifikasi
+                    FROM VER.VerifikasiBerkas vb
+                    INNER JOIN BERKAS.TA ta ON vb.id_berkas = ta.id_ta
+                    INNER JOIN USERS.Mahasiswa m ON ta.nim = m.nim
+                    WHERE vb.status_verifikasi = 'Diajukan'
+                    ORDER BY ta.tanggal_request DESC;
+                SQL)
+                ->fetchAll(\PDO::FETCH_CLASS, BerkasPengajuan::class);
+        } catch (\PDOException $e) {
+            error_log(ErrorLog::formattedErrorLog($e->getMessage()), 3, LOG_FILE_PATH);
+            throw new \PDOException($e->getMessage());
+        }
+    }
+
     
     public static function getSingleBerkasTAReq(int $id_verifikasi): bool|DetailBerkasTAPengajuan
     {
