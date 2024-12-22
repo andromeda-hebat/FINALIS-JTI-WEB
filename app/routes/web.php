@@ -259,3 +259,10 @@ Router::add('GET', '/laporan/laporan-umum', AdminJurusanController::class, 'view
         'args' => 'admin jurusan'
     ]
 ]);
+Router::add('GET', '/api/laporan/laporan-umum/([a-zA-Z0-9]+)', AdminJurusanController::class, 'viewLaporanUmum', [
+    [
+        'class' => AuthMiddleware::class,
+        'function' => 'checkAuth',
+        'args' => 'desktop'
+    ]
+]);

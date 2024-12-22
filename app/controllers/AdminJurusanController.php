@@ -4,7 +4,7 @@ namespace App\Controllers;
 
 use App\Core\Controller;
 use App\Models\Mahasiswa;
-use App\Repository\{AdminRepository, MahasiswaRepository, StatistikRepository};
+use App\Repository\{AdminRepository, MahasiswaRepository, StatistikRepository, ApiRepository};
 use App\Models\Admin;
 use Dompdf\{Dompdf, Options};
 
@@ -437,8 +437,21 @@ class AdminJurusanController extends Controller
         $this->view("templates/footer");
     }
 
-    public function viewLaporanUmum(): void
+    public function viewLaporanUmum(string $api_key = null): void
     {
+        if ($api_key != null) {
+            $result = ApiRepository::validateApiKey($api_key);
+            if (!$result) {
+                http_response_code(403);
+                $this->view("templates/header", [
+                    'title' => 'Not Authorized!'
+                ]);
+                $this->view("pages/general/not_authorized");
+                $this->view("templates/footer");
+                exit;
+            }
+        }
+
         $d4_ti = StatistikRepository::getTotalPaidOffAndUnpaidStudent("D4 Teknik Informatika");
         $d4_sib = StatistikRepository::getTotalPaidOffAndUnpaidStudent("D4 Sistem Informasi Bisnis");
         $d2_ppls = StatistikRepository::getTotalPaidOffAndUnpaidStudent("D2 Pengembangan Perangkat Lunak Situs");
