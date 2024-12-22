@@ -6,7 +6,7 @@
             <h2 class="fw-bold">Laporan Sistem</h2>
             
             <p>Pilih jenis laporan yang ingin dibuat</p>
-            <a href="/laporan/laporan-umum">
+            <a href="/laporan/laporan-umum" target="_blank">
                 <button>Laporan umum</button>
             </a>
 
