@@ -4,8 +4,9 @@ namespace App\Controllers;
 
 use App\Core\Controller;
 use App\Models\Mahasiswa;
-use App\Repository\{AdminRepository, MahasiswaRepository};
+use App\Repository\{AdminRepository, MahasiswaRepository, StatistikRepository};
 use App\Models\Admin;
+use Dompdf\{Dompdf, Options};
 
 class AdminJurusanController extends Controller
 {
@@ -422,5 +423,44 @@ class AdminJurusanController extends Controller
         ]);
         $this->view("pages/admin_jurusan/catatan_aktivitas");
         $this->view("templates/footer");
+    }
+
+    public function viewLaporan(): void
+    {
+        $this->view("templates/header", [
+            'title' => "Laporan",
+            'css' => ["assets/css/sidebar"]
+        ]);
+        $this->view("pages/admin_jurusan/laporan", [
+            'active_page' => 'laporan'
+        ]);
+        $this->view("templates/footer");
+    }
+
+    public function viewLaporanUmum(): void
+    {
+        $d4_ti = StatistikRepository::getTotalPaidOffAndUnpaidStudent("D4 Teknik Informatika");
+        $d4_sib = StatistikRepository::getTotalPaidOffAndUnpaidStudent("D4 Sistem Informasi Bisnis");
+        $d2_ppls = StatistikRepository::getTotalPaidOffAndUnpaidStudent("D2 Pengembangan Perangkat Lunak Situs");
+
+        ob_start();
+        $this->view("templates/summary_report", [
+            'd4_ti' => $d4_ti,
+            'd4_sib' => $d4_sib,
+            'd2_ppls' => $d2_ppls
+        ]);
+        $document = ob_get_clean();
+
+        $options = new Options();
+        $options->set('isHtml5ParserEnabled', true);
+        $options->set('isPhpEnabled', true);
+        $options->set('isRemoteEnabled', true);
+
+        $pdf = new Dompdf($options);
+
+        $pdf->loadHtml($document);
+        $pdf->setPaper('A4', 'portrait');
+        $pdf->render();
+        $pdf->stream("report.pdf", array("Attachment" => 0));
     }
 }
