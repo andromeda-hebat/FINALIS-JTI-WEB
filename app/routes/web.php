@@ -245,3 +245,17 @@ Router::add('GET', '/log-aktivity', AdminJurusanController::class, 'catatanAktiv
         'args' => 'admin jurusan'
     ]
 ]);
+Router::add('GET', '/laporan', AdminJurusanController::class, 'viewLaporan', [
+    [
+        'class' => AuthMiddleware::class,
+        'function' => 'checkAuth',
+        'args' => 'admin jurusan'
+    ]
+]);
+Router::add('GET', '/laporan/laporan-umum', AdminJurusanController::class, 'viewLaporanUmum', [
+    [
+        'class' => AuthMiddleware::class,
+        'function' => 'checkAuth',
+        'args' => 'admin jurusan'
+    ]
+]);

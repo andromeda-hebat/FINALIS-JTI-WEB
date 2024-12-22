@@ -47,6 +47,10 @@
         <a href="log-aktivity" class="sidebar-nav nav-link text-white w-100 ps-5 fw-bold">
             Log Aktivitas
         </a>
+
+        <a href="/laporan" id="nav-laporan" class="sidebar-nav nav-link text-white ps-5 fw-bold">
+            Laporan
+        </a>
     </nav>
 
     <div class="mt-auto w-100 mb-4 d-flex justify-content-center" style="">
