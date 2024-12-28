@@ -9,6 +9,11 @@ package "Web Client" {
 }
 
 package "Web Server" {
+    component Middleware as MW {
+        [Authentication]
+        [Request Parsing]
+    }
+
     component Controller as C {
         [Request Handling]
         [Routing Logic]
@@ -24,10 +29,12 @@ package "Database" {
     database "DB" as DB
 }
 
-V -down-> C : "Request (GET, POST, etc.)"
+V -down-> MW : "Request (GET, POST, etc.)"
+MW -down-> C : "Validated/Processed Request"
 C --> M : "Business Logic Call"
 M --> DB : "Query/CRUD Operations"
 DB --> M : "Data Response"
 M --> C : "Processed Data"
-C --> V : "Response (HTML/JSON)"
+C -up-> MW : "Response (Data/HTML)"
+MW -up-> V : "Response (Processed)"
 @enduml
